@@ -21,6 +21,30 @@
       "destination": "/:path*"
     },
     {
+      "source": "/curso",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/curso/",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/obrigado",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/obrigado/",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/leads",
+      "destination": "/leads.html"
+    },
+    {
+      "source": "/leads/",
+      "destination": "/leads.html"
+    },
+    {
       "source": "/blog",
       "destination": "/blog.html"
     },
