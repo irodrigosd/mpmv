@@ -1,14 +1,25 @@
-ROTAS PRESERVADAS + /MENTORIA/
+CORREÇÃO — BOTÃO /CURSO NA PÁGINA DE OBRIGADO
 
-Este pacote mantém:
-- /curso/ -> /curso.html
-- /mentoria/ -> /mentoria.html
-- /obrigado/ -> /obrigado.html
-- /leads/ -> /leads.html
-- /blog/
-- artigos do blog
-- /admin/blog/
+Problema:
+O download automático do guia e a navegação do curso estavam convivendo no mesmo fluxo JS.
 
-Para /mentoria/ funcionar, o arquivo mentoria.html precisa existir na RAIZ do repositório.
+Correção:
+- O download automático roda apenas após o formulário ser enviado com sucesso.
+- Ele roda apenas uma vez por aba/sessão.
+- O botão .mpmv-course-cta remove qualquer atributo download.
+- O clique no curso é interceptado e navega explicitamente para /curso/.
+- O botão da mentoria também tem qualquer atributo download removido.
+- Foram incluídas duas cópias do JS porque versões anteriores do site usam:
+  /public.js
+  /assets/js/public.js
 
-Suba vercel.json na raiz, substituindo o atual, e faça novo deploy na Vercel.
+COMO SUBIR
+Suba o conteúdo deste ZIP preservando as pastas e substitua os arquivos existentes.
+Depois faça um novo deploy na Vercel.
+
+TESTE
+1. Abra a LP em janela anônima.
+2. Preencha o formulário.
+3. Confirme que o guia baixa uma vez.
+4. Clique em CONHECER O CURSO AGORA.
+5. Deve abrir /curso/ sem baixar outro arquivo.
