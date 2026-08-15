@@ -1,10 +1,20 @@
-PATCH VISUAL DO POPUP DO CURSO
+MPMV — Instalador do Google Analytics
+ID: G-CJHQRJY79Z
 
-Arquivos:
-- index.html
-- popup-course.css
-- public.js
+1. No GitHub, envie estes arquivos preservando as pastas:
+   - install-analytics.html
+   - api/install-analytics.js
+2. Espere o Vercel concluir o deploy.
+3. Abra https://maispersuasaomaisvendas.com.br/install-analytics
+4. Digite a mesma senha administrativa usada em /admin/blog.
+5. Clique em INSTALAR ANALYTICS.
 
-O mockup do curso foi feito em CSS; não precisa subir imagem extra.
+O instalador vai:
+- criar analytics.js;
+- incluir /analytics.js nas páginas públicas;
+- manter publicidade negada e liberar apenas analytics_storage após aceite;
+- usar a escolha já salva pelo banner de cookies (mpmv-cookie-consent-v3);
+- preparar api/blog-admin.js para incluir Analytics em novos artigos;
+- remover install-analytics.html e api/install-analytics.js após concluir.
 
-ATENÇÃO: o GitHub main do projeto ainda não está sincronizado com o backend que hoje está funcionando em produção (/api/leads, /leads e formulário da mentoria). Subir este patch isoladamente no main pode disparar um deploy e restaurar arquivos antigos do repositório. Use este pacote somente depois de sincronizar o restante do source, ou aplique as alterações sobre a versão atual de produção.
+Depois do novo deploy, valide no Google Analytics / Tempo real.
