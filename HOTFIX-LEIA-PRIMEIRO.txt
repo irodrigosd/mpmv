@@ -1,0 +1,75 @@
+HOTFIX CONSOLIDADO — MPMV
+Base: mpmv-main.zip enviado em 15/08/2026
+
+OBJETIVO
+Consolidar as correções sem regredir as partes que já estavam funcionando:
+- Home e captação do Guia
+- /curso
+- /mentoria
+- /leads
+- /blog
+- /admin/blog
+- APIs do projeto
+
+CORREÇÕES INCLUÍDAS
+1. /curso
+   - Mantidos curso e curso.html.
+   - Configuração do Vercel força exibição HTML inline em /curso e /curso/.
+   - Evita a janela "Salvar como" causada pelo arquivo sem extensão.
+   - Garantia: 7 dias, 100% do valor de volta, sem perguntas.
+
+2. /mentoria
+   - Página nativa restaurada em /mentoria/.
+   - Formulário em 6 etapas.
+   - Envio por /api/mentoria.
+
+3. /leads
+   - Aba "Leads do Guia".
+   - Aba "Form da Mentoria".
+   - Busca, detalhes das respostas e exportação CSV.
+
+4. Guia
+   - Nome de download: [Guia Prático] Persuasão pra Vender Todo Santo Dia.pdf
+   - A rota e o PDF físico do projeto foram preservados.
+
+5. Blog
+   - /blog com os dois artigos preservados.
+   - /admin/blog preservado.
+   - api/blog-admin.js preservado.
+   - posts.json e sitemap preservados.
+
+COMO SUBIR
+1. Extraia este ZIP no computador.
+2. Abra a pasta extraída.
+3. Selecione TUDO, inclusive as pastas api e blog.
+4. Arraste tudo para a RAIZ do repositório GitHub mpmv.
+5. Substitua os arquivos existentes quando o GitHub indicar conflito.
+6. Faça o commit.
+7. Aguarde o novo deployment do Vercel.
+8. Só use um deployment que esteja com status READY.
+
+IMPORTANTE SOBRE /curso
+Envie os dois arquivos:
+- curso
+- curso.html
+Não precisa apagar manualmente o arquivo "curso". O pacote corrige o comportamento por configuração de headers e mantém os dois sincronizados.
+
+TESTE DEPOIS DO DEPLOY READY
+1. /
+2. Formulário do Guia e nome do arquivo baixado
+3. /curso/ — deve abrir a página, sem "Salvar como"
+4. Garantia do curso — 7 dias / 100%
+5. /mentoria/
+6. /leads/ — conferir as duas abas
+7. /blog/ — conferir os dois artigos
+8. /admin/blog/
+
+VARIÁVEIS DE AMBIENTE
+O pacote reutiliza as credenciais já usadas pelo projeto:
+- BREVO_API_KEY
+- LEADS_ADMIN_TOKEN
+
+A Mentoria procura uma lista do Brevo com "mentoria" no nome e pode criar a lista se necessário.
+Opcionalmente, BREVO_MENTORIA_LIST_ID pode indicar a lista explicitamente.
+
+NÃO faça Promote/Rollback manual antes de conferir se o novo deployment ficou READY.

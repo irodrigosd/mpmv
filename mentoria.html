@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mentoria Individual de Persuasão e Vendas | MPMV</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://www.maispersuasaomaisvendas.com.br/mentoria/">
+  <link rel="icon" href="/favicon-mpmv.png?v=3">
+  <style>
+    :root{--ink:#123551;--deep:#178bbb;--red:#ef5a63;--muted:#657d8b;--line:#d9e8ee}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:#f4f9fb;line-height:1.6}
+    .wrap{width:min(760px,calc(100% - 30px));margin:auto;padding:28px 0 60px}
+    .top{display:flex;justify-content:space-between;gap:18px;align-items:center}
+    .brand{font-weight:900}
+    .top a{color:var(--deep);font-weight:800}
+    .card{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,46px)}
+    .eyebrow{color:var(--deep);font-size:.75rem;font-weight:900;letter-spacing:.14em}
+    .card h1{font-size:clamp(2.1rem,7vw,4rem);line-height:1.02}
+    .intro,.help{color:var(--muted)}
+    .progress{height:7px;background:#e8f1f5;border-radius:99px;overflow:hidden}
+    .bar{height:100%;width:16.666%;background:var(--deep)}
+    .progress-text{color:var(--muted);font-size:.82rem;font-weight:800}
+    .step{display:none}.step.active{display:block}
+    label.field{display:grid;gap:7px;margin:18px 0;font-weight:800}
+    input[type=text],input[type=email],input[type=tel],textarea{width:100%;border:1px solid #c9dbe3;border-radius:10px;padding:13px 14px;font:inherit}
+    textarea{min-height:125px;resize:vertical}
+    .radioq{margin:22px 0;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f8fcfe}
+    .radioq>strong{display:block;margin-bottom:12px}
+    .option{display:flex;gap:9px;padding:9px 0;font-weight:800}
+    .note{padding:18px;border-left:4px solid var(--deep);background:#f4fafc;border-radius:8px}
+    .actions{display:flex;gap:12px;margin-top:28px}
+    .btn{min-height:50px;border:0;border-radius:10px;padding:0 20px;font-weight:900;cursor:pointer}
+    .prev{background:#eef5f8}.next,.send{margin-left:auto;background:var(--red);color:#fff}
+    .error{padding:11px;background:#fff0f1;color:#a82e38;border-radius:8px}
+    .hidden{display:none!important}
+    .success{text-align:center}
+    .check{display:grid;place-items:center;width:72px;height:72px;margin:auto;border-radius:50%;background:#e4f7ec;color:#24915b;font-size:2rem}
+    .success a{display:inline-flex;margin-top:18px;padding:14px 20px;border-radius:9px;background:var(--ink);color:#fff;text-decoration:none;font-weight:900}
+    @media(max-width:600px){.top{align-items:flex-start;flex-direction:column}.card{padding:24px 20px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top"><div class="brand">MPMV — Mais Persuasão, Mais Vendas</div><a href="/">← Voltar</a></div>
+  <section class="card">
+    <div id="formBox">
+      <p class="eyebrow">MENTORIA EXCLUSIVA</p>
+      <h1>Aplicação para a Mentoria Individual</h1>
+      <p class="intro">Responda às perguntas abaixo. As respostas são usadas para analisar se a mentoria faz sentido para o seu momento.</p>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+      <p id="progressText" class="progress-text">Etapa 1 de 6</p>
+      <form id="appForm">
+        <section class="step active" data-step="1">
+          <h2>Seus dados</h2>
+          <label class="field">Nome:<input name="name" type="text" maxlength="120" required></label>
+          <label class="field">E-mail:<input name="email" type="email" maxlength="180" required></label>
+          <label class="field">Telefone:<input name="phone" type="tel" maxlength="40" required></label>
+          <div class="actions"><button type="button" class="btn next">PRÓXIMO</button></div>
+        </section>
+
+        <section class="step" data-step="2">
+          <h2>Sobre o seu produto...</h2>
+          <label class="field">O que você vende?
+            <span class="help">Me diga exatamente o produto ou serviço que você vende... (Ex: Vendo aulas on-line de Inglês).</span>
+            <textarea name="product" maxlength="3000" required></textarea>
+          </label>
+          <label class="field">Você é vendedor, funcionário de alguma empresa, autônomo ou é empresário e possui um time de vendas?
+            <input name="role" type="text" maxlength="1000" required>
+          </label>
+          <div class="actions"><button type="button" class="btn prev">VOLTAR</button><button type="button" class="btn next">PRÓXIMO</button></div>
+        </section>
+
+        <section class="step" data-step="3">
+          <h2>Sobre você...</h2>
+          <label class="field">O que mais chamou a sua atenção quando você viu a oportunidade de me ter focado exclusivamente em aumentar suas vendas?
+            <textarea name="attention" maxlength="3000" required></textarea>
+          </label>
+          <label class="field">Sabendo que vou dedicar meu tempo exclusivamente a você, pois teremos uma reunião individual ao vivo por semana, então, por quê eu deveria escolher você e o seu projeto ao invés de qualquer outra pessoa?
+            <textarea name="whyYou" maxlength="3000" required></textarea>
+          </label>
+          <label class="field">Quanto você tem faturado mensalmente?
+            <span class="help">(Fique tranquilo, esse questionário é absolutamente sigiloso, somente eu, Rodrigo, terei acesso a ver essas respostas)</span>
+            <input name="revenue" type="text" maxlength="500" required>
+          </label>
+          <div class="actions"><button type="button" class="btn prev">VOLTAR</button><button type="button" class="btn next">PRÓXIMO</button></div>
+        </section>
+
+        <section class="step" data-step="4">
+          <h2>Sobre mim...</h2>
+          <label class="field">Por que você acredita que EU sou a pessoa certa para ajudar você a Aumentar suas Vendas?
+            <textarea name="whyRodrigo" maxlength="3000" required></textarea>
+          </label>
+          <div class="actions"><button type="button" class="btn prev">VOLTAR</button><button type="button" class="btn next">PRÓXIMO</button></div>
+        </section>
+
+        <section class="step" data-step="5">
+          <h2>Deixando tudo claro...</h2>
+          <div class="radioq">
+            <strong>Você sabe que eu não posso garantir que você irá vender milhões de reais? Prometer isso seria leviano da minha parte. O seu resultado vai depender da sua dedicação e do seu empenho em aplicar as orientações que você vai receber ao participar do processo de mentoria para evoluir suas habilidades persuasivas. Você esta de acordo com isso?</strong>
+            <label class="option"><input type="radio" name="resultsAgreement" value="SIM" required> SIM</label>
+            <label class="option"><input type="radio" name="resultsAgreement" value="NÃO" required> NÃO</label>
+          </div>
+          <div class="actions"><button type="button" class="btn prev">VOLTAR</button><button type="button" class="btn next">PRÓXIMO</button></div>
+        </section>
+
+        <section class="step" data-step="6">
+          <h2>Quanto irá custar essa mentoria exclusiva para aumentar suas vendas...</h2>
+          <div class="note">Quando estava planejando essa mentoria, pensei em cobrar o valor que ela merece pela qualidade do conteúdo, exclusividade e empenho que pretendo oferecer a você, para que de fato, você consiga aumentar suas vendas.<br><br>No entanto, não quero que você desista dos seus sonhos por não ter capital para investir em algo com valor exorbitante no início da sua carreira...<br><br>Por isso, o valor para termos uma aula ao vivo semanal será de R$ 997 por mês, podendo encerrar nossos encontros a qualquer momento.</div>
+          <div class="radioq">
+            <strong>Estamos de acordo?</strong>
+            <label class="option"><input type="radio" name="priceAgreement" value="SIM" required> SIM</label>
+            <label class="option"><input type="radio" name="priceAgreement" value="NÃO" required> NÃO</label>
+          </div>
+          <p id="error" class="error hidden"></p>
+          <div class="actions"><button type="button" class="btn prev">VOLTAR</button><button id="send" type="submit" class="btn send">ENVIAR APLICAÇÃO</button></div>
+        </section>
+      </form>
+    </div>
+
+    <div id="success" class="success hidden">
+      <div class="check">✓</div>
+      <p class="eyebrow">PARABÉNS!</p>
+      <h2>Aplicação enviada.</h2>
+      <p>Em breve analisaremos suas respostas e, se você for escolhido, entrarei em contato pessoalmente.</p>
+      <a href="/">VOLTAR PARA A MPMV</a>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  var step=1,total=6,form=document.getElementById('appForm'),bar=document.getElementById('bar'),
+      txt=document.getElementById('progressText'),err=document.getElementById('error'),send=document.getElementById('send');
+
+  function go(n){
+    step=Math.max(1,Math.min(total,n));
+    document.querySelectorAll('.step').forEach(function(s){s.classList.toggle('active',Number(s.dataset.step)===step)});
+    bar.style.width=(step/total*100)+'%';
+    txt.textContent='Etapa '+step+' de '+total;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function valid(){
+    var s=document.querySelector('.step.active'),els=s.querySelectorAll('input,textarea');
+    for(var i=0;i<els.length;i++){
+      if(!els[i].checkValidity()){els[i].reportValidity();return false}
+    }
+    return true
+  }
+
+  document.querySelectorAll('.next').forEach(function(b){b.onclick=function(){if(valid())go(step+1)}});
+  document.querySelectorAll('.prev').forEach(function(b){b.onclick=function(){go(step-1)}});
+
+  form.onsubmit=async function(e){
+    e.preventDefault();
+    if(!valid())return;
+    err.classList.add('hidden');
+    send.disabled=true;
+    send.textContent='ENVIANDO...';
+    var fd=new FormData(form),p={};
+    fd.forEach(function(v,k){p[k]=v});
+    try{
+      var r=await fetch('/api/mentoria',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
+      var j={}; try{j=await r.json()}catch(_){}
+      if(!r.ok)throw new Error(j.message||j.error||('HTTP '+r.status));
+      document.getElementById('formBox').classList.add('hidden');
+      document.getElementById('success').classList.remove('hidden');
+    }catch(x){
+      err.textContent='Não consegui enviar sua aplicação agora. Tente novamente.';
+      err.classList.remove('hidden');
+    }finally{
+      send.disabled=false;
+      send.textContent='ENVIAR APLICAÇÃO';
+    }
+  };
+})();
+</script>
+</body>
+</html>

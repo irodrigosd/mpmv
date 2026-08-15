@@ -52,6 +52,14 @@
       "destination": "/blog/:slug/index.html"
     },
     {
+      "source": "/mentoria",
+      "destination": "/mentoria.html"
+    },
+    {
+      "source": "/mentoria/",
+      "destination": "/mentoria.html"
+    },
+    {
       "source": "/leads",
       "destination": "/leads.html"
     },
@@ -109,6 +117,9 @@
     },
     "api/guia.js": {
       "maxDuration": 10
+    },
+    "api/mentoria.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
@@ -130,11 +141,59 @@
       ]
     },
     {
+      "source": "/curso",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        }
+      ]
+    },
+    {
+      "source": "/curso/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        }
+      ]
+    },
+    {
       "source": "/admin/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"Guia-Pratico-Persuasao-pra-Vender-Todo-Santo-Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuas%C3%A3o%20pra%20Vender%20Todo%20Santo%20Dia.pdf"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        }
+      ]
+    },
+    {
+      "source": "/mentoria(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
         }
       ]
     }
