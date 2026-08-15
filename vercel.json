@@ -35,6 +35,14 @@
       "destination": "/blog.html"
     },
     {
+      "source": "/blog/como-usar-persuasao-para-vender-mais",
+      "destination": "/como-usar-persuasao-para-vender-mais.html"
+    },
+    {
+      "source": "/blog/como-usar-persuasao-para-vender-mais/",
+      "destination": "/como-usar-persuasao-para-vender-mais.html"
+    },
+    {
       "source": "/blog/persuasao-para-infoprodutores",
       "destination": "/persuasao-para-infoprodutores.html"
     },
