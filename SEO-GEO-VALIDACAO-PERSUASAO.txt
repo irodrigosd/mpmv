@@ -1,0 +1,53 @@
+VALIDAÇÃO SEO + GEO — PERSUASÃO NO MARKETING DIGITAL
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/persuasao-no-marketing-digital/
+
+Título SEO:
+Persuasão no Marketing Digital: Como Aplicar | MPMV
+Caracteres: 51
+
+Meta description:
+Entenda como aplicar persuasão no marketing digital em conteúdo, anúncios, páginas, e-mails e ofertas com argumentos, provas e ética.
+Caracteres: 133
+
+Frase-chave de foco:
+persuasão no marketing digital
+
+Ocorrências exatas aproximadas no conteúdo visível:
+12
+
+Palavras aproximadas no conteúdo visível:
+2226
+
+SEO
+- 1 H1
+- Frase-chave no H1, introdução, resposta direta, corpo e conclusão
+- Canonical correto
+- Meta title e meta description preenchidos
+- Links internos
+- Sitemap atualizado
+- Rota Vercel criada
+- BlogPosting e BreadcrumbList
+- Imagens relevantes com ALT
+
+GEO / BUSCA COM IA
+- Resposta curta no topo
+- Definições explícitas
+- Estrutura por perguntas
+- Exemplos e comparação
+- Método próprio das 4 decisões: parar, continuar, acreditar, agir
+- Checklist acionável
+- Fontes e referências
+- Conteúdo organizado para pessoas, sem fragmentar artificialmente para IA
+
+ATUALIZAÇÃO ENGATILHADA DO GUIA
+O vercel.json agora adiciona Content-Disposition para o PDF do guia.
+Nome exibido pretendido no download:
+[Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf
+
+A regra foi adicionada para:
+- /guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf
+- /assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf
+
+Se o arquivo real usar outro caminho, ajuste o source correspondente.

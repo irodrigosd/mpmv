@@ -1,0 +1,16 @@
+ATUALIZAÇÃO DO NOME DO DOWNLOAD DO GUIA
+
+Nome oficial:
+[Guia Prático] Persuasao Pra Vender Todo Santo Dia
+
+Nome pretendido ao salvar:
+[Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf
+
+A correção está no vercel.json por meio do header Content-Disposition.
+Assim, não é necessário mudar o nome físico do PDF para o usuário receber o nome oficial.
+
+Rotas cobertas:
+1) /guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf
+2) /assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf
+
+Depois do deploy, teste o download em janela anônima.

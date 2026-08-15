@@ -93,6 +93,14 @@
       "destination": "/copywriting-para-redes-sociais.html"
     },
     {
+      "source": "/blog/persuasao-no-marketing-digital",
+      "destination": "/persuasao-no-marketing-digital.html"
+    },
+    {
+      "source": "/blog/persuasao-no-marketing-digital/",
+      "destination": "/persuasao-no-marketing-digital.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
@@ -134,6 +142,24 @@
     }
   ],
   "headers": [
+    {
+      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"[Guia Pratico] Persuasao Pra Vender Todo Santo Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuasao%20Pra%20Vender%20Todo%20Santo%20Dia.pdf"
+        }
+      ]
+    },
+    {
+      "source": "/assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"[Guia Pratico] Persuasao Pra Vender Todo Santo Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuasao%20Pra%20Vender%20Todo%20Santo%20Dia.pdf"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

@@ -1,18 +1,227 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Admin Blog | MPMV</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Blog | MPMV</title>
 <style>
-:root{--bg:#0b0b0b;--card:#151515;--line:#2b2b2b;--txt:#f5f1e8;--muted:#a59e94;--gold:#d1a447;--red:#c63b42;--green:#3d9b70}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial,sans-serif}.wrap{width:min(1100px,calc(100% - 32px));margin:40px auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}.brand{font-weight:900;font-size:24px}.brand span{color:var(--gold)}.back{color:var(--muted);text-decoration:none}.note{border:1px solid var(--line);background:#101010;padding:16px 18px;border-radius:14px;color:var(--muted);margin-bottom:20px}.grid{display:grid;gap:14px}.post{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:20px}.row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.post h2{font-size:20px;margin:0 0 6px}.url{font-size:13px;color:var(--gold);word-break:break-all}.seo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.field{background:#0f0f0f;border:1px solid #242424;border-radius:12px;padding:12px}.field b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#817a72;margin-bottom:5px}.field span{font-size:14px;line-height:1.4}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer;text-decoration:none;font-size:13px}.open{background:#272727;color:#fff}.delete{background:var(--red);color:#fff}.delete:disabled{opacity:.45;cursor:not-allowed}.status{font-size:12px;color:#b9d9c8;background:rgba(61,155,112,.15);padding:5px 8px;border-radius:999px;display:inline-block;margin-top:8px}.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo{grid-template-columns:1fr}}
+:root{--bg:#0b0b0b;--card:#151515;--line:#2b2b2b;--txt:#f5f1e8;--muted:#a59e94;--gold:#d1a447;--red:#c63b42;--green:#3d9b70;--blue:#2968c8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial,sans-serif}
+.wrap{width:min(1100px,calc(100% - 32px));margin:40px auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.brand{font-weight:900;font-size:24px}.brand span{color:var(--gold)}
+.back{color:var(--muted);text-decoration:none}
+.note{border:1px solid var(--line);background:#101010;padding:16px 18px;border-radius:14px;color:var(--muted);margin-bottom:20px}
+.upload-box{border:1px solid #3a3323;background:linear-gradient(135deg,#17140d,#111);padding:20px;border-radius:18px;margin-bottom:22px}
+.upload-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.upload-box h2{margin:0 0 6px;font-size:20px}.upload-box p{margin:0;color:var(--muted);font-size:14px}
+.upload-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.file-label{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #474033;background:#1f1a11;color:#f5e6bd;padding:0 14px;border-radius:10px;font-weight:800;cursor:pointer}
+.file-label input{display:none}
+.file-name{font-size:13px;color:#bdb5aa;max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.progress{display:none;margin-top:14px;border:1px solid #302b21;background:#0c0c0c;border-radius:12px;padding:12px 14px;color:#cfc7bc;font-size:13px}
+.progress.show{display:block}
+.grid{display:grid;gap:14px}
+.post{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:20px}
+.row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.post h2{font-size:20px;margin:0 0 6px}
+.url{font-size:13px;color:var(--gold);word-break:break-all}
+.seo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.field{background:#0f0f0f;border:1px solid #242424;border-radius:12px;padding:12px}
+.field b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#817a72;margin-bottom:5px}
+.field span{font-size:14px;line-height:1.4}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer;text-decoration:none;font-size:13px}
+.open{background:#272727;color:#fff}.delete{background:var(--red);color:#fff}.upload{background:var(--gold);color:#15110a}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.status{font-size:12px;color:#b9d9c8;background:rgba(61,155,112,.15);padding:5px 8px;border-radius:999px;display:inline-block;margin-top:8px}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo{grid-template-columns:1fr}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
-<body><main class="wrap"><div class="top"><div class="brand"><span>MPMV</span> / Admin Blog</div><a class="back" href="/blog/">Ver blog</a></div>
-<div class="note">Aqui você vê título, título SEO, meta descrição, frase-chave e slug. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice do blog. Na primeira exclusão, informe o token de administração configurado na Vercel.</div>
-<div id="list" class="grid"><div class="empty">Carregando artigos...</div></div></main>
+<body>
+<main class="wrap">
+  <div class="top">
+    <div class="brand"><span>MPMV</span> / Admin Blog</div>
+    <a class="back" href="/blog/">Ver blog</a>
+  </div>
+
+  <section class="upload-box">
+    <div class="upload-head">
+      <div>
+        <h2>Subir artigo em ZIP</h2>
+        <p>Selecione o ZIP do artigo. Os arquivos serão enviados para a raiz do repositório e a Vercel publicará o novo deploy.</p>
+      </div>
+      <div class="upload-actions">
+        <label class="file-label">Escolher ZIP<input id="zipFile" type="file" accept=".zip,application/zip"></label>
+        <span id="fileName" class="file-name">Nenhum arquivo escolhido</span>
+        <button id="uploadBtn" class="btn upload" type="button" disabled>Subir ZIP e publicar</button>
+      </div>
+    </div>
+    <div id="uploadProgress" class="progress"></div>
+  </section>
+
+  <div class="note">Aqui você vê título, título SEO, meta descrição, frase-chave e slug. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice. O botão <strong>Subir ZIP e publicar</strong> envia o pacote para o GitHub e dispara o deploy da Vercel.</div>
+
+  <div id="list" class="grid"><div class="empty">Carregando artigos...</div></div>
+</main>
+
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-async function load(){const box=document.getElementById('list');try{const r=await fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('Não foi possível carregar os artigos.');const posts=await r.json();if(!posts.length){box.innerHTML='<div class="empty">Nenhum artigo cadastrado.</div>';return;}box.innerHTML=posts.map(p=>`<article class="post" data-slug="${esc(p.slug)}"><div class="row"><div><h2>${esc(p.title)}</h2><div class="url">${esc(p.url)}</div><span class="status">${esc(p.status)}</span></div><div class="actions"><a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a><button class="btn delete" data-delete="${esc(p.slug)}" ${p.deletable?'':'disabled'}>Excluir artigo</button></div></div><div class="seo"><div class="field"><b>Título SEO</b><span>${esc(p.seoTitle)}</span></div><div class="field"><b>Frase-chave de foco</b><span>${esc(p.focusKeyphrase)}</span></div><div class="field"><b>Meta descrição</b><span>${esc(p.metaDescription)}</span></div><div class="field"><b>Slug</b><span>${esc(p.slug)}</span></div></div></article>`).join('');document.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>removePost(btn.dataset.delete,btn)));}catch(e){box.innerHTML='<div class="empty">'+esc(e.message)+'</div>';}}
-async function removePost(slug,btn){const post=btn.closest('.post');const title=post.querySelector('h2').textContent;if(!confirm(`Excluir definitivamente o artigo “${title}”?\n\nA exclusão remove o arquivo do repositório e o post do índice.`))return;let token=sessionStorage.getItem('mpmv_admin_token');if(!token){token=prompt('Token de administração:');if(!token)return;sessionStorage.setItem('mpmv_admin_token',token);}btn.disabled=true;btn.textContent='Excluindo...';try{const r=await fetch('/api/admin-blog-delete',{method:'POST',headers:{'Content-Type':'application/json','x-admin-token':token},body:JSON.stringify({slug})});const data=await r.json().catch(()=>({}));if(r.status===401){sessionStorage.removeItem('mpmv_admin_token');throw new Error('Token inválido. Tente novamente.');}if(!r.ok)throw new Error(data.error||'Falha ao apagar o artigo.');post.remove();alert('Artigo excluído. A Vercel fará o novo deploy a partir do GitHub.');}catch(e){btn.disabled=false;btn.textContent='Excluir artigo';alert(e.message);}}
+const zipInput=document.getElementById('zipFile');
+const uploadBtn=document.getElementById('uploadBtn');
+const fileName=document.getElementById('fileName');
+const progress=document.getElementById('uploadProgress');
+
+function getAdminToken(){
+  let token=sessionStorage.getItem('mpmv_admin_token');
+  if(!token){
+    token=prompt('Token de administração:');
+    if(token) sessionStorage.setItem('mpmv_admin_token',token);
+  }
+  return token;
+}
+function showProgress(msg){
+  progress.textContent=msg;
+  progress.classList.add('show');
+}
+zipInput.addEventListener('change',()=>{
+  const f=zipInput.files?.[0];
+  fileName.textContent=f?f.name:'Nenhum arquivo escolhido';
+  uploadBtn.disabled=!f;
+});
+
+async function uploadZip(){
+  const file=zipInput.files?.[0];
+  if(!file)return;
+  if(!window.JSZip){alert('Não foi possível carregar o leitor de ZIP. Atualize a página e tente novamente.');return;}
+  const token=getAdminToken();
+  if(!token)return;
+
+  uploadBtn.disabled=true;
+  uploadBtn.textContent='Preparando...';
+  showProgress('Abrindo o ZIP...');
+
+  try{
+    const zip=await JSZip.loadAsync(file);
+    const entries=Object.values(zip.files).filter(e=>!e.dir && !e.name.startsWith('__MACOSX/') && !e.name.endsWith('.DS_Store'));
+    if(!entries.length) throw new Error('O ZIP está vazio.');
+
+    const rawNames=entries.map(e=>e.name.replace(/^\.\/+/,''));
+    const firstParts=rawNames.map(n=>n.split('/')[0]);
+    const commonTop=(new Set(firstParts).size===1 && rawNames.every(n=>n.includes('/')))?firstParts[0]+'/':'';
+
+    const files=[];
+    let totalBytes=0;
+    for(let i=0;i<entries.length;i++){
+      const entry=entries[i];
+      let path=entry.name.replace(/^\.\/+/,'');
+      if(commonTop && path.startsWith(commonTop)) path=path.slice(commonTop.length);
+      if(!path || path.includes('..') || path.startsWith('/') || path.startsWith('.git/')) continue;
+
+      showProgress(`Lendo ${i+1}/${entries.length}: ${path}`);
+      const bytes=await entry.async('uint8array');
+      totalBytes+=bytes.length;
+      if(bytes.length>3_500_000) throw new Error(`O arquivo ${path} é grande demais para o upload pelo admin.`);
+      let binary='';
+      const chunk=0x8000;
+      for(let j=0;j<bytes.length;j+=chunk) binary+=String.fromCharCode.apply(null,bytes.subarray(j,j+chunk));
+      files.push({path,content:btoa(binary)});
+    }
+
+    if(totalBytes>3_200_000) throw new Error('O conteúdo descompactado passou de 3,2 MB. Suba esse pacote direto pelo GitHub.');
+
+    showProgress(`Enviando ${files.length} arquivos ao GitHub...`);
+    uploadBtn.textContent='Publicando...';
+
+    const r=await fetch('/api/admin-blog-upload',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({zipName:file.name,files})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){
+      sessionStorage.removeItem('mpmv_admin_token');
+      throw new Error('Token inválido. Tente novamente.');
+    }
+    if(!r.ok) throw new Error(data.error||data.detail||'Falha ao publicar o ZIP.');
+
+    showProgress(`Publicado. Commit ${data.commit?.slice(0,7)||''}. Aguarde o deploy da Vercel e atualize esta página.`);
+    uploadBtn.textContent='Publicado ✓';
+    setTimeout(()=>{location.reload()},3500);
+  }catch(e){
+    showProgress('Erro: '+e.message);
+    uploadBtn.disabled=false;
+    uploadBtn.textContent='Subir ZIP e publicar';
+  }
+}
+uploadBtn.addEventListener('click',uploadZip);
+
+async function load(){
+  const box=document.getElementById('list');
+  try{
+    const r=await fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('Não foi possível carregar os artigos.');
+    const posts=await r.json();
+    if(!posts.length){box.innerHTML='<div class="empty">Nenhum artigo cadastrado.</div>';return;}
+    box.innerHTML=posts.map(p=>`<article class="post" data-slug="${esc(p.slug)}">
+      <div class="row">
+        <div>
+          <h2>${esc(p.title)}</h2>
+          <div class="url">${esc(p.url)}</div>
+          <span class="status">${esc(p.status)}</span>
+        </div>
+        <div class="actions">
+          <a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a>
+          <button class="btn delete" data-delete="${esc(p.slug)}" ${p.deletable?'':'disabled'}>Excluir artigo</button>
+        </div>
+      </div>
+      <div class="seo">
+        <div class="field"><b>Título SEO</b><span>${esc(p.seoTitle)}</span></div>
+        <div class="field"><b>Frase-chave de foco</b><span>${esc(p.focusKeyphrase)}</span></div>
+        <div class="field"><b>Meta descrição</b><span>${esc(p.metaDescription)}</span></div>
+        <div class="field"><b>Slug</b><span>${esc(p.slug)}</span></div>
+      </div>
+    </article>`).join('');
+    document.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>removePost(btn.dataset.delete,btn)));
+  }catch(e){
+    box.innerHTML='<div class="empty">'+esc(e.message)+'</div>';
+  }
+}
+
+async function removePost(slug,btn){
+  const post=btn.closest('.post');
+  const title=post.querySelector('h2').textContent;
+  if(!confirm(`Excluir definitivamente o artigo “${title}”?\n\nA exclusão remove o arquivo do repositório e o post do índice.`))return;
+  const token=getAdminToken();
+  if(!token)return;
+
+  btn.disabled=true;
+  btn.textContent='Excluindo...';
+  try{
+    const r=await fetch('/api/admin-blog-delete',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({slug})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){
+      sessionStorage.removeItem('mpmv_admin_token');
+      throw new Error('Token inválido. Tente novamente.');
+    }
+    if(!r.ok)throw new Error(data.error||'Falha ao apagar o artigo.');
+    post.remove();
+    alert('Artigo excluído. A Vercel fará o novo deploy a partir do GitHub.');
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent='Excluir artigo';
+    alert(e.message);
+  }
+}
 load();
-</script></body></html>
+</script>
+</body>
+</html>

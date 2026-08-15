@@ -18,3 +18,12 @@ O vercel.json deste pacote preserva /curso/, /mentoria/, /obrigado/, /leads/, bl
 
 IMPORTANTE: este pacote restaura no /admin/blog/ os dois recursos: SUBIR ZIP e EXCLUIR ARTIGO.
 Também inclui api/admin-blog-upload.js.
+
+NOVO ARTIGO
+- Arquivo: persuasao-no-marketing-digital.html
+- URL: /blog/persuasao-no-marketing-digital/
+- Rota, sitemap, índice e admin já foram atualizados.
+
+ATUALIZAÇÃO DO GUIA
+- O vercel.json inclui a regra de nome amigável no download:
+  [Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf
