@@ -1,112 +1,188 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Você não precisa manipular ninguém pra vender mais.</title>
-  <meta name="description" content="Baixe gratuitamente o guia prático de Rodrigo Castro e transforme o que você vende em argumentos que o cliente entende, valoriza e tem vontade de comprar.">
-  <link rel="icon" href="/assets/images/favicon-mpmv.svg" type="image/svg+xml" sizes="any">
-  <link rel="icon" href="/assets/images/favicon-mpmv.png" type="image/png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon-mpmv.png" sizes="180x180">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="MPMV — Mais Persuasão, Mais Vendas">
-  <meta property="og:title" content="Você não precisa manipular ninguém pra vender mais.">
-  <meta property="og:description" content="Baixe gratuitamente o guia prático de Rodrigo Castro e transforme o que você vende em argumentos que o cliente entende, valoriza e tem vontade de comprar.">
-  <meta property="og:image" content="/assets/images/og-primeira-dobra-v2.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Você não precisa manipular ninguém pra vender mais.">
-  <meta name="twitter:description" content="Baixe gratuitamente o guia prático de Rodrigo Castro e transforme o que você vende em argumentos que o cliente entende, valoriza e tem vontade de comprar.">
-  <meta name="twitter:image" content="/assets/images/og-primeira-dobra-v2.jpg">
-  <link rel="stylesheet" href="/assets/css/public.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mais Persuasão, Mais Vendas | Copy, Marketing e Vendas</title>
+<meta name="description" content="Aprenda a aplicar persuasão em conteúdo, ofertas e vendas. Guias práticos para infoprodutores que querem comunicar valor e vender melhor.">
+<link rel="canonical" href="https://maispersuasaomaisvendas.com.br/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Mais Persuasão, Mais Vendas"><meta property="og:description" content="Persuasão aplicada a conteúdo, ofertas e vendas.">
+<meta property="og:url" content="https://maispersuasaomaisvendas.com.br/"><meta property="og:image" content="https://maispersuasaomaisvendas.com.br/og-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png">
+<style>
+/* MPMV — Mais Persuasão, Mais Vendas */
+:root {
+  --black: #121212;
+  --black-2: #1b1b1b;
+  --paper: #f7f7f4;
+  --white: #ffffff;
+  --ink: #171717;
+  --muted: #66635e;
+  --gold: #c9a247;
+  --red: #8f2228;
+  --blue: #1769e0;
+  --line: #e5e2da;
+  --max: 1120px;
+  --reading: 760px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+img { max-width: 100%; height: auto; display: block; }
+.container { width: min(calc(100% - 36px), var(--max)); margin-inline: auto; }
+.reading { width: min(100%, var(--reading)); margin-inline: auto; }
+.site-header {
+  background: var(--black);
+  color: var(--white);
+  border-bottom: 1px solid #2b2b2b;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.nav {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.brand {
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .02em;
+  line-height: 1.05;
+}
+.brand small { display: block; color: var(--gold); font-size: .72rem; margin-top: 5px; font-weight: 700; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+.nav-links a { color: #f2f2ef; text-decoration: none; font-weight: 700; font-size: .95rem; }
+.nav-links a:hover { color: var(--gold); }
+.hero {
+  background: linear-gradient(135deg, var(--black) 0%, #181818 65%, #211719 100%);
+  color: var(--white);
+  padding: clamp(68px, 8vw, 118px) 0 76px;
+  border-bottom: 6px solid var(--red);
+}
+.eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; }
+h1, h2, h3 { line-height: 1.16; letter-spacing: -.025em; }
+h1 { font-size: clamp(2.35rem, 6vw, 5rem); max-width: 880px; margin: 14px 0 22px; }
+.hero p { color: #d9d9d3; max-width: 720px; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+.section { padding: 66px 0; }
+.section h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); margin: 0 0 18px; }
+.section-intro { max-width: 740px; color: #4e4b46; font-size: 1.08rem; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 30px; }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.card h3 { margin-top: 0; }
+.card p { color: #514e48; }
+.kicker { color: var(--red); font-weight: 800; }
+.cta-link {
+  color: var(--blue);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.cta-link:hover { text-decoration-thickness: 3px; }
+.text-cta {
+  margin: 30px 0;
+  padding: 18px 20px;
+  border-left: 4px solid var(--blue);
+  background: #eef5ff;
+  border-radius: 0 10px 10px 0;
+}
+.blog-list { display: grid; gap: 22px; margin-top: 32px; }
+.post-card { background: var(--white); border: 1px solid var(--line); padding: 28px; border-radius: 16px; }
+.post-card h2, .post-card h3 { margin: 8px 0 10px; }
+.post-card a { text-decoration: none; }
+.post-card a:hover h2, .post-card a:hover h3 { color: var(--red); }
+.meta { color: var(--muted); font-size: .92rem; }
+.article-hero { background: #fff; border-bottom: 1px solid var(--line); padding: 54px 0 34px; }
+.article-hero h1 { color: var(--ink); font-size: clamp(2.25rem, 5vw, 4.15rem); max-width: 930px; }
+.article-deck { color: #4f4c47; font-size: 1.18rem; max-width: 820px; }
+.article-cover { margin-top: 28px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+.article { background: var(--white); padding: 46px 0 76px; }
+.article p, .article li { font-size: 1.08rem; }
+.article h2 { font-size: clamp(1.65rem, 3vw, 2.25rem); margin-top: 48px; }
+.article h3 { font-size: 1.35rem; margin-top: 34px; }
+.article ul { padding-left: 22px; }
+.toc { background: #f4f1e9; border: 1px solid #ded7c8; border-radius: 14px; padding: 22px 24px; margin: 26px 0 38px; }
+.toc strong { display: block; margin-bottom: 8px; }
+.toc a { color: #34322f; text-underline-offset: 2px; }
+.note { border-left: 4px solid var(--gold); padding: 14px 18px; background: #fff9e8; margin: 28px 0; }
+.breadcrumbs { font-size: .9rem; color: var(--muted); padding-top: 18px; }
+.breadcrumbs a { color: var(--blue); }
+.site-footer { background: var(--black); color: #d2d2cc; padding: 38px 0; }
+.site-footer a { color: #fff; }
+.footer-grid { display: flex; justify-content: space-between; gap: 26px; flex-wrap: wrap; }
+.footer-note { max-width: 620px; color: #b9b9b3; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width: 800px) {
+  .cards { grid-template-columns: 1fr; }
+  .nav { align-items: flex-start; padding: 16px 0; flex-direction: column; }
+  .nav-links { gap: 14px; }
+  .hero { padding-top: 62px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://maispersuasaomaisvendas.com.br/#organization", "name": "Mais Persuasão, Mais Vendas", "url": "https://maispersuasaomaisvendas.com.br/"}, {"@type": "WebSite", "@id": "https://maispersuasaomaisvendas.com.br/#website", "url": "https://maispersuasaomaisvendas.com.br/", "name": "Mais Persuasão, Mais Vendas", "publisher": {"@id": "https://maispersuasaomaisvendas.com.br/#organization"}, "inLanguage": "pt-BR"}]}</script>
 </head>
-<body class="mpmv-page">
-<main class="mpmv-site">
-  <section class="mpmv-hero" aria-labelledby="mpmv-hero-title">
-    <div class="mpmv-orbit mpmv-orbit-a" aria-hidden="true"></div>
-    <div class="mpmv-orbit mpmv-orbit-b" aria-hidden="true"></div>
-    <header class="mpmv-header">
-      <div class="mpmv-brand"><span>MPMV</span> Mais Persuasão, Mais Vendas</div>
-      <p>GUIA PRÁTICO GRATUITO</p>
-    </header>
-    <div class="mpmv-hero-grid">
-      <div class="mpmv-copy">
-        <p class="mpmv-eyebrow">PERSUASÃO COM ESTRATÉGIA E INTEGRIDADE</p>
-        <h1 id="mpmv-hero-title">Você não precisa manipular ninguém para <em>vender mais.</em></h1>
-        <p class="mpmv-lead">Baixe gratuitamente o guia prático que mostra como transformar o que você vende em argumentos que o cliente entende, valoriza e tem vontade de comprar.</p>
-        <ul>
-          <li>Gatilhos mentais aplicados sem manipulação barata</li>
-          <li>Características transformadas em benefícios e desejo</li>
-          <li>Posicionamento e scripts para tirar suas ideias do papel</li>
-        </ul>
-        <button class="mpmv-cta" id="mpmv-open-modal" type="button">QUERO RECEBER O GUIA GRATUITO <span aria-hidden="true">→</span></button>
-        <p class="mpmv-micro">Leitura prática. Aplicação imediata. Acesso gratuito.</p>
-      </div>
-      <div class="mpmv-book-area" aria-label="Capa do guia Mais Persuasão, Mais Vendas">
-        <span class="mpmv-spark mpmv-spark-a" aria-hidden="true">✦</span>
-        <span class="mpmv-spark mpmv-spark-b" aria-hidden="true">✦</span>
-        <div class="mpmv-book">
-          <span class="mpmv-spine" aria-hidden="true"></span>
-          <img src="/assets/images/guia-pratico-capa.png" alt="Capa azul do guia prático Mais Persuasão, Mais Vendas, de Rodrigo Castro" width="396" height="538" fetchpriority="high">
-        </div>
-        <div class="mpmv-seal"><strong>23</strong><span>PÁGINAS</span></div>
-      </div>
-    </div>
-    <div class="mpmv-clouds" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-  </section>
-  <section class="mpmv-inside" aria-labelledby="mpmv-inside-title">
-    <div class="mpmv-inside-head">
-      <div>
-        <p class="mpmv-eyebrow mpmv-blue">NÃO É UMA LISTA SOLTA DE GATILHOS</p>
-        <h2 id="mpmv-inside-title">É um caminho para construir uma comunicação de vendas.</h2>
-      </div>
-      <p>Você começa entendendo o produto e o momento do cliente. Depois, organiza a ideia central, o posicionamento e o script. Tudo com uma regra simples: persuasão só faz sentido quando ajuda alguém a tomar uma decisão melhor.</p>
-    </div>
-    <div class="mpmv-cards">
-      <article><b>01</b><h3>Mais persuasão</h3><p>Autoridade, escassez, especificidade, reciprocidade e contraste explicados na prática.</p></article>
-      <article><b>02</b><h3>Mais clareza</h3><p>Transforme características do produto em benefícios que fazem sentido para o cliente.</p></article>
-      <article><b>03</b><h3>Mais ação</h3><p>Organize sua mensagem, teste a abordagem e melhore com a resposta do mercado.</p></article>
-    </div>
-  </section>
-  <footer class="mpmv-footer">
-    <span>© 2026 MPMV — Mais Persuasão, Mais Vendas. Todos os direitos reservados.</span>
-    <a href="/politica-de-privacidade">Política de Privacidade</a>
-  </footer>
-  <aside class="mpmv-cookie-banner mpmv-hidden" id="mpmv-cookie-banner" role="dialog" aria-label="Preferências de cookies">
-    <div class="mpmv-cookie-copy"><strong>Cookies</strong><p>Aceite os cookies para ter uma melhor experiência ao acessar esse site.</p></div>
-    <div class="mpmv-cookie-actions">
-      <button class="mpmv-cookie-later" data-mpmv-cookie="declined" type="button">Agora não</button>
-      <button class="mpmv-cookie-accept" data-mpmv-cookie="accepted" type="button">Aceitar cookies</button>
-    </div>
-  </aside>
-  <div class="mpmv-backdrop mpmv-hidden" id="mpmv-modal-backdrop" aria-hidden="true">
-    <section class="mpmv-modal" role="dialog" aria-modal="true" aria-labelledby="mpmv-modal-title">
-      <button class="mpmv-close" id="mpmv-close-modal" type="button" aria-label="Fechar">×</button>
-      <div id="mpmv-form-view">
-        <p class="mpmv-modal-kicker">FALTA SÓ UM PASSO</p>
-        <h2 id="mpmv-modal-title">Para quem envio o guia?</h2>
-        <p class="mpmv-modal-text">Preencha seu nome e o melhor e-mail. Assim que você enviar, o download será liberado.</p>
-        <form id="mpmv-lead-form" novalidate>
-          <label>Seu nome<input id="mpmv-name" name="name" type="text" placeholder="Como você quer ser chamado?" minlength="2" maxlength="80" required></label>
-          <label>Seu melhor e-mail<input name="email" type="email" placeholder="voce@exemplo.com" maxlength="160" required></label>
-          <input class="mpmv-trap" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="mpmv-error mpmv-hidden" id="mpmv-form-error" role="alert"></p>
-          <button class="mpmv-submit" id="mpmv-submit" type="submit">RECEBER O GUIA AGORA</button>
-          <small>Ao enviar, você concorda com nossa <a href="/politica-de-privacidade">Política de Privacidade</a> e com o recebimento do guia e de conteúdos relacionados. Você pode cancelar quando quiser.</small>
-        </form>
-      </div>
-      <div class="mpmv-success mpmv-hidden" id="mpmv-success-view" role="status">
-        <span class="mpmv-check" aria-hidden="true">✓</span>
-        <p class="mpmv-modal-kicker">PRONTO!</p>
-        <h2>Seu guia foi liberado.</h2>
-        <p>O download começou automaticamente. Se precisar, baixe novamente pelo link abaixo.</p>
-        <a class="mpmv-submit" href="/assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf" download="[Guia Prático] Persuasão Pra Vender Todo Santo Dia.pdf">BAIXAR O GUIA</a>
-      </div>
-    </section>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="Mais Persuasão, Mais Vendas — início">MPMV<small>Mais Persuasão, Mais Vendas</small></a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="/">Início</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/persuasao-para-infoprodutores/">Persuasão para infoprodutores</a>
+    </nav>
   </div>
+</header>
+<main>
+<section class="hero"><div class="container">
+  <div class="eyebrow">Persuasão • Copy • Vendas</div>
+  <h1>Persuasão que ajuda o público a entender por que sua oferta merece atenção.</h1>
+  <p>Conteúdo para quem vende conhecimento, serviço ou produto digital e precisa transformar argumento em mensagem, prova e ação.</p>
+  <p class="text-cta"><a class="cta-link" href="https://maispersuasaomaisvendas.com.br/guia-mais-persuasao-mais-vendas"><strong>Baixe o Guia Prático Persuasão pra Vender Todo Santo Dia</strong></a></p>
+</div></section>
+<section class="section"><div class="container">
+  <span class="kicker">Comece por aqui</span><h2>Três frentes que mudam a comunicação de uma oferta</h2>
+  <p class="section-intro">A persuasão começa antes da frase de efeito. Produto, público e prova precisam conversar entre si. Quando essa base existe, a copy ganha direção.</p>
+  <div class="cards">
+   <article class="card"><h3>Entender o público</h3><p>Diagnosticar o que a pessoa já sabe, o que já tentou e qual nível de urgência existe antes de decidir o argumento.</p></article>
+   <article class="card"><h3>Organizar a oferta</h3><p>Transformar características em benefícios, sonhos, provas e razões para agir, sem inventar escassez ou promessas.</p></article>
+   <article class="card"><h3>Escrever para ação</h3><p>Criar uma sequência de atenção, interesse, desejo, prova e CTA com continuidade de raciocínio.</p></article>
+  </div>
+</div></section>
+<section class="section" style="background:#fff"><div class="container">
+  <span class="kicker">Artigo em destaque</span><h2>Persuasão para infoprodutores</h2>
+  <p class="section-intro">Um guia para revisar sua comunicação antes de culpar alcance, tráfego ou algoritmo.</p>
+  <p><a class="cta-link" href="/blog/persuasao-para-infoprodutores/"><strong>Leia o artigo completo sobre persuasão para infoprodutores</strong></a></p>
+  <p class="text-cta"><a class="cta-link" href="https://pay.hotmart.com/Q107139469W" rel="sponsored"><strong>Conheça o curso Como Criar Posts Virais com Persuasão no ChatGPT</strong></a></p>
+</div></section>
 </main>
-<script src="/assets/js/public.js" defer></script>
-</body>
-</html>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>Mais Persuasão, Mais Vendas</strong>
+      <p class="footer-note">Conteúdo sobre persuasão, copywriting, marketing e vendas com aplicação prática.</p>
+    </div>
+    <div><a href="/blog/">Blog</a><br><a href="https://maispersuasaomaisvendas.com.br/guia-mais-persuasao-mais-vendas">Guia Prático</a></div>
+  </div>
+  <div class="container"><p class="footer-note">© <span data-year>2026</span> Rodrigo Castro. Todos os direitos reservados.</p></div>
+</footer>
+<script>
+document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+</script>
+</body></html>
