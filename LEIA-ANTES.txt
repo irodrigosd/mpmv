@@ -1,25 +1,27 @@
-CORREÇÃO — BOTÃO /CURSO NA PÁGINA DE OBRIGADO
+REPARO DO FUNIL — GUIA > OBRIGADO > CURSO
 
-Problema:
-O download automático do guia e a navegação do curso estavam convivendo no mesmo fluxo JS.
+O que foi corrigido:
 
-Correção:
-- O download automático roda apenas após o formulário ser enviado com sucesso.
-- Ele roda apenas uma vez por aba/sessão.
-- O botão .mpmv-course-cta remove qualquer atributo download.
-- O clique no curso é interceptado e navega explicitamente para /curso/.
-- O botão da mentoria também tem qualquer atributo download removido.
-- Foram incluídas duas cópias do JS porque versões anteriores do site usam:
-  /public.js
-  /assets/js/public.js
+1. Depois de o lead ser registrado:
+   - o guia continua baixando automaticamente;
+   - após 1 segundo, a página redireciona para /obrigado/.
 
-COMO SUBIR
-Suba o conteúdo deste ZIP preservando as pastas e substitua os arquivos existentes.
-Depois faça um novo deploy na Vercel.
+2. /curso/:
+   - continua apontando para curso.html;
+   - recebe Content-Type: text/html;
+   - recebe Content-Disposition: inline;
+   - isso impede o navegador de tratar a página como arquivo para download.
 
-TESTE
-1. Abra a LP em janela anônima.
-2. Preencha o formulário.
-3. Confirme que o guia baixa uma vez.
-4. Clique em CONHECER O CURSO AGORA.
-5. Deve abrir /curso/ sem baixar outro arquivo.
+3. /obrigado/ também é forçado como HTML inline.
+
+COMO PUBLICAR:
+Use /admin/blog/ > Subir artigo em ZIP.
+Escolha este ZIP e clique em "Subir ZIP e publicar".
+
+Depois que a Vercel terminar o deploy, teste em janela anônima:
+A) abrir a home;
+B) preencher nome + e-mail;
+C) o PDF deve baixar;
+D) deve abrir /obrigado/ automaticamente;
+E) clicar CONHECER O CURSO;
+F) deve abrir /curso/ como página, sem download.

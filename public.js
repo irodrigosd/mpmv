@@ -60,11 +60,6 @@ document.querySelectorAll('[data-mpmv-cookie]').forEach(function(btn){
   });
 });
 
-/*
-  DOWNLOAD DO GUIA
-  Só pode acontecer depois do envio válido do formulário.
-  O sessionStorage impede um segundo disparo automático na mesma aba.
-*/
 function startDownloadOnce(){
   try{
     if(sessionStorage.getItem(downloadKey)==='1')return;
@@ -80,11 +75,10 @@ function startDownloadOnce(){
   a.remove();
 }
 
-/*
-  CURSO
-  Remove qualquer comportamento de download herdado/acidental
-  e força a navegação normal para /curso/.
-*/
+function goToThankYou(){
+  window.location.replace('/obrigado/');
+}
+
 document.querySelectorAll('.mpmv-course-cta,[data-mpmv-course]').forEach(function(link){
   link.removeAttribute('download');
   link.setAttribute('href','/curso/');
@@ -92,14 +86,10 @@ document.querySelectorAll('.mpmv-course-cta,[data-mpmv-course]').forEach(functio
     e.preventDefault();
     e.stopPropagation();
     if(e.stopImmediatePropagation)e.stopImmediatePropagation();
-    window.location.assign('/curso/');
+    window.location.href='/curso/';
   },true);
 });
 
-/*
-  MENTORIA
-  Também garante navegação normal, sem herdar comportamento de download.
-*/
 document.querySelectorAll('.mpmv-mentor-cta').forEach(function(link){
   link.removeAttribute('download');
 });
@@ -156,10 +146,13 @@ if(form)form.addEventListener('submit',async function(e){
     hide(formView);
     show(successView);
 
-    /*
-      Disparo isolado. A navegação para curso/mentoria não chama esta função.
-    */
-    setTimeout(startDownloadOnce,120);
+    // 1) inicia o PDF
+    // 2) aguarda o navegador iniciar o download
+    // 3) envia para a página de obrigado
+    setTimeout(function(){
+      startDownloadOnce();
+      setTimeout(goToThankYou,1000);
+    },120);
 
   }catch(err){
     if(errorEl){
