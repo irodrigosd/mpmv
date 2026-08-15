@@ -1,13 +1,14 @@
-REPARO /CURSO
+ROTAS PRESERVADAS + /MENTORIA/
 
-1. Suba curso.html na RAIZ do repositório.
-2. Substitua o vercel.json da RAIZ pelo arquivo deste pacote.
-3. Faça o deploy na Vercel.
-4. Teste:
-   https://www.maispersuasaomaisvendas.com.br/curso/
+Este pacote mantém:
+- /curso/ -> /curso.html
+- /mentoria/ -> /mentoria.html
+- /obrigado/ -> /obrigado.html
+- /leads/ -> /leads.html
+- /blog/
+- artigos do blog
+- /admin/blog/
 
-A página do curso foi mantida e a garantia foi corrigida de 7 para 30 dias.
+Para /mentoria/ funcionar, o arquivo mentoria.html precisa existir na RAIZ do repositório.
 
-ATENÇÃO:
-As rotas /obrigado/ e /leads/ também estão preservadas no vercel.json,
-mas precisam existir na raiz como obrigado.html e leads.html.
+Suba vercel.json na raiz, substituindo o atual, e faça novo deploy na Vercel.

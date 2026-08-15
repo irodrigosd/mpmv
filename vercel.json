@@ -29,6 +29,14 @@
       "destination": "/curso.html"
     },
     {
+      "source": "/mentoria",
+      "destination": "/mentoria.html"
+    },
+    {
+      "source": "/mentoria/",
+      "destination": "/mentoria.html"
+    },
+    {
       "source": "/obrigado",
       "destination": "/obrigado.html"
     },
