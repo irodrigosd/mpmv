@@ -1,27 +1,24 @@
-REPARO DO FUNIL — GUIA > OBRIGADO > CURSO
+RESTAURAÇÃO — STATUS SEO + LEGIBILIDADE NO /admin/blog/
 
-O que foi corrigido:
+O que este pacote faz:
+- preserva Subir ZIP e publicar;
+- preserva Excluir artigo;
+- adiciona SEO 0–100 por artigo;
+- adiciona Legibilidade 0–100 por artigo;
+- usa cores: verde, amarelo, laranja e vermelho;
+- calcula o status lendo o HTML publicado de cada artigo.
 
-1. Depois de o lead ser registrado:
-   - o guia continua baixando automaticamente;
-   - após 1 segundo, a página redireciona para /obrigado/.
+IMPORTANTE:
+As notas são do checklist MPMV, inspiradas nos sinais que você acompanha no Yoast.
+Elas NÃO são a pontuação oficial do plugin Yoast, porque o blog é HTML/Vercel e não WordPress com Yoast rodando no servidor.
 
-2. /curso/:
-   - continua apontando para curso.html;
-   - recebe Content-Type: text/html;
-   - recebe Content-Disposition: inline;
-   - isso impede o navegador de tratar a página como arquivo para download.
+SEO avalia:
+frase-chave no título/H1 e começo, subtítulos, meta description, título SEO,
+canonical, links internos, ALT de imagens, tamanho do artigo e estrutura de H2.
 
-3. /obrigado/ também é forçado como HTML inline.
+Legibilidade avalia:
+tamanho médio de frases, porcentagem de frases longas, tamanho dos parágrafos,
+frequência de subtítulos, listas e conectivos/transições.
 
-COMO PUBLICAR:
-Use /admin/blog/ > Subir artigo em ZIP.
-Escolha este ZIP e clique em "Subir ZIP e publicar".
-
-Depois que a Vercel terminar o deploy, teste em janela anônima:
-A) abrir a home;
-B) preencher nome + e-mail;
-C) o PDF deve baixar;
-D) deve abrir /obrigado/ automaticamente;
-E) clicar CONHECER O CURSO;
-F) deve abrir /curso/ como página, sem download.
+Substituir somente:
+admin/blog.html

@@ -38,6 +38,19 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .status{font-size:12px;color:#b9d9c8;background:rgba(61,155,112,.15);padding:5px 8px;border-radius:999px;display:inline-block;margin-top:8px}
 .empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+
+.score-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.score-card{display:flex;align-items:center;gap:9px;min-width:155px;background:#0f0f0f;border:1px solid #282828;border-radius:12px;padding:10px 12px}
+.score-dot{width:12px;height:12px;border-radius:50%;flex:0 0 auto;background:#777}
+.score-card strong{display:block;font-size:13px;line-height:1.15}
+.score-card small{display:block;margin-top:2px;color:#8f887f;font-size:11px}
+.score-green .score-dot{background:#42b883;box-shadow:0 0 0 4px rgba(66,184,131,.12)}
+.score-yellow .score-dot{background:#d9a72e;box-shadow:0 0 0 4px rgba(217,167,46,.12)}
+.score-orange .score-dot{background:#d87832;box-shadow:0 0 0 4px rgba(216,120,50,.12)}
+.score-red .score-dot{background:#d44747;box-shadow:0 0 0 4px rgba(212,71,71,.12)}
+.score-loading .score-dot{background:#777}
+.score-detail{margin-top:8px;color:#89827a;font-size:11px}
+
 @media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo{grid-template-columns:1fr}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
@@ -64,7 +77,7 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
     <div id="uploadProgress" class="progress"></div>
   </section>
 
-  <div class="note">Aqui você vê título, título SEO, meta descrição, frase-chave e slug. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice. O botão <strong>Subir ZIP e publicar</strong> envia o pacote para o GitHub e dispara o deploy da Vercel.</div>
+  <div class="note">Aqui você vê <strong>SEO</strong>, <strong>Legibilidade</strong>, título SEO, meta descrição, frase-chave e slug. As notas são calculadas pelo checklist MPMV diretamente no HTML publicado — servem como diagnóstico do artigo e não representam a pontuação oficial do plugin Yoast. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice.</div>
 
   <div id="list" class="grid"><div class="empty">Carregando artigos...</div></div>
 </main>
@@ -160,6 +173,112 @@ async function uploadZip(){
 }
 uploadBtn.addEventListener('click',uploadZip);
 
+
+function scoreClass(score){
+  if(score>=80)return 'score-green';
+  if(score>=65)return 'score-yellow';
+  if(score>=50)return 'score-orange';
+  return 'score-red';
+}
+function scoreLabel(score){
+  if(score>=80)return 'Excelente';
+  if(score>=65)return 'Bom';
+  if(score>=50)return 'Ajustar';
+  return 'Fraco';
+}
+function norm(s){
+  return String(s||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+function words(s){
+  return (String(s||'').match(/[A-Za-zÀ-ÿ0-9]+(?:['’\-][A-Za-zÀ-ÿ0-9]+)*/g)||[]);
+}
+function sentences(s){
+  return String(s||'').split(/[.!?]+(?:\s+|$)/).map(x=>x.trim()).filter(Boolean);
+}
+function auditArticle(doc,p){
+  const main=doc.querySelector('article')||doc.querySelector('main')||doc.body;
+  const text=(main?.innerText||'').replace(/\s+/g,' ').trim();
+  const wc=words(text).length;
+  const key=norm(p.focusKeyphrase);
+  const h1=norm(doc.querySelector('h1')?.textContent||'');
+  const title=norm(doc.querySelector('title')?.textContent||p.seoTitle||'');
+  const meta=doc.querySelector('meta[name="description"]')?.getAttribute('content')||p.metaDescription||'';
+  const canonical=doc.querySelector('link[rel="canonical"]')?.getAttribute('href')||'';
+  const headings=[...doc.querySelectorAll('h2,h3')].map(x=>norm(x.textContent)).join(' ');
+  const firstWords=norm(words(text).slice(0,150).join(' '));
+  const internal=[...doc.querySelectorAll('a[href^="/"]')].filter(a=>!a.getAttribute('href').startsWith('/#')).length;
+  const imgs=[...doc.querySelectorAll('img')];
+  const imgsAlt=imgs.length && imgs.every(i=>(i.getAttribute('alt')||'').trim().length>3);
+
+  let seo=0;
+  const checks=[];
+  const add=(pts,ok,label)=>{if(ok)seo+=pts;checks.push({ok,label});};
+  add(15,!!key && (h1.includes(key)||title.includes(key)),'frase-chave no título/H1');
+  add(10,!!key && firstWords.includes(key),'frase-chave no início');
+  add(10,!!key && headings.includes(key),'frase-chave em subtítulo');
+  add(10,meta.length>=115 && meta.length<=160,'meta entre 115–160 caracteres');
+  add(10,(p.seoTitle||doc.title||'').length>=35 && (p.seoTitle||doc.title||'').length<=62,'título SEO em faixa adequada');
+  add(10,!!canonical,'canonical');
+  add(10,internal>=2,'links internos');
+  add(10,imgs.length>0 && imgsAlt,'imagens com ALT');
+  add(10,wc>=1000,'conteúdo com 1.000+ palavras');
+  add(5,!!key && norm(text).split(key).length-1>=3,'frase-chave distribuída');
+  add(5,[...doc.querySelectorAll('h2')].length>=3,'estrutura de H2');
+  seo=Math.min(100,seo);
+
+  // Legibilidade: heurística do checklist MPMV
+  const paras=[...doc.querySelectorAll('p')].map(p=>words(p.textContent).length).filter(n=>n>0);
+  const sents=sentences(text).map(s=>words(s).length).filter(n=>n>0);
+  const avgSent=sents.length?sents.reduce((a,b)=>a+b,0)/sents.length:99;
+  const longPct=sents.length?(sents.filter(n=>n>25).length/sents.length)*100:100;
+  const avgPara=paras.length?paras.reduce((a,b)=>a+b,0)/paras.length:999;
+  const hCount=[...doc.querySelectorAll('h2,h3')].length;
+  const wordsPerHeading=hCount?wc/hCount:9999;
+  const listCount=doc.querySelectorAll('ul,ol').length;
+  const transitionList=['por isso','além disso','por exemplo','depois','agora','então','assim','enquanto','já','também','porque','quando','porém','portanto','primeiro','segundo','finalmente','em seguida'];
+  const t=norm(text);
+  const transitionHits=transitionList.reduce((n,x)=>n+(t.includes(x)?1:0),0);
+
+  let read=0;
+  if(avgSent<=18)read+=25; else if(avgSent<=22)read+=20; else if(avgSent<=27)read+=12; else if(avgSent<=32)read+=6;
+  if(longPct<=20)read+=20; else if(longPct<=30)read+=15; else if(longPct<=40)read+=8;
+  if(avgPara<=60)read+=20; else if(avgPara<=85)read+=15; else if(avgPara<=110)read+=8;
+  if(wordsPerHeading<=250)read+=20; else if(wordsPerHeading<=350)read+=15; else if(wordsPerHeading<=450)read+=8;
+  if(listCount>=1)read+=5;
+  if(transitionHits>=6)read+=10; else if(transitionHits>=3)read+=6; else if(transitionHits>=1)read+=3;
+  read=Math.min(100,read);
+
+  return {
+    seo,read,wc,
+    seoInfo:`${checks.filter(x=>x.ok).length}/${checks.length} critérios • ${wc.toLocaleString('pt-BR')} palavras`,
+    readInfo:`frase ${avgSent.toFixed(1)} pal. • parágrafo ${avgPara.toFixed(1)} pal.`
+  };
+}
+async function loadScores(p,articleEl){
+  const seoBox=articleEl.querySelector('[data-seo-score]');
+  const readBox=articleEl.querySelector('[data-read-score]');
+  try{
+    const r=await fetch(p.url+'?audit='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const html=await r.text();
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const a=auditArticle(doc,p);
+
+    seoBox.className='score-card '+scoreClass(a.seo);
+    seoBox.innerHTML=`<span class="score-dot"></span><div><strong>SEO ${a.seo}/100</strong><small>${scoreLabel(a.seo)} · ${a.seoInfo}</small></div>`;
+
+    readBox.className='score-card '+scoreClass(a.read);
+    readBox.innerHTML=`<span class="score-dot"></span><div><strong>Legibilidade ${a.read}/100</strong><small>${scoreLabel(a.read)} · ${a.readInfo}</small></div>`;
+  }catch(e){
+    seoBox.className='score-card score-red';
+    seoBox.innerHTML='<span class="score-dot"></span><div><strong>SEO —</strong><small>Não foi possível auditar</small></div>';
+    readBox.className='score-card score-red';
+    readBox.innerHTML='<span class="score-dot"></span><div><strong>Legibilidade —</strong><small>Não foi possível auditar</small></div>';
+  }
+}
+
 async function load(){
   const box=document.getElementById('list');
   try{
@@ -173,6 +292,10 @@ async function load(){
           <h2>${esc(p.title)}</h2>
           <div class="url">${esc(p.url)}</div>
           <span class="status">${esc(p.status)}</span>
+          <div class="score-row">
+            <div class="score-card score-loading" data-seo-score><span class="score-dot"></span><div><strong>SEO...</strong><small>Analisando artigo</small></div></div>
+            <div class="score-card score-loading" data-read-score><span class="score-dot"></span><div><strong>Legibilidade...</strong><small>Analisando artigo</small></div></div>
+          </div>
         </div>
         <div class="actions">
           <a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a>
@@ -187,6 +310,7 @@ async function load(){
       </div>
     </article>`).join('');
     document.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>removePost(btn.dataset.delete,btn)));
+    [...box.querySelectorAll('.post')].forEach((el,i)=>loadScores(posts[i],el));
   }catch(e){
     box.innerHTML='<div class="empty">'+esc(e.message)+'</div>';
   }
