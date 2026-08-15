@@ -1,0 +1,18 @@
+MPMV — INSTALAÇÃO ÚNICA DO /admin/blog
+
+1. Extraia este ZIP.
+2. Suba o conteúdo para a RAIZ do repositório irodrigosd/mpmv, preservando a pasta api/.
+3. No Vercel, adicione a variável BLOG_GITHUB_TOKEN com um token do GitHub que tenha acesso ao repositório mpmv e permissão Contents: Read and write.
+4. O login do /admin/blog usa BLOG_ADMIN_TOKEN. Se ela não existir, o sistema usa LEADS_ADMIN_TOKEN, que já pode estar configurada no projeto.
+5. Depois do deploy, abra /admin/blog.
+
+O pacote inclui uma correção preventiva: restaura persuasao-para-infoprodutores.html, que está vazio no GitHub atual, embora a versão em produção ainda tenha o conteúdo.
+
+FLUXO DEPOIS DA INSTALAÇÃO
+- peça o artigo e o ZIP ao ChatGPT;
+- entre em /admin/blog;
+- envie o ZIP;
+- confira título, slug, frase-chave, data, SEO e legibilidade;
+- clique em Publicar no blog.
+
+O publicador cria um único commit no GitHub com o artigo, imagens, posts.json, blog.html e sitemap.xml. Isso evita a sequência de deploys que causou o problema anterior.

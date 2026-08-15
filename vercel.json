@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "trailingSlash": true,
   "rewrites": [
     {
@@ -33,6 +34,14 @@
     {
       "source": "/blog/",
       "destination": "/blog.html"
+    },
+    {
+      "source": "/admin/blog",
+      "destination": "/admin-blog.html"
+    },
+    {
+      "source": "/admin/blog/",
+      "destination": "/admin-blog.html"
     },
     {
       "source": "/blog/como-usar-persuasao-para-vender-mais",
@@ -99,6 +108,11 @@
       "permanent": true
     }
   ],
+  "functions": {
+    "api/blog-admin.js": {
+      "maxDuration": 30
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

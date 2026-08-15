@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-15T13:02:00-03:00",
+  "posts": [
+    {
+      "title": "Como usar persuasão para vender mais: 7 aplicações práticas",
+      "slug": "como-usar-persuasao-para-vender-mais",
+      "url": "/blog/como-usar-persuasao-para-vender-mais/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "como usar persuasão para vender mais",
+      "seoScore": 93,
+      "readabilityScore": 87,
+      "readingTime": "9 min",
+      "excerpt": "Um guia para aplicar persuasão em produto, prova, autoridade, oferta, reciprocidade, escassez, contraste e CTA."
+    },
+    {
+      "title": "Persuasão para infoprodutores: como vender mais sem depender de promessa vazia",
+      "slug": "persuasao-para-infoprodutores",
+      "url": "/blog/persuasao-para-infoprodutores/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "persuasão para infoprodutores",
+      "seoScore": 88,
+      "readabilityScore": 84,
+      "readingTime": "10 min",
+      "excerpt": "Um processo para diagnosticar público, organizar provas, construir oferta e escrever uma comunicação que faça sentido antes do CTA."
+    }
+  ]
+}
