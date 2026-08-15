@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T17:56:55.390Z",
+  "updatedAt": "2026-08-15T19:10:29.320Z",
   "posts": [
+    {
+      "title": "Ideias sobre persuasão, copy e vendas para aplicar no mundo real.",
+      "slug": "o-que-e-copywriting",
+      "url": "/blog/o-que-e-copywriting/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "o que é copywriting",
+      "seoScore": 46,
+      "readabilityScore": 49,
+      "readingTime": "1 min",
+      "excerpt": "Artigos da MPMV sobre persuasão, copywriting, marketing, ofertas e vendas."
+    },
     {
       "title": "Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico",
       "slug": "como-criar-posts-que-vendem-com-chatgpt",
