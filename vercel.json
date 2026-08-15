@@ -12,6 +12,14 @@
       "destination": "/curso.html"
     },
     {
+      "source": "/obrigado",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/obrigado/",
+      "destination": "/obrigado.html"
+    },
+    {
       "source": "/assets/css/:path*",
       "destination": "/:path*"
     },
@@ -168,6 +176,15 @@
     },
     {
       "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/obrigado(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
