@@ -1,0 +1,46 @@
+SEO — VALIDAÇÃO DO ARTIGO
+
+Artigo: Gatilhos mentais: o que são, 9 exemplos e como usar com ética
+Slug: /blog/gatilhos-mentais/
+Frase-chave de foco: gatilhos mentais
+
+Título SEO:
+Gatilhos Mentais: O Que São + 9 Exemplos | MPMV
+Caracteres: 47
+
+Meta description:
+Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética.
+Caracteres: 142
+
+Palavras aproximadas no HTML visível: 2572
+Ocorrências exatas da frase-chave "gatilhos mentais": 28
+
+CHECKLIST SEO
+[OK] Frase-chave no título SEO
+[OK] Frase-chave no H1
+[OK] Frase-chave no primeiro parágrafo
+[OK] Frase-chave em subtítulo
+[OK] Slug curto e alinhado à busca
+[OK] Canonical aponta para o slug definitivo
+[OK] Article Schema
+[OK] Breadcrumb Schema
+[OK] FAQ Schema espelhado com o FAQ visível
+[OK] Links internos para copywriting e persuasão para infoprodutores
+[OK] CTA para o Guia Prático
+[OK] Sitemap atualizado
+[OK] Rota adicionada ao vercel.json
+[OK] Artigo cadastrado em data/blog-posts.json
+[OK] Área /admin/blog/ passa a listar o artigo e mantém o botão Apagar artigo
+[OK] 3 fotos incorporadas a partir de Pins reais do Pinterest, sem IA
+
+OBSERVAÇÃO
+O texto diferencia o rótulo de marketing "gatilhos mentais" dos sete princípios de influência de Robert Cialdini. Contraste e especificidade são apresentados separadamente para evitar atribuição incorreta.
+
+
+IMAGENS — CORREÇÃO FINAL
+- Sem iframe/widget do Pinterest: OK
+- Sem botão Salvar do Pinterest: OK
+- Sem links do Pinterest no corpo do artigo: OK
+- 3 fotos reais em <img> com ALT contextual: OK
+- loading=lazy e decoding=async: OK
+- og:image e twitter:image configurados: OK

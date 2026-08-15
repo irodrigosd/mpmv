@@ -1,0 +1,31 @@
+IMAGENS DO ARTIGO — CORREÇÃO FINAL
+
+REGRA APLICADA
+- Pinterest foi usado como fonte de descoberta/referência visual.
+- O artigo NÃO incorpora widget, iframe, botão Salvar, perfil ou link clicável do Pinterest.
+- As fotos aparecem como imagens limpas dentro do artigo.
+- Os arquivos exibidos vêm da fonte original no Unsplash e são fotos reais, sem geração por IA.
+
+1) REUNIÃO / TOMADA DE DECISÃO
+Referência encontrada no Pinterest:
+https://www.pinterest.com/pin/390828073928051541/
+Fonte original: Dylan Gillis / Unsplash
+https://unsplash.com/photos/people-sitting-on-chair-in-front-of-table-while-holding-pens-during-daytime-KdeqA3aTnBY
+Licença informada pela fonte: Unsplash License, uso gratuito.
+
+2) ESCRITA / PLANEJAMENTO
+Referência visual pesquisada no Pinterest:
+https://in.pinterest.com/pin/786230047470088791/
+Fonte original usada no artigo: Kawê Rodrigues / Unsplash
+https://unsplash.com/photos/a-person-writing-on-a-notebook-next-to-a-cup-of-coffee-jKmdjT7aQJA
+Licença informada pela fonte: Unsplash License, uso gratuito.
+
+3) TRABALHO / COPYWRITING
+Referência encontrada no Pinterest:
+https://www.pinterest.com/pin/475974254361857354/
+Fonte original usada no artigo: Ben Kolde / Unsplash
+https://unsplash.com/photos/person-holding-cup-of-coffee-beside-gray-laptop-computer-hvhICCNM6n8
+Licença informada pela fonte: Unsplash License, uso gratuito.
+
+OBSERVAÇÃO
+As referências do Pinterest ficam somente neste arquivo interno do pacote. O leitor do blog não é redirecionado para o Pinterest ao clicar nas imagens.

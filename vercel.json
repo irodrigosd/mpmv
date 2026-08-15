@@ -1,24 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "buildCommand": null,
   "trailingSlash": true,
   "rewrites": [
-    {
-      "source": "/curso",
-      "destination": "/curso.html"
-    },
-    {
-      "source": "/curso/",
-      "destination": "/curso.html"
-    },
-    {
-      "source": "/obrigado",
-      "destination": "/obrigado.html"
-    },
-    {
-      "source": "/obrigado/",
-      "destination": "/obrigado.html"
-    },
     {
       "source": "/assets/css/:path*",
       "destination": "/:path*"
@@ -44,44 +29,36 @@
       "destination": "/blog.html"
     },
     {
+      "source": "/blog/persuasao-para-infoprodutores",
+      "destination": "/persuasao-para-infoprodutores.html"
+    },
+    {
+      "source": "/blog/persuasao-para-infoprodutores/",
+      "destination": "/persuasao-para-infoprodutores.html"
+    },
+    {
+      "source": "/blog/o-que-e-copywriting",
+      "destination": "/o-que-e-copywriting.html"
+    },
+    {
+      "source": "/blog/o-que-e-copywriting/",
+      "destination": "/o-que-e-copywriting.html"
+    },
+    {
+      "source": "/blog/gatilhos-mentais",
+      "destination": "/gatilhos-mentais.html"
+    },
+    {
+      "source": "/blog/gatilhos-mentais/",
+      "destination": "/gatilhos-mentais.html"
+    },
+    {
       "source": "/admin/blog",
-      "destination": "/admin-blog.html"
+      "destination": "/admin/blog.html"
     },
     {
       "source": "/admin/blog/",
-      "destination": "/admin-blog.html"
-    },
-    {
-      "source": "/blog/:slug",
-      "destination": "/blog/:slug/index.html"
-    },
-    {
-      "source": "/blog/:slug/",
-      "destination": "/blog/:slug/index.html"
-    },
-    {
-      "source": "/mentoria",
-      "destination": "/mentoria.html"
-    },
-    {
-      "source": "/mentoria/",
-      "destination": "/mentoria.html"
-    },
-    {
-      "source": "/leads",
-      "destination": "/leads.html"
-    },
-    {
-      "source": "/leads/",
-      "destination": "/leads.html"
-    },
-    {
-      "source": "/politica-de-privacidade",
-      "destination": "/politica-de-privacidade.html"
-    },
-    {
-      "source": "/politica-de-privacidade/",
-      "destination": "/politica-de-privacidade.html"
+      "destination": "/admin/blog.html"
     }
   ],
   "redirects": [
@@ -106,30 +83,16 @@
       "permanent": true
     },
     {
-      "source": "/guia-mais-persuasao-mais-vendas",
-      "destination": "/",
+      "source": "/blog/copywriting-o-que-e-como-aplicar",
+      "destination": "/blog/o-que-e-copywriting/",
       "permanent": true
     },
     {
-      "source": "/guia-mais-persuasao-mais-vendas/",
-      "destination": "/",
+      "source": "/blog/copywriting-o-que-e-como-aplicar/",
+      "destination": "/blog/o-que-e-copywriting/",
       "permanent": true
     }
   ],
-  "functions": {
-    "api/blog-admin.js": {
-      "maxDuration": 30
-    },
-    "api/leads.js": {
-      "maxDuration": 20
-    },
-    "api/guia.js": {
-      "maxDuration": 10
-    },
-    "api/mentoria.js": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -145,72 +108,6 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/curso",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "inline"
-        }
-      ]
-    },
-    {
-      "source": "/curso/",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "inline"
-        }
-      ]
-    },
-    {
-      "source": "/admin/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/obrigado(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
-      "headers": [
-        {
-          "key": "Content-Disposition",
-          "value": "attachment; filename=\"Guia-Pratico-Persuasao-pra-Vender-Todo-Santo-Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuas%C3%A3o%20pra%20Vender%20Todo%20Santo%20Dia.pdf"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/pdf"
-        }
-      ]
-    },
-    {
-      "source": "/mentoria(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, follow"
         }
       ]
     }

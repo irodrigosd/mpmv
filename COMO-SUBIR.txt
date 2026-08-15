@@ -1,0 +1,22 @@
+COMO SUBIR ESTE ARTIGO
+
+1. Descompacte o ZIP.
+2. Suba todos os arquivos para a RAIZ do mesmo repositório do site.
+3. Aceite a substituição de:
+   - blog.html
+   - vercel.json
+   - sitemap.xml
+   - data/blog-posts.json
+   - admin/blog.html (é a mesma área administrativa já preparada)
+4. Adicione o arquivo novo:
+   - gatilhos-mentais.html
+5. Faça o deploy na Vercel.
+
+ROTA FINAL:
+https://www.maispersuasaomaisvendas.com.br/blog/gatilhos-mentais/
+
+SEO:
+Veja SEO-CONFIG.json e SEO-VALIDACAO.txt.
+
+ADMIN:
+Depois do deploy, /admin/blog/ mostrará o novo artigo automaticamente porque data/blog-posts.json já foi atualizado. O botão "Apagar artigo" continua disponível.
