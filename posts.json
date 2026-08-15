@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T13:02:00-03:00",
+  "updatedAt": "2026-08-15T17:56:55.390Z",
   "posts": [
+    {
+      "title": "Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico",
+      "slug": "como-criar-posts-que-vendem-com-chatgpt",
+      "url": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "como criar posts que vendem com ChatGPT",
+      "seoScore": 94,
+      "readabilityScore": 97,
+      "readingTime": "9 min",
+      "excerpt": "Aprenda como criar posts que vendem com ChatGPT usando tema, ângulo, argumento, prova, estrutura e CTA em um processo de 7 passos."
+    },
     {
       "title": "Como usar persuasão para vender mais: 7 aplicações práticas",
       "slug": "como-usar-persuasao-para-vender-mais",
