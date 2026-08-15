@@ -44,20 +44,12 @@
       "destination": "/admin-blog.html"
     },
     {
-      "source": "/blog/como-usar-persuasao-para-vender-mais",
-      "destination": "/como-usar-persuasao-para-vender-mais.html"
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug/index.html"
     },
     {
-      "source": "/blog/como-usar-persuasao-para-vender-mais/",
-      "destination": "/como-usar-persuasao-para-vender-mais.html"
-    },
-    {
-      "source": "/blog/persuasao-para-infoprodutores",
-      "destination": "/persuasao-para-infoprodutores.html"
-    },
-    {
-      "source": "/blog/persuasao-para-infoprodutores/",
-      "destination": "/persuasao-para-infoprodutores.html"
+      "source": "/blog/:slug/",
+      "destination": "/blog/:slug/index.html"
     },
     {
       "source": "/leads",
@@ -111,6 +103,12 @@
   "functions": {
     "api/blog-admin.js": {
       "maxDuration": 30
+    },
+    "api/leads.js": {
+      "maxDuration": 20
+    },
+    "api/guia.js": {
+      "maxDuration": 10
     }
   },
   "headers": [
@@ -128,6 +126,15 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }

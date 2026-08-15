@@ -1,0 +1,54 @@
+CORREÇÃO SEGURA — MPMV / ADMIN DO BLOG
+
+Objetivo
+- Manter o formulário do Guia funcionando.
+- Manter /api/guia funcionando.
+- Ativar /admin/blog.
+- Manter os 2 artigos no /blog.
+- Preparar os próximos artigos para publicação automática pelo painel.
+
+ATENÇÃO: a pasta api é obrigatória.
+O deploy foi bloqueado antes porque api/blog-admin.js não estava no GitHub.
+
+Arquivos da pasta api:
+- api/leads.js
+- api/guia.js
+- api/blog-admin.js
+
+O vercel.json agora declara os 3 arquivos como funções obrigatórias.
+Se um deles faltar, o build falha e o deployment antigo continua em produção.
+Isso evita publicar uma versão que derrube o formulário.
+
+PASSO DE UPLOAD
+1. Extraia este ZIP no computador.
+2. Na raiz do GitHub, substitua:
+   - admin-blog.html
+   - blog.html
+   - posts.json
+   - sitemap.xml
+   - vercel.json
+   - persuasao-para-infoprodutores.html
+   - como-usar-persuasao-para-vender-mais.html
+3. Suba também a pasta blog/ inteira. Ela contém os dois artigos no formato usado pelo novo publicador.
+4. No GitHub, garanta que exista uma pasta chamada api.
+5. Dentro de api, envie os três arquivos:
+   - leads.js
+   - guia.js
+   - blog-admin.js
+6. Aguarde o deployment do Vercel.
+7. Só considere concluído quando o novo deployment aparecer como READY.
+
+NÃO PROMOVA deployment com ERROR.
+
+Depois do deploy READY, testar nesta ordem:
+- /
+- /api/guia
+- envio do formulário do Guia
+- /leads/
+- /blog/
+- os 2 artigos
+- /admin/blog/
+
+Para o botão Publicar do /admin/blog:
+- BLOG_GITHUB_TOKEN precisa ser configurado na Vercel.
+- BLOG_ADMIN_TOKEN pode ser configurado; se não existir, o painel usa LEADS_ADMIN_TOKEN.
