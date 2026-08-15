@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leads MPMV</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon-mpmv.png?v=3" type="image/png">
+<style>
+:root{--ink:#123551;--sky:#55b6dd;--deep:#178bbb;--red:#ef5a63;--bg:#f4f9fb;--line:#d9e8ee;--muted:#6a7f8c}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}.wrap{width:min(1180px,calc(100% - 32px));margin:42px auto}.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{font-weight:900;color:var(--deep);letter-spacing:.08em}.head h1{margin:6px 0 0;font-size:clamp(2rem,5vw,3.6rem)}.card{margin-top:26px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 14px 38px rgba(18,53,81,.07)}.auth{display:grid;grid-template-columns:1fr auto;gap:10px}.auth input,.tools input{min-height:46px;border:1px solid #cbdde5;border-radius:9px;padding:0 13px;font:inherit}.btn{min-height:46px;border:0;border-radius:9px;padding:0 18px;background:var(--deep);color:#fff;font-weight:900;cursor:pointer}.btn.alt{background:var(--ink)}.btn.ghost{background:#eef7fa;color:var(--ink)}.status{margin:12px 0 0;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:14px;margin-top:20px}.stat{padding:16px;border-radius:12px;background:#eef8fc}.stat strong{display:block;font-size:1.8rem}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.tools input{flex:1;min-width:220px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}th,td{text-align:left;padding:14px 15px;border-bottom:1px solid #e7eff2}th{background:#f4fafc;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}td{font-size:.94rem}tr:last-child td{border-bottom:0}.muted{color:var(--muted)}.error{color:#a32f38}.ok{color:#19734a}@media(max-width:650px){.auth{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.wrap{margin-top:24px}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="head"><div><div class="brand">MPMV</div><h1>Leads do Guia</h1></div><a href="/" style="color:#178bbb;font-weight:800">← Voltar para a LP</a></div>
+<section class="card">
+  <strong>Acesso administrativo</strong>
+  <p class="muted">Digite o mesmo valor configurado na Vercel como <code>LEADS_ADMIN_TOKEN</code>.</p>
+  <div class="auth"><input id="token" type="password" autocomplete="off" placeholder="Token administrativo"><button class="btn" id="load">Abrir painel</button></div>
+  <p id="status" class="status">Nenhum dado carregado.</p>
+</section>
+<section class="card" id="panel" hidden>
+  <div class="stats"><div class="stat"><span>Total na lista</span><strong id="total">0</strong></div><div class="stat"><span>Exibidos</span><strong id="shown">0</strong></div></div>
+  <div class="tools"><input id="search" type="search" placeholder="Buscar por nome ou e-mail"><button class="btn alt" id="csv">Baixar CSV</button><button class="btn ghost" id="refresh">Atualizar</button></div>
+  <div class="table-wrap"><table><thead><tr><th>Nome</th><th>E-mail</th><th>Data do cadastro</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+</main>
+<script>
+(function(){
+  var all=[]; var token=document.getElementById('token'); var status=document.getElementById('status'); var panel=document.getElementById('panel');
+  try{token.value=sessionStorage.getItem('mpmv-leads-token')||''}catch(e){}
+  function esc(v){return String(v||'').replace(/[&<>\"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]})}
+  function date(v){if(!v)return '—';try{return new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short'}).format(new Date(v))}catch(e){return v}}
+  function render(list){document.getElementById('shown').textContent=list.length;document.getElementById('rows').innerHTML=list.map(function(x){var s=x.emailBlacklisted?'Bloqueado':'Ativo';return '<tr><td><strong>'+esc(x.name||'—')+'</strong></td><td>'+esc(x.email)+'</td><td>'+esc(date(x.createdAt))+'</td><td class="'+(x.emailBlacklisted?'error':'ok')+'">'+s+'</td></tr>'}).join('')||'<tr><td colspan="4" class="muted">Nenhum lead encontrado.</td></tr>'}
+  async function load(){var t=token.value.trim();if(!t){status.textContent='Informe o token administrativo.';status.className='status error';return}status.textContent='Carregando...';status.className='status';try{var r=await fetch('/api/leads?limit=500',{headers:{'x-admin-token':t}});var j=await r.json();if(!r.ok)throw new Error(j.error||('HTTP '+r.status));all=j.contacts||[];document.getElementById('total').textContent=j.count||all.length;render(all);panel.hidden=false;status.textContent='Painel atualizado.';status.className='status ok';try{sessionStorage.setItem('mpmv-leads-token',t)}catch(e){}}catch(e){panel.hidden=true;status.textContent=e.message==='unauthorized'?'Token incorreto.':'Não foi possível carregar os leads: '+e.message;status.className='status error'}}
+  document.getElementById('load').onclick=load;document.getElementById('refresh').onclick=load;
+  document.getElementById('search').addEventListener('input',function(){var q=this.value.toLowerCase().trim();render(!q?all:all.filter(function(x){return ((x.name||'')+' '+(x.email||'')).toLowerCase().includes(q)}))});
+  document.getElementById('csv').onclick=function(){var lines=[['Nome','E-mail','Data do cadastro']].concat(all.map(function(x){return [x.name||'',x.email||'',x.createdAt||'']}));var csv='\ufeff'+lines.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(';')}).join('\r\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='leads-mpmv.csv';a.click();URL.revokeObjectURL(a.href)};
+})();
+</script></body></html>

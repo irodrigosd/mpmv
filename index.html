@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guia Prático: Persuasão pra Vender Todo Santo Dia | MPMV</title>
-  <meta name="description" content="Baixe gratuitamente o Guia Prático Persuasão pra Vender Todo Santo Dia e aprenda a aplicar persuasão sem manipulação no dia a dia.">
+  <meta name="description" content="Baixe gratuitamente o Guia Prático Persuasão pra Vender Todo Santo Dia e aprenda a aplicar persuasão com estratégia e integridade.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.maispersuasaomaisvendas.com.br/">
 
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <!-- Favicon exclusivo da LP; o blog continua usando /favicon.png -->
+  <link rel="icon" href="/favicon-mpmv.png?v=3" type="image/png">
+  <link rel="shortcut icon" href="/favicon-mpmv.png?v=3" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-mpmv.png?v=3">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
@@ -18,203 +19,53 @@
   <meta property="og:title" content="Guia Prático: Persuasão pra Vender Todo Santo Dia">
   <meta property="og:description" content="Persuasão aplicada com estratégia e integridade. Baixe o guia gratuitamente.">
   <meta property="og:url" content="https://www.maispersuasaomaisvendas.com.br/">
+  <meta property="og:image" content="https://www.maispersuasaomaisvendas.com.br/og-primeira-dobra-v2.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="/assets/css/public.css">
-
-  <style>
-    .mpmv-proof,.mpmv-fit,.mpmv-objections,.mpmv-closing{
-      width:min(1180px,calc(100% - 48px));
-      margin-inline:auto;
-    }
-    .mpmv-proof{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:56px;
-      align-items:center;
-      padding:90px 0;
-      border-top:1px solid #e5eef2;
-    }
-    .mpmv-proof h2,.mpmv-fit h2,.mpmv-objections h2,.mpmv-closing h2{
-      margin:10px 0 18px;
-      font-size:clamp(2rem,3.6vw,3.65rem);
-      line-height:1.06;
-      letter-spacing:-.045em;
-    }
-    .mpmv-proof-copy p,.mpmv-fit-copy p,.mpmv-closing>p{
-      color:#5b7689;
-      font-size:1.06rem;
-      line-height:1.75;
-    }
-    .mpmv-proof-copy>span{
-      display:inline-block;
-      margin-top:12px;
-      color:#178bbb;
-      font-weight:900;
-      font-size:.8rem;
-      letter-spacing:.04em;
-    }
-    .mpmv-video{
-      overflow:hidden;
-      border-radius:20px;
-      background:#0f2530;
-      box-shadow:0 22px 54px rgba(18,53,81,.16);
-      aspect-ratio:16/9;
-    }
-    .mpmv-video iframe{width:100%;height:100%;border:0}
-    .mpmv-fit{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:60px;
-      padding:90px 0;
-    }
-    .mpmv-fit-list{display:grid;gap:16px}
-    .mpmv-fit-list article{
-      display:grid;
-      grid-template-columns:58px 1fr;
-      gap:18px;
-      padding:24px;
-      border:1px solid #d9edf4;
-      border-radius:16px;
-      background:#f8fcfe;
-    }
-    .mpmv-fit-list span{
-      display:grid;
-      place-items:center;
-      width:48px;height:48px;
-      border-radius:14px;
-      background:#eaf8fd;
-      color:#178bbb;
-      font-weight:900;
-    }
-    .mpmv-fit-list h3{margin:0 0 6px;font-size:1.12rem}
-    .mpmv-fit-list p{margin:0;color:#5b7689;line-height:1.6}
-    .mpmv-objections-wrap{
-      background:linear-gradient(135deg,#123551,#1d5672);
-      color:#fff;
-    }
-    .mpmv-objections{padding:88px 0}
-    .mpmv-objections .mpmv-eyebrow{color:#8bd6ef}
-    .mpmv-objections h2{max-width:760px}
-    .mpmv-answers{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      margin-top:40px;
-    }
-    .mpmv-answers article{
-      padding:28px;
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:18px;
-      background:rgba(255,255,255,.08);
-    }
-    .mpmv-answers h3{margin:0 0 12px;font-size:1.2rem}
-    .mpmv-answers p{margin:0;color:rgba(255,255,255,.82);line-height:1.65}
-    .mpmv-closing{
-      padding:92px 0 104px;
-      text-align:center;
-      max-width:850px;
-    }
-    .mpmv-closing .mpmv-cta{margin-top:18px}
-    .mpmv-closing small{
-      display:block;
-      margin-top:14px;
-      color:#708794;
-      font-weight:700;
-    }
-    .mpmv-mobile-sticky{
-      display:none;
-      position:fixed;
-      left:14px;right:14px;bottom:14px;
-      z-index:45;
-      min-height:52px;
-      border:0;border-radius:10px;
-      background:#ef5a63;color:#fff;
-      font-weight:900;
-      box-shadow:0 14px 35px rgba(130,28,39,.3);
-    }
-    @media(max-width:900px){
-      .mpmv-proof,.mpmv-fit{grid-template-columns:1fr}
-      .mpmv-answers{grid-template-columns:1fr}
-    }
-    @media(max-width:620px){
-      .mpmv-proof,.mpmv-fit,.mpmv-objections,.mpmv-closing{
-        width:min(100% - 30px,1180px);
-      }
-      .mpmv-proof,.mpmv-fit{padding:66px 0;gap:34px}
-      .mpmv-objections{padding:66px 0}
-      .mpmv-closing{padding:70px 0 92px}
-      .mpmv-mobile-sticky{display:block}
-      body{padding-bottom:72px}
-    }
-  </style>
 </head>
-
 <body class="mpmv-page">
   <main class="mpmv-site">
     <section class="mpmv-hero" aria-labelledby="hero-title">
       <header class="mpmv-header">
-        <div class="mpmv-brand">
-          <span>MPMV</span>
-          Mais Persuasão, Mais Vendas
-        </div>
-        <p>GUIA PRÁTICO • DOWNLOAD GRATUITO</p>
+        <div class="mpmv-brand"><span>MPMV</span>Mais Persuasão, Mais Vendas</div>
+        <p>GUIA PRÁTICO GRATUITO</p>
       </header>
 
       <div class="mpmv-hero-grid">
         <div class="mpmv-copy">
           <p class="mpmv-eyebrow">PERSUASÃO COM ESTRATÉGIA E INTEGRIDADE</p>
-          <h1 id="hero-title">Você não precisa manipular ninguém <em>pra vender mais.</em></h1>
-          <p class="mpmv-lead">
-            Baixe gratuitamente o guia prático que mostra como transformar o que você vende
-            em argumentos que o cliente entende, valoriza e tem vontade de comprar.
-          </p>
-
+          <h1 id="hero-title">Você não precisa manipular ninguém para <em>vender mais.</em></h1>
+          <p class="mpmv-lead">Baixe gratuitamente o guia prático que mostra como transformar o que você vende em argumentos que o cliente entende, valoriza e tem vontade de comprar.</p>
           <ul>
             <li>Gatilhos mentais aplicados sem manipulação barata</li>
             <li>Características transformadas em benefícios e desejo</li>
             <li>Posicionamento e scripts para tirar suas ideias do papel</li>
           </ul>
-
-          <button class="mpmv-cta" id="mpmv-open-modal" type="button">
-            QUERO RECEBER O GUIA GRATUITO <span aria-hidden="true">→</span>
-          </button>
+          <button class="mpmv-cta js-open" id="mpmv-open-modal" type="button">QUERO RECEBER O GUIA GRATUITO <span aria-hidden="true">→</span></button>
           <p class="mpmv-micro">Leitura prática. Aplicação imediata. Acesso gratuito.</p>
         </div>
 
-        <div class="mpmv-book-area">
-          <div class="mpmv-spark mpmv-spark-a" aria-hidden="true">✦</div>
-          <div class="mpmv-spark mpmv-spark-b" aria-hidden="true">✦</div>
+        <div class="mpmv-book-area" aria-label="Capa do Guia Prático">
+          <span class="mpmv-spark mpmv-spark-a" aria-hidden="true">✦</span>
+          <span class="mpmv-spark mpmv-spark-b" aria-hidden="true">✦</span>
           <div class="mpmv-orbit mpmv-orbit-a" aria-hidden="true"></div>
           <div class="mpmv-orbit mpmv-orbit-b" aria-hidden="true"></div>
-
           <div class="mpmv-book">
             <span class="mpmv-spine" aria-hidden="true"></span>
-            <img src="/assets/images/guia-pratico-capa.png"
-                 alt="Capa azul do Guia Prático Persuasão pra Vender Todo Santo Dia">
+            <img src="/assets/images/guia-pratico-capa.png" alt="Capa azul do Guia Prático Persuasão pra Vender Todo Santo Dia, de Rodrigo Castro" width="396" height="538">
           </div>
-
-          <div class="mpmv-seal" aria-label="23 páginas">
-            <strong>23</strong><span>PÁGINAS</span>
-          </div>
+          <div class="mpmv-seal" aria-label="23 páginas"><strong>23</strong><span>PÁGINAS</span></div>
         </div>
       </div>
-
       <div class="mpmv-clouds" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </section>
 
     <section class="mpmv-inside" aria-labelledby="inside-title">
       <div class="mpmv-inside-head">
-        <div>
-          <p class="mpmv-eyebrow mpmv-blue">NÃO É UMA LISTA SOLTA DE GATILHOS</p>
-          <h2 id="inside-title">É um caminho para construir uma comunicação de vendas.</h2>
-        </div>
-        <p>
-          Você começa entendendo o produto e o momento do cliente. Depois, organiza a ideia central,
-          o posicionamento e o script. Tudo com uma regra simples: persuasão só faz sentido quando
-          ajuda alguém a tomar uma decisão melhor.
-        </p>
+        <div><p class="mpmv-eyebrow mpmv-blue">NÃO É UMA LISTA SOLTA DE GATILHOS</p><h2 id="inside-title">É um caminho para construir uma comunicação de vendas.</h2></div>
+        <p>Você começa entendendo o produto e o momento do cliente. Depois, organiza a ideia central, o posicionamento e o script. Tudo com uma regra simples: persuasão só faz sentido quando ajuda alguém a tomar uma decisão melhor.</p>
       </div>
-
       <div class="mpmv-cards">
         <article><b>01</b><h3>Mais persuasão</h3><p>Autoridade, escassez, especificidade, reciprocidade e contraste explicados na prática.</p></article>
         <article><b>02</b><h3>Mais clareza</h3><p>Transforme características do produto em benefícios que fazem sentido para o cliente.</p></article>
@@ -226,30 +77,18 @@
       <div class="mpmv-proof-copy">
         <p class="mpmv-eyebrow mpmv-blue">PROVA REAL, SEM PROMESSA INVENTADA</p>
         <h2 id="proof-title">Persuasão bem aplicada muda a forma como o cliente percebe o seu trabalho.</h2>
-        <p>
-          Edvaldo Dias foi cliente de um projeto anterior e compartilhou sua experiência em vídeo.
-          Assista ao relato completo, com as palavras dele.
-        </p>
+        <p>Edvaldo Dias foi cliente de um projeto anterior e compartilhou sua experiência em vídeo. Assista ao relato completo, com as palavras dele.</p>
         <span>Depoimento de cliente • Vídeo completo</span>
       </div>
-      <div class="mpmv-video">
-        <iframe src="https://www.youtube-nocookie.com/embed/yNqj-0UDs0o?rel=0"
-                title="Depoimento Edvaldo Dias"
-                loading="lazy"
-                allowfullscreen></iframe>
-      </div>
+      <div class="mpmv-video"><iframe src="https://www.youtube-nocookie.com/embed/yNqj-0UDs0o?rel=0" title="Depoimento Edvaldo Dias" loading="lazy" allowfullscreen></iframe></div>
     </section>
 
     <section class="mpmv-fit">
       <div class="mpmv-fit-copy">
         <p class="mpmv-eyebrow mpmv-blue">PARA QUEM QUER PARAR DE PUBLICAR NO ESCURO</p>
         <h2>Seu produto pode ser bom. A mensagem ainda precisa fazê-lo parecer valioso.</h2>
-        <p>
-          Este guia é para quem já tem algo para vender, mas sente que o conteúdo, a oferta ou
-          a página ainda não explicam por que o cliente deveria escolher agora.
-        </p>
+        <p>Este guia é para quem já tem algo para vender, mas sente que o conteúdo, a oferta ou a página ainda não explicam por que o cliente deveria escolher agora.</p>
       </div>
-
       <div class="mpmv-fit-list">
         <article><span>01</span><div><h3>Infoprodutores</h3><p>Para transformar conhecimento em uma promessa clara, específica e desejável.</p></div></article>
         <article><span>02</span><div><h3>Prestadores de serviço</h3><p>Para deixar de competir apenas por preço e comunicar o valor do trabalho.</p></div></article>
@@ -259,10 +98,7 @@
 
     <div class="mpmv-objections-wrap">
       <section class="mpmv-objections">
-        <div>
-          <p class="mpmv-eyebrow">DIRETO AO PONTO</p>
-          <h2>Você não precisa virar “especialista em gatilhos”.</h2>
-        </div>
+        <div><p class="mpmv-eyebrow">DIRETO AO PONTO</p><h2>Você não precisa virar “especialista em gatilhos”.</h2></div>
         <div class="mpmv-answers">
           <article><h3>“Não domino copywriting.”</h3><p>Melhor ainda. O guia organiza o raciocínio antes das técnicas e mostra o que observar no produto e no cliente.</p></article>
           <article><h3>“Não quero manipular ninguém.”</h3><p>Nem deveria. Persuasão aqui significa facilitar uma decisão, sem prometer o que você não entrega.</p></article>
@@ -275,80 +111,58 @@
       <p class="mpmv-eyebrow mpmv-blue">A PRÓXIMA PUBLICAÇÃO PODE COMEÇAR DIFERENTE</p>
       <h2>Você pode continuar publicando no escuro ou começar a persuadir com método.</h2>
       <p>Baixe o guia, escolha uma oferta sua e aplique o primeiro ajuste ainda hoje.</p>
-      <button class="mpmv-cta mpmv-open-extra" type="button">
-        QUERO RECEBER O GUIA GRATUITO <span aria-hidden="true">→</span>
-      </button>
+      <button class="mpmv-cta js-open" type="button">QUERO RECEBER O GUIA GRATUITO <span aria-hidden="true">→</span></button>
       <small>Gratuito. 23 páginas. Download imediato.</small>
     </section>
   </main>
 
-  <button class="mpmv-mobile-sticky mpmv-open-extra" type="button">RECEBER O GUIA GRATUITO</button>
+  <button class="mpmv-mobile-sticky js-open" type="button">RECEBER O GUIA GRATUITO</button>
 
   <footer class="mpmv-footer">
     <span>© 2026 MPMV — Mais Persuasão, Mais Vendas. Todos os direitos reservados.</span>
-    <a href="/blog/">Ir para o blog</a>
+    <div><a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/blog/">Blog</a></div>
   </footer>
 
-  <div id="mpmv-cookie-banner" class="mpmv-cookie-banner mpmv-hidden">
-    <div class="mpmv-cookie-copy">
-      <strong>Cookies e privacidade</strong>
-      <p>Aceite os cookies para ter uma melhor experiência ao acessar este site.</p>
-    </div>
+  <aside id="mpmv-cookie-banner" class="mpmv-cookie-banner mpmv-hidden" role="dialog" aria-label="Preferências de cookies">
+    <div class="mpmv-cookie-copy"><strong>Cookies</strong><p>Aceite os cookies para ter uma melhor experiência ao acessar este site.</p></div>
     <div class="mpmv-cookie-actions">
-      <button type="button" class="mpmv-cookie-later" data-mpmv-cookie="later">Agora não</button>
+      <button type="button" class="mpmv-cookie-later" data-mpmv-cookie="declined">Agora não</button>
       <button type="button" class="mpmv-cookie-accept" data-mpmv-cookie="accepted">Aceitar cookies</button>
     </div>
-  </div>
+  </aside>
 
   <div id="mpmv-modal-backdrop" class="mpmv-backdrop mpmv-hidden" aria-hidden="true">
-    <div class="mpmv-modal" role="dialog" aria-modal="true" aria-labelledby="mpmv-modal-title">
+    <section class="mpmv-modal" role="dialog" aria-modal="true" aria-labelledby="mpmv-modal-title">
       <button id="mpmv-close-modal" class="mpmv-close" type="button" aria-label="Fechar">×</button>
-
       <div id="mpmv-form-view">
         <p class="mpmv-modal-kicker">FALTA SÓ UM PASSO</p>
         <h2 id="mpmv-modal-title">Para quem envio o guia?</h2>
         <p class="mpmv-modal-text">Preencha seu nome e o melhor e-mail. Assim que você enviar, o download será liberado.</p>
-
         <form id="mpmv-lead-form">
-          <label>Seu nome
-            <input id="mpmv-name" name="name" type="text" autocomplete="name" placeholder="Como você quer ser chamado?" required>
-          </label>
-
-          <label>Seu melhor e-mail
-            <input id="mpmv-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
-          </label>
-
-          <label class="mpmv-trap" aria-hidden="true">Empresa
-            <input name="company" type="text" tabindex="-1" autocomplete="off">
-          </label>
-
+          <label>Seu nome<input id="mpmv-name" name="name" type="text" placeholder="Como você quer ser chamado?" minlength="2" maxlength="80" autocomplete="name" required></label>
+          <label>Seu melhor e-mail<input id="mpmv-email" name="email" type="email" placeholder="voce@exemplo.com" maxlength="160" autocomplete="email" required></label>
+          <label class="mpmv-trap" aria-hidden="true">Empresa<input name="company" type="text" tabindex="-1" autocomplete="off"></label>
           <p id="mpmv-form-error" class="mpmv-error mpmv-hidden"></p>
-
           <button id="mpmv-submit" class="mpmv-submit" type="submit">RECEBER O GUIA AGORA</button>
-
-          <small>
-            Ao enviar, você concorda em receber o guia e conteúdos relacionados da MPMV.
-            Você pode cancelar quando quiser.
-          </small>
+          <small>Ao enviar, você concorda com nossa <a href="/politica-de-privacidade/">Política de Privacidade</a> e com o recebimento do guia e de conteúdos relacionados. Você pode cancelar quando quiser.</small>
         </form>
       </div>
 
       <div id="mpmv-success-view" class="mpmv-success mpmv-hidden">
         <div class="mpmv-check">✓</div>
+        <p class="mpmv-modal-kicker">PRONTO!</p>
         <h2>Seu guia foi liberado.</h2>
-        <p>O download vai começar automaticamente.</p>
+        <p>O download começou automaticamente. Se precisar, baixe novamente pelo botão abaixo.</p>
+        <a class="mpmv-submit mpmv-download-again" href="/assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf" download="[Guia Prático] Persuasão Pra Vender Todo Santo Dia.pdf">BAIXAR O GUIA</a>
+        <div class="mpmv-mentor-note">
+          <strong>Quer aplicar isso na sua oferta?</strong>
+          <p>Se você quer acelerar a aplicação, conheça minha mentoria individual de persuasão e vendas.</p>
+          <a class="mpmv-mentor-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfEIJiXGqcWE1XCrYGX5YKLHT39eQ02nLHxGeLEKtVEqmj3ag/viewform?utm_source=guia&utm_medium=site&utm_campaign=mentoria" target="_blank" rel="noopener noreferrer">QUERO CONHECER A MENTORIA</a>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <script src="/assets/js/public.js" defer></script>
-  <script>
-    document.querySelectorAll('.mpmv-open-extra').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var mainButton = document.getElementById('mpmv-open-modal');
-        if (mainButton) mainButton.click();
-      });
-    });
-  </script>
 </body>
 </html>

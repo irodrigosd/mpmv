@@ -1,9 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "buildCommand": null,
   "trailingSlash": true,
   "rewrites": [
+    {
+      "source": "/curso",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/curso/",
+      "destination": "/curso.html"
+    },
     {
       "source": "/assets/css/:path*",
       "destination": "/:path*"
@@ -35,6 +41,22 @@
     {
       "source": "/blog/persuasao-para-infoprodutores/",
       "destination": "/persuasao-para-infoprodutores.html"
+    },
+    {
+      "source": "/leads",
+      "destination": "/leads.html"
+    },
+    {
+      "source": "/leads/",
+      "destination": "/leads.html"
+    },
+    {
+      "source": "/politica-de-privacidade",
+      "destination": "/politica-de-privacidade.html"
+    },
+    {
+      "source": "/politica-de-privacidade/",
+      "destination": "/politica-de-privacidade.html"
     }
   ],
   "redirects": [
@@ -56,6 +78,16 @@
     {
       "source": "/artigo-seo/",
       "destination": "/blog/persuasao-para-infoprodutores/",
+      "permanent": true
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas/",
+      "destination": "/",
       "permanent": true
     }
   ],
