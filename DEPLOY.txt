@@ -1,0 +1,17 @@
+PUBLICAÇÃO NA VERCEL VIA GITHUB
+
+1. Abra o repositório NPMV-Sitee no GitHub.
+2. Envie todo o conteúdo desta pasta para a raiz do repositório.
+3. Confirme que o projeto da Vercel está conectado a esse repositório.
+4. Framework Preset: Other.
+5. Build Command: deixe vazio.
+6. Output Directory: deixe vazio.
+7. Faça o deploy.
+8. Depois, confira:
+   /
+   /blog/
+   /blog/persuasao-para-infoprodutores/
+   /sitemap.xml
+   /robots.txt
+
+Os redirecionamentos /home e /artigo-seo estão em vercel.json.
