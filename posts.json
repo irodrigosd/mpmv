@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T19:17:54.977Z",
+  "updatedAt": "2026-08-15T19:27:53.245Z",
   "posts": [
+    {
+      "title": "Gatilhos mentais: o que são, 9 exemplos e como usar com ética",
+      "slug": "gatilhos-mentais",
+      "url": "/blog/gatilhos-mentais/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "Gatilhos mentais",
+      "seoScore": 94,
+      "readabilityScore": 98,
+      "readingTime": "11 min",
+      "excerpt": "Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética."
+    },
     {
       "title": "O que é copywriting? Como aplicar no dia a dia e 7 benefícios",
       "slug": "o-que-e-copywriting",
