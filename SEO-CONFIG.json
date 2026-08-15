@@ -1,18 +1,32 @@
 {
-  "title": "Gatilhos mentais: o que são, 9 exemplos e como usar com ética",
-  "seoTitle": "Gatilhos Mentais: O Que São + 9 Exemplos | MPMV",
-  "metaDescription": "Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética.",
-  "focusKeyphrase": "gatilhos mentais",
+  "title": "Copywriting para redes sociais: como escrever posts que prendem atenção e geram ação",
+  "seoTitle": "Copywriting para Redes Sociais: Guia Prático | MPMV",
+  "metaDescription": "Aprenda copywriting para redes sociais com exemplos de ganchos, legendas e CTAs para criar posts que prendem atenção e conduzem à ação.",
+  "focusKeyphrase": "copywriting para redes sociais",
   "secondaryKeyphrases": [
-    "o que são gatilhos mentais",
-    "exemplos de gatilhos mentais",
-    "como usar gatilhos mentais",
-    "gatilhos mentais no dia a dia"
+    "copy para Instagram",
+    "como escrever posts persuasivos",
+    "copy para redes sociais",
+    "ganchos para posts",
+    "CTA para redes sociais"
   ],
-  "slug": "gatilhos-mentais",
-  "url": "/blog/gatilhos-mentais/",
-  "canonical": "https://www.maispersuasaomaisvendas.com.br/blog/gatilhos-mentais/",
-  "category": "Persuasão",
+  "slug": "copywriting-para-redes-sociais",
+  "canonical": "https://www.maispersuasaomaisvendas.com.br/blog/copywriting-para-redes-sociais/",
+  "category": "Copywriting",
   "author": "Rodrigo Castro",
-  "publishedAt": "2026-08-15"
+  "publishedAt": "2026-08-15",
+  "schemas": [
+    "BlogPosting",
+    "BreadcrumbList"
+  ],
+  "faqVisible": true,
+  "faqSchema": false,
+  "geoNotes": [
+    "resposta direta após a introdução",
+    "headings em formato de perguntas e tarefas",
+    "exemplos concretos",
+    "modelo autoral das quatro decisões",
+    "entidades e relações explícitas",
+    "links internos para o cluster de copywriting e persuasão"
+  ]
 }

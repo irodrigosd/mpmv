@@ -1,22 +1,17 @@
-ADMIN /BLOG - BOTÃO EXCLUIR ARTIGO
+ADMIN BLOG — CONFIGURAÇÃO NA VERCEL
 
-O pacote adiciona um botão vermelho "Excluir artigo" em cada post do /admin/blog/.
+Para os botões "Subir ZIP e publicar" e "Excluir artigo" funcionarem, configure:
 
-Para a exclusão funcionar em produção, configure estas variáveis na Vercel:
-
-ADMIN_BLOG_TOKEN = uma senha/token forte que só você conhece
-GITHUB_TOKEN = token do GitHub com permissão Contents: Read and write no repositório do site
-GITHUB_OWNER = usuário ou organização dona do repositório
-GITHUB_REPO = nome do repositório do site
-GITHUB_BRANCH = main (opcional; se não informar, usa main)
+ADMIN_BLOG_TOKEN = senha/token que você escolher para o painel
+GITHUB_TOKEN = token do GitHub com permissão de escrita no repositório
+GITHUB_OWNER = usuário/organização dona do repositório
+GITHUB_REPO = nome do repositório
+GITHUB_BRANCH = main
 
 Depois faça um novo deploy.
 
-Ao clicar em "Excluir artigo", o admin pede o ADMIN_BLOG_TOKEN e a API remove:
-- o arquivo HTML do artigo;
-- o cadastro em data/blog-posts.json;
-- o card do artigo em blog.html;
-- a URL do sitemap.xml;
-- a rota do artigo em vercel.json.
+O painel fica em:
+/admin/blog/
 
-A exclusão acontece no GitHub e dispara o redeploy normal da Vercel.
+O upload aceita ZIPs com até aproximadamente 3,2 MB descompactados pelo painel.
+Pacotes maiores devem ser enviados direto pelo GitHub.

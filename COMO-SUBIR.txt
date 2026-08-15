@@ -1,22 +1,20 @@
-COMO SUBIR ESTE ARTIGO
+COMO SUBIR
 
-1. Descompacte o ZIP.
-2. Suba todos os arquivos para a RAIZ do mesmo repositório do site.
-3. Aceite a substituição de:
-   - blog.html
-   - vercel.json
-   - sitemap.xml
-   - data/blog-posts.json
-   - admin/blog.html (é a mesma área administrativa já preparada)
-4. Adicione o arquivo novo:
-   - gatilhos-mentais.html
-5. Faça o deploy na Vercel.
+Suba o conteúdo deste ZIP para a raiz do repositório, preservando as pastas.
 
-ROTA FINAL:
-https://www.maispersuasaomaisvendas.com.br/blog/gatilhos-mentais/
+Arquivos principais:
+- copywriting-para-redes-sociais.html
+- blog.html
+- sitemap.xml
+- vercel.json
+- data/blog-posts.json
+- admin/blog.html
+- api/admin-blog-delete.js
 
-SEO:
-Veja SEO-CONFIG.json e SEO-VALIDACAO.txt.
+URL final:
+https://www.maispersuasaomaisvendas.com.br/blog/copywriting-para-redes-sociais/
 
-ADMIN:
-Depois do deploy, /admin/blog/ mostrará o novo artigo automaticamente porque data/blog-posts.json já foi atualizado. O botão "Apagar artigo" continua disponível.
+O vercel.json deste pacote preserva /curso/, /mentoria/, /obrigado/, /leads/, blog, artigos atuais e /admin/blog/.
+
+IMPORTANTE: este pacote restaura no /admin/blog/ os dois recursos: SUBIR ZIP e EXCLUIR ARTIGO.
+Também inclui api/admin-blog-upload.js.

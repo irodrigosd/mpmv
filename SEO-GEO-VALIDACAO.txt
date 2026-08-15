@@ -1,0 +1,31 @@
+ARTIGO: Copywriting para redes sociais: como escrever posts que prendem atenção e geram ação
+URL: /blog/copywriting-para-redes-sociais/
+
+SEO
+- Frase-chave foco: copywriting para redes sociais
+- SEO title: Copywriting para Redes Sociais: Guia Prático | MPMV (51 caracteres)
+- Meta description: Aprenda copywriting para redes sociais com exemplos de ganchos, legendas e CTAs para criar posts que prendem atenção e conduzem à ação. (135 caracteres)
+- H1: 1
+- Palavras no corpo do artigo: 2500
+- Ocorrências exatas da frase-chave no texto: 15
+- Canonical: https://www.maispersuasaomaisvendas.com.br/blog/copywriting-para-redes-sociais/
+- Slug: copywriting-para-redes-sociais
+- BlogPosting Schema: SIM
+- BreadcrumbList Schema: SIM
+- FAQ visível: SIM
+- FAQPage Schema: NÃO (mantido fora do pacote)
+- Links internos: /blog/o-que-e-copywriting/, /blog/gatilhos-mentais/, /curso/
+
+GEO / IA GENERATIVA
+- Resposta direta no início: SIM
+- Definições autocontidas: SIM
+- Perguntas em H2/H3 e FAQ: SIM
+- Exemplos copiáveis e comparações: SIM
+- Ponto de vista próprio: quatro decisões do leitor (parar, continuar, acreditar, agir)
+- Estrutura semântica e parágrafos curtos: SIM
+- Conteúdo evita estatísticas sem fonte: SIM
+
+IMAGENS
+- 3 imagens descobertas no Pinterest
+- Inseridas como <img> limpo, sem iframe, sem botão Salvar e sem link clicável para Pinterest
+- ALT descritivo: SIM
