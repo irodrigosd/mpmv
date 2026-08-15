@@ -11,23 +11,37 @@ export default async function handler(req,res){
   if(req.method!=='POST') return json(res,405,{error:'Método não permitido.'});
 
   const adminToken=process.env.ADMIN_BLOG_TOKEN;
-  if(!adminToken) return json(res,500,{error:'ADMIN_BLOG_TOKEN não configurado na Vercel.'});
-  if(req.headers['x-admin-token']!==adminToken) return json(res,401,{error:'Token inválido.'});
+  if(!adminToken) return json(res,500,{error:'ADMIN_BLOG_TOKEN não disponível neste deployment.'});
+  if(req.headers['x-admin-token']!==adminToken) return json(res,401,{error:'Token do admin inválido.'});
 
   const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
   const files=Array.isArray(body.files)?body.files:[];
   if(!files.length) return json(res,400,{error:'Nenhum arquivo recebido.'});
   if(files.length>80) return json(res,400,{error:'ZIP com arquivos demais.'});
 
-  const token=process.env.GITHUB_TOKEN;
-  const owner=process.env.GITHUB_OWNER;
-  const repo=process.env.GITHUB_REPO;
-  const branch=process.env.GITHUB_BRANCH||'main';
-  if(!token||!owner||!repo) return json(res,500,{error:'Configure GITHUB_TOKEN, GITHUB_OWNER e GITHUB_REPO na Vercel.'});
+  // Fallbacks para evitar depender de quatro variáveis diferentes.
+  // BLOG_GITHUB_TOKEN já existia no projeto antes do novo painel.
+  const token=process.env.GITHUB_TOKEN || process.env.BLOG_GITHUB_TOKEN;
+  const owner=(process.env.GITHUB_OWNER || 'irodrigosd').trim();
+  const repo=(process.env.GITHUB_REPO || 'mpmv').trim();
+  const branch=(process.env.GITHUB_BRANCH || 'main').trim();
+
+  if(!token){
+    return json(res,500,{
+      error:'Token GitHub indisponível neste deployment.',
+      diagnostic:{
+        GITHUB_TOKEN:Boolean(process.env.GITHUB_TOKEN),
+        BLOG_GITHUB_TOKEN:Boolean(process.env.BLOG_GITHUB_TOKEN),
+        GITHUB_OWNER:Boolean(process.env.GITHUB_OWNER),
+        GITHUB_REPO:Boolean(process.env.GITHUB_REPO),
+        GITHUB_BRANCH:Boolean(process.env.GITHUB_BRANCH)
+      }
+    });
+  }
 
   const headers={
     'Accept':'application/vnd.github+json',
-    'Authorization':`Bearer ${token}`,
+    'Authorization':`Bearer ${token.trim()}`,
     'X-GitHub-Api-Version':'2022-11-28',
     'User-Agent':'MPMV-Blog-Admin',
     'Content-Type':'application/json'
@@ -46,25 +60,30 @@ export default async function handler(req,res){
     }
 
     const refRes=await fetch(`${API}/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`,{headers});
-    if(!refRes.ok) throw new Error(`GitHub REF: ${refRes.status}`);
+    if(!refRes.ok){
+      const t=await refRes.text().catch(()=> '');
+      throw new Error(`GitHub REF: ${refRes.status} ${t.slice(0,220)}`);
+    }
     const ref=await refRes.json();
     const parentSha=ref.object.sha;
 
     const commitRes=await fetch(`${API}/repos/${owner}/${repo}/git/commits/${parentSha}`,{headers});
-    if(!commitRes.ok) throw new Error(`GitHub COMMIT: ${commitRes.status}`);
+    if(!commitRes.ok){
+      const t=await commitRes.text().catch(()=> '');
+      throw new Error(`GitHub COMMIT: ${commitRes.status} ${t.slice(0,220)}`);
+    }
     const parentCommit=await commitRes.json();
     const baseTree=parentCommit.tree.sha;
 
     const tree=[];
-    for(let i=0;i<files.length;i++){
-      const f=files[i];
+    for(const f of files){
       const blobRes=await fetch(`${API}/repos/${owner}/${repo}/git/blobs`,{
         method:'POST',headers,
         body:JSON.stringify({content:f.content,encoding:'base64'})
       });
       if(!blobRes.ok){
         const t=await blobRes.text().catch(()=> '');
-        throw new Error(`GitHub BLOB ${f.path}: ${blobRes.status} ${t.slice(0,160)}`);
+        throw new Error(`GitHub BLOB ${f.path}: ${blobRes.status} ${t.slice(0,220)}`);
       }
       const blob=await blobRes.json();
       tree.push({path:f.path,mode:'100644',type:'blob',sha:blob.sha});
@@ -74,7 +93,10 @@ export default async function handler(req,res){
       method:'POST',headers,
       body:JSON.stringify({base_tree:baseTree,tree})
     });
-    if(!treeRes.ok) throw new Error(`GitHub TREE: ${treeRes.status}`);
+    if(!treeRes.ok){
+      const t=await treeRes.text().catch(()=> '');
+      throw new Error(`GitHub TREE: ${treeRes.status} ${t.slice(0,220)}`);
+    }
     const newTree=await treeRes.json();
 
     const msg=`blog: publicar ZIP ${String(body.zipName||'artigo').slice(0,120)}`;
@@ -82,16 +104,22 @@ export default async function handler(req,res){
       method:'POST',headers,
       body:JSON.stringify({message:msg,tree:newTree.sha,parents:[parentSha]})
     });
-    if(!newCommitRes.ok) throw new Error(`GitHub NEW COMMIT: ${newCommitRes.status}`);
+    if(!newCommitRes.ok){
+      const t=await newCommitRes.text().catch(()=> '');
+      throw new Error(`GitHub NEW COMMIT: ${newCommitRes.status} ${t.slice(0,220)}`);
+    }
     const newCommit=await newCommitRes.json();
 
     const updateRefRes=await fetch(`${API}/repos/${owner}/${repo}/git/refs/heads/${encodeURIComponent(branch)}`,{
       method:'PATCH',headers,
       body:JSON.stringify({sha:newCommit.sha,force:false})
     });
-    if(!updateRefRes.ok) throw new Error(`GitHub UPDATE REF: ${updateRefRes.status}`);
+    if(!updateRefRes.ok){
+      const t=await updateRefRes.text().catch(()=> '');
+      throw new Error(`GitHub UPDATE REF: ${updateRefRes.status} ${t.slice(0,220)}`);
+    }
 
-    return json(res,200,{ok:true,commit:newCommit.sha,files:files.length});
+    return json(res,200,{ok:true,commit:newCommit.sha,files:files.length,repository:`${owner}/${repo}`,branch});
   }catch(err){
     console.error(err);
     return json(res,500,{error:'Não foi possível publicar o ZIP.',detail:String(err.message||err)});
