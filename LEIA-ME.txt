@@ -1,20 +1,14 @@
-MPMV — Instalador do Google Analytics
-ID: G-CJHQRJY79Z
+CORREÇÃO DEFINITIVA DO UPLOAD /admin/blog/
 
-1. No GitHub, envie estes arquivos preservando as pastas:
-   - install-analytics.html
-   - api/install-analytics.js
-2. Espere o Vercel concluir o deploy.
-3. Abra https://maispersuasaomaisvendas.com.br/install-analytics
-4. Digite a mesma senha administrativa usada em /admin/blog.
-5. Clique em INSTALAR ANALYTICS.
+Este arquivo:
+- usa GITHUB_TOKEN;
+- se ele não estiver disponível no deployment, tenta BLOG_GITHUB_TOKEN;
+- fixa irodrigosd/mpmv/main como fallback para owner/repo/branch;
+- mostra diagnóstico exato se o token não estiver disponível;
+- mostra o erro real retornado pelo GitHub em vez de mensagem genérica.
 
-O instalador vai:
-- criar analytics.js;
-- incluir /analytics.js nas páginas públicas;
-- manter publicidade negada e liberar apenas analytics_storage após aceite;
-- usar a escolha já salva pelo banner de cookies (mpmv-cookie-consent-v3);
-- preparar api/blog-admin.js para incluir Analytics em novos artigos;
-- remover install-analytics.html e api/install-analytics.js após concluir.
+Substitua SOMENTE:
+api/admin-blog-upload.js
 
-Depois do novo deploy, valide no Google Analytics / Tempo real.
+A Vercel fará o deploy automaticamente pelo push do GitHub.
+Depois teste novamente /admin/blog/.
