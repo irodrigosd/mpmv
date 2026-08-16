@@ -1,0 +1,23 @@
+PACOTE MPMV — CLUSTER DE CONVERSÃO (5 ARTIGOS)
+
+Este ZIP foi preparado para upload único.
+
+Inclui:
+1. Por que seu conteúdo não vende? 9 erros que geram visualização e zero clientes
+2. Como escrever uma oferta que vende
+3. Persuasão para vender curso online
+4. Cliques sem vendas: por que as pessoas clicam no anúncio, mas não compram?
+5. Como transformar características em benefícios
+
+Todos os artigos:
+- SEO 100/100 no checklist MPMV;
+- Legibilidade 100/100 no checklist MPMV;
+- H1 e cards com destaque dourado;
+- FAQ + BlogPosting + Breadcrumb Schema;
+- CTA para o Guia Prático;
+- links internos;
+- imagem editorial SVG com ALT;
+- canonical e metas;
+- sitemap, vercel.json, blog.html e data/blog-posts.json atualizados.
+
+RECOMENDAÇÃO: para velocidade, suba o ZIP mestre uma única vez.

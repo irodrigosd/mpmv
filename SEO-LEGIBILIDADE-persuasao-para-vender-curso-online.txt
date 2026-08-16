@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Persuasão para vender curso online: como convencer sem parecer desesperado
+Slug: /blog/persuasao-para-vender-curso-online/
+Frase-chave: persuasão para vender curso online
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 1148
+Média de palavras por frase: 10.2
+Frases com mais de 25 palavras: 2.7%
+Média de palavras por parágrafo: 20.5
+Palavras por heading: 49.9
+Conectivos detectados: 8
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

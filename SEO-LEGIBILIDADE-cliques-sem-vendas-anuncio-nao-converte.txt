@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Cliques sem vendas: por que as pessoas clicam no anúncio, mas não compram?
+Slug: /blog/cliques-sem-vendas-anuncio-nao-converte/
+Frase-chave: cliques sem vendas
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 1185
+Média de palavras por frase: 9.0
+Frases com mais de 25 palavras: 1.5%
+Média de palavras por parágrafo: 19.8
+Palavras por heading: 43.9
+Conectivos detectados: 9
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Como transformar características em benefícios que fazem o cliente querer comprar
+Slug: /blog/transformar-caracteristicas-em-beneficios/
+Frase-chave: transformar características em benefícios
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 1138
+Média de palavras por frase: 9.2
+Frases com mais de 25 palavras: 0.8%
+Média de palavras por parágrafo: 18.6
+Palavras por heading: 34.5
+Conectivos detectados: 7
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

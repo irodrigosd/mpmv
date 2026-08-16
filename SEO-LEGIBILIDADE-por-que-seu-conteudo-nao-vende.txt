@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Por que seu conteúdo não vende? 9 erros que geram visualização e zero clientes
+Slug: /blog/por-que-seu-conteudo-nao-vende/
+Frase-chave: conteúdo não vende
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 1466
+Média de palavras por frase: 9.4
+Frases com mais de 25 palavras: 1.3%
+Média de palavras por parágrafo: 25.1
+Palavras por heading: 63.7
+Conectivos detectados: 11
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Como escrever uma oferta que vende: estrutura prática para transformar interesse em compra
+Slug: /blog/como-escrever-uma-oferta-que-vende/
+Frase-chave: como escrever uma oferta que vende
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 1300
+Média de palavras por frase: 9.3
+Frases com mais de 25 palavras: 0.7%
+Média de palavras por parágrafo: 21.7
+Palavras por heading: 46.4
+Conectivos detectados: 9
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

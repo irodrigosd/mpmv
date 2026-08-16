@@ -165,6 +165,46 @@
       "destination": "/efeito-de-enquadramento-marketing-vendas.html"
     },
     {
+      "source": "/blog/por-que-seu-conteudo-nao-vende",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/por-que-seu-conteudo-nao-vende/",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende/",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online/",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte/",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios/",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
