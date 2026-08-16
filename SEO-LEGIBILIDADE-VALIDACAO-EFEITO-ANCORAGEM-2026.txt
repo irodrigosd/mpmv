@@ -1,0 +1,67 @@
+VALIDAÇÃO SEO + LEGIBILIDADE — EFEITO DE ANCORAGEM 2026
+
+RESULTADO NO CHECKLIST DO PAINEL /admin/blog
+SEO: 100/100 — EXCELENTE
+Legibilidade: 100/100 — EXCELENTE
+Critérios de SEO: 14/14 aprovados
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-de-ancoragem-precos-vendas/
+
+TÍTULO SEO
+Efeito de Ancoragem em Preços e Vendas | MPMV
+Caracteres: 45
+
+META DESCRIPTION
+Efeito de ancoragem influencia como clientes avaliam preços. Veja como usar referência, comparação e contexto de forma ética para vender melhor.
+Caracteres: 144
+
+FRASE-CHAVE DE FOCO
+efeito de ancoragem
+Ocorrências exatas aproximadas no conteúdo visível: 13
+
+CONTEÚDO
+Palavras aproximadas: 2263
+H1: 1
+H2: 12
+H3: 21
+Links internos: 5
+Links externos/fontes: 5
+
+CHECKLIST SEO
+[OK] 1 H1 apenas
+[OK] Frase-chave no SEO title
+[OK] Frase-chave no H1
+[OK] Frase-chave na meta description
+[OK] Resposta direta no topo
+[OK] Canonical definido
+[OK] Meta robots index,follow
+[OK] Slug curto e descritivo
+[OK] Links internos para cluster MPMV
+[OK] Imagem editorial original com ALT
+[OK] Fontes acadêmicas e estudos experimentais
+[OK] BlogPosting + BreadcrumbList + FAQPage
+[OK] Sitemap atualizado
+[OK] Rota Vercel com e sem barra
+
+LEGIBILIDADE
+Média aproximada de palavras por frase: 12.6
+Frases acima de 25 palavras: 18/179 (10.1%)
+Parágrafos acima de 120 palavras: 0/64
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas, cards e tabela comparativa
+[OK] Média de frase <= 18 palavras
+[OK] Frases longas <= 15%
+[OK] Termos explicados e leitura escaneável
+
+POSTURA / PRECISÃO
+[OK] Não promete aumento automático de conversão
+[OK] Diferencia evidência experimental de regra universal
+[OK] Inclui estudo que encontrou limitação do efeito em decisões incentivadas
+[OK] Não recomenda preço falso, desconto inventado ou comparação enganosa
+[OK] Exemplos numéricos são claramente ilustrativos
+[OK] Linguagem PT-BR natural e direta
+
+OBSERVAÇÃO TÉCNICA
+O ZIP é incremental: não inclui admin/blog.html nem api/admin-blog-upload.js. Assim, não desfaz as correções do painel e do botão de upload.

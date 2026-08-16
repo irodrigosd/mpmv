@@ -133,6 +133,14 @@
       "destination": "/dark-patterns-marketing-digital.html"
     },
     {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas/",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
