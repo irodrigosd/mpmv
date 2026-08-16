@@ -1,0 +1,7 @@
+COMO SUBIR — EFEITO DE ENQUADRAMENTO 2026
+
+1. Faça upload deste ZIP pelo /admin/blog, como nos artigos anteriores.
+2. O pacote atualiza blog.html, sitemap.xml, vercel.json e data/blog-posts.json.
+3. O novo artigo ficará em /blog/efeito-de-enquadramento-marketing-vendas/
+4. O destaque dourado/amarelo foi mantido no H1 e no card do blog.
+5. O pacote é incremental e não sobrescreve o painel /admin/blog.

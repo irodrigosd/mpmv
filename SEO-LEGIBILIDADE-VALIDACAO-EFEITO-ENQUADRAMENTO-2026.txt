@@ -1,0 +1,71 @@
+VALIDAÇÃO SEO + LEGIBILIDADE — EFEITO DE ENQUADRAMENTO 2026
+
+RESULTADO NO CHECKLIST DO PAINEL /admin/blog
+SEO: 100/100 — EXCELENTE
+Legibilidade: 100/100 — EXCELENTE
+Critérios de SEO: 14/14 aprovados
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-de-enquadramento-marketing-vendas/
+
+TÍTULO SEO
+Efeito de Enquadramento: Como Muda a Decisão? | MPMV
+Caracteres: 52
+
+META DESCRIPTION
+Entenda o efeito de enquadramento e veja como palavras, preços e comparações mudam a percepção de uma oferta sem alterar o valor real.
+Caracteres: 134
+
+FRASE-CHAVE DE FOCO
+efeito de enquadramento
+Ocorrências exatas aproximadas no conteúdo visível: 14
+
+CONTEÚDO
+Palavras aproximadas: 2348
+H1: 1
+H2: 15
+H3: 24
+Links internos: 15
+Links externos/fontes: 6
+
+CHECKLIST SEO
+[OK] 1 H1 apenas
+[OK] Frase-chave no SEO title
+[OK] Frase-chave no H1
+[OK] Frase-chave na meta description
+[OK] Resposta direta no topo
+[OK] Canonical definido
+[OK] Meta robots index,follow
+[OK] Slug descritivo
+[OK] Links internos para cluster MPMV
+[OK] Imagem editorial original com ALT
+[OK] Fontes acadêmicas
+[OK] BlogPosting + BreadcrumbList + FAQPage
+[OK] Sitemap atualizado
+[OK] Rota Vercel com e sem barra
+
+LEGIBILIDADE
+Média aproximada de palavras por frase: 10.1
+Frases acima de 25 palavras: 4/231 (1.7%)
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas, cards e tabelas comparativas
+[OK] Média de frase <= 18 palavras
+[OK] Frases longas <= 15%
+[OK] Leitura escaneável
+
+POSTURA / PRECISÃO
+[OK] Não trata framing como gatilho infalível
+[OK] Distingue enquadramento de ancoragem
+[OK] Não recomenda preço fictício ou omissão de custos
+[OK] Reconhece limites de contexto e experiência do consumidor
+[OK] Incentiva teste de métricas além do clique
+[OK] Linguagem PT-BR natural e direta
+
+AJUSTE VISUAL
+[OK] H1 com trecho estratégico dourado/amarelo
+[OK] Card da página /blog/ com destaque dourado/amarelo
+[OK] Mantido o padrão visual solicitado
+
+OBSERVAÇÃO TÉCNICA
+O ZIP é incremental e não inclui admin/blog.html nem api/admin-blog-upload.js. Assim, não desfaz as correções do painel e do upload.

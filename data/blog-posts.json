@@ -1,5 +1,27 @@
 [
   {
+    "id": "efeito-de-enquadramento-marketing-vendas-2026-08-16",
+    "title": "Efeito de enquadramento: como a mesma oferta muda a decisão do cliente",
+    "seoTitle": "Efeito de Enquadramento: Como Muda a Decisão? | MPMV",
+    "metaDescription": "Entenda o efeito de enquadramento e veja como palavras, preços e comparações mudam a percepção de uma oferta sem alterar o valor real.",
+    "focusKeyphrase": "efeito de enquadramento",
+    "secondaryKeyphrases": [
+      "framing effect",
+      "enquadramento de preço",
+      "psicologia de preços",
+      "copywriting persuasivo",
+      "psicologia do consumidor"
+    ],
+    "slug": "efeito-de-enquadramento-marketing-vendas",
+    "url": "/blog/efeito-de-enquadramento-marketing-vendas/",
+    "file": "efeito-de-enquadramento-marketing-vendas.html",
+    "status": "published",
+    "category": "Psicologia + Copy",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
     "id": "efeito-ikea-marketing-vendas-2026-08-16",
     "title": "Efeito IKEA: por que o cliente valoriza mais aquilo que ajudou a criar",
     "seoTitle": "Efeito IKEA: Por Que o Cliente Valoriza Mais? | MPMV",
@@ -128,6 +150,72 @@
     "status": "published",
     "category": "SEO + IA",
     "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "engenheiro-prompts-persuasivo-2026-08-15",
+    "title": "Engenheiro de prompts persuasivo: a profissão do futuro?",
+    "seoTitle": "Engenheiro de Prompts Persuasivo: Profissão do Futuro | MPMV",
+    "metaDescription": "Entenda o que faz um engenheiro de prompts persuasivo, por que IA, criatividade e influência ganham valor e como desenvolver essa habilidade.",
+    "focusKeyphrase": "engenheiro de prompts persuasivo",
+    "secondaryKeyphrases": [
+      "engenharia de prompts",
+      "prompt engineering",
+      "profissão do futuro com IA",
+      "como trabalhar com prompts",
+      "prompt engineer"
+    ],
+    "slug": "engenheiro-de-prompts-persuasivo",
+    "url": "/blog/engenheiro-de-prompts-persuasivo/",
+    "file": "engenheiro-de-prompts-persuasivo.html",
+    "status": "published",
+    "category": "IA + Persuasão",
+    "publishedAt": "2026-08-15",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "persuasao-marketing-digital-2026-08-15",
+    "title": "Persuasão no marketing digital: como aplicar sem manipular",
+    "seoTitle": "Persuasão no Marketing Digital: Como Aplicar | MPMV",
+    "metaDescription": "Entenda como aplicar persuasão no marketing digital em conteúdo, anúncios, páginas, e-mails e ofertas com argumentos, provas e ética.",
+    "focusKeyphrase": "persuasão no marketing digital",
+    "secondaryKeyphrases": [
+      "como usar persuasão no marketing",
+      "persuasão em vendas",
+      "persuasão e marketing",
+      "marketing persuasivo",
+      "persuasão digital"
+    ],
+    "slug": "persuasao-no-marketing-digital",
+    "url": "/blog/persuasao-no-marketing-digital/",
+    "file": "persuasao-no-marketing-digital.html",
+    "status": "published",
+    "category": "Persuasão",
+    "publishedAt": "2026-08-15",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "copywriting-redes-sociais-2026-08-15",
+    "title": "Copywriting para redes sociais: como escrever posts que prendem atenção e geram ação",
+    "seoTitle": "Copywriting para Redes Sociais: Guia Prático | MPMV",
+    "metaDescription": "Aprenda copywriting para redes sociais com exemplos de ganchos, legendas e CTAs para criar posts que prendem atenção e conduzem à ação.",
+    "focusKeyphrase": "copywriting para redes sociais",
+    "secondaryKeyphrases": [
+      "copy para Instagram",
+      "como escrever posts persuasivos",
+      "copy para redes sociais",
+      "ganchos para posts",
+      "CTA para redes sociais"
+    ],
+    "slug": "copywriting-para-redes-sociais",
+    "url": "/blog/copywriting-para-redes-sociais/",
+    "file": "copywriting-para-redes-sociais.html",
+    "status": "published",
+    "category": "Copywriting",
+    "publishedAt": "2026-08-15",
     "author": "Rodrigo Castro",
     "deletable": true
   },
