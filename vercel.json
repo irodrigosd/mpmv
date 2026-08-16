@@ -85,14 +85,6 @@
       "destination": "/gatilhos-mentais.html"
     },
     {
-      "source": "/blog/copywriting-para-redes-sociais",
-      "destination": "/copywriting-para-redes-sociais.html"
-    },
-    {
-      "source": "/blog/copywriting-para-redes-sociais/",
-      "destination": "/copywriting-para-redes-sociais.html"
-    },
-    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
