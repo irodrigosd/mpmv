@@ -149,6 +149,14 @@
       "destination": "/paradoxo-da-escolha-vendas.html"
     },
     {
+      "source": "/blog/efeito-ikea-marketing-vendas",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-ikea-marketing-vendas/",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },

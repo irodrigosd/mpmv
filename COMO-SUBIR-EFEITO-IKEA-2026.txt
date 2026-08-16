@@ -1,0 +1,16 @@
+COMO SUBIR — EFEITO IKEA 2026
+
+Suba este ZIP pelo mesmo fluxo do /admin/blog usado nos artigos anteriores.
+
+URL preparada: /blog/efeito-ikea-marketing-vendas/
+Arquivo do artigo: efeito-ikea-marketing-vendas.html
+
+O pacote atualiza apenas:
+- novo HTML do artigo
+- blog.html com o novo card no topo
+- data/blog-posts.json
+- sitemap.xml
+- vercel.json
+- assets/images/efeito-ikea-marketing-vendas.svg
+
+Não inclui arquivos do painel administrativo.

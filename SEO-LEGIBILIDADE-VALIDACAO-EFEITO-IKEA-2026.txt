@@ -1,0 +1,71 @@
+VALIDAÇÃO SEO + LEGIBILIDADE — EFEITO IKEA 2026
+
+RESULTADO NO CHECKLIST DO PAINEL /admin/blog
+SEO: 100/100 — EXCELENTE
+Legibilidade: 100/100 — EXCELENTE
+Critérios de SEO: 14/14 aprovados
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-ikea-marketing-vendas/
+
+TÍTULO SEO
+Efeito IKEA: Por Que o Cliente Valoriza Mais? | MPMV
+Caracteres: 52
+
+META DESCRIPTION
+Efeito IKEA explica por que participar da criação pode aumentar valor percebido. Veja aplicações em marketing, vendas e os limites do efeito.
+Caracteres: 141
+
+FRASE-CHAVE DE FOCO
+efeito IKEA
+Ocorrências exatas aproximadas no conteúdo visível: 21
+
+CONTEÚDO
+Palavras aproximadas: 2331
+H1: 1
+H2: 14
+H3: 36
+Links internos: 15
+Links externos/fontes: 6
+
+CHECKLIST SEO
+[OK] 1 H1 apenas
+[OK] Frase-chave no SEO title
+[OK] Frase-chave no H1
+[OK] Frase-chave na meta description
+[OK] Resposta direta no topo
+[OK] Canonical definido
+[OK] Meta robots index,follow
+[OK] Slug curto e descritivo
+[OK] Links internos para cluster MPMV
+[OK] Imagem editorial original com ALT
+[OK] Fontes acadêmicas primárias
+[OK] BlogPosting + BreadcrumbList + FAQPage
+[OK] Sitemap atualizado
+[OK] Rota Vercel com e sem barra
+
+LEGIBILIDADE
+Média aproximada de palavras por frase: 11.5
+Frases acima de 25 palavras: 6/203 (3.0%)
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas, cards e tabelas comparativas
+[OK] Média de frase <= 18 palavras
+[OK] Frases longas <= 15%
+[OK] Termos explicados e leitura escaneável
+
+POSTURA / PRECISÃO
+[OK] Não trata o efeito IKEA como regra universal
+[OK] Destaca a condição de conclusão bem-sucedida do estudo original
+[OK] Diferencia participação útil de fricção e trabalho inútil
+[OK] Reconhece limites ligados a complexidade e preferência por conveniência
+[OK] Não transforma psicologia em justificativa para manipulação
+[OK] Linguagem PT-BR natural e direta
+
+AJUSTE VISUAL
+[OK] H1 com trecho estratégico dourado/amarelo
+[OK] Card da página /blog/ com destaque dourado/amarelo
+[OK] Mantido o padrão visual solicitado no artigo anterior
+
+OBSERVAÇÃO TÉCNICA
+O ZIP é incremental: não inclui admin/blog.html nem api/admin-blog-upload.js. Assim, não desfaz as correções do painel e do botão de upload.

@@ -1,5 +1,27 @@
 [
   {
+    "id": "efeito-ikea-marketing-vendas-2026-08-16",
+    "title": "Efeito IKEA: por que o cliente valoriza mais aquilo que ajudou a criar",
+    "seoTitle": "Efeito IKEA: Por Que o Cliente Valoriza Mais? | MPMV",
+    "metaDescription": "Efeito IKEA explica por que participar da criação pode aumentar valor percebido. Veja aplicações em marketing, vendas e os limites do efeito.",
+    "focusKeyphrase": "efeito IKEA",
+    "secondaryKeyphrases": [
+      "IKEA effect",
+      "valor percebido",
+      "cocriação com clientes",
+      "personalização de produto",
+      "psicologia do consumidor"
+    ],
+    "slug": "efeito-ikea-marketing-vendas",
+    "url": "/blog/efeito-ikea-marketing-vendas/",
+    "file": "efeito-ikea-marketing-vendas.html",
+    "status": "published",
+    "category": "Psicologia + Marketing",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
     "id": "paradoxo-escolha-vendas-2026-08-16",
     "title": "Paradoxo da escolha: por que opções demais podem fazer o cliente não comprar",
     "seoTitle": "Paradoxo da Escolha: Opções Demais Vendem Menos? | MPMV",
