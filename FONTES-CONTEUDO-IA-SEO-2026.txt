@@ -1,0 +1,13 @@
+FONTES PRIMÁRIAS USADAS NO ARTIGO
+
+Google Search Central — conteúdo de IA generativa
+https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=pt-br
+
+Google Search Central — conteúdo útil e people-first
+https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=pt-br
+
+Google Search Central — políticas de spam / abuso de conteúdo em escala
+https://developers.google.com/search/docs/essentials/spam-policies?hl=pt-br
+
+Google Search Central — guia 2026 para recursos de IA generativa
+https://developers.google.com/search/docs/fundamentals/ai-optimization-guide?hl=pt-br

@@ -117,6 +117,14 @@
       "destination": "/seo-para-inteligencia-artificial.html"
     },
     {
+      "source": "/blog/conteudo-gerado-por-ia-seo",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
+      "source": "/blog/conteudo-gerado-por-ia-seo/",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },

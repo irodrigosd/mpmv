@@ -1,0 +1,23 @@
+COMO SUBIR — ARTIGO CONTEÚDO GERADO POR IA E SEO 2026
+
+Use o recurso SUBIR ZIP do /admin/blog/.
+Selecione este arquivo ZIP completo.
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/conteudo-gerado-por-ia-seo/
+
+ARQUIVOS DE PRODUÇÃO INCLUÍDOS
+- conteudo-gerado-por-ia-seo.html
+- blog.html (novo artigo adicionado no topo)
+- data/blog-posts.json (metadados do painel atualizados)
+- sitemap.xml (URL adicionada)
+- assets/images/conteudo-ia-seo-google.svg
+- vercel.json (rota adicionada com e sem trailing slash)
+
+ARQUIVOS DE CONFERÊNCIA
+- SEO-CONFIG-CONTEUDO-IA-2026.json
+- SEO-LEGIBILIDADE-VALIDACAO-CONTEUDO-IA-2026.txt
+- FONTES-CONTEUDO-IA-SEO-2026.txt
+
+IMPORTANTE
+Este pacote NÃO sobrescreve admin/blog.html nem api/admin-blog-upload.js.
