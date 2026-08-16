@@ -141,6 +141,14 @@
       "destination": "/efeito-de-ancoragem-precos-vendas.html"
     },
     {
+      "source": "/blog/paradoxo-da-escolha-vendas",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-escolha-vendas/",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },

@@ -1,0 +1,13 @@
+COMO SUBIR — PARADOXO DA ESCOLHA 2026
+
+1. Abra /admin/blog/
+2. Use o botão de upload de ZIP.
+3. Selecione este ZIP.
+4. O pacote adiciona o artigo, rota, sitemap, data/blog-posts.json e atualiza blog.html.
+5. Ele NÃO inclui arquivos do painel /admin/blog nem o endpoint de upload.
+
+URL esperada:
+/blog/paradoxo-da-escolha-vendas/
+
+AJUSTE VISUAL INCLUÍDO:
+Os títulos dos cards do blog voltam a ter trechos em dourado/amarelo. O H1 do novo artigo também usa esse destaque.
