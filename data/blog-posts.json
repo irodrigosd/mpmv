@@ -1,5 +1,27 @@
 [
   {
+    "id": "dark-patterns-marketing-2026-08-16",
+    "title": "Dark patterns: quando a persuasão vira manipulação no marketing digital",
+    "seoTitle": "Dark Patterns: Persuasão ou Manipulação? | MPMV",
+    "metaDescription": "Dark patterns manipulam decisões com urgência falsa, opções escondidas e pressão. Veja exemplos, riscos e como persuadir sem enganar.",
+    "focusKeyphrase": "dark patterns",
+    "secondaryKeyphrases": [
+      "dark patterns marketing digital",
+      "persuasão e manipulação",
+      "design manipulativo",
+      "marketing manipulativo",
+      "padrões obscuros"
+    ],
+    "slug": "dark-patterns-marketing-digital",
+    "url": "/blog/dark-patterns-marketing-digital/",
+    "file": "dark-patterns-marketing-digital.html",
+    "status": "published",
+    "category": "Persuasão + Marketing",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
     "id": "conteudo-ia-seo-2026-08-16",
     "title": "Conteúdo gerado por IA prejudica o SEO? O que o Google realmente diz em 2026",
     "seoTitle": "Conteúdo Gerado por IA Prejudica o SEO? | MPMV",

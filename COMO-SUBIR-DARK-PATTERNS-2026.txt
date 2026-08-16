@@ -1,0 +1,20 @@
+COMO SUBIR — ARTIGO DARK PATTERNS 2026
+
+1. No /admin/blog, envie este ZIP pelo mesmo botão usado nos artigos anteriores.
+2. O pacote adiciona o artigo e atualiza apenas os arquivos necessários de índice/rota.
+3. URL esperada após o deploy:
+https://www.maispersuasaomaisvendas.com.br/blog/dark-patterns-marketing-digital/
+
+ARQUIVOS INCLUÍDOS
+- dark-patterns-marketing-digital.html
+- assets/images/dark-patterns-marketing-digital.svg
+- blog.html
+- data/blog-posts.json
+- sitemap.xml
+- vercel.json
+- SEO-CONFIG-DARK-PATTERNS-2026.json
+- SEO-LEGIBILIDADE-VALIDACAO-DARK-PATTERNS-2026.txt
+- FONTES-DARK-PATTERNS-2026.txt
+
+IMPORTANTE
+O ZIP NÃO inclui admin/blog.html nem api/admin-blog-upload.js e, portanto, não sobrescreve as correções do painel.

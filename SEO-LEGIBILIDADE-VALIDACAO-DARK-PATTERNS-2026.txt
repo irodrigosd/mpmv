@@ -1,0 +1,68 @@
+VALIDAÇÃO SEO + LEGIBILIDADE — DARK PATTERNS 2026
+
+RESULTADO NO CHECKLIST DO PAINEL /admin/blog
+SEO: 100/100 — EXCELENTE
+Legibilidade: 100/100 — EXCELENTE
+Critérios de SEO: 15/15 aprovados
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/dark-patterns-marketing-digital/
+
+TÍTULO SEO
+Dark Patterns: Persuasão ou Manipulação? | MPMV
+Caracteres: 47
+
+META DESCRIPTION
+Dark patterns manipulam decisões com urgência falsa, opções escondidas e pressão. Veja exemplos, riscos e como persuadir sem enganar.
+Caracteres: 133
+
+FRASE-CHAVE DE FOCO
+dark patterns
+Ocorrências exatas aproximadas no conteúdo visível: 23
+
+CONTEÚDO
+Palavras aproximadas: 2248
+H1: 1
+H2: 12
+H3: 12
+Links internos: 7
+Links externos/fontes: 7
+
+CHECKLIST SEO
+[OK] 1 H1 apenas
+[OK] Frase-chave no SEO title
+[OK] Frase-chave no H1
+[OK] Frase-chave na meta description
+[OK] Resposta direta no topo
+[OK] Canonical definido
+[OK] Meta robots index,follow
+[OK] Slug curto e descritivo
+[OK] Links internos para cluster MPMV
+[OK] Imagem editorial original com ALT
+[OK] Fontes primárias/autoridades (OECD, FTC, Câmara, Anatel)
+[OK] BlogPosting + BreadcrumbList + FAQPage
+[OK] Sitemap atualizado
+[OK] Rota Vercel com e sem barra
+[OK] Sem afirmar que projeto de lei é lei aprovada
+
+LEGIBILIDADE
+Média aproximada de palavras por frase: 13.9
+Frases acima de 25 palavras: 18/162 (11.1%)
+Parágrafos acima de 120 palavras: 0/57
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas e tabela comparativa
+[OK] Média de frase <= 18 palavras
+[OK] Frases longas <= 15%
+[OK] Termos explicados e leitura escaneável
+
+POSTURA / PRECISÃO
+[OK] Persuasão diferenciada de manipulação sem moralismo vazio
+[OK] PL 1470/2026 e PL 2108/2026 descritos como propostas em tramitação
+[OK] Sem aconselhamento jurídico personalizado
+[OK] Estatística de 9 em 10 atribuída à pesquisa da OECD
+[OK] Sem números inventados de conversão ou dano
+[OK] Linguagem PT-BR natural e direta
+
+OBSERVAÇÃO TÉCNICA
+O ZIP é incremental: não inclui admin/blog.html nem api/admin-blog-upload.js. Assim, não desfaz as correções do painel e do botão de upload.

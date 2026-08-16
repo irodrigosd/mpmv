@@ -125,6 +125,14 @@
       "destination": "/conteudo-gerado-por-ia-seo.html"
     },
     {
+      "source": "/blog/dark-patterns-marketing-digital",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
+      "source": "/blog/dark-patterns-marketing-digital/",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
