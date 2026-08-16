@@ -1,0 +1,17 @@
+MPMV — VALIDAÇÃO SEO + LEGIBILIDADE
+
+Artigo: Sua marca pode estar morrendo em silêncio: 9 erros que destroem a confiança do cliente
+Slug: /blog/confianca-do-cliente-erros-destroem-vendas/
+Frase-chave: confiança do cliente
+
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+Palavras auditadas: 2053
+Média de palavras por frase: 10.0
+Frases com mais de 25 palavras: 2.4%
+Média de palavras por parágrafo: 26.8
+Palavras por heading: 89.3
+Conectivos detectados: 10
+Critérios SEO aprovados: 11/11
+
+Validação baseada exatamente na heurística instalada no /admin/blog da MPMV.

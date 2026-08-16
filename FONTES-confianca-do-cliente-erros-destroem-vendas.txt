@@ -1,0 +1,7 @@
+FONTES
+
+- Edelman — 2026 Trust Barometer Special Report: Brand Growth in an Insular World: https://www.edelman.com/trust/2026/trust-barometer/special-report-brands
+- Wang et al. — Trust and Consumers’ Purchase Intention in a Social Commerce Platform: A Meta-Analytic Approach: https://journals.sagepub.com/doi/10.1177/21582440221091262
+- González-Mansilla et al. — The influence of online and offline brand trust on consumer buying intention: https://www.sciencedirect.com/org/science/article/abs/pii/S145021942100030X
+- FTC — Bringing Dark Patterns to Light: https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers
+- FTC — Action against deceptive subscription schemes, 2026: https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-sues-stop-sprawling-enterprise-operating-unlawful-subscription-schemes

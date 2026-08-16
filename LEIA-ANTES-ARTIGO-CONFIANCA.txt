@@ -1,0 +1,19 @@
+PACOTE MPMV — ARTIGO DE ALTO IMPACTO
+
+Título: Sua marca pode estar morrendo em silêncio: 9 erros que destroem a confiança do cliente
+URL: /blog/confianca-do-cliente-erros-destroem-vendas/
+SEO: 100/100
+Legibilidade: 100/100
+Palavras: 2053
+
+Objetivo: criar medo e urgência sem usar ameaça inventada. O artigo explora o risco real de perder confiança do cliente silenciosamente e conduz para o Guia Prático.
+
+Inclui:
+- HTML do artigo;
+- destaque dourado no H1 e card do blog;
+- imagem editorial SVG;
+- FAQ + BlogPosting + Breadcrumb Schema;
+- links internos;
+- CTA para o Guia;
+- blog.html, sitemap.xml, vercel.json e data/blog-posts.json atualizados;
+- checklist SEO + legibilidade.

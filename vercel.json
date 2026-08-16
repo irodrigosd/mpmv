@@ -205,6 +205,14 @@
       "destination": "/transformar-caracteristicas-em-beneficios.html"
     },
     {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
+    },
+    {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
+    },
+    {
       "source": "/admin/blog",
       "destination": "/admin/blog.html"
     },
