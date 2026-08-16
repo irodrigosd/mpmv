@@ -1,0 +1,19 @@
+FONTES PRIMÁRIAS USADAS NO ARTIGO
+
+Google Search Central — guia 2026 para IA generativa
+https://developers.google.com/search/docs/fundamentals/ai-optimization-guide?hl=pt-br
+
+Google Search Central — recursos de IA e seu site
+https://developers.google.com/search/docs/appearance/ai-features?hl=pt-BR
+
+Google Search Central — dados estruturados Article/BlogPosting
+https://developers.google.com/search/docs/appearance/structured-data/article?hl=pt-br
+
+OpenAI — Busca do ChatGPT
+https://help.openai.com/pt-br/articles/9237897-chatgpt-search
+
+OpenAI — Editores e desenvolvedores / OAI-SearchBot
+https://help.openai.com/pt-br/articles/12627856-publicadores-e-desenvolvedores-faq
+
+OpenAI — Apresentamos a busca do ChatGPT
+https://openai.com/pt-BR/index/introducing-chatgpt-search/

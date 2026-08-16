@@ -1,0 +1,77 @@
+VALIDAÇÃO SEO + LEGIBILIDADE + BUSCA COM IA — SEO PARA IA 2026
+
+RESULTADO NO CHECKLIST DO PAINEL /admin/blog
+SEO: 100/100 — EXCELENTE
+Legibilidade: 100/100 — EXCELENTE
+Critérios de SEO do painel: 11/11 aprovados
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/seo-para-inteligencia-artificial/
+
+TÍTULO SEO
+SEO para Inteligência Artificial em 2026: Guia | MPMV
+Caracteres: 53
+
+META DESCRIPTION
+Aprenda SEO para inteligência artificial e veja como aparecer no Google, no ChatGPT e em respostas de IA sem cair em hacks de AEO ou GEO.
+Caracteres: 137
+
+FRASE-CHAVE DE FOCO
+SEO para inteligência artificial
+Ocorrências exatas aproximadas no conteúdo visível: 7
+
+CONTEÚDO
+Palavras aproximadas: 2517
+H1: 1
+H2: 14
+H3: 13
+Links internos: 3
+Links externos/primários: 6
+
+CHECKLIST SEO — APROVADO
+[OK] 1 H1 apenas
+[OK] Frase-chave no SEO title: sim
+[OK] Frase-chave no H1: sim
+[OK] Frase-chave na meta description: sim
+[OK] Resposta direta no topo
+[OK] Canonical definido
+[OK] Meta robots index,follow
+[OK] Slug curto e descritivo
+[OK] Links internos para cluster MPMV
+[OK] Imagem editorial original com ALT descritivo
+[OK] Fontes primárias: Google Search Central + OpenAI
+[OK] BlogPosting + BreadcrumbList
+[OK] Sitemap atualizado
+[OK] Rota Vercel incluída com e sem barra final
+[OK] Sem promessa de posição/ranking
+[OK] AEO/GEO tratados como extensão de fundamentos, não como hack
+
+LEGIBILIDADE — APROVADA
+Média aproximada de palavras por frase: 13.1
+Frases acima de 25 palavras: 9/155 (5.8%)
+Parágrafos acima de 120 palavras: 0/94
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas e etapas para escaneabilidade
+[OK] Termos técnicos definidos antes de aprofundar
+[OK] Linguagem PT-BR natural e sem excesso de jargão
+[OK] Fatos separados de inferências
+
+BUSCA COM IA / GEO — APROVADA
+[OK] Google 2026: SEO continua relevante para recursos generativos
+[OK] Google: nenhuma marcação especial é obrigatória para AI Overviews/AI Mode
+[OK] OpenAI: site público pode aparecer na Busca do ChatGPT
+[OK] OpenAI: orientação para não bloquear OAI-SearchBot
+[OK] FAQ com respostas curtas e extraíveis
+[OK] Definições diretas e trechos citáveis
+[OK] Datas e fontes nas afirmações que podem envelhecer
+
+POSTURA / PRECISÃO — APROVADA
+[OK] Sem manipulação ou promessa enganosa
+[OK] Sem estatísticas inventadas
+[OK] Sem afirmar que existe garantia de aparecer no Google ou ChatGPT
+[OK] Sem vender hipótese como fato
+[OK] Prioridade para fontes oficiais
+
+OBSERVAÇÃO TÉCNICA
+O ZIP não altera robots.txt para evitar sobrescrever uma configuração atual que não foi confirmada. Para elegibilidade na Busca do ChatGPT, confirme no site publicado que OAI-SearchBot não está bloqueado.

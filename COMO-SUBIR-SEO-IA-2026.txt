@@ -1,0 +1,23 @@
+COMO SUBIR — ARTIGO SEO PARA IA 2026
+
+Use o recurso SUBIR ZIP do /admin/blog/.
+Selecione este arquivo ZIP completo. O painel publicará os arquivos na raiz/pastas corretas.
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/seo-para-inteligencia-artificial/
+
+ARQUIVOS DE PRODUÇÃO INCLUÍDOS
+- seo-para-inteligencia-artificial.html
+- blog.html (novo artigo adicionado no topo)
+- data/blog-posts.json (metadados do painel atualizados)
+- sitemap.xml (URL adicionada)
+- assets/images/seo-ia-google-chatgpt.svg (visual editorial com ALT)
+- vercel.json (rota adicionada com e sem trailing slash)
+
+ARQUIVOS DE CONFERÊNCIA
+- SEO-CONFIG-SEO-IA-2026.json
+- SEO-LEGIBILIDADE-VALIDACAO-SEO-IA-2026.txt
+- FONTES-SEO-IA-2026.txt
+
+IMPORTANTE
+Este pacote NÃO sobrescreve admin/blog.html nem api/admin-blog-upload.js. Assim, ele não desfaz as correções mais recentes do painel de SEO/legibilidade e do botão de upload.
