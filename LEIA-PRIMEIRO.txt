@@ -1,15 +1,21 @@
-MPMV HOTFIX — UPLOAD ROBUSTO
+ARTIGO MPMV — Quem tenta parecer inteligente costuma ser difícil de entender
 
-Suba estes 2 arquivos mantendo as pastas:
-- admin/blog.html
-- api/admin-blog-upload.js
+Temperatura do lead: frio
+Nível de consciência: inconsciente da causa
+Função: diagnóstico + consciência
+Frase central: Complexidade pode mostrar quanto você sabe. Clareza mostra quanto você domina.
 
-Correções:
-1. O painel mostra o erro técnico real, em vez de esconder tudo atrás de
-   "Não foi possível publicar o ZIP".
-2. O backend tenta BLOG_GITHUB_TOKEN primeiro e, se receber 401/403,
-   tenta GITHUB_TOKEN automaticamente.
-3. O upload foi dividido em lotes menores: até 10 arquivos / ~900 KB por lote,
-   reduzindo falhas por limite/tempo da Vercel.
+ARQUIVOS DO ZIP
+- blog/quem-tenta-parecer-inteligente/index.html
+- blog.html
+- data/blog-posts.json
+- sitemap.xml
+- SEO-CONFIG-quem-tenta-parecer-inteligente.json
+- FONTES-quem-tenta-parecer-inteligente.txt
 
-Depois do deploy, teste o mesmo ZIP novamente.
+O artigo NÃO usa imagem de capa.
+O pacote foi montado para subir pelo /admin/blog e atualizar a vitrine pública,
+a lista do admin e o sitemap no mesmo envio.
+
+Palavras no corpo do artigo: 1877
+URLs no sitemap após a reconstrução: 72

@@ -1,5 +1,28 @@
 [
   {
+    "id": "quem-tenta-parecer-inteligente-2026-08-17",
+    "title": "Quem tenta parecer inteligente costuma ser difícil de entender",
+    "seoTitle": "Parecer Inteligente Pode Deixar Sua Comunicação Confusa | MPMV",
+    "metaDescription": "Tentar parecer inteligente pode deixar sua mensagem difícil de entender. Veja por que clareza demonstra domínio e como comunicar ideias complexas melhor.",
+    "focusKeyphrase": "parecer inteligente",
+    "secondaryKeyphrases": [
+      "clareza na comunicação",
+      "jargão",
+      "comunicação",
+      "persuasão",
+      "copywriting"
+    ],
+    "slug": "quem-tenta-parecer-inteligente",
+    "url": "/blog/quem-tenta-parecer-inteligente/",
+    "file": "blog/quem-tenta-parecer-inteligente/index.html",
+    "status": "published",
+    "category": "Comunicação + Persuasão",
+    "publishedAt": "2026-08-17",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "cliente-foge-da-oferta-2026-08-16",
     "title": "O cliente está olhando sua oferta — mas alguma coisa está fazendo ele fugir",
     "seoTitle": "O cliente está olhando sua oferta — mas alguma coisa | MPMV",
@@ -297,6 +320,144 @@
     "author": "Rodrigo Castro",
     "deletable": true,
     "batchOrder": 26
+  },
+  {
+    "id": "paradoxo-da-confianca-2026-08-16",
+    "title": "O paradoxo da confiança: quanto mais você diz que é confiável, menos confiável pode parecer",
+    "seoTitle": "O paradoxo da confiança: quanto mais você diz que é | MPMV",
+    "metaDescription": "Repetir “confie em mim” pode soar defensivo. Veja por que confiança é construída por sinais, prova e coerência, não por autodeclaração.",
+    "focusKeyphrase": "paradoxo da confiança",
+    "secondaryKeyphrases": [
+      "Confiança + Marca",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "paradoxo-da-confianca",
+    "url": "/blog/paradoxo-da-confianca/",
+    "file": "paradoxo-da-confianca.html",
+    "status": "published",
+    "category": "Confiança + Marca",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 27
+  },
+  {
+    "id": "esconder-preco-conversao-2026-08-16",
+    "title": "Por que esconder o preço pode aumentar curiosidade — ou destruir sua conversão",
+    "seoTitle": "Por que esconder o preço pode aumentar curiosidade — ou | MPMV",
+    "metaDescription": "Esconder preço pode fazer sentido em vendas consultivas, mas também pode gerar fricção e desconfiança. Veja quando usar cada abordagem.",
+    "focusKeyphrase": "esconder o preço",
+    "secondaryKeyphrases": [
+      "Preço + Conversão",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "esconder-preco-conversao",
+    "url": "/blog/esconder-preco-conversao/",
+    "file": "esconder-preco-conversao.html",
+    "status": "published",
+    "category": "Preço + Conversão",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 28
+  },
+  {
+    "id": "oferta-comum-dificil-de-ignorar-2026-08-16",
+    "title": "Como transformar uma oferta comum em algo difícil de ignorar",
+    "seoTitle": "Como transformar uma oferta comum em algo difícil de | MPMV",
+    "metaDescription": "Uma oferta comum pode ganhar relevância com especificidade, prova e contraste. Veja como aumentar desejo sem inventar diferenciais.",
+    "focusKeyphrase": "oferta comum",
+    "secondaryKeyphrases": [
+      "Oferta + Copywriting",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "oferta-comum-dificil-de-ignorar",
+    "url": "/blog/oferta-comum-dificil-de-ignorar/",
+    "file": "oferta-comum-dificil-de-ignorar.html",
+    "status": "published",
+    "category": "Oferta + Copywriting",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 29
+  },
+  {
+    "id": "oferta-que-faz-cliente-agir-2026-08-16",
+    "title": "A diferença entre uma oferta que informa e uma oferta que faz o cliente agir",
+    "seoTitle": "A diferença entre uma oferta que informa e uma oferta | MPMV",
+    "metaDescription": "Informação explica o produto. Persuasão organiza importância, prova e ação. Veja como transformar descrição em oferta que conduz decisão.",
+    "focusKeyphrase": "oferta que faz o cliente agir",
+    "secondaryKeyphrases": [
+      "Oferta + Conversão",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "oferta-que-faz-cliente-agir",
+    "url": "/blog/oferta-que-faz-cliente-agir/",
+    "file": "oferta-que-faz-cliente-agir.html",
+    "status": "published",
+    "category": "Oferta + Conversão",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 30
+  },
+  {
+    "id": "headline-para-parar-scroll-2026-08-16",
+    "title": "Como escrever uma headline que faz a pessoa parar de rolar a tela",
+    "seoTitle": "Como escrever uma headline que faz a pessoa parar de | MPMV",
+    "metaDescription": "Uma headline forte combina relevância, especificidade e tensão. Veja estruturas para interromper o scroll sem apelar para promessa falsa.",
+    "focusKeyphrase": "headline",
+    "secondaryKeyphrases": [
+      "Copywriting + Atenção",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "headline-para-parar-scroll",
+    "url": "/blog/headline-para-parar-scroll/",
+    "file": "headline-para-parar-scroll.html",
+    "status": "published",
+    "category": "Copywriting + Atenção",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 31
+  },
+  {
+    "id": "palavras-copy-mais-fraca-2026-08-16",
+    "title": "10 palavras que deixam sua copy mais fraca sem você perceber",
+    "seoTitle": "10 palavras que deixam sua copy mais fraca sem você | MPMV",
+    "metaDescription": "Algumas palavras ocupam espaço sem aumentar clareza. Veja dez termos que costumam enfraquecer copy quando aparecem sem prova ou especificidade.",
+    "focusKeyphrase": "copy mais fraca",
+    "secondaryKeyphrases": [
+      "Copywriting + Linguagem",
+      "persuasão",
+      "marketing",
+      "vendas",
+      "copywriting"
+    ],
+    "slug": "palavras-copy-mais-fraca",
+    "url": "/blog/palavras-copy-mais-fraca/",
+    "file": "palavras-copy-mais-fraca.html",
+    "status": "published",
+    "category": "Copywriting + Linguagem",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 32
   },
   {
     "id": "criar-curiosidade-sem-clickbait-2026-08-16",
