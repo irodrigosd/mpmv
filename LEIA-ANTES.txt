@@ -1,24 +1,15 @@
-RESTAURAÇÃO — STATUS SEO + LEGIBILIDADE NO /admin/blog/
+ATUALIZAÇÃO /BLOG — CAPA + TEXTO
 
-O que este pacote faz:
-- preserva Subir ZIP e publicar;
-- preserva Excluir artigo;
-- adiciona SEO 0–100 por artigo;
-- adiciona Legibilidade 0–100 por artigo;
-- usa cores: verde, amarelo, laranja e vermelho;
-- calcula o status lendo o HTML publicado de cada artigo.
+O que muda:
+- cada card do /blog passa a ter capa do artigo + texto;
+- desktop: capa à esquerda, conteúdo à direita;
+- mobile: capa em cima, conteúdo embaixo;
+- títulos mantêm os destaques dourados;
+- sem botões extras;
+- nenhuma rota, artigo ou /admin/blog é alterado.
 
-IMPORTANTE:
-As notas são do checklist MPMV, inspiradas nos sinais que você acompanha no Yoast.
-Elas NÃO são a pontuação oficial do plugin Yoast, porque o blog é HTML/Vercel e não WordPress com Yoast rodando no servidor.
+Arquivos:
+- blog.html
+- assets/images/*.svg
 
-SEO avalia:
-frase-chave no título/H1 e começo, subtítulos, meta description, título SEO,
-canonical, links internos, ALT de imagens, tamanho do artigo e estrutura de H2.
-
-Legibilidade avalia:
-tamanho médio de frases, porcentagem de frases longas, tamanho dos parágrafos,
-frequência de subtítulos, listas e conectivos/transições.
-
-Substituir somente:
-admin/blog.html
+Suba este ZIP pelo mesmo fluxo que você já usa para atualizar o site.
