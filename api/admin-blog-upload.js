@@ -17,16 +17,19 @@ export default async function handler(req,res){
   const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
   const files=Array.isArray(body.files)?body.files:[];
   if(!files.length) return json(res,400,{error:'Nenhum arquivo recebido.'});
-  if(files.length>120) return json(res,400,{error:'ZIP com arquivos demais para o painel (máximo: 120 arquivos).'});
+  if(files.length>80) return json(res,400,{error:'ZIP com arquivos demais.'});
 
   // Fallbacks para evitar depender de quatro variáveis diferentes.
   // BLOG_GITHUB_TOKEN já existia no projeto antes do novo painel.
-  const token=process.env.GITHUB_TOKEN || process.env.BLOG_GITHUB_TOKEN;
+  const tokenCandidates=[
+    process.env.BLOG_GITHUB_TOKEN,
+    process.env.GITHUB_TOKEN
+  ].filter(Boolean).map(t=>t.trim()).filter((t,i,a)=>a.indexOf(t)===i);
   const owner=(process.env.GITHUB_OWNER || 'irodrigosd').trim();
   const repo=(process.env.GITHUB_REPO || 'mpmv').trim();
   const branch=(process.env.GITHUB_BRANCH || 'main').trim();
 
-  if(!token){
+  if(!tokenCandidates.length){
     return json(res,500,{
       error:'Token GitHub indisponível neste deployment.',
       diagnostic:{
@@ -39,13 +42,13 @@ export default async function handler(req,res){
     });
   }
 
-  const headers={
+  const makeHeaders=token=>({
     'Accept':'application/vnd.github+json',
-    'Authorization':`Bearer ${token.trim()}`,
+    'Authorization':`Bearer ${token}`,
     'X-GitHub-Api-Version':'2022-11-28',
     'User-Agent':'MPMV-Blog-Admin',
     'Content-Type':'application/json'
-  };
+  });
 
   const safePath=p=>{
     if(typeof p!=='string') return false;
@@ -59,11 +62,23 @@ export default async function handler(req,res){
       if(typeof f.content!=='string' || f.content.length>5_000_000) return json(res,400,{error:`Arquivo inválido ou grande demais: ${f.path}`});
     }
 
-    const refRes=await fetch(`${API}/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`,{headers});
-    if(!refRes.ok){
-      const t=await refRes.text().catch(()=> '');
-      throw new Error(`GitHub REF: ${refRes.status} ${t.slice(0,220)}`);
+    let headers=null;
+    let refRes=null;
+    let refErr='';
+    for(const candidate of tokenCandidates){
+      const h=makeHeaders(candidate);
+      const r=await fetch(`${API}/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`,{headers:h});
+      if(r.ok){
+        headers=h;
+        refRes=r;
+        break;
+      }
+      const t=await r.text().catch(()=> '');
+      refErr=`GitHub REF: ${r.status} ${t.slice(0,220)}`;
+      // Se um token estiver vencido/sem permissão, tenta o próximo.
+      if(r.status!==401 && r.status!==403) break;
     }
+    if(!refRes) throw new Error(refErr||'Falha ao autenticar no GitHub.');
     const ref=await refRes.json();
     const parentSha=ref.object.sha;
 

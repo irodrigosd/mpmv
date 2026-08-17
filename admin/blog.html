@@ -145,49 +145,26 @@ async function uploadZip(){
       files.push({path,content:btoa(binary)});
     }
 
-    // Envia o ZIP em lotes pequenos para não estourar o limite de corpo da Vercel.
-    const batches=[];
-    let batch=[];
-    let batchBytes=0;
-    const MAX_BATCH_BYTES=1_800_000;
-    const MAX_BATCH_FILES=25;
+    if(totalBytes>3_200_000) throw new Error('O conteúdo descompactado passou de 3,2 MB. Suba esse pacote direto pelo GitHub.');
 
-    for(const f of files){
-      const approxBytes=Math.floor((f.content.length*3)/4);
-      if(approxBytes>2_500_000){
-        throw new Error(`O arquivo ${f.path} sozinho é grande demais. Comprima para menos de 2,5 MB.`);
-      }
-      if(batch.length && (batchBytes+approxBytes>MAX_BATCH_BYTES || batch.length>=MAX_BATCH_FILES)){
-        batches.push(batch);
-        batch=[];
-        batchBytes=0;
-      }
-      batch.push(f);
-      batchBytes+=approxBytes;
-    }
-    if(batch.length) batches.push(batch);
-
+    showProgress(`Enviando ${files.length} arquivos ao GitHub...`);
     uploadBtn.textContent='Publicando...';
-    let lastCommit='';
 
-    for(let i=0;i<batches.length;i++){
-      showProgress(`Enviando lote ${i+1}/${batches.length} (${batches[i].length} arquivos)...`);
-      const r=await fetch('/api/admin-blog-upload',{
-        method:'POST',
-        headers:{'Content-Type':'application/json','x-admin-token':token},
-        body:JSON.stringify({zipName:`${file.name} [${i+1}/${batches.length}]`,files:batches[i]})
-      });
-      const data=await r.json().catch(()=>({}));
-      if(r.status===401){
-        sessionStorage.removeItem('mpmv_admin_token');
-        throw new Error('Token inválido. Tente novamente.');
-      }
-      if(!r.ok) throw new Error(data.error||data.detail||`Falha ao publicar o lote ${i+1}.`);
-      lastCommit=data.commit||lastCommit;
+    const r=await fetch('/api/admin-blog-upload',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({zipName:file.name,files})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){
+      sessionStorage.removeItem('mpmv_admin_token');
+      throw new Error('Token inválido. Tente novamente.');
     }
+    if(!r.ok) throw new Error(data.error||data.detail||'Falha ao publicar o ZIP.');
 
-    showProgress(`Publicado. Commit ${lastCommit?.slice(0,7)||''}. Aguarde o deploy da Vercel e atualize esta página.`);
+    showProgress(`Publicado. Commit ${data.commit?.slice(0,7)||''}. Aguarde o deploy da Vercel e atualize esta página.`);
     uploadBtn.textContent='Publicado ✓';
+    setTimeout(()=>{location.reload()},3500);
   }catch(e){
     showProgress('Erro: '+e.message);
     uploadBtn.disabled=false;

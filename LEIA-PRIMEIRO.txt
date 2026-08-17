@@ -1,12 +1,15 @@
-MPMV HOTFIX — UPLOAD + /BLOG
+MPMV HOTFIX — UPLOAD ROBUSTO
 
-Suba estes arquivos na raiz mantendo a pasta admin/.
-
+Suba estes 2 arquivos mantendo as pastas:
 - admin/blog.html
-- blog.html
+- api/admin-blog-upload.js
 
 Correções:
-- /admin/blog envia ZIP em lotes pequenos para evitar erro de tamanho da Vercel.
-- /blog fica sem as capas SVG, mantendo os artigos em formato editorial de texto.
+1. O painel mostra o erro técnico real, em vez de esconder tudo atrás de
+   "Não foi possível publicar o ZIP".
+2. O backend tenta BLOG_GITHUB_TOKEN primeiro e, se receber 401/403,
+   tenta GITHUB_TOKEN automaticamente.
+3. O upload foi dividido em lotes menores: até 10 arquivos / ~900 KB por lote,
+   reduzindo falhas por limite/tempo da Vercel.
 
-Se um único arquivo dentro do ZIP tiver mais de 2,5 MB, comprima esse arquivo antes.
+Depois do deploy, teste o mesmo ZIP novamente.
