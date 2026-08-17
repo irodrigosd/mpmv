@@ -213,14 +213,6 @@
       "destination": "/erros-de-persuasao-destroem-vendas.html"
     },
     {
-      "source": "/blog/produto-bom-nao-vende",
-      "destination": "/produto-bom-nao-vende.html"
-    },
-    {
-      "source": "/blog/produto-bom-nao-vende/",
-      "destination": "/produto-bom-nao-vende.html"
-    },
-    {
       "source": "/blog/erro-silencioso-cliente-desconfiar-oferta",
       "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
     },
