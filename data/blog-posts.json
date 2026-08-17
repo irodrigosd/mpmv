@@ -1,5 +1,22 @@
 [
   {
+    "id": "seo-e-geo-2026-08-17",
+    "title": "SEO e GEO",
+    "seoTitle": "SEO e GEO: como aparecer no Google e nas respostas de IA",
+    "metaDescription": "Entenda a diferença entre SEO e GEO, como os dois se conectam e o que muda na produção de conteúdo para Google, AI Overviews e mecanismos de resposta com IA.",
+    "focusKeyphrase": "seo e geo",
+    "secondaryKeyphrases": [],
+    "slug": "seo-e-geo",
+    "url": "/blog/seo-e-geo/",
+    "file": "blog/seo-e-geo/index.html",
+    "status": "published",
+    "category": "Conteúdo",
+    "publishedAt": "2026-08-17",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "canibalizacao-no-ranking-do-google-2026-08-17",
     "title": "Canibalização no ranking do Google: quando seus próprios artigos começam a disputar espaço",
     "seoTitle": "Canibalização no ranking do Google: como identificar e corrigir",
