@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#101010"/>
+  <circle cx="1050" cy="120" r="165" fill="#9e1b1b" opacity="0.96"/>
+  <rect x="76" y="70" width="185" height="8" rx="4" fill="#c9a227"/>
+  <text x="76" y="148" fill="#f5f1e9" font-family="Arial, Helvetica, sans-serif" font-size="37" font-weight="700">MPMV • MAIS PERSUASÃO, MAIS VENDAS</text>
+  <text x="76" y="270" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="67" font-weight="900">CANIBALIZAÇÃO</text>
+  <text x="76" y="352" fill="#c9a227" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900">NO GOOGLE</text>
+  <text x="80" y="432" fill="#d8d8d8" font-family="Arial, Helvetica, sans-serif" font-size="31">Quando seus próprios artigos disputam a mesma busca.</text>
+  <rect x="76" y="505" width="430" height="64" rx="12" fill="#9e1b1b"/>
+  <text x="103" y="548" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">DUAS PÁGINAS. UMA INTENÇÃO.</text>
+</svg>

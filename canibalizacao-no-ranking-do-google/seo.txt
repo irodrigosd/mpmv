@@ -1,0 +1,34 @@
+TÍTULO SEO
+Canibalização no ranking do Google: como identificar e corrigir
+
+SLUG
+canibalizacao-no-ranking-do-google
+
+PALAVRA-CHAVE PRINCIPAL
+canibalização no ranking do Google
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+canibalização de palavras-chave
+keyword cannibalization
+como identificar canibalização no Google
+canibalização SEO
+
+META DESCRIPTION
+Entenda o que é canibalização no ranking do Google, como identificar páginas que disputam a mesma intenção de busca e o que fazer para corrigir.
+
+H1
+Canibalização no ranking do Google: quando seus próprios artigos começam a disputar espaço
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/canibalizacao-no-ranking-do-google/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o que é canibalização em SEO, como identificar e como corrigir.
+
+FONTES PRINCIPAIS
+Google Search Central — Canonicalização e URLs duplicadas
+Google Search Central — Como a Pesquisa Google funciona
+Google Search Central — Conteúdo útil e feito para pessoas
+Google Search Central — Políticas de spam
+Google Search Central — Links rastreáveis e texto âncora
+Google Search Central — Search Console
