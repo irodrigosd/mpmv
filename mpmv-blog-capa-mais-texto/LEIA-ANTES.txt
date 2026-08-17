@@ -1,0 +1,15 @@
+ATUALIZAÇÃO /BLOG — CAPA + TEXTO
+
+O que muda:
+- cada card do /blog passa a ter capa do artigo + texto;
+- desktop: capa à esquerda, conteúdo à direita;
+- mobile: capa em cima, conteúdo embaixo;
+- títulos mantêm os destaques dourados;
+- sem botões extras;
+- nenhuma rota, artigo ou /admin/blog é alterado.
+
+Arquivos:
+- blog.html
+- assets/images/*.svg
+
+Suba este ZIP pelo mesmo fluxo que você já usa para atualizar o site.
