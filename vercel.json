@@ -517,14 +517,6 @@
       "destination": "/cliente-nao-quer-seu-produto.html"
     },
     {
-      "source": "/blog/muitas-visualizacoes-zero-vendas",
-      "destination": "/muitas-visualizacoes-zero-vendas.html"
-    },
-    {
-      "source": "/blog/muitas-visualizacoes-zero-vendas/",
-      "destination": "/muitas-visualizacoes-zero-vendas.html"
-    },
-    {
       "source": "/blog/motivos-posts-flopam",
       "destination": "/motivos-posts-flopam.html"
     },
