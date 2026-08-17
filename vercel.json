@@ -517,14 +517,6 @@
       "destination": "/cliente-nao-quer-seu-produto.html"
     },
     {
-      "source": "/blog/motivos-posts-flopam",
-      "destination": "/motivos-posts-flopam.html"
-    },
-    {
-      "source": "/blog/motivos-posts-flopam/",
-      "destination": "/motivos-posts-flopam.html"
-    },
-    {
       "source": "/blog/transformar-seguidores-em-clientes",
       "destination": "/transformar-seguidores-em-clientes.html"
     },
