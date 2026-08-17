@@ -85,6 +85,30 @@
       "destination": "/gatilhos-mentais.html"
     },
     {
+      "source": "/blog/copywriting-para-redes-sociais",
+      "destination": "/copywriting-para-redes-sociais.html"
+    },
+    {
+      "source": "/blog/copywriting-para-redes-sociais/",
+      "destination": "/copywriting-para-redes-sociais.html"
+    },
+    {
+      "source": "/blog/persuasao-no-marketing-digital",
+      "destination": "/persuasao-no-marketing-digital.html"
+    },
+    {
+      "source": "/blog/persuasao-no-marketing-digital/",
+      "destination": "/persuasao-no-marketing-digital.html"
+    },
+    {
+      "source": "/blog/engenheiro-de-prompts-persuasivo",
+      "destination": "/engenheiro-de-prompts-persuasivo.html"
+    },
+    {
+      "source": "/blog/engenheiro-de-prompts-persuasivo/",
+      "destination": "/engenheiro-de-prompts-persuasivo.html"
+    },
+    {
       "source": "/blog/seo-para-inteligencia-artificial",
       "destination": "/seo-para-inteligencia-artificial.html"
     },
