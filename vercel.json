@@ -221,14 +221,6 @@
       "destination": "/conteudo-treinando-pessoas-a-ignorar.html"
     },
     {
-      "source": "/blog/visitam-pagina-mas-nao-compram",
-      "destination": "/visitam-pagina-mas-nao-compram.html"
-    },
-    {
-      "source": "/blog/visitam-pagina-mas-nao-compram/",
-      "destination": "/visitam-pagina-mas-nao-compram.html"
-    },
-    {
       "source": "/blog/anunciando-para-pessoas-que-nao-compram",
       "destination": "/anunciando-para-pessoas-que-nao-compram.html"
     },
