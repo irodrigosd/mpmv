@@ -1,214 +1,37 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Leads | MPMV</title>
-  <meta name="robots" content="noindex,nofollow">
-  <link rel="icon" href="/favicon-mpmv.png?v=3">
-  <style>
-    :root{--bg:#0f1720;--panel:#fff;--ink:#16344a;--muted:#6e7f8c;--line:#dbe7ed;--blue:#168fbd;--red:#ef5a63;--green:#2d9a65;--soft:#f4f9fb}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,sans-serif;background:var(--soft);color:var(--ink)}
-    .wrap{width:min(1200px,calc(100% - 28px));margin:auto;padding:28px 0 60px}
-    .top{display:flex;justify-content:space-between;gap:20px;align-items:center}
-    .brand{font-weight:900}.top a{color:var(--blue);font-weight:800}
-    .card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 14px 40px rgba(31,59,75,.06)}
-    h1{margin-top:0}.muted{color:var(--muted)}
-    .auth{display:grid;grid-template-columns:1fr auto;gap:10px}
-    input,button{font:inherit}.auth input,.search{width:100%;min-height:48px;border:1px solid #c8dbe4;border-radius:9px;padding:0 13px}
-    button{cursor:pointer}.primary{min-height:48px;border:0;border-radius:9px;background:var(--ink);color:#fff;font-weight:900;padding:0 18px}
-    .status{margin-top:10px;font-weight:800}.status.ok{color:var(--green)}.status.error{color:#b92d39}
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 18px}
-    .tab{border:1px solid var(--line);background:#f7fbfd;border-radius:999px;padding:10px 16px;font-weight:900;color:var(--ink)}
-    .tab.active{background:var(--ink);border-color:var(--ink);color:#fff}
-    .toolbar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:16px}
-    .secondary{min-height:44px;border:1px solid #bfd3dd;background:#fff;border-radius:9px;padding:0 15px;font-weight:900}
-    .stats{display:flex;gap:22px;flex-wrap:wrap;margin:12px 0 18px}.stat strong{font-size:1.45rem}.stat span{display:block;color:var(--muted);font-size:.82rem}
-    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px}
-    table{width:100%;border-collapse:collapse;min-width:760px}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-    th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;background:#f7fbfd;color:#5d7482}
-    tr:last-child td{border-bottom:0}.ok{color:var(--green);font-weight:800}.error{color:#b92d39;font-weight:800}
-    .view{border:0;background:var(--blue);color:#fff;border-radius:7px;padding:8px 10px;font-weight:900}
-    .hidden{display:none!important}
-    dialog{width:min(760px,calc(100% - 30px));border:0;border-radius:18px;padding:0;box-shadow:0 28px 90px rgba(0,0,0,.28)}
-    dialog::backdrop{background:rgba(8,24,34,.58)}
-    .modal-head{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
-    .modal-head h2{margin:0}.close{border:0;background:#eef5f8;width:38px;height:38px;border-radius:50%;font-size:1.2rem}
-    .answers{padding:8px 22px 24px}.answer{padding:16px 0;border-bottom:1px solid var(--line)}.answer:last-child{border-bottom:0}
-    .answer b{display:block;margin-bottom:5px}.answer p{margin:0;white-space:pre-wrap}
-    @media(max-width:680px){.top,.auth,.toolbar{grid-template-columns:1fr;display:grid}.top{align-items:start}.card{padding:18px}}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leads MPMV</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon-mpmv.png?v=3" type="image/png">
+<style>
+:root{--ink:#123551;--sky:#55b6dd;--deep:#178bbb;--red:#ef5a63;--bg:#f4f9fb;--line:#d9e8ee;--muted:#6a7f8c}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}.wrap{width:min(1180px,calc(100% - 32px));margin:42px auto}.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{font-weight:900;color:var(--deep);letter-spacing:.08em}.head h1{margin:6px 0 0;font-size:clamp(2rem,5vw,3.6rem)}.card{margin-top:26px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 14px 38px rgba(18,53,81,.07)}.auth{display:grid;grid-template-columns:1fr auto;gap:10px}.auth input,.tools input{min-height:46px;border:1px solid #cbdde5;border-radius:9px;padding:0 13px;font:inherit}.btn{min-height:46px;border:0;border-radius:9px;padding:0 18px;background:var(--deep);color:#fff;font-weight:900;cursor:pointer}.btn.alt{background:var(--ink)}.btn.ghost{background:#eef7fa;color:var(--ink)}.status{margin:12px 0 0;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:14px;margin-top:20px}.stat{padding:16px;border-radius:12px;background:#eef8fc}.stat strong{display:block;font-size:1.8rem}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.tools input{flex:1;min-width:220px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}th,td{text-align:left;padding:14px 15px;border-bottom:1px solid #e7eff2}th{background:#f4fafc;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}td{font-size:.94rem}tr:last-child td{border-bottom:0}.muted{color:var(--muted)}.error{color:#a32f38}.ok{color:#19734a}@media(max-width:650px){.auth{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.wrap{margin-top:24px}}
+</style>
 </head>
-<body>
-<main class="wrap">
-  <div class="top"><div class="brand">MPMV — Painel de Leads</div><a href="/">← Voltar ao site</a></div>
-
-  <section class="card">
-    <h1>Leads e aplicações</h1>
-    <p class="muted">Use o mesmo token administrativo configurado na Vercel.</p>
-    <div class="auth">
-      <input id="token" type="password" placeholder="Token administrativo" autocomplete="off">
-      <button id="load" class="primary">CARREGAR</button>
-    </div>
-    <div id="status" class="status"></div>
-  </section>
-
-  <section id="panel" class="card hidden">
-    <div class="tabs">
-      <button class="tab active" data-tab="guide">Leads do Guia</button>
-      <button class="tab" data-tab="mentoria">Form da Mentoria</button>
-    </div>
-
-    <div class="toolbar">
-      <input id="search" class="search" type="search" placeholder="Buscar por nome, e-mail, produto ou telefone">
-      <button id="csv" class="secondary">EXPORTAR CSV</button>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><strong id="total">0</strong><span>Total da origem</span></div>
-      <div class="stat"><strong id="shown">0</strong><span>Exibidos</span></div>
-    </div>
-
-    <div id="guideView">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Nome</th><th>E-mail</th><th>Data</th><th>Status</th></tr></thead>
-          <tbody id="guideRows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div id="mentoriaView" class="hidden">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Produto</th><th>Faturamento</th><th>Data</th><th></th></tr></thead>
-          <tbody id="mentoriaRows"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+<body><main class="wrap">
+<div class="head"><div><div class="brand">MPMV</div><h1>Leads do Guia</h1></div><a href="/" style="color:#178bbb;font-weight:800">← Voltar para a LP</a></div>
+<section class="card">
+  <strong>Acesso administrativo</strong>
+  <p class="muted">Digite o mesmo valor configurado na Vercel como <code>LEADS_ADMIN_TOKEN</code>.</p>
+  <div class="auth"><input id="token" type="password" autocomplete="off" placeholder="Token administrativo"><button class="btn" id="load">Abrir painel</button></div>
+  <p id="status" class="status">Nenhum dado carregado.</p>
+</section>
+<section class="card" id="panel" hidden>
+  <div class="stats"><div class="stat"><span>Total na lista</span><strong id="total">0</strong></div><div class="stat"><span>Exibidos</span><strong id="shown">0</strong></div></div>
+  <div class="tools"><input id="search" type="search" placeholder="Buscar por nome ou e-mail"><button class="btn alt" id="csv">Baixar CSV</button><button class="btn ghost" id="refresh">Atualizar</button></div>
+  <div class="table-wrap"><table><thead><tr><th>Nome</th><th>E-mail</th><th>Data do cadastro</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
 </main>
-
-<dialog id="detail">
-  <div class="modal-head"><h2>Respostas da aplicação</h2><button id="closeDetail" class="close" aria-label="Fechar">×</button></div>
-  <div id="detailBody" class="answers"></div>
-</dialog>
-
 <script>
 (function(){
-  var token=document.getElementById('token'),status=document.getElementById('status'),panel=document.getElementById('panel'),
-      search=document.getElementById('search'),total=document.getElementById('total'),shown=document.getElementById('shown'),
-      guideRows=document.getElementById('guideRows'),mentoriaRows=document.getElementById('mentoriaRows'),
-      guideView=document.getElementById('guideView'),mentoriaView=document.getElementById('mentoriaView'),
-      detail=document.getElementById('detail'),detailBody=document.getElementById('detailBody');
-  var guide=[],mentoria=[],active='guide';
-
+  var all=[]; var token=document.getElementById('token'); var status=document.getElementById('status'); var panel=document.getElementById('panel');
   try{token.value=sessionStorage.getItem('mpmv-leads-token')||''}catch(e){}
-
-  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function esc(v){return String(v||'').replace(/[&<>\"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]})}
   function date(v){if(!v)return '—';try{return new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short'}).format(new Date(v))}catch(e){return v}}
-  function current(){return active==='guide'?guide:mentoria}
-  function setStatus(text,cls){status.textContent=text;status.className='status '+(cls||'')}
-
-  function renderGuide(list){
-    guideRows.innerHTML=list.map(function(x){
-      var s=x.emailBlacklisted?'Bloqueado':'Ativo';
-      return '<tr><td><strong>'+esc(x.name||'—')+'</strong></td><td>'+esc(x.email||'—')+'</td><td>'+esc(date(x.createdAt))+'</td><td class="'+(x.emailBlacklisted?'error':'ok')+'">'+s+'</td></tr>'
-    }).join('')||'<tr><td colspan="4" class="muted">Nenhum lead encontrado.</td></tr>';
-  }
-
-  function renderMentoria(list){
-    mentoriaRows.innerHTML=list.map(function(x,i){
-      return '<tr><td><strong>'+esc(x.name||'—')+'</strong></td><td>'+esc(x.email||'—')+'</td><td>'+esc(x.phone||'—')+'</td><td>'+esc(x.product||'—')+'</td><td>'+esc(x.revenue||'—')+'</td><td>'+esc(date(x.createdAt))+'</td><td><button class="view" data-id="'+esc(x.id)+'">Ver respostas</button></td></tr>'
-    }).join('')||'<tr><td colspan="7" class="muted">Nenhuma aplicação encontrada.</td></tr>';
-  }
-
-  function applySearch(){
-    var q=search.value.toLowerCase().trim(),base=current();
-    var list=!q?base:base.filter(function(x){
-      return Object.keys(x).some(function(k){var v=x[k];return typeof v==='string'&&v.toLowerCase().includes(q)})
-    });
-    shown.textContent=list.length;
-    total.textContent=base.length;
-    if(active==='guide')renderGuide(list);else renderMentoria(list);
-  }
-
-  async function fetchJson(url,t){
-    var r=await fetch(url,{headers:{'x-admin-token':t}});
-    var j={};try{j=await r.json()}catch(e){}
-    if(!r.ok)throw new Error(j.error||('HTTP '+r.status));
-    return j;
-  }
-
-  async function load(){
-    var t=token.value.trim();
-    if(!t){setStatus('Informe o token administrativo.','error');return}
-    setStatus('Carregando...');
-    document.getElementById('load').disabled=true;
-    try{
-      var pair=await Promise.all([
-        fetchJson('/api/leads?limit=500',t),
-        fetchJson('/api/mentoria?limit=500',t)
-      ]);
-      guide=pair[0].contacts||[];
-      mentoria=pair[1].applications||[];
-      panel.classList.remove('hidden');
-      try{sessionStorage.setItem('mpmv-leads-token',t)}catch(e){}
-      switchTab(active);
-      setStatus('Painel atualizado.','ok');
-    }catch(e){
-      panel.classList.add('hidden');
-      setStatus(e.message==='unauthorized'?'Token incorreto.':'Não foi possível carregar os dados: '+e.message,'error');
-    }finally{document.getElementById('load').disabled=false}
-  }
-
-  function switchTab(tab){
-    active=tab;
-    document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.dataset.tab===tab)});
-    guideView.classList.toggle('hidden',tab!=='guide');
-    mentoriaView.classList.toggle('hidden',tab!=='mentoria');
-    search.value='';
-    applySearch();
-  }
-
-  function answer(label,value){
-    return '<div class="answer"><b>'+esc(label)+'</b><p>'+esc(value||'—')+'</p></div>';
-  }
-
-  mentoriaRows.addEventListener('click',function(e){
-    var b=e.target.closest('.view');if(!b)return;
-    var x=mentoria.find(function(a){return String(a.id)===String(b.dataset.id)});if(!x)return;
-    detailBody.innerHTML=
-      answer('Nome',x.name)+answer('E-mail',x.email)+answer('Telefone',x.phone)+
-      answer('O que você vende?',x.product)+
-      answer('Você é vendedor, funcionário, autônomo ou empresário?',x.role)+
-      answer('O que mais chamou sua atenção?',x.attention)+
-      answer('Por que eu deveria escolher você e o seu projeto?',x.whyYou)+
-      answer('Quanto você tem faturado mensalmente?',x.revenue)+
-      answer('Por que você acredita que Rodrigo é a pessoa certa?',x.whyRodrigo)+
-      answer('Concordância sobre resultados',x.resultsAgreement)+
-      answer('Concordância com R$ 997/mês',x.priceAgreement)+
-      answer('Data da aplicação',date(x.createdAt));
-    if(typeof detail.showModal==='function')detail.showModal();else detail.setAttribute('open','');
-  });
-
-  document.getElementById('closeDetail').onclick=function(){detail.close()};
-  document.getElementById('load').onclick=load;
-  search.addEventListener('input',applySearch);
-  document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){switchTab(b.dataset.tab)}});
-
-  document.getElementById('csv').onclick=function(){
-    var list=current(),rows;
-    if(active==='guide'){
-      rows=[['Nome','E-mail','Data do cadastro','Status']].concat(list.map(function(x){return [x.name||'',x.email||'',x.createdAt||'',x.emailBlacklisted?'Bloqueado':'Ativo']}))
-    }else{
-      rows=[['Nome','E-mail','Telefone','Produto','Perfil','O que chamou atenção','Por que escolher você','Faturamento','Por que Rodrigo','Concordância resultados','Concordância preço','Data']].concat(list.map(function(x){return [x.name||'',x.email||'',x.phone||'',x.product||'',x.role||'',x.attention||'',x.whyYou||'',x.revenue||'',x.whyRodrigo||'',x.resultsAgreement||'',x.priceAgreement||'',x.createdAt||'']}))
-    }
-    var csv='\ufeff'+rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(';')}).join('\r\n');
-    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download=active==='guide'?'leads-guia-mpmv.csv':'aplicacoes-mentoria-mpmv.csv';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)
-  };
+  function render(list){document.getElementById('shown').textContent=list.length;document.getElementById('rows').innerHTML=list.map(function(x){var s=x.emailBlacklisted?'Bloqueado':'Ativo';return '<tr><td><strong>'+esc(x.name||'—')+'</strong></td><td>'+esc(x.email)+'</td><td>'+esc(date(x.createdAt))+'</td><td class="'+(x.emailBlacklisted?'error':'ok')+'">'+s+'</td></tr>'}).join('')||'<tr><td colspan="4" class="muted">Nenhum lead encontrado.</td></tr>'}
+  async function load(){var t=token.value.trim();if(!t){status.textContent='Informe o token administrativo.';status.className='status error';return}status.textContent='Carregando...';status.className='status';try{var r=await fetch('/api/leads?limit=500',{headers:{'x-admin-token':t}});var j=await r.json();if(!r.ok)throw new Error(j.error||('HTTP '+r.status));all=j.contacts||[];document.getElementById('total').textContent=j.count||all.length;render(all);panel.hidden=false;status.textContent='Painel atualizado.';status.className='status ok';try{sessionStorage.setItem('mpmv-leads-token',t)}catch(e){}}catch(e){panel.hidden=true;status.textContent=e.message==='unauthorized'?'Token incorreto.':'Não foi possível carregar os leads: '+e.message;status.className='status error'}}
+  document.getElementById('load').onclick=load;document.getElementById('refresh').onclick=load;
+  document.getElementById('search').addEventListener('input',function(){var q=this.value.toLowerCase().trim();render(!q?all:all.filter(function(x){return ((x.name||'')+' '+(x.email||'')).toLowerCase().includes(q)}))});
+  document.getElementById('csv').onclick=function(){var lines=[['Nome','E-mail','Data do cadastro']].concat(all.map(function(x){return [x.name||'',x.email||'',x.createdAt||'']}));var csv='\ufeff'+lines.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(';')}).join('\r\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='leads-mpmv.csv';a.click();URL.revokeObjectURL(a.href)};
 })();
-</script>
-</body>
-</html>
+</script></body></html>

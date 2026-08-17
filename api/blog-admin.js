@@ -84,12 +84,6 @@ function updateSitemap(xml, post) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entry}\n</urlset>\n`;
 }
 function decode64(s) { return Buffer.from(String(s || '').replace(/\n/g,''), 'base64').toString('utf8'); }
-function ensureAnalyticsScript(html) {
-  const source = String(html || '');
-  if (/src=[\"']\/analytics\.js[\"']/i.test(source)) return source;
-  if (!/<\/head>/i.test(source)) return source;
-  return source.replace(/<\/head>/i, '  <script src=\"/analytics.js\" defer></script>\n</head>');
-}
 
 async function gh(path, options = {}) {
   const token = envToken();
@@ -164,12 +158,8 @@ module.exports = async function handler(req, res) {
         relativePath = `assets/${name}`;
       }
       if (!relativePath) return json(res,400,{ok:false,error:'file_kind_invalid'});
-      let content = String(body.contentBase64 || '');
+      const content = String(body.contentBase64 || '');
       if (!content || content.length > 4_200_000) return json(res,413,{ok:false,error:'file_too_large',message:'Cada arquivo pode ter até cerca de 3 MB.'});
-      if (kind === 'html') {
-        const html = decode64(content);
-        content = Buffer.from(ensureAnalyticsScript(html), 'utf8').toString('base64');
-      }
       const sha = await createBlob(content, 'base64');
       return json(res,200,{ok:true,blobSha:sha,relativePath});
     }
