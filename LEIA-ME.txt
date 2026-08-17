@@ -1,10 +1,28 @@
-PATCH VISUAL DO POPUP DO CURSO
+MAPA DE ARQUIVOS — ATIVO 50 ARTIGOS
 
-Arquivos:
-- index.html
-- popup-course.css
-- public.js
+como-criar-50-artigos-com-chatgpt-em-20-minutos.html
+→ Artigo pronto para o blog.
 
-O mockup do curso foi feito em CSS; não precisa subir imagem extra.
+WORKFLOW-50-ARTIGOS.md
+→ Processo completo que usamos.
 
-ATENÇÃO: o GitHub main do projeto ainda não está sincronizado com o backend que hoje está funcionando em produção (/api/leads, /leads e formulário da mentoria). Subir este patch isoladamente no main pode disparar um deploy e restaurar arquivos antigos do repositório. Use este pacote somente depois de sincronizar o restante do source, ou aplique as alterações sobre a versão atual de produção.
+PROMPT-MESTRE-50-ARTIGOS.txt
+→ Prompt reutilizável para novos lotes.
+
+CHECKLIST-SEO-LEGIBILIDADE-PUBLICACAO.txt
+→ Checklist antes de publicar.
+
+SNIPPET-BLOG-CARD.html
+→ Card pronto para inserir em /blog/.
+
+SNIPPET-VERCEL-ROTA.json
+→ Rotas limpas para vercel.json.
+
+SNIPPET-SITEMAP.xml
+→ Entrada para sitemap.xml.
+
+SEO-CONFIG.json
+→ Metadados do artigo.
+
+Observação:
+“20 minutos” descreve um workflow acelerado com padrões já definidos. Não é uma garantia universal de tempo.
