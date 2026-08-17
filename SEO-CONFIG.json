@@ -1,32 +1,22 @@
 {
-  "title": "Copywriting para redes sociais: como escrever posts que prendem atenção e geram ação",
-  "seoTitle": "Copywriting para Redes Sociais: Guia Prático | MPMV",
-  "metaDescription": "Aprenda copywriting para redes sociais com exemplos de ganchos, legendas e CTAs para criar posts que prendem atenção e conduzem à ação.",
-  "focusKeyphrase": "copywriting para redes sociais",
+  "title": "Como criar 50 artigos em 20 minutos com ChatGPT: o workflow completo",
+  "seoTitle": "Como Criar 50 Artigos com ChatGPT em 20 Minutos | MPMV",
+  "metaDescription": "Veja o workflow para criar 50 artigos com ChatGPT em lote, revisar SEO e legibilidade, gerar schema, links internos, sitemap e ZIPs prontos para publicar.",
+  "focusKeyphrase": "criar 50 artigos com ChatGPT",
   "secondaryKeyphrases": [
-    "copy para Instagram",
-    "como escrever posts persuasivos",
-    "copy para redes sociais",
-    "ganchos para posts",
-    "CTA para redes sociais"
+    "produção de conteúdo em lote",
+    "workflow de conteúdo",
+    "SEO com ChatGPT",
+    "artigos em lote",
+    "automação de conteúdo"
   ],
-  "slug": "copywriting-para-redes-sociais",
-  "canonical": "https://www.maispersuasaomaisvendas.com.br/blog/copywriting-para-redes-sociais/",
-  "category": "Copywriting",
-  "author": "Rodrigo Castro",
-  "publishedAt": "2026-08-15",
-  "schemas": [
-    "BlogPosting",
-    "BreadcrumbList"
-  ],
-  "faqVisible": true,
-  "faqSchema": false,
-  "geoNotes": [
-    "resposta direta após a introdução",
-    "headings em formato de perguntas e tarefas",
-    "exemplos concretos",
-    "modelo autoral das quatro decisões",
-    "entidades e relações explícitas",
-    "links internos para o cluster de copywriting e persuasão"
-  ]
+  "slug": "como-criar-50-artigos-com-chatgpt-em-20-minutos",
+  "canonical": "https://www.maispersuasaomaisvendas.com.br/blog/como-criar-50-artigos-com-chatgpt-em-20-minutos/",
+  "audit": {
+    "wordCount": 1609,
+    "focusKeyphraseOccurrences": 3,
+    "hasFaqSchema": true,
+    "hasBlogPostingSchema": true,
+    "hasBreadcrumbSchema": true
+  }
 }

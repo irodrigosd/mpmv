@@ -1,0 +1,44 @@
+CHECKLIST MPMV — ARTIGO PRONTO PARA PUBLICAÇÃO
+
+SEO
+[ ] Focus keyphrase definida
+[ ] SEO title dentro de tamanho razoável
+[ ] Meta description objetiva
+[ ] Slug limpo
+[ ] Canonical correto
+[ ] Keyphrase aparece naturalmente no texto
+[ ] Pelo menos um H2/H3 reforça a intenção principal
+[ ] Links internos contextuais
+
+LEGIBILIDADE
+[ ] Frases curtas na maior parte do texto
+[ ] Parágrafos curtos
+[ ] Subtítulos frequentes
+[ ] Listas quando ajudam
+[ ] Introdução responde rapidamente à promessa
+[ ] Conclusão não repete o artigo inteiro
+
+CONFIABILIDADE
+[ ] Nenhum dado inventado
+[ ] Claims recentes verificados
+[ ] Sem promessas absolutas sem suporte
+[ ] Exemplos claramente identificados como exemplos
+
+SCHEMA
+[ ] BlogPosting
+[ ] FAQPage
+[ ] BreadcrumbList
+
+CONVERSÃO
+[ ] CTA contextual
+[ ] Próximo passo claro
+[ ] CTA não contradiz o conteúdo
+[ ] Link do lead magnet correto
+
+PUBLICAÇÃO
+[ ] Card no blog.html
+[ ] URL no sitemap.xml
+[ ] Rota no vercel.json
+[ ] Registro no data/blog-posts.json
+[ ] Deploy conferido
+[ ] Página testada em desktop e mobile

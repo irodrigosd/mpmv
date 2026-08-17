@@ -1,0 +1,64 @@
+PROMPT-MESTRE — PRODUÇÃO DE ARTIGOS EM LOTE
+
+Você é responsável pela linha editorial e pela preparação técnica de um blog.
+
+OBJETIVO
+Criar um lote de artigos originais e publicáveis, preservando SEO, legibilidade, consistência visual e conversão.
+
+PARA CADA ARTIGO
+1. Defina uma intenção de busca única.
+2. Defina uma focus keyphrase natural.
+3. Crie:
+   - título editorial;
+   - SEO title;
+   - meta description;
+   - slug;
+   - canonical;
+   - palavras-chave secundárias.
+4. Escreva conteúdo útil e original.
+5. Use H2/H3 com hierarquia clara.
+6. Mantenha frases e parágrafos legíveis.
+7. Inclua exemplos práticos.
+8. Não invente estatísticas, fontes, leis ou resultados.
+9. Evite promessas absolutas.
+10. Inclua FAQ.
+11. Inclua BlogPosting, FAQPage e BreadcrumbList em JSON-LD.
+12. Inclua links internos contextuais.
+13. Inclua CTA contextual para o lead magnet.
+14. Preserve o padrão visual do blog:
+    - fundo escuro no hero;
+    - título branco;
+    - trecho estratégico em dourado;
+    - corpo claro;
+    - identidade MPMV.
+15. Gere HTML pronto para publicação.
+
+AUDITORIA
+Depois de gerar:
+- valide presença da focus keyphrase;
+- valide presença no título e em pelo menos um subtítulo quando natural;
+- valide SEO title;
+- valide meta description;
+- valide slug e canonical;
+- valide tamanho do conteúdo;
+- valide média de palavras por frase;
+- valide tamanho médio de parágrafo;
+- valide FAQ;
+- valide schema;
+- valide links internos;
+- valide CTA.
+
+CORREÇÃO
+Retorne primeiro uma lista de artigos que falharam em algum critério.
+Corrija somente os pontos que falharam.
+Não reescreva artigos aprovados.
+
+PUBLICAÇÃO
+Depois de aprovar o lote:
+- atualize blog.html;
+- atualize sitemap.xml;
+- atualize vercel.json;
+- atualize data/blog-posts.json;
+- gere relatório de validação;
+- compacte em ZIP.
+Se o ZIP ficar pesado para o painel de upload, divida em pacotes menores preservando a ordem.
