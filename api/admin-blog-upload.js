@@ -17,7 +17,7 @@ export default async function handler(req,res){
   const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
   const files=Array.isArray(body.files)?body.files:[];
   if(!files.length) return json(res,400,{error:'Nenhum arquivo recebido.'});
-  if(files.length>80) return json(res,400,{error:'ZIP com arquivos demais.'});
+  if(files.length>120) return json(res,400,{error:'ZIP com arquivos demais para o painel (máximo: 120 arquivos).'});
 
   // Fallbacks para evitar depender de quatro variáveis diferentes.
   // BLOG_GITHUB_TOKEN já existia no projeto antes do novo painel.

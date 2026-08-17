@@ -1,0 +1,20 @@
+MPMV — HOTFIX COMPACTO FINAL
+
+Suba estes arquivos mantendo exatamente as pastas:
+- api/admin-blog-upload.js
+- api/admin-blog-delete.js
+- admin/blog.html
+- admin-blog.html
+- obrigado.html
+- vercel.json
+
+O pacote corrige:
+1. compatibilidade GITHUB_TOKEN / BLOG_GITHUB_TOKEN no upload e exclusão;
+2. exclusão do artigo + manifesto + índice do blog + sitemap + rota;
+3. botão/painel do /admin/blog preservado e admin-blog.html sincronizado;
+4. espera do deploy após upload para reduzir o efeito de artigo “demorar a aparecer”;
+5. /curso e /obrigado servidos como HTML;
+6. PDF do guia com nome de download definido.
+
+Base usada: mpmv-main(3).zip enviado nesta conversa.
+O manifesto atual dessa base contém 45 artigos.

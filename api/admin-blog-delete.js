@@ -10,8 +10,11 @@ export default async function handler(req,res){
   const {slug}=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
   if(!slug || !/^[a-z0-9-]+$/.test(slug)) return json(res,400,{error:'Slug inválido.'});
 
-  const token=process.env.GITHUB_TOKEN, owner=process.env.GITHUB_OWNER, repo=process.env.GITHUB_REPO, branch=process.env.GITHUB_BRANCH||'main';
-  if(!token||!owner||!repo) return json(res,500,{error:'Configure GITHUB_TOKEN, GITHUB_OWNER e GITHUB_REPO na Vercel.'});
+  const token=(process.env.GITHUB_TOKEN || process.env.BLOG_GITHUB_TOKEN || '').trim();
+  const owner=(process.env.GITHUB_OWNER || 'irodrigosd').trim();
+  const repo=(process.env.GITHUB_REPO || 'mpmv').trim();
+  const branch=(process.env.GITHUB_BRANCH || 'main').trim();
+  if(!token) return json(res,500,{error:'Token GitHub indisponível neste deployment.'});
   const headers={'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28','User-Agent':'MPMV-Blog-Admin'};
   const pathUrl=path=>`${API}/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(branch)}`;
 

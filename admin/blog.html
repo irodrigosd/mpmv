@@ -162,9 +162,27 @@ async function uploadZip(){
     }
     if(!r.ok) throw new Error(data.error||data.detail||'Falha ao publicar o ZIP.');
 
-    showProgress(`Publicado. Commit ${data.commit?.slice(0,7)||''}. Aguarde o deploy da Vercel e atualize esta página.`);
+    showProgress(`Publicado no GitHub. Commit ${data.commit?.slice(0,7)||''}. Aguardando a Vercel colocar a versão nova no ar...`);
     uploadBtn.textContent='Publicado ✓';
-    setTimeout(()=>{location.reload()},3500);
+
+    // O commit chega ao GitHub antes do novo deploy aparecer no domínio.
+    // Em vez de recarregar cedo demais, espera a versão publicada mudar.
+    const started=Date.now();
+    const before=await fetch('/data/blog-posts.json?before='+Date.now(),{cache:'no-store'}).then(x=>x.text()).catch(()=> '');
+    const waitDeploy=async()=>{
+      try{
+        const now=await fetch('/data/blog-posts.json?deploy='+Date.now(),{cache:'no-store'}).then(x=>x.text());
+        if(now && now!==before){ location.reload(); return; }
+      }catch(_){}
+      if(Date.now()-started<60000){
+        showProgress('Publicado no GitHub. Aguardando o deploy terminar...');
+        setTimeout(waitDeploy,2500);
+      }else{
+        showProgress('O GitHub recebeu o artigo. A Vercel ainda está processando o deploy; atualize a página em alguns segundos.');
+        uploadBtn.disabled=false;
+      }
+    };
+    setTimeout(waitDeploy,2500);
   }catch(e){
     showProgress('Erro: '+e.message);
     uploadBtn.disabled=false;

@@ -463,33 +463,6 @@
   ],
   "headers": [
     {
-      "source": "/curso/",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/curso",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
-      "headers": [
-        {
-          "key": "Content-Disposition",
-          "value": "attachment; filename=\"[Guia Pratico] Persuasao Pra Vender Todo Santo Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuasao%20Pra%20Vender%20Todo%20Santo%20Dia.pdf"
-        }
-      ]
-    },
-    {
       "source": "/assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
       "headers": [
         {
@@ -512,6 +485,71 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/curso",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/curso/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/obrigado",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/obrigado/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"Guia-Pratico-Persuasao-pra-Vender-Todo-Santo-Dia.pdf\""
         }
       ]
     }

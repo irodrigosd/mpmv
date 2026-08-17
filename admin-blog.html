@@ -1,50 +1,369 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Admin Blog | MPMV</title><link rel="icon" href="/favicon.png" type="image/png">
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Blog | MPMV</title>
 <style>
-:root{--bg:#0f0f10;--panel:#171719;--panel2:#1f1f22;--line:#303034;--text:#f5f5f2;--muted:#aaa9a3;--gold:#d6a841;--green:#5fd08b;--red:#ff7373;--amber:#eab95f;--blue:#69a7ff;--paper:#f5f2ea;--ink:#171717}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,textarea{font:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{padding:32px 0 20px;border-bottom:1px solid var(--line)}.toprow{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:900;letter-spacing:.07em}.brand small{display:block;color:var(--muted);font-size:.72rem;letter-spacing:.03em}.logout{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer}.main{padding:28px 0 60px}.login{width:min(480px,100%);margin:90px auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}.login h1,.main h1{margin:0 0 8px}.muted{color:var(--muted)}.field{display:grid;gap:7px;margin:15px 0}.field label{font-size:.88rem;font-weight:800;color:#d8d7d1}.field input,.field textarea{width:100%;background:#111113;border:1px solid #3a3a40;color:#fff;border-radius:10px;padding:12px}.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:900;cursor:pointer;background:var(--gold);color:#16120a}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.secondary{background:#28282d;color:#fff;border:1px solid #3b3b42}.layout{display:grid;grid-template-columns:360px 1fr;gap:24px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.upload{border:1.5px dashed #4a4a51;border-radius:14px;padding:22px;text-align:center;background:#131315}.upload input{width:100%}.score-row{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.score{min-width:110px;border:1px solid var(--line);background:var(--panel2);padding:12px;border-radius:12px}.score b{display:block;font-size:1.45rem;margin-top:2px}.good b{color:var(--green)}.mid b{color:var(--amber)}.bad b{color:var(--red)}.note{font-size:.8rem;color:var(--muted);line-height:1.45}.preview{display:none;margin-top:18px}.preview.active{display:block}.progress{height:8px;background:#2b2b31;border-radius:999px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}.statusmsg{font-size:.9rem;color:var(--muted);min-height:22px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;min-width:850px}th,td{padding:14px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:#141416}td{font-size:.92rem}.titlecell{max-width:330px;font-weight:800}.url{color:var(--blue);white-space:nowrap}.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.78rem;font-weight:900}.published{background:rgba(95,208,139,.12);color:var(--green)}.num{font-weight:900}.num.good{color:var(--green)}.num.mid{color:var(--amber)}.num.bad{color:var(--red)}.open{display:inline-block;text-decoration:none;color:#fff;border:1px solid #414149;border-radius:9px;padding:7px 10px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}.section-title h2{margin:0}.hidden{display:none!important}.alert{border-radius:12px;padding:12px 14px;margin:12px 0;font-size:.9rem}.alert.error{background:rgba(255,115,115,.1);color:#ffb0b0;border:1px solid rgba(255,115,115,.25)}.alert.ok{background:rgba(95,208,139,.1);color:#a8edc2;border:1px solid rgba(95,208,139,.25)}@media(max-width:900px){.layout{grid-template-columns:1fr}.toprow{align-items:flex-start}.card{padding:18px}}
+:root{--bg:#0b0b0b;--card:#151515;--line:#2b2b2b;--txt:#f5f1e8;--muted:#a59e94;--gold:#d1a447;--red:#c63b42;--green:#3d9b70;--blue:#2968c8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial,sans-serif}
+.wrap{width:min(1100px,calc(100% - 32px));margin:40px auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.brand{font-weight:900;font-size:24px}.brand span{color:var(--gold)}
+.back{color:var(--muted);text-decoration:none}
+.note{border:1px solid var(--line);background:#101010;padding:16px 18px;border-radius:14px;color:var(--muted);margin-bottom:20px}
+.upload-box{border:1px solid #3a3323;background:linear-gradient(135deg,#17140d,#111);padding:20px;border-radius:18px;margin-bottom:22px}
+.upload-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.upload-box h2{margin:0 0 6px;font-size:20px}.upload-box p{margin:0;color:var(--muted);font-size:14px}
+.upload-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.file-label{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #474033;background:#1f1a11;color:#f5e6bd;padding:0 14px;border-radius:10px;font-weight:800;cursor:pointer}
+.file-label input{display:none}
+.file-name{font-size:13px;color:#bdb5aa;max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.progress{display:none;margin-top:14px;border:1px solid #302b21;background:#0c0c0c;border-radius:12px;padding:12px 14px;color:#cfc7bc;font-size:13px}
+.progress.show{display:block}
+.grid{display:grid;gap:14px}
+.post{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:20px}
+.row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.post h2{font-size:20px;margin:0 0 6px}
+.url{font-size:13px;color:var(--gold);word-break:break-all}
+.seo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.field{background:#0f0f0f;border:1px solid #242424;border-radius:12px;padding:12px}
+.field b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#817a72;margin-bottom:5px}
+.field span{font-size:14px;line-height:1.4}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer;text-decoration:none;font-size:13px}
+.open{background:#272727;color:#fff}.delete{background:var(--red);color:#fff}.upload{background:var(--gold);color:#15110a}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.status{font-size:12px;color:#b9d9c8;background:rgba(61,155,112,.15);padding:5px 8px;border-radius:999px;display:inline-block;margin-top:8px}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+
+.score-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.score-card{display:flex;align-items:center;gap:9px;min-width:155px;background:#0f0f0f;border:1px solid #282828;border-radius:12px;padding:10px 12px}
+.score-dot{width:12px;height:12px;border-radius:50%;flex:0 0 auto;background:#777}
+.score-card strong{display:block;font-size:13px;line-height:1.15}
+.score-card small{display:block;margin-top:2px;color:#8f887f;font-size:11px}
+.score-green .score-dot{background:#42b883;box-shadow:0 0 0 4px rgba(66,184,131,.12)}
+.score-yellow .score-dot{background:#d9a72e;box-shadow:0 0 0 4px rgba(217,167,46,.12)}
+.score-orange .score-dot{background:#d87832;box-shadow:0 0 0 4px rgba(216,120,50,.12)}
+.score-red .score-dot{background:#d44747;box-shadow:0 0 0 4px rgba(212,71,71,.12)}
+.score-loading .score-dot{background:#777}
+.score-detail{margin-top:8px;color:#89827a;font-size:11px}
+
+@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo{grid-template-columns:1fr}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
-<div id="loginView" class="login"><div class="brand">MPMV<small>Admin do Blog</small></div><h1 style="margin-top:24px">Entrar</h1><p class="muted">Use a mesma senha administrativa configurada no site.</p><div class="field"><label>Senha</label><input id="tokenInput" type="password" autocomplete="current-password" placeholder="Senha administrativa"></div><button id="loginBtn" class="btn">Entrar</button><div id="loginMsg"></div></div>
-<div id="appView" class="hidden"><header class="top"><div class="wrap toprow"><div class="brand">MPMV<small>Publicador do Blog</small></div><button id="logoutBtn" class="logout">Sair</button></div></header><main class="main"><div class="wrap"><div class="layout">
-<section class="card"><h1>Novo artigo</h1><p class="muted">Envie o ZIP do artigo. O painel confere, calcula as notas e publica tudo em um único commit.</p><div class="upload"><strong>Selecionar ZIP</strong><p class="note">Pode conter manifest.json ou apenas um HTML + imagens.</p><input id="zipInput" type="file" accept=".zip,application/zip"></div><div id="preview" class="preview">
-<div class="field"><label>Título</label><input id="title"></div><div class="field"><label>Slug</label><input id="slug"></div><div class="field"><label>Frase-chave foco</label><input id="keyword" placeholder="ex.: persuasão em vendas"></div><div class="field"><label>Data</label><input id="date" type="date"></div><div class="field"><label>Resumo</label><textarea id="excerpt" rows="4"></textarea></div>
-<div class="score-row"><div id="seoBox" class="score"><span>SEO</span><b id="seoScore">—</b></div><div id="readBox" class="score"><span>Legibilidade</span><b id="readScore">—</b></div></div><p class="note">As notas são uma estimativa do painel com critérios próximos aos usados em auditorias de SEO e leitura. Não representam a pontuação oficial do plugin Yoast.</p>
-<button id="publishBtn" class="btn" disabled>Publicar no blog</button><div class="progress"><span id="bar"></span></div><div id="publishMsg" class="statusmsg"></div></div></section>
-<section class="card"><div class="section-title"><div><h2>Artigos publicados</h2><div class="muted" id="countText">Carregando…</div></div><button id="refreshBtn" class="btn secondary">Atualizar</button></div><div id="configAlert"></div><div class="table-wrap"><table><thead><tr><th>Artigo</th><th>Status</th><th>URL</th><th>Data</th><th>SEO</th><th>Legibilidade</th><th>Ação</th></tr></thead><tbody id="postsBody"></tbody></table></div></section>
-</div></div></main></div>
+<main class="wrap">
+  <div class="top">
+    <div class="brand"><span>MPMV</span> / Admin Blog</div>
+    <a class="back" href="/blog/">Ver blog</a>
+  </div>
+
+  <section class="upload-box">
+    <div class="upload-head">
+      <div>
+        <h2>Subir artigo em ZIP</h2>
+        <p>Selecione o ZIP do artigo. Os arquivos serão enviados para a raiz do repositório e a Vercel publicará o novo deploy.</p>
+      </div>
+      <div class="upload-actions">
+        <label class="file-label">Escolher ZIP<input id="zipFile" type="file" accept=".zip,application/zip"></label>
+        <span id="fileName" class="file-name">Nenhum arquivo escolhido</span>
+        <button id="uploadBtn" class="btn upload" type="button" disabled>Subir ZIP e publicar</button>
+      </div>
+    </div>
+    <div id="uploadProgress" class="progress"></div>
+  </section>
+
+  <div class="note">Aqui você vê <strong>SEO</strong>, <strong>Legibilidade</strong>, título SEO, meta descrição, frase-chave e slug. As notas são calculadas pelo checklist MPMV diretamente no HTML publicado — servem como diagnóstico do artigo e não representam a pontuação oficial do plugin Yoast. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice.</div>
+
+  <div id="list" class="grid"><div class="empty">Carregando artigos...</div></div>
+</main>
+
 <script>
-const $=id=>document.getElementById(id);let token=sessionStorage.getItem('mpmv_blog_admin')||'';let zipState=null;
-function headers(){return {'content-type':'application/json','x-admin-token':token}}
-function setMsg(el,msg,type=''){el.innerHTML=msg?`<div class="alert ${type}">${msg}</div>`:''}
-function scoreClass(n){return n>=80?'good':n>=60?'mid':'bad'}
-function setScoreBox(box,n){box.classList.remove('good','mid','bad');box.classList.add(scoreClass(n))}
-function norm(s){return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
-function words(text){return (text||'').trim().match(/[A-Za-zÀ-ÿ0-9]+(?:['’][A-Za-zÀ-ÿ]+)?/g)||[]}
-function sentences(text){return (text||'').replace(/\s+/g,' ').split(/(?<=[.!?])\s+/).map(x=>x.trim()).filter(x=>words(x).length>=3)}
-function scoreArticle(html, meta){
- const doc=new DOMParser().parseFromString(html,'text/html');const article=doc.querySelector('article')||doc.body;article.querySelectorAll('script,style,nav,footer').forEach(n=>n.remove());const text=(article.textContent||'').replace(/\s+/g,' ').trim();const ws=words(text);const kw=norm(meta.focusKeyword);const title=(doc.querySelector('title')?.textContent||meta.title||'').trim();const h1=(doc.querySelector('h1')?.textContent||'').trim();const desc=(doc.querySelector('meta[name="description"]')?.content||'').trim();const canonical=!!doc.querySelector('link[rel="canonical"]');const headings=[...doc.querySelectorAll('h2,h3')].map(x=>x.textContent||'');const first=norm(text.slice(0,900));const img=[...doc.querySelectorAll('img')];const internal=[...doc.querySelectorAll('a[href]')].filter(a=>{const h=a.getAttribute('href')||'';return h.startsWith('/')||h.includes('maispersuasaomaisvendas.com.br')});const ld=[...doc.querySelectorAll('script[type="application/ld+json"]')].some(s=>(s.textContent||'').includes('Article'));
- let seo=0;const has=(s)=>kw&&norm(s).includes(kw);seo+=has(title)?12:0;seo+=has(h1)?12:0;seo+=has(first)?10:0;seo+=has(desc)?10:0;seo+=has(meta.slug)?8:0;seo+=headings.some(has)?8:0;seo+=(title.length>=40&&title.length<=65)?7:3;seo+=(desc.length>=110&&desc.length<=165)?7:3;seo+=ws.length>=900?8:ws.length>=600?5:2;seo+=internal.length>=1?6:0;seo+=canonical?4:0;seo+=ld?4:0;seo+=img.length? (img.every(i=>(i.getAttribute('alt')||'').trim())?4:2):0;const occurrences=kw?norm(text).split(kw).length-1:0;const density=ws.length?occurrences/Math.max(1,ws.length)*100:0;seo+=(density>=.25&&density<=2.5)?6:kw?2:0;seo=Math.min(100,Math.round(seo));
- const paras=[...article.querySelectorAll('p')].map(p=>words(p.textContent||'').length).filter(Boolean);const sents=sentences(text);const lens=sents.map(s=>words(s).length);const avg=lens.length?lens.reduce((a,b)=>a+b,0)/lens.length:30;const long=lens.filter(n=>n>25).length/Math.max(1,lens.length);const veryLong=lens.filter(n=>n>35).length/Math.max(1,lens.length);const longParas=paras.filter(n=>n>120).length/Math.max(1,paras.length);const subheads=article.querySelectorAll('h2,h3').length;let read=100;read-=Math.max(0,(avg-18)*1.8);read-=long*28;read-=veryLong*18;read-=longParas*20;if(ws.length>500&&subheads<Math.floor(ws.length/450))read-=12;if(paras.length&&paras.filter(n=>n<90).length/paras.length<.7)read-=8;read=Math.max(0,Math.min(100,Math.round(read)));
- const minutes=Math.max(1,Math.round(ws.length/210));return {seo,readability:read,readingTime:`${minutes} min`};
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const zipInput=document.getElementById('zipFile');
+const uploadBtn=document.getElementById('uploadBtn');
+const fileName=document.getElementById('fileName');
+const progress=document.getElementById('uploadProgress');
+
+function getAdminToken(){
+  let token=sessionStorage.getItem('mpmv_admin_token');
+  if(!token){
+    token=prompt('Token de administração:');
+    if(token) sessionStorage.setItem('mpmv_admin_token',token);
+  }
+  return token;
 }
-function slugify(s){return norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,90)}
-function b64Utf8(s){const bytes=new TextEncoder().encode(s);let bin='';const chunk=0x8000;for(let i=0;i<bytes.length;i+=chunk)bin+=String.fromCharCode(...bytes.subarray(i,i+chunk));return btoa(bin)}
-async function api(body,method='POST'){const r=await fetch('/api/blog-admin',{method,headers:headers(),body:method==='GET'?undefined:JSON.stringify(body)});let d={};try{d=await r.json()}catch{}if(!r.ok)throw Object.assign(new Error(d.message||d.error||`Erro ${r.status}`),{data:d,status:r.status});return d}
-async function login(){token=$('tokenInput').value.trim();if(!token)return;try{await api({action:'health'});sessionStorage.setItem('mpmv_blog_admin',token);showApp()}catch(e){setMsg($('loginMsg'),e.message,'error')}}
-async function showApp(){$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');await loadPosts()}
-function logout(){sessionStorage.removeItem('mpmv_blog_admin');location.reload()}
-async function loadPosts(){try{const d=await fetch('/api/blog-admin',{headers:{'x-admin-token':token}}).then(async r=>{const j=await r.json();if(!r.ok)throw new Error(j.message||j.error);return j});$('configAlert').innerHTML=d.configured?'':'<div class="alert error">Falta configurar BLOG_GITHUB_TOKEN na Vercel. A lista funciona, mas a publicação fica bloqueada.</div>';renderPosts(d.posts||[])}catch(e){if(String(e.message).includes('unauthorized'))return logout();setMsg($('configAlert'),e.message,'error')}}
-function renderPosts(posts){$('countText').textContent=`${posts.length} artigo${posts.length===1?'':'s'}`;$('postsBody').innerHTML=posts.map(p=>`<tr><td class="titlecell">${escapeHtml(p.title)}</td><td><span class="badge published">● Publicado</span></td><td><a class="url" href="${p.url}" target="_blank">${p.url}</a></td><td>${p.date||''}</td><td><span class="num ${scoreClass(Number(p.seoScore||0))}">${p.seoScore??'—'}</span></td><td><span class="num ${scoreClass(Number(p.readabilityScore||0))}">${p.readabilityScore??'—'}</span></td><td><a class="open" href="${p.url}" target="_blank">Abrir</a></td></tr>`).join('')}
-function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function refreshScore(){if(!zipState)return;zipState.manifest.title=$('title').value.trim();zipState.manifest.slug=slugify($('slug').value.trim());zipState.manifest.focusKeyword=$('keyword').value.trim();zipState.manifest.date=$('date').value;zipState.manifest.excerpt=$('excerpt').value.trim();const sc=scoreArticle(zipState.html,zipState.manifest);zipState.scores=sc;zipState.manifest.readingTime=sc.readingTime;$('seoScore').textContent=sc.seo;$('readScore').textContent=sc.readability;setScoreBox($('seoBox'),sc.seo);setScoreBox($('readBox'),sc.readability);$('publishBtn').disabled=!(zipState.manifest.title&&zipState.manifest.slug&&zipState.manifest.focusKeyword&&zipState.manifest.date)}
-async function readZip(file){setMsg($('publishMsg'),'');$('publishBtn').disabled=true;$('bar').style.width='0';try{if(!window.JSZip)throw new Error('O leitor de ZIP não carregou. Atualize a página e tente novamente.');const zip=await JSZip.loadAsync(file);const names=Object.keys(zip.files).filter(n=>!zip.files[n].dir);const manifestName=names.find(n=>n.toLowerCase().endsWith('manifest.json'));let manifest={};if(manifestName){try{manifest=JSON.parse(await zip.files[manifestName].async('string'))}catch{}}const htmlName=names.find(n=>/index\.html$/i.test(n))||names.find(n=>/\.html?$/i.test(n));if(!htmlName)throw new Error('O ZIP precisa ter um arquivo HTML.');let html=await zip.files[htmlName].async('string');const doc=new DOMParser().parseFromString(html,'text/html');const title=manifest.title||doc.querySelector('h1')?.textContent?.trim()||doc.querySelector('title')?.textContent?.trim()||htmlName.split('/').pop().replace(/\.html?$/i,'');const canonical=doc.querySelector('link[rel="canonical"]')?.href||'';let slug=manifest.slug||canonical.match(/\/blog\/([^/]+)/)?.[1]||htmlName.split('/').pop().replace(/\.html?$/i,'');slug=slugify(slug||title);const description=manifest.excerpt||manifest.description||doc.querySelector('meta[name="description"]')?.content||'';const today=new Date().toLocaleDateString('en-CA',{timeZone:'America/Sao_Paulo'});manifest={title,slug,focusKeyword:manifest.focusKeyword||'',date:manifest.date||today,excerpt:description,readingTime:manifest.readingTime||''};const imageEntries=[];for(const n of names){if(/\.(png|jpe?g|webp|gif)$/i.test(n)){const zf=zip.files[n];const size=(await zf.async('uint8array')).length;if(size>3_000_000)throw new Error(`A imagem ${n.split('/').pop()} passa de 3 MB. Comprima a imagem e tente de novo.`);imageEntries.push({name:n.split('/').pop(),zipPath:n,file:zf})}}
- const outDoc=new DOMParser().parseFromString(html,'text/html');outDoc.querySelectorAll('img[src]').forEach(img=>{const src=img.getAttribute('src')||'';if(!src||/^(https?:|data:|\/)/i.test(src))return;const base=src.split('/').pop();if(imageEntries.some(x=>x.name===base))img.setAttribute('src',`assets/${base}`)});const finalUrl=`https://www.maispersuasaomaisvendas.com.br/blog/${slug}/`;let can=outDoc.querySelector('link[rel="canonical"]');if(can)can.setAttribute('href',finalUrl);else{can=outDoc.createElement('link');can.rel='canonical';can.href=finalUrl;outDoc.head.appendChild(can)}const og=outDoc.querySelector('meta[property="og:url"]');if(og)og.setAttribute('content',finalUrl);html='<!doctype html>\n'+outDoc.documentElement.outerHTML;zipState={zip,html,images:imageEntries,manifest,scores:null};$('title').value=manifest.title;$('slug').value=manifest.slug;$('keyword').value=manifest.focusKeyword;$('date').value=manifest.date;$('excerpt').value=manifest.excerpt;$('preview').classList.add('active');refreshScore();setMsg($('publishMsg'),`${imageEntries.length} imagem${imageEntries.length===1?'':'s'} encontrada${imageEntries.length===1?'':'s'} no ZIP.`,'ok')}catch(e){zipState=null;$('preview').classList.remove('active');setMsg($('publishMsg'),e.message,'error')}}
-async function publish(){refreshScore();if(!zipState||$('publishBtn').disabled)return;const b=$('publishBtn');b.disabled=true;try{setMsg($('publishMsg'),'Preparando arquivos…');const staged=[];const total=1+zipState.images.length;let done=0;const htmlStage=await api({action:'stage',slug:zipState.manifest.slug,kind:'html',contentBase64:b64Utf8(zipState.html)});staged.push({relativePath:htmlStage.relativePath,blobSha:htmlStage.blobSha});done++;$('bar').style.width=`${Math.round(done/total*78)}%`;for(const im of zipState.images){setMsg($('publishMsg'),`Enviando ${im.name}…`);const base64=await im.file.async('base64');const r=await api({action:'stage',slug:zipState.manifest.slug,kind:'image',name:im.name,contentBase64:base64});staged.push({relativePath:r.relativePath,blobSha:r.blobSha});done++;$('bar').style.width=`${Math.round(done/total*78)}%`}
- setMsg($('publishMsg'),'Atualizando lista, sitemap e GitHub…');$('bar').style.width='86%';const r=await api({action:'publish',manifest:zipState.manifest,scores:{seo:zipState.scores.seo,readability:zipState.scores.readability},files:staged});$('bar').style.width='100%';setMsg($('publishMsg'),`Publicado. URL: <a class="url" target="_blank" href="${r.url}">${r.url}</a>`,'ok');await loadPosts();zipState=null;$('zipInput').value='';$('preview').classList.remove('active')}catch(e){setMsg($('publishMsg'),e.message,'error')}finally{b.disabled=false}}
-$('loginBtn').onclick=login;$('tokenInput').addEventListener('keydown',e=>{if(e.key==='Enter')login()});$('logoutBtn').onclick=logout;$('refreshBtn').onclick=loadPosts;$('zipInput').onchange=e=>{const f=e.target.files?.[0];if(f)readZip(f)};['title','slug','keyword','date','excerpt'].forEach(id=>$(id).addEventListener('input',refreshScore));$('publishBtn').onclick=publish;if(token)showApp();
+function showProgress(msg){
+  progress.textContent=msg;
+  progress.classList.add('show');
+}
+zipInput.addEventListener('change',()=>{
+  const f=zipInput.files?.[0];
+  fileName.textContent=f?f.name:'Nenhum arquivo escolhido';
+  uploadBtn.disabled=!f;
+});
+
+async function uploadZip(){
+  const file=zipInput.files?.[0];
+  if(!file)return;
+  if(!window.JSZip){alert('Não foi possível carregar o leitor de ZIP. Atualize a página e tente novamente.');return;}
+  const token=getAdminToken();
+  if(!token)return;
+
+  uploadBtn.disabled=true;
+  uploadBtn.textContent='Preparando...';
+  showProgress('Abrindo o ZIP...');
+
+  try{
+    const zip=await JSZip.loadAsync(file);
+    const entries=Object.values(zip.files).filter(e=>!e.dir && !e.name.startsWith('__MACOSX/') && !e.name.endsWith('.DS_Store'));
+    if(!entries.length) throw new Error('O ZIP está vazio.');
+
+    const rawNames=entries.map(e=>e.name.replace(/^\.\/+/,''));
+    const firstParts=rawNames.map(n=>n.split('/')[0]);
+    const commonTop=(new Set(firstParts).size===1 && rawNames.every(n=>n.includes('/')))?firstParts[0]+'/':'';
+
+    const files=[];
+    let totalBytes=0;
+    for(let i=0;i<entries.length;i++){
+      const entry=entries[i];
+      let path=entry.name.replace(/^\.\/+/,'');
+      if(commonTop && path.startsWith(commonTop)) path=path.slice(commonTop.length);
+      if(!path || path.includes('..') || path.startsWith('/') || path.startsWith('.git/')) continue;
+
+      showProgress(`Lendo ${i+1}/${entries.length}: ${path}`);
+      const bytes=await entry.async('uint8array');
+      totalBytes+=bytes.length;
+      if(bytes.length>3_500_000) throw new Error(`O arquivo ${path} é grande demais para o upload pelo admin.`);
+      let binary='';
+      const chunk=0x8000;
+      for(let j=0;j<bytes.length;j+=chunk) binary+=String.fromCharCode.apply(null,bytes.subarray(j,j+chunk));
+      files.push({path,content:btoa(binary)});
+    }
+
+    if(totalBytes>3_200_000) throw new Error('O conteúdo descompactado passou de 3,2 MB. Suba esse pacote direto pelo GitHub.');
+
+    showProgress(`Enviando ${files.length} arquivos ao GitHub...`);
+    uploadBtn.textContent='Publicando...';
+
+    const r=await fetch('/api/admin-blog-upload',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({zipName:file.name,files})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){
+      sessionStorage.removeItem('mpmv_admin_token');
+      throw new Error('Token inválido. Tente novamente.');
+    }
+    if(!r.ok) throw new Error(data.error||data.detail||'Falha ao publicar o ZIP.');
+
+    showProgress(`Publicado no GitHub. Commit ${data.commit?.slice(0,7)||''}. Aguardando a Vercel colocar a versão nova no ar...`);
+    uploadBtn.textContent='Publicado ✓';
+
+    // O commit chega ao GitHub antes do novo deploy aparecer no domínio.
+    // Em vez de recarregar cedo demais, espera a versão publicada mudar.
+    const started=Date.now();
+    const before=await fetch('/data/blog-posts.json?before='+Date.now(),{cache:'no-store'}).then(x=>x.text()).catch(()=> '');
+    const waitDeploy=async()=>{
+      try{
+        const now=await fetch('/data/blog-posts.json?deploy='+Date.now(),{cache:'no-store'}).then(x=>x.text());
+        if(now && now!==before){ location.reload(); return; }
+      }catch(_){}
+      if(Date.now()-started<60000){
+        showProgress('Publicado no GitHub. Aguardando o deploy terminar...');
+        setTimeout(waitDeploy,2500);
+      }else{
+        showProgress('O GitHub recebeu o artigo. A Vercel ainda está processando o deploy; atualize a página em alguns segundos.');
+        uploadBtn.disabled=false;
+      }
+    };
+    setTimeout(waitDeploy,2500);
+  }catch(e){
+    showProgress('Erro: '+e.message);
+    uploadBtn.disabled=false;
+    uploadBtn.textContent='Subir ZIP e publicar';
+  }
+}
+uploadBtn.addEventListener('click',uploadZip);
+
+
+function scoreClass(score){
+  if(score>=80)return 'score-green';
+  if(score>=65)return 'score-yellow';
+  if(score>=50)return 'score-orange';
+  return 'score-red';
+}
+function scoreLabel(score){
+  if(score>=80)return 'Excelente';
+  if(score>=65)return 'Bom';
+  if(score>=50)return 'Ajustar';
+  return 'Fraco';
+}
+function norm(s){
+  return String(s||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+function words(s){
+  return (String(s||'').match(/[A-Za-zÀ-ÿ0-9]+(?:['’\-][A-Za-zÀ-ÿ0-9]+)*/g)||[]);
+}
+function sentences(s){
+  return String(s||'').split(/[.!?]+(?:\s+|$)/).map(x=>x.trim()).filter(Boolean);
+}
+function auditArticle(doc,p){
+  const main=doc.querySelector('article')||doc.querySelector('main')||doc.body;
+  const text=(main?.innerText||'').replace(/\s+/g,' ').trim();
+  const wc=words(text).length;
+  const key=norm(p.focusKeyphrase);
+  const h1=norm(doc.querySelector('h1')?.textContent||'');
+  const title=norm(doc.querySelector('title')?.textContent||p.seoTitle||'');
+  const meta=doc.querySelector('meta[name="description"]')?.getAttribute('content')||p.metaDescription||'';
+  const canonical=doc.querySelector('link[rel="canonical"]')?.getAttribute('href')||'';
+  const headings=[...doc.querySelectorAll('h2,h3')].map(x=>norm(x.textContent)).join(' ');
+  const firstWords=norm(words(text).slice(0,150).join(' '));
+  const internal=[...doc.querySelectorAll('a[href^="/"]')].filter(a=>!a.getAttribute('href').startsWith('/#')).length;
+  const imgs=[...doc.querySelectorAll('img')];
+  const imgsAlt=imgs.length && imgs.every(i=>(i.getAttribute('alt')||'').trim().length>3);
+
+  let seo=0;
+  const checks=[];
+  const add=(pts,ok,label)=>{if(ok)seo+=pts;checks.push({ok,label});};
+  add(15,!!key && (h1.includes(key)||title.includes(key)),'frase-chave no título/H1');
+  add(10,!!key && firstWords.includes(key),'frase-chave no início');
+  add(10,!!key && headings.includes(key),'frase-chave em subtítulo');
+  add(10,meta.length>=115 && meta.length<=160,'meta entre 115–160 caracteres');
+  add(10,(p.seoTitle||doc.title||'').length>=35 && (p.seoTitle||doc.title||'').length<=62,'título SEO em faixa adequada');
+  add(10,!!canonical,'canonical');
+  add(10,internal>=2,'links internos');
+  add(10,imgs.length>0 && imgsAlt,'imagens com ALT');
+  add(10,wc>=1000,'conteúdo com 1.000+ palavras');
+  add(5,!!key && norm(text).split(key).length-1>=3,'frase-chave distribuída');
+  add(5,[...doc.querySelectorAll('h2')].length>=3,'estrutura de H2');
+  seo=Math.min(100,seo);
+
+  // Legibilidade: heurística do checklist MPMV
+  const paras=[...doc.querySelectorAll('p')].map(p=>words(p.textContent).length).filter(n=>n>0);
+  const sents=sentences(text).map(s=>words(s).length).filter(n=>n>0);
+  const avgSent=sents.length?sents.reduce((a,b)=>a+b,0)/sents.length:99;
+  const longPct=sents.length?(sents.filter(n=>n>25).length/sents.length)*100:100;
+  const avgPara=paras.length?paras.reduce((a,b)=>a+b,0)/paras.length:999;
+  const hCount=[...doc.querySelectorAll('h2,h3')].length;
+  const wordsPerHeading=hCount?wc/hCount:9999;
+  const listCount=doc.querySelectorAll('ul,ol').length;
+  const transitionList=['por isso','além disso','por exemplo','depois','agora','então','assim','enquanto','já','também','porque','quando','porém','portanto','primeiro','segundo','finalmente','em seguida'];
+  const t=norm(text);
+  const transitionHits=transitionList.reduce((n,x)=>n+(t.includes(x)?1:0),0);
+
+  let read=0;
+  if(avgSent<=18)read+=25; else if(avgSent<=22)read+=20; else if(avgSent<=27)read+=12; else if(avgSent<=32)read+=6;
+  if(longPct<=20)read+=20; else if(longPct<=30)read+=15; else if(longPct<=40)read+=8;
+  if(avgPara<=60)read+=20; else if(avgPara<=85)read+=15; else if(avgPara<=110)read+=8;
+  if(wordsPerHeading<=250)read+=20; else if(wordsPerHeading<=350)read+=15; else if(wordsPerHeading<=450)read+=8;
+  if(listCount>=1)read+=5;
+  if(transitionHits>=6)read+=10; else if(transitionHits>=3)read+=6; else if(transitionHits>=1)read+=3;
+  read=Math.min(100,read);
+
+  return {
+    seo,read,wc,
+    seoInfo:`${checks.filter(x=>x.ok).length}/${checks.length} critérios • ${wc.toLocaleString('pt-BR')} palavras`,
+    readInfo:`frase ${avgSent.toFixed(1)} pal. • parágrafo ${avgPara.toFixed(1)} pal.`
+  };
+}
+async function loadScores(p,articleEl){
+  const seoBox=articleEl.querySelector('[data-seo-score]');
+  const readBox=articleEl.querySelector('[data-read-score]');
+  try{
+    const r=await fetch(p.url+'?audit='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const html=await r.text();
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const a=auditArticle(doc,p);
+
+    seoBox.className='score-card '+scoreClass(a.seo);
+    seoBox.innerHTML=`<span class="score-dot"></span><div><strong>SEO ${a.seo}/100</strong><small>${scoreLabel(a.seo)} · ${a.seoInfo}</small></div>`;
+
+    readBox.className='score-card '+scoreClass(a.read);
+    readBox.innerHTML=`<span class="score-dot"></span><div><strong>Legibilidade ${a.read}/100</strong><small>${scoreLabel(a.read)} · ${a.readInfo}</small></div>`;
+  }catch(e){
+    seoBox.className='score-card score-red';
+    seoBox.innerHTML='<span class="score-dot"></span><div><strong>SEO —</strong><small>Não foi possível auditar</small></div>';
+    readBox.className='score-card score-red';
+    readBox.innerHTML='<span class="score-dot"></span><div><strong>Legibilidade —</strong><small>Não foi possível auditar</small></div>';
+  }
+}
+
+async function load(){
+  const box=document.getElementById('list');
+  try{
+    const r=await fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('Não foi possível carregar os artigos.');
+    const posts=await r.json();
+    if(!posts.length){box.innerHTML='<div class="empty">Nenhum artigo cadastrado.</div>';return;}
+    box.innerHTML=posts.map(p=>`<article class="post" data-slug="${esc(p.slug)}">
+      <div class="row">
+        <div>
+          <h2>${esc(p.title)}</h2>
+          <div class="url">${esc(p.url)}</div>
+          <span class="status">${esc(p.status)}</span>
+          <div class="score-row">
+            <div class="score-card score-loading" data-seo-score><span class="score-dot"></span><div><strong>SEO...</strong><small>Analisando artigo</small></div></div>
+            <div class="score-card score-loading" data-read-score><span class="score-dot"></span><div><strong>Legibilidade...</strong><small>Analisando artigo</small></div></div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a>
+          <button class="btn delete" data-delete="${esc(p.slug)}" ${p.deletable?'':'disabled'}>Excluir artigo</button>
+        </div>
+      </div>
+      <div class="seo">
+        <div class="field"><b>Título SEO</b><span>${esc(p.seoTitle)}</span></div>
+        <div class="field"><b>Frase-chave de foco</b><span>${esc(p.focusKeyphrase)}</span></div>
+        <div class="field"><b>Meta descrição</b><span>${esc(p.metaDescription)}</span></div>
+        <div class="field"><b>Slug</b><span>${esc(p.slug)}</span></div>
+      </div>
+    </article>`).join('');
+    document.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>removePost(btn.dataset.delete,btn)));
+    [...box.querySelectorAll('.post')].forEach((el,i)=>loadScores(posts[i],el));
+  }catch(e){
+    box.innerHTML='<div class="empty">'+esc(e.message)+'</div>';
+  }
+}
+
+async function removePost(slug,btn){
+  const post=btn.closest('.post');
+  const title=post.querySelector('h2').textContent;
+  if(!confirm(`Excluir definitivamente o artigo “${title}”?\n\nA exclusão remove o arquivo do repositório e o post do índice.`))return;
+  const token=getAdminToken();
+  if(!token)return;
+
+  btn.disabled=true;
+  btn.textContent='Excluindo...';
+  try{
+    const r=await fetch('/api/admin-blog-delete',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({slug})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){
+      sessionStorage.removeItem('mpmv_admin_token');
+      throw new Error('Token inválido. Tente novamente.');
+    }
+    if(!r.ok)throw new Error(data.error||'Falha ao apagar o artigo.');
+    post.remove();
+    alert('Artigo excluído. A Vercel fará o novo deploy a partir do GitHub.');
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent='Excluir artigo';
+    alert(e.message);
+  }
+}
+load();
 </script>
-</body></html>
+</body>
+</html>
