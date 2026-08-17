@@ -541,14 +541,6 @@
       "destination": "/clientes-compram-produtos-piores.html"
     },
     {
-      "source": "/blog/guerra-pela-atencao",
-      "destination": "/guerra-pela-atencao.html"
-    },
-    {
-      "source": "/blog/guerra-pela-atencao/",
-      "destination": "/guerra-pela-atencao.html"
-    },
-    {
       "source": "/blog/confiar-em-uma-marca",
       "destination": "/confiar-em-uma-marca.html"
     },
