@@ -1,21 +1,18 @@
-ARTIGO MPMV — Quem tenta parecer inteligente costuma ser difícil de entender
+CORREÇÃO DO PUBLICADOR /admin/blog — MPMV
 
-Temperatura do lead: frio
-Nível de consciência: inconsciente da causa
-Função: diagnóstico + consciência
-Frase central: Complexidade pode mostrar quanto você sabe. Clareza mostra quanto você domina.
+O que este pacote corrige:
+- artigo em ZIP passa a ser salvo em /blog/<slug>/
+- artigo entra automaticamente em data/blog-posts.json e aparece no /admin/blog
+- artigo entra automaticamente no índice /blog
+- URL entra no sitemap.xml
+- publicação antiga do mesmo slug que tenha ficado na raiz é removida no próximo upload do artigo
 
-ARQUIVOS DO ZIP
-- blog/quem-tenta-parecer-inteligente/index.html
-- blog.html
-- data/blog-posts.json
-- sitemap.xml
-- SEO-CONFIG-quem-tenta-parecer-inteligente.json
-- FONTES-quem-tenta-parecer-inteligente.txt
+COMO APLICAR
+1. Entre em /admin/blog.
+2. Em “Subir artigo em ZIP”, envie ESTE ZIP de correção.
+3. Aguarde aparecer o commit e o deploy da Vercel terminar.
+4. Depois, envie novamente o ZIP do artigo “canibalizacao-no-ranking-do-google”.
+5. Atualize /admin/blog e /blog.
 
-O artigo NÃO usa imagem de capa.
-O pacote foi montado para subir pelo /admin/blog e atualizar a vitrine pública,
-a lista do admin e o sitemap no mesmo envio.
-
-Palavras no corpo do artigo: 1877
-URLs no sitemap após a reconstrução: 72
+IMPORTANTE
+Este ZIP tem dois caminhos de topo de propósito. Não remova o LEIA-PRIMEIRO.txt antes do upload: ele impede o publicador antigo de retirar a pasta /api do arquivo de correção.
