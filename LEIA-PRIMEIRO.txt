@@ -1,20 +1,12 @@
-MPMV HOTFIX /BLOG
+MPMV HOTFIX — UPLOAD + /BLOG
 
-Este pacote corrige somente a listagem pública do /blog.
+Suba estes arquivos na raiz mantendo a pasta admin/.
 
-Conteúdo:
-- blog.html com 45 artigos vindos de data/blog-posts.json
-- 45 capas de artigo em assets/images/
+- admin/blog.html
+- blog.html
 
-Estrutura visual de cada card:
-1. foto/capa
-2. data + categoria
-3. título
-4. resumo
-5. Ler artigo
+Correções:
+- /admin/blog envia ZIP em lotes pequenos para evitar erro de tamanho da Vercel.
+- /blog fica sem as capas SVG, mantendo os artigos em formato editorial de texto.
 
-Suba o conteúdo deste ZIP na raiz do repositório mantendo a pasta assets/images/.
-
-Artigos no manifesto: 45
-Capas encontradas: 45
-Capas sem arquivo próprio: 0
+Se um único arquivo dentro do ZIP tiver mais de 2,5 MB, comprima esse arquivo antes.
