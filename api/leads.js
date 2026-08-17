@@ -39,7 +39,7 @@ function normalizeContact(contact) {
   };
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store, max-age=0');
   res.setHeader('X-Content-Type-Options', 'nosniff');
 
@@ -83,6 +83,7 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify(payload)
       });
 
+      // Se a conta não tiver FIRSTNAME/LASTNAME com esses nomes, ainda salva o e-mail na lista.
       if (!brevo.ok && brevo.status === 400) {
         brevo = await fetch(BREVO_BASE + '/contacts', {
           method: 'POST',
@@ -137,4 +138,4 @@ module.exports = async function handler(req, res) {
 
   res.setHeader('Allow', 'GET, POST, OPTIONS');
   return json(res, 405, { ok:false, error:'method_not_allowed' });
-};
+}
