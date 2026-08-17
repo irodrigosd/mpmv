@@ -253,14 +253,6 @@
       "destination": "/como-cliente-decide-preco-caro.html"
     },
     {
-      "source": "/blog/psicologia-mais-vendido",
-      "destination": "/psicologia-mais-vendido.html"
-    },
-    {
-      "source": "/blog/psicologia-mais-vendido/",
-      "destination": "/psicologia-mais-vendido.html"
-    },
-    {
       "source": "/blog/preco-errado-primeiro",
       "destination": "/preco-errado-primeiro.html"
     },
