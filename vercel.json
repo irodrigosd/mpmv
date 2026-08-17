@@ -245,14 +245,6 @@
       "destination": "/convencer-demais-vender-menos.html"
     },
     {
-      "source": "/blog/preco-97-barato-ou-caro",
-      "destination": "/preco-97-barato-ou-caro.html"
-    },
-    {
-      "source": "/blog/preco-97-barato-ou-caro/",
-      "destination": "/preco-97-barato-ou-caro.html"
-    },
-    {
       "source": "/blog/como-cliente-decide-preco-caro",
       "destination": "/como-cliente-decide-preco-caro.html"
     },
