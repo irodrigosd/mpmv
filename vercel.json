@@ -197,14 +197,6 @@
       "destination": "/admin/blog.html"
     },
     {
-      "source": "/blog/marca-afastando-clientes-sinais",
-      "destination": "/marca-afastando-clientes-sinais.html"
-    },
-    {
-      "source": "/blog/marca-afastando-clientes-sinais/",
-      "destination": "/marca-afastando-clientes-sinais.html"
-    },
-    {
       "source": "/blog/cliente-foge-da-oferta",
       "destination": "/cliente-foge-da-oferta.html"
     },
