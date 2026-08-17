@@ -301,14 +301,6 @@
       "destination": "/erro-de-copy-oferta-parecer-golpe.html"
     },
     {
-      "source": "/blog/falar-demais-do-produto",
-      "destination": "/falar-demais-do-produto.html"
-    },
-    {
-      "source": "/blog/falar-demais-do-produto/",
-      "destination": "/falar-demais-do-produto.html"
-    },
-    {
       "source": "/blog/caracteristicas-em-beneficio-percebido",
       "destination": "/caracteristicas-em-beneficio-percebido.html"
     },
