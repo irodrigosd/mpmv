@@ -1,0 +1,43 @@
+CORREÇÃO DO DEPLOY AUTOMÁTICO DO /admin/blog
+
+O QUE ESTE ZIP FAZ
+- Substitui somente: api/admin-blog-upload.js
+- Mantém o fluxo atual de publicação no GitHub.
+- Depois do commit, dispara um deploy de produção no Vercel.
+- Assim o /admin/blog deixa de depender apenas do gatilho GitHub -> Vercel.
+
+COMO SUBIR
+1. Abra /admin/blog.
+2. Use a função de subir ZIP de manutenção.
+3. Envie este ZIP preservando a pasta api/.
+4. Aguarde o deployment dessa própria correção.
+
+CONFIGURAÇÃO ÚNICA NECESSÁRIA
+O Vercel precisa de UMA destas opções:
+
+OPÇÃO A - RECOMENDADA: VERCEL_DEPLOY_HOOK_URL
+No Vercel, crie um Deploy Hook para a branch main e copie a URL.
+Depois adicione em Environment Variables:
+Nome: VERCEL_DEPLOY_HOOK_URL
+Valor: URL do hook
+
+OU
+
+OPÇÃO B: VERCEL_TOKEN
+Crie um Access Token no Vercel e adicione em Environment Variables:
+Nome: VERCEL_TOKEN
+Valor: seu token
+
+O código já usa como padrão:
+VERCEL_TEAM_ID=team_BVsuVX2DEGb6PtSNkqdRlzjB
+VERCEL_PROJECT_NAME=mpmv
+Branch padrão: main
+
+Se quiser, esses valores também podem ser definidos nas Environment Variables.
+
+IMPORTANTE
+Sem VERCEL_DEPLOY_HOOK_URL e sem VERCEL_TOKEN, o upload continua salvando o artigo
+no GitHub, mas o deploy automático adicional não será disparado.
+
+FLUXO APÓS CONFIGURAR
+ZIP do artigo -> /admin/blog -> GitHub -> Vercel Production -> /blog

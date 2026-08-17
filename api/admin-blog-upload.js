@@ -1,4 +1,5 @@
 const API='https://api.github.com';
+const VERCEL_API='https://api.vercel.com';
 
 const json=(res,status,data)=>{
   res.statusCode=status;
@@ -58,13 +59,12 @@ function getCanonical(html){
 }
 
 function seoSection(text,label){
-  const src=String(text||'').replace(/\r/g,'');
-  const lines=src.split('\n');
+  const lines=String(text||'').replace(/\r/g,'').split('\n');
   const wanted=label.toUpperCase();
   const known=[
     'TÍTULO SEO','TITULO SEO','SLUG','PALAVRA-CHAVE PRINCIPAL','PALAVRAS-CHAVE SECUNDÁRIAS',
-    'META DESCRIPTION','META DESCRIÇÃO','META DESCRICAO','H1','CANONICAL','INTENÇÃO DE BUSCA','INTENCAO DE BUSCA',
-    'FONTES PRINCIPAIS','CATEGORIA','DATA','AUTOR'
+    'META DESCRIPTION','META DESCRIÇÃO','META DESCRICAO','H1','CANONICAL',
+    'INTENÇÃO DE BUSCA','INTENCAO DE BUSCA','FONTES PRINCIPAIS','CATEGORIA','DATA','AUTOR'
   ];
   let start=-1;
   for(let i=0;i<lines.length;i++){
@@ -81,7 +81,7 @@ function seoSection(text,label){
   return out.join('\n').trim();
 }
 
-function findSlug(files,indexFile,html,seoText){
+function findSlug(indexFile,html,seoText){
   const canonical=getCanonical(html);
   const cm=canonical.match(/\/blog\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?(?:$|[?#])/i);
   if(cm && slugOk(cm[1].toLowerCase())) return cm[1].toLowerCase();
@@ -89,8 +89,7 @@ function findSlug(files,indexFile,html,seoText){
   const seoSlug=seoSection(seoText,'SLUG').split(/\s+/)[0].trim().toLowerCase();
   if(slugOk(seoSlug)) return seoSlug;
 
-  const p=cleanPath(indexFile.path);
-  const parts=p.split('/').filter(Boolean);
+  const parts=cleanPath(indexFile.path).split('/').filter(Boolean);
   if(parts.length>=2){
     const parent=parts[parts.length-2].toLowerCase();
     if(slugOk(parent) && parent!=='blog') return parent;
@@ -99,7 +98,6 @@ function findSlug(files,indexFile,html,seoText){
   const ogUrl=getMeta(html,'og:url','property');
   const om=ogUrl.match(/\/blog\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?(?:$|[?#])/i);
   if(om && slugOk(om[1].toLowerCase())) return om[1].toLowerCase();
-
   return '';
 }
 
@@ -117,10 +115,7 @@ function parseArticleMeta(html,seoText,slug){
   const ogTitle=getMeta(html,'og:title','property');
   const title=h1 || ogTitle || seoTitle || slug.replace(/-/g,' ');
   const metaDescription=getMeta(html,'description') || seoSection(seoText,'META DESCRIPTION') || seoSection(seoText,'META DESCRIÇÃO') || seoSection(seoText,'META DESCRICAO');
-  const focusKeyphrase=seoSection(seoText,'PALAVRA-CHAVE PRINCIPAL') || (()=>{
-    const m=String(html||'').match(/Palavra-chave:\s*[“\"]([^”\"]+)[”\"]/i);
-    return m?stripTags(m[1]):'';
-  })() || slug.replace(/-/g,' ');
+  const focusKeyphrase=seoSection(seoText,'PALAVRA-CHAVE PRINCIPAL') || slug.replace(/-/g,' ');
   const secondaryRaw=seoSection(seoText,'PALAVRAS-CHAVE SECUNDÁRIAS');
   const secondaryKeyphrases=secondaryRaw?secondaryRaw.split('\n').map(x=>x.trim()).filter(Boolean):[];
   const kickerMatch=String(html||'').match(/<[^>]+class=["'][^"']*\bkicker\b[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/i);
@@ -143,7 +138,9 @@ function fmtDate(date){
 }
 
 function buildCard(post){
-  return `<!-- POST:${post.slug} START -->\n<a class="post" href="${esc(post.url)}"><div class="post-copy"><div class="date">${esc(fmtDate(post.publishedAt))}<br/>${esc(post.category||'Conteúdo')}</div><h3>${esc(post.title)}</h3><p>${esc(post.metaDescription||post.excerpt||'')}</p></div></a>\n<!-- POST:${post.slug} END -->`;
+  return `<!-- POST:${post.slug} START -->
+<a class="post" href="${esc(post.url)}"><div class="post-copy"><div class="date">${esc(fmtDate(post.publishedAt))}<br/>${esc(post.category||'Conteúdo')}</div><h3>${esc(post.title)}</h3><p>${esc(post.metaDescription||post.excerpt||'')}</p></div></a>
+<!-- POST:${post.slug} END -->`;
 }
 
 function upsertBlogCard(html,post){
@@ -160,9 +157,83 @@ function upsertSitemap(xml,post){
   const absolute=`https://www.maispersuasaomaisvendas.com.br${post.url}`;
   let next=String(xml||'');
   next=next.replace(/<url>[\s\S]*?<\/url>/g,block=>block.includes(`<loc>${absolute}</loc>`)?'':block);
-  const entry=`  <url>\n    <loc>${absolute}</loc>\n    <lastmod>${post.publishedAt}</lastmod>\n  </url>`;
+  const entry=`  <url>
+    <loc>${absolute}</loc>
+    <lastmod>${post.publishedAt}</lastmod>
+  </url>`;
   if(next.includes('</urlset>')) return next.replace('</urlset>',`${entry}\n</urlset>`);
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entry}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entry}
+</urlset>
+`;
+}
+
+async function triggerVercelDeployment({owner,repo,branch,commitSha}){
+  // Opção 1: Deploy Hook. É a forma mais simples se VERCEL_DEPLOY_HOOK_URL estiver configurada.
+  const hook=String(process.env.VERCEL_DEPLOY_HOOK_URL||'').trim();
+  if(hook){
+    const r=await fetch(hook,{method:'POST'});
+    const text=await r.text().catch(()=> '');
+    let data={};
+    try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
+    if(!r.ok) throw new Error(`Vercel Deploy Hook: ${r.status} ${text.slice(0,220)}`);
+    return {triggered:true,method:'deploy-hook',id:data.job?.id||data.id||null,url:data.url||null};
+  }
+
+  // Opção 2: API da Vercel. Requer VERCEL_TOKEN.
+  const token=String(process.env.VERCEL_TOKEN||'').trim();
+  if(!token){
+    return {
+      triggered:false,
+      method:null,
+      reason:'Configure VERCEL_DEPLOY_HOOK_URL ou VERCEL_TOKEN no Vercel para ativar o deploy automático.'
+    };
+  }
+
+  const teamId=String(process.env.VERCEL_TEAM_ID||'team_BVsuVX2DEGb6PtSNkqdRlzjB').trim();
+  const projectName=String(process.env.VERCEL_PROJECT_NAME||'mpmv').trim();
+  const qs=teamId?`?teamId=${encodeURIComponent(teamId)}`:'';
+
+  const payload={
+    name:projectName,
+    target:'production',
+    withLatestCommit:true,
+    gitSource:{
+      type:'github',
+      repo,
+      ref:branch,
+      org:owner
+    },
+    gitMetadata:{
+      commitRef:branch,
+      commitSha,
+      remoteUrl:`https://github.com/${owner}/${repo}`,
+      ci:'true',
+      ciType:'custom'
+    }
+  };
+
+  const r=await fetch(`${VERCEL_API}/v13/deployments${qs}`,{
+    method:'POST',
+    headers:{
+      'Authorization':`Bearer ${token}`,
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(payload)
+  });
+  const text=await r.text();
+  let data={};
+  try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
+  if(!r.ok) throw new Error(`Vercel API: ${r.status} ${text.slice(0,300)}`);
+
+  return {
+    triggered:true,
+    method:'vercel-api',
+    id:data.id||null,
+    url:data.url||null,
+    status:data.status||data.readyState||null
+  };
 }
 
 export default async function handler(req,res){
@@ -217,7 +288,10 @@ export default async function handler(req,res){
     const ref=await refRes.json();
     const parentSha=ref.object.sha;
     const commitRes=await fetch(`${API}/repos/${owner}/${repo}/git/commits/${parentSha}`,{headers});
-    if(!commitRes.ok){const t=await commitRes.text().catch(()=> '');throw new Error(`GitHub COMMIT: ${commitRes.status} ${t.slice(0,220)}`);}
+    if(!commitRes.ok){
+      const t=await commitRes.text().catch(()=> '');
+      throw new Error(`GitHub COMMIT: ${commitRes.status} ${t.slice(0,220)}`);
+    }
     const parentCommit=await commitRes.json();
     const baseTree=parentCommit.tree.sha;
 
@@ -226,17 +300,26 @@ export default async function handler(req,res){
       const text=await r.text();
       let data={};
       try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
-      if(!r.ok){const e=new Error(`GitHub ${r.status}: ${text.slice(0,240)}`);e.status=r.status;throw e;}
+      if(!r.ok){
+        const e=new Error(`GitHub ${r.status}: ${text.slice(0,240)}`);
+        e.status=r.status;
+        throw e;
+      }
       return data;
     }
+
     async function getRepoText(path){
       const url=`${API}/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(branch)}`;
       const r=await fetch(url,{headers});
       if(r.status===404) return {text:'',sha:null};
       const data=await r.json().catch(()=>({}));
       if(!r.ok) throw new Error(`GitHub GET ${path}: ${r.status}`);
-      return {text:Buffer.from(String(data.content||'').replace(/\n/g,''),'base64').toString('utf8'),sha:data.sha||null};
+      return {
+        text:Buffer.from(String(data.content||'').replace(/\n/g,''),'base64').toString('utf8'),
+        sha:data.sha||null
+      };
     }
+
     async function createBlob(content,encoding='utf-8'){
       const data=await ghJson(`${API}/repos/${owner}/${repo}/git/blobs`,{
         method:'POST',
@@ -255,8 +338,10 @@ export default async function handler(req,res){
       const html=decode64(indexFile.content);
       const seoFile=files.find(f=>/(^|\/)seo\.txt$/i.test(cleanPath(f.path)));
       const seoText=seoFile?decode64(seoFile.content):'';
-      const slug=findSlug(files,indexFile,html,seoText);
-      if(!slug) return json(res,400,{error:'Não consegui identificar o slug do artigo. Inclua canonical /blog/slug/ ou um seo.txt com SLUG.'});
+      const slug=findSlug(indexFile,html,seoText);
+      if(!slug){
+        return json(res,400,{error:'Não consegui identificar o slug do artigo. Inclua canonical /blog/slug/ ou um seo.txt com SLUG.'});
+      }
 
       const meta=parseArticleMeta(html,seoText,slug);
       const post={
@@ -311,7 +396,6 @@ export default async function handler(req,res){
         {path:'sitemap.xml',mode:'100644',type:'blob',sha:sitemapBlob}
       );
 
-      // Limpa a publicação antiga que o uploader anterior podia ter deixado na raiz.
       try{
         const fullTree=await ghJson(`${API}/repos/${owner}/${repo}/git/trees/${baseTree}?recursive=1`);
         for(const item of fullTree.tree||[]){
@@ -325,7 +409,6 @@ export default async function handler(req,res){
 
       articleResult={slug,url:post.url,registered:true,indexedInBlog:true,sitemap:true};
     }else{
-      // Modo manutenção: mantém o comportamento antigo para ZIPs de correção do site.
       for(const f of files){
         const blob=await createBlob(f.content,'base64');
         tree.push({path:cleanPath(f.path),mode:'100644',type:'blob',sha:blob});
@@ -333,27 +416,58 @@ export default async function handler(req,res){
     }
 
     const treeRes=await fetch(`${API}/repos/${owner}/${repo}/git/trees`,{
-      method:'POST',headers,
+      method:'POST',
+      headers,
       body:JSON.stringify({base_tree:baseTree,tree})
     });
-    if(!treeRes.ok){const t=await treeRes.text().catch(()=> '');throw new Error(`GitHub TREE: ${treeRes.status} ${t.slice(0,220)}`);}
+    if(!treeRes.ok){
+      const t=await treeRes.text().catch(()=> '');
+      throw new Error(`GitHub TREE: ${treeRes.status} ${t.slice(0,220)}`);
+    }
     const newTree=await treeRes.json();
 
     const msg=articleResult
       ? `blog: publicar ${articleResult.slug} + índice + admin + sitemap`
       : `site: publicar ZIP ${String(body.zipName||'correcao').slice(0,120)}`;
     const newCommitRes=await fetch(`${API}/repos/${owner}/${repo}/git/commits`,{
-      method:'POST',headers,
+      method:'POST',
+      headers,
       body:JSON.stringify({message:msg,tree:newTree.sha,parents:[parentSha]})
     });
-    if(!newCommitRes.ok){const t=await newCommitRes.text().catch(()=> '');throw new Error(`GitHub NEW COMMIT: ${newCommitRes.status} ${t.slice(0,220)}`);}
+    if(!newCommitRes.ok){
+      const t=await newCommitRes.text().catch(()=> '');
+      throw new Error(`GitHub NEW COMMIT: ${newCommitRes.status} ${t.slice(0,220)}`);
+    }
     const newCommit=await newCommitRes.json();
 
     const updateRefRes=await fetch(`${API}/repos/${owner}/${repo}/git/refs/heads/${encodeURIComponent(branch)}`,{
-      method:'PATCH',headers,
+      method:'PATCH',
+      headers,
       body:JSON.stringify({sha:newCommit.sha,force:false})
     });
-    if(!updateRefRes.ok){const t=await updateRefRes.text().catch(()=> '');throw new Error(`GitHub UPDATE REF: ${updateRefRes.status} ${t.slice(0,220)}`);}
+    if(!updateRefRes.ok){
+      const t=await updateRefRes.text().catch(()=> '');
+      throw new Error(`GitHub UPDATE REF: ${updateRefRes.status} ${t.slice(0,220)}`);
+    }
+
+    // NOVO: dispara o deploy de produção sem depender do webhook GitHub -> Vercel.
+    // A publicação no GitHub já terminou neste ponto. Se a Vercel falhar, o artigo fica salvo
+    // e a resposta informa o erro de deployment, sem perder o commit.
+    let deployment;
+    try{
+      deployment=await triggerVercelDeployment({
+        owner,
+        repo,
+        branch,
+        commitSha:newCommit.sha
+      });
+    }catch(deployErr){
+      console.error('Falha ao disparar deploy Vercel:',deployErr);
+      deployment={
+        triggered:false,
+        error:String(deployErr.message||deployErr)
+      };
+    }
 
     return json(res,200,{
       ok:true,
@@ -361,7 +475,8 @@ export default async function handler(req,res){
       files:files.length,
       repository:`${owner}/${repo}`,
       branch,
-      article:articleResult
+      article:articleResult,
+      deployment
     });
   }catch(err){
     console.error(err);
