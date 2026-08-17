@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
   "trailingSlash": true,
   "rewrites": [
     {
@@ -36,20 +35,12 @@
       "destination": "/blog.html"
     },
     {
-      "source": "/admin/blog",
-      "destination": "/admin-blog.html"
+      "source": "/blog/persuasao-para-infoprodutores",
+      "destination": "/persuasao-para-infoprodutores.html"
     },
     {
-      "source": "/admin/blog/",
-      "destination": "/admin-blog.html"
-    },
-    {
-      "source": "/blog/:slug",
-      "destination": "/blog/:slug/index.html"
-    },
-    {
-      "source": "/blog/:slug/",
-      "destination": "/blog/:slug/index.html"
+      "source": "/blog/persuasao-para-infoprodutores/",
+      "destination": "/persuasao-para-infoprodutores.html"
     },
     {
       "source": "/leads",
@@ -100,17 +91,6 @@
       "permanent": true
     }
   ],
-  "functions": {
-    "api/blog-admin.js": {
-      "maxDuration": 30
-    },
-    "api/leads.js": {
-      "maxDuration": 20
-    },
-    "api/guia.js": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -126,15 +106,6 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/admin/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
         }
       ]
     }
