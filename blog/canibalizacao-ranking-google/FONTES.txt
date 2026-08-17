@@ -1,0 +1,14 @@
+FONTES DE APOIO FACTUAL
+
+Google Search Central — O que é canonização de URLs
+- Explica que o Google agrupa páginas duplicadas ou muito semelhantes e escolhe uma URL canônica.
+- Informa que algum conteúdo duplicado é normal e não caracteriza, por si só, violação das políticas de spam.
+
+Google Search Central — Como especificar um URL canônico
+- Redirecionamentos: sinal forte.
+- rel="canonical": sinal forte.
+- Sitemap: sinal mais fraco.
+- Esses sinais podem ser combinados.
+
+Observação editorial:
+O termo "canibalização de palavras-chave" é usado no mercado de SEO. O artigo evita apresentá-lo como uma penalidade formal do Google.
