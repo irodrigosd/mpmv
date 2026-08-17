@@ -1,7 +1,43 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T13:02:00-03:00",
+  "updatedAt": "2026-08-15T19:35:11.711Z",
   "posts": [
+    {
+      "title": "Gatilhos mentais: o que são, 9 exemplos e como usar com ética",
+      "slug": "gatilhos-mentais",
+      "url": "/blog/gatilhos-mentais/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "Gatilhos mentais",
+      "seoScore": 98,
+      "readabilityScore": 98,
+      "readingTime": "11 min",
+      "excerpt": "Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética."
+    },
+    {
+      "title": "O que é copywriting? Como aplicar no dia a dia e 7 benefícios",
+      "slug": "o-que-e-copywriting",
+      "url": "/blog/o-que-e-copywriting/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "o que é copywriting",
+      "seoScore": 98,
+      "readabilityScore": 99,
+      "readingTime": "13 min",
+      "excerpt": "Entenda o que é copywriting, como aplicar no dia a dia e 7 benefícios para melhorar mensagens, e-mails, apresentações, conteúdo e vendas."
+    },
+    {
+      "title": "Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico",
+      "slug": "como-criar-posts-que-vendem-com-chatgpt",
+      "url": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "date": "2026-08-15",
+      "status": "published",
+      "focusKeyword": "como criar posts que vendem com ChatGPT",
+      "seoScore": 94,
+      "readabilityScore": 97,
+      "readingTime": "9 min",
+      "excerpt": "Aprenda como criar posts que vendem com ChatGPT usando tema, ângulo, argumento, prova, estrutura e CTA em um processo de 7 passos."
+    },
     {
       "title": "Como usar persuasão para vender mais: 7 aplicações práticas",
       "slug": "como-usar-persuasao-para-vender-mais",

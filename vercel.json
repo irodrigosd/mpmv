@@ -1,15 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": null,
   "trailingSlash": true,
   "rewrites": [
-    {
-      "source": "/curso",
-      "destination": "/curso.html"
-    },
-    {
-      "source": "/curso/",
-      "destination": "/curso.html"
-    },
     {
       "source": "/assets/css/:path*",
       "destination": "/:path*"
@@ -25,6 +19,38 @@
     {
       "source": "/assets/downloads/:path*",
       "destination": "/:path*"
+    },
+    {
+      "source": "/curso",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/curso/",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/mentoria",
+      "destination": "/mentoria.html"
+    },
+    {
+      "source": "/mentoria/",
+      "destination": "/mentoria.html"
+    },
+    {
+      "source": "/obrigado",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/obrigado/",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/leads",
+      "destination": "/leads.html"
+    },
+    {
+      "source": "/leads/",
+      "destination": "/leads.html"
     },
     {
       "source": "/blog",
@@ -43,20 +69,364 @@
       "destination": "/persuasao-para-infoprodutores.html"
     },
     {
-      "source": "/leads",
-      "destination": "/leads.html"
+      "source": "/blog/o-que-e-copywriting",
+      "destination": "/o-que-e-copywriting.html"
     },
     {
-      "source": "/leads/",
-      "destination": "/leads.html"
+      "source": "/blog/o-que-e-copywriting/",
+      "destination": "/o-que-e-copywriting.html"
     },
     {
-      "source": "/politica-de-privacidade",
-      "destination": "/politica-de-privacidade.html"
+      "source": "/blog/gatilhos-mentais",
+      "destination": "/gatilhos-mentais.html"
     },
     {
-      "source": "/politica-de-privacidade/",
-      "destination": "/politica-de-privacidade.html"
+      "source": "/blog/gatilhos-mentais/",
+      "destination": "/gatilhos-mentais.html"
+    },
+    {
+      "source": "/blog/seo-para-inteligencia-artificial",
+      "destination": "/seo-para-inteligencia-artificial.html"
+    },
+    {
+      "source": "/blog/seo-para-inteligencia-artificial/",
+      "destination": "/seo-para-inteligencia-artificial.html"
+    },
+    {
+      "source": "/blog/conteudo-gerado-por-ia-seo",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
+      "source": "/blog/conteudo-gerado-por-ia-seo/",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
+      "source": "/blog/dark-patterns-marketing-digital",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
+      "source": "/blog/dark-patterns-marketing-digital/",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas/",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-escolha-vendas",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-escolha-vendas/",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-ikea-marketing-vendas",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-ikea-marketing-vendas/",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-enquadramento-marketing-vendas",
+      "destination": "/efeito-de-enquadramento-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-enquadramento-marketing-vendas/",
+      "destination": "/efeito-de-enquadramento-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/por-que-seu-conteudo-nao-vende",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/por-que-seu-conteudo-nao-vende/",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende/",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online/",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte/",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios/",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
+    },
+    {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
+    },
+    {
+      "source": "/admin/blog",
+      "destination": "/admin/blog.html"
+    },
+    {
+      "source": "/admin/blog/",
+      "destination": "/admin/blog.html"
+    },
+    {
+      "source": "/blog/cliente-foge-da-oferta",
+      "destination": "/cliente-foge-da-oferta.html"
+    },
+    {
+      "source": "/blog/cliente-foge-da-oferta/",
+      "destination": "/cliente-foge-da-oferta.html"
+    },
+    {
+      "source": "/blog/erro-silencioso-cliente-desconfiar-oferta",
+      "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
+    },
+    {
+      "source": "/blog/erro-silencioso-cliente-desconfiar-oferta/",
+      "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
+    },
+    {
+      "source": "/blog/conteudo-treinando-pessoas-a-ignorar",
+      "destination": "/conteudo-treinando-pessoas-a-ignorar.html"
+    },
+    {
+      "source": "/blog/conteudo-treinando-pessoas-a-ignorar/",
+      "destination": "/conteudo-treinando-pessoas-a-ignorar.html"
+    },
+    {
+      "source": "/blog/anunciando-para-pessoas-que-nao-compram",
+      "destination": "/anunciando-para-pessoas-que-nao-compram.html"
+    },
+    {
+      "source": "/blog/anunciando-para-pessoas-que-nao-compram/",
+      "destination": "/anunciando-para-pessoas-que-nao-compram.html"
+    },
+    {
+      "source": "/blog/cliente-percebe-persuasao",
+      "destination": "/cliente-percebe-persuasao.html"
+    },
+    {
+      "source": "/blog/cliente-percebe-persuasao/",
+      "destination": "/cliente-percebe-persuasao.html"
+    },
+    {
+      "source": "/blog/convencer-demais-vender-menos",
+      "destination": "/convencer-demais-vender-menos.html"
+    },
+    {
+      "source": "/blog/convencer-demais-vender-menos/",
+      "destination": "/convencer-demais-vender-menos.html"
+    },
+    {
+      "source": "/blog/como-cliente-decide-preco-caro",
+      "destination": "/como-cliente-decide-preco-caro.html"
+    },
+    {
+      "source": "/blog/como-cliente-decide-preco-caro/",
+      "destination": "/como-cliente-decide-preco-caro.html"
+    },
+    {
+      "source": "/blog/preco-errado-primeiro",
+      "destination": "/preco-errado-primeiro.html"
+    },
+    {
+      "source": "/blog/preco-errado-primeiro/",
+      "destination": "/preco-errado-primeiro.html"
+    },
+    {
+      "source": "/blog/efeito-contraste-marketing",
+      "destination": "/efeito-contraste-marketing.html"
+    },
+    {
+      "source": "/blog/efeito-contraste-marketing/",
+      "destination": "/efeito-contraste-marketing.html"
+    },
+    {
+      "source": "/blog/aversao-a-perda-marketing",
+      "destination": "/aversao-a-perda-marketing.html"
+    },
+    {
+      "source": "/blog/aversao-a-perda-marketing/",
+      "destination": "/aversao-a-perda-marketing.html"
+    },
+    {
+      "source": "/blog/prova-social-na-internet",
+      "destination": "/prova-social-na-internet.html"
+    },
+    {
+      "source": "/blog/prova-social-na-internet/",
+      "destination": "/prova-social-na-internet.html"
+    },
+    {
+      "source": "/blog/efeito-manada-marketing",
+      "destination": "/efeito-manada-marketing.html"
+    },
+    {
+      "source": "/blog/efeito-manada-marketing/",
+      "destination": "/efeito-manada-marketing.html"
+    },
+    {
+      "source": "/blog/depoimentos-ruins-diminuem-vendas",
+      "destination": "/depoimentos-ruins-diminuem-vendas.html"
+    },
+    {
+      "source": "/blog/depoimentos-ruins-diminuem-vendas/",
+      "destination": "/depoimentos-ruins-diminuem-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-confianca",
+      "destination": "/paradoxo-da-confianca.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-confianca/",
+      "destination": "/paradoxo-da-confianca.html"
+    },
+    {
+      "source": "/blog/esconder-preco-conversao",
+      "destination": "/esconder-preco-conversao.html"
+    },
+    {
+      "source": "/blog/esconder-preco-conversao/",
+      "destination": "/esconder-preco-conversao.html"
+    },
+    {
+      "source": "/blog/oferta-comum-dificil-de-ignorar",
+      "destination": "/oferta-comum-dificil-de-ignorar.html"
+    },
+    {
+      "source": "/blog/oferta-comum-dificil-de-ignorar/",
+      "destination": "/oferta-comum-dificil-de-ignorar.html"
+    },
+    {
+      "source": "/blog/oferta-que-faz-cliente-agir",
+      "destination": "/oferta-que-faz-cliente-agir.html"
+    },
+    {
+      "source": "/blog/oferta-que-faz-cliente-agir/",
+      "destination": "/oferta-que-faz-cliente-agir.html"
+    },
+    {
+      "source": "/blog/headline-para-parar-scroll",
+      "destination": "/headline-para-parar-scroll.html"
+    },
+    {
+      "source": "/blog/headline-para-parar-scroll/",
+      "destination": "/headline-para-parar-scroll.html"
+    },
+    {
+      "source": "/blog/palavras-copy-mais-fraca",
+      "destination": "/palavras-copy-mais-fraca.html"
+    },
+    {
+      "source": "/blog/palavras-copy-mais-fraca/",
+      "destination": "/palavras-copy-mais-fraca.html"
+    },
+    {
+      "source": "/blog/criar-curiosidade-sem-clickbait",
+      "destination": "/criar-curiosidade-sem-clickbait.html"
+    },
+    {
+      "source": "/blog/criar-curiosidade-sem-clickbait/",
+      "destination": "/criar-curiosidade-sem-clickbait.html"
+    },
+    {
+      "source": "/blog/erro-de-copy-oferta-parecer-golpe",
+      "destination": "/erro-de-copy-oferta-parecer-golpe.html"
+    },
+    {
+      "source": "/blog/erro-de-copy-oferta-parecer-golpe/",
+      "destination": "/erro-de-copy-oferta-parecer-golpe.html"
+    },
+    {
+      "source": "/blog/falar-demais-do-produto",
+      "destination": "/falar-demais-do-produto.html"
+    },
+    {
+      "source": "/blog/falar-demais-do-produto/",
+      "destination": "/falar-demais-do-produto.html"
+    },
+    {
+      "source": "/blog/caracteristicas-em-beneficio-percebido",
+      "destination": "/caracteristicas-em-beneficio-percebido.html"
+    },
+    {
+      "source": "/blog/caracteristicas-em-beneficio-percebido/",
+      "destination": "/caracteristicas-em-beneficio-percebido.html"
+    },
+    {
+      "source": "/blog/cliente-nao-quer-seu-produto",
+      "destination": "/cliente-nao-quer-seu-produto.html"
+    },
+    {
+      "source": "/blog/cliente-nao-quer-seu-produto/",
+      "destination": "/cliente-nao-quer-seu-produto.html"
+    },
+    {
+      "source": "/blog/erro-chatgpt-conteudo-de-vendas",
+      "destination": "/erro-chatgpt-conteudo-de-vendas.html"
+    },
+    {
+      "source": "/blog/erro-chatgpt-conteudo-de-vendas/",
+      "destination": "/erro-chatgpt-conteudo-de-vendas.html"
+    },
+    {
+      "source": "/blog/concorrente-mais-confiavel",
+      "destination": "/concorrente-mais-confiavel.html"
+    },
+    {
+      "source": "/blog/concorrente-mais-confiavel/",
+      "destination": "/concorrente-mais-confiavel.html"
+    },
+    {
+      "source": "/blog/clientes-compram-produtos-piores",
+      "destination": "/clientes-compram-produtos-piores.html"
+    },
+    {
+      "source": "/blog/clientes-compram-produtos-piores/",
+      "destination": "/clientes-compram-produtos-piores.html"
+    },
+    {
+      "source": "/blog/confiar-em-uma-marca",
+      "destination": "/confiar-em-uma-marca.html"
+    },
+    {
+      "source": "/blog/confiar-em-uma-marca/",
+      "destination": "/confiar-em-uma-marca.html"
+    },
+    {
+      "source": "/blog/cliente-decidiu-nao-comprar",
+      "destination": "/cliente-decidiu-nao-comprar.html"
+    },
+    {
+      "source": "/blog/cliente-decidiu-nao-comprar/",
+      "destination": "/cliente-decidiu-nao-comprar.html"
     }
   ],
   "redirects": [
@@ -81,17 +451,53 @@
       "permanent": true
     },
     {
-      "source": "/guia-mais-persuasao-mais-vendas",
-      "destination": "/",
+      "source": "/blog/copywriting-o-que-e-como-aplicar",
+      "destination": "/blog/o-que-e-copywriting/",
       "permanent": true
     },
     {
-      "source": "/guia-mais-persuasao-mais-vendas/",
-      "destination": "/",
+      "source": "/blog/copywriting-o-que-e-como-aplicar/",
+      "destination": "/blog/o-que-e-copywriting/",
       "permanent": true
     }
   ],
   "headers": [
+    {
+      "source": "/curso/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/curso",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"[Guia Pratico] Persuasao Pra Vender Todo Santo Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuasao%20Pra%20Vender%20Todo%20Santo%20Dia.pdf"
+        }
+      ]
+    },
+    {
+      "source": "/assets/downloads/guia-pratico-persuasao-pra-vender-todo-santo-dia.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"[Guia Pratico] Persuasao Pra Vender Todo Santo Dia.pdf\"; filename*=UTF-8''%5BGuia%20Pr%C3%A1tico%5D%20Persuasao%20Pra%20Vender%20Todo%20Santo%20Dia.pdf"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

@@ -1,0 +1,9 @@
+HOTFIX MPMV - VALIDACAO
+
+Artigos no dashboard restaurados: 45
+Dashboard /admin/blog: botão Excluir artigo presente.
+Upload: BLOG_GITHUB_TOKEN tem prioridade.
+Exclusão: BLOG_GITHUB_TOKEN com fallback e repo irodrigosd/mpmv.
+Rota /obrigado e /obrigado/: obrigado.html.
+Rota /curso e /curso/: curso.html + Content-Type text/html.
+admin-blog.html e admin/blog.html usam o mesmo dashboard.
