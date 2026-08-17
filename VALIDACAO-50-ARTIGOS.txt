@@ -1,0 +1,103 @@
+VALIDAÇÃO — 50 ARTIGOS MPMV
+Checklist: mesma heurística instalada em /admin/blog
+
+01. Sua marca pode estar afastando clientes sem você perceber: 11 sinais de alerta
+    SEO 100/100 | Legibilidade 100/100 | 2017 palavras | frase 11.5 | parágrafo 27.0
+02. O cliente está olhando sua oferta — mas alguma coisa está fazendo ele fugir
+    SEO 100/100 | Legibilidade 100/100 | 1530 palavras | frase 12.8 | parágrafo 28.1
+03. 7 erros de persuasão que podem destruir uma venda antes do cliente dizer “não”
+    SEO 100/100 | Legibilidade 100/100 | 1583 palavras | frase 11.1 | parágrafo 26.9
+04. Por que ninguém compra de você mesmo quando seu produto é bom
+    SEO 100/100 | Legibilidade 100/100 | 1468 palavras | frase 12.1 | parágrafo 27.3
+05. O erro silencioso que faz o cliente desconfiar da sua oferta
+    SEO 100/100 | Legibilidade 100/100 | 1508 palavras | frase 12.6 | parágrafo 27.8
+06. Seu conteúdo está treinando as pessoas a ignorarem você?
+    SEO 100/100 | Legibilidade 100/100 | 1464 palavras | frase 12.2 | parágrafo 26.9
+07. 9 sinais de que sua comunicação está matando suas vendas
+    SEO 100/100 | Legibilidade 100/100 | 1817 palavras | frase 11.4 | parágrafo 26.9
+08. Por que as pessoas visitam sua página, mas desaparecem antes de comprar
+    SEO 100/100 | Legibilidade 100/100 | 1463 palavras | frase 12.1 | parágrafo 26.8
+09. Você pode estar pagando para anunciar para pessoas que nunca vão comprar
+    SEO 100/100 | Legibilidade 100/100 | 1510 palavras | frase 12.5 | parágrafo 27.7
+10. O que acontece quando o cliente percebe que você está tentando persuadi-lo
+    SEO 100/100 | Legibilidade 100/100 | 1444 palavras | frase 12.1 | parágrafo 27.0
+11. Gatilhos mentais ainda funcionam ou o consumidor já aprendeu a ignorá-los?
+    SEO 100/100 | Legibilidade 100/100 | 1444 palavras | frase 11.9 | parágrafo 26.6
+12. A técnica de vendas que funciona tão bem que pode destruir sua reputação se usada errado
+    SEO 100/100 | Legibilidade 100/100 | 1463 palavras | frase 12.0 | parágrafo 27.2
+13. Persuasão ou manipulação? A linha que muitas marcas atravessam sem perceber
+    SEO 100/100 | Legibilidade 100/100 | 1388 palavras | frase 11.6 | parágrafo 26.4
+14. O lado sombrio dos gatilhos mentais no marketing digital
+    SEO 100/100 | Legibilidade 100/100 | 1410 palavras | frase 11.7 | parágrafo 26.3
+15. Por que tentar convencer demais pode fazer você vender menos
+    SEO 100/100 | Legibilidade 100/100 | 1403 palavras | frase 11.8 | parágrafo 26.5
+16. O efeito psicológico que faz uma oferta barata parecer cara
+    SEO 100/100 | Legibilidade 100/100 | 1430 palavras | frase 11.9 | parágrafo 26.8
+17. Por que R$ 97 parece barato em uma página e caro em outra
+    SEO 100/100 | Legibilidade 100/100 | 1455 palavras | frase 12.1 | parágrafo 27.0
+18. Como o cérebro decide se um preço é caro antes mesmo de analisar o produto
+    SEO 100/100 | Legibilidade 100/100 | 1393 palavras | frase 11.6 | parágrafo 26.1
+19. Por que três opções podem vender mais do que uma — e quando acontece o contrário
+    SEO 100/100 | Legibilidade 100/100 | 1426 palavras | frase 11.9 | parágrafo 26.2
+20. A psicologia por trás do “mais vendido” e por que isso influencia decisões
+    SEO 100/100 | Legibilidade 100/100 | 1411 palavras | frase 11.8 | parágrafo 26.2
+21. Por que mostrar o preço errado primeiro pode destruir sua oferta
+    SEO 100/100 | Legibilidade 100/100 | 1427 palavras | frase 11.9 | parágrafo 26.6
+22. O efeito contraste: como o cérebro compara preços, produtos e oportunidades
+    SEO 100/100 | Legibilidade 100/100 | 1415 palavras | frase 11.8 | parágrafo 26.8
+23. Aversão à perda: por que temos mais medo de perder do que vontade de ganhar
+    SEO 100/100 | Legibilidade 100/100 | 1445 palavras | frase 12.0 | parágrafo 26.9
+24. Prova social: por que seguimos desconhecidos na internet antes mesmo de perceber
+    SEO 100/100 | Legibilidade 100/100 | 1423 palavras | frase 11.9 | parágrafo 26.6
+25. O efeito manada no marketing: por que queremos aquilo que todo mundo parece querer
+    SEO 100/100 | Legibilidade 100/100 | 1414 palavras | frase 11.8 | parágrafo 26.4
+26. Por que depoimentos ruins podem diminuir suas vendas
+    SEO 100/100 | Legibilidade 100/100 | 1438 palavras | frase 12.0 | parágrafo 26.9
+27. O paradoxo da confiança: quanto mais você diz que é confiável, menos confiável pode parecer
+    SEO 100/100 | Legibilidade 100/100 | 1442 palavras | frase 12.0 | parágrafo 27.0
+28. Por que esconder o preço pode aumentar curiosidade — ou destruir sua conversão
+    SEO 100/100 | Legibilidade 100/100 | 1437 palavras | frase 12.0 | parágrafo 26.9
+29. Como transformar uma oferta comum em algo difícil de ignorar
+    SEO 100/100 | Legibilidade 100/100 | 1523 palavras | frase 11.9 | parágrafo 26.5
+30. A diferença entre uma oferta que informa e uma oferta que faz o cliente agir
+    SEO 100/100 | Legibilidade 100/100 | 1452 palavras | frase 12.1 | parágrafo 26.4
+31. Como escrever uma headline que faz a pessoa parar de rolar a tela
+    SEO 100/100 | Legibilidade 100/100 | 1396 palavras | frase 11.6 | parágrafo 26.4
+32. 10 palavras que deixam sua copy mais fraca sem você perceber
+    SEO 100/100 | Legibilidade 100/100 | 1715 palavras | frase 10.3 | parágrafo 25.2
+33. Por que sua headline pode estar matando um conteúdo excelente
+    SEO 100/100 | Legibilidade 100/100 | 1387 palavras | frase 11.6 | parágrafo 26.5
+34. Como criar curiosidade sem usar clickbait barato
+    SEO 100/100 | Legibilidade 100/100 | 1412 palavras | frase 11.8 | parágrafo 26.6
+35. O erro de copy que faz uma oferta parecer golpe
+    SEO 100/100 | Legibilidade 100/100 | 1404 palavras | frase 11.7 | parágrafo 26.3
+36. Como vender sem parecer que está desesperado para vender
+    SEO 100/100 | Legibilidade 100/100 | 1444 palavras | frase 12.1 | parágrafo 26.8
+37. Por que falar demais do produto pode diminuir o desejo de compra
+    SEO 100/100 | Legibilidade 100/100 | 1459 palavras | frase 12.2 | parágrafo 27.2
+38. Características não vendem: como transformar qualquer produto em benefício percebido
+    SEO 100/100 | Legibilidade 100/100 | 1416 palavras | frase 11.8 | parágrafo 26.7
+39. O cliente não quer seu produto: ele quer o que acontece depois de comprá-lo
+    SEO 100/100 | Legibilidade 100/100 | 1443 palavras | frase 12.0 | parágrafo 26.5
+40. Por que conteúdos com muitas visualizações podem gerar zero vendas
+    SEO 100/100 | Legibilidade 100/100 | 1442 palavras | frase 12.1 | parágrafo 26.9
+41. O algoritmo não é o culpado: 7 motivos pelos quais seus posts flopam
+    SEO 100/100 | Legibilidade 100/100 | 1525 palavras | frase 10.8 | parágrafo 26.1
+42. Como transformar seguidores em clientes sem postar todos os dias
+    SEO 100/100 | Legibilidade 100/100 | 1540 palavras | frase 12.1 | parágrafo 26.7
+43. Por que seu Reels prende atenção, mas não gera nenhum cliente
+    SEO 100/100 | Legibilidade 100/100 | 1443 palavras | frase 12.1 | parágrafo 26.8
+44. O maior erro de quem usa ChatGPT para criar conteúdo de vendas
+    SEO 100/100 | Legibilidade 100/100 | 1458 palavras | frase 12.3 | parágrafo 27.0
+45. Como usar inteligência artificial sem deixar sua comunicação com cara de IA
+    SEO 100/100 | Legibilidade 100/100 | 1565 palavras | frase 12.3 | parágrafo 27.2
+46. Seu concorrente não precisa ser melhor — basta parecer mais confiável
+    SEO 100/100 | Legibilidade 100/100 | 1435 palavras | frase 12.0 | parágrafo 26.7
+47. Por que clientes compram produtos piores mesmo conhecendo alternativas melhores
+    SEO 100/100 | Legibilidade 100/100 | 1405 palavras | frase 11.7 | parágrafo 26.0
+48. A guerra pela atenção: por que sua marca tem menos de segundos para ser percebida
+    SEO 100/100 | Legibilidade 100/100 | 1427 palavras | frase 12.0 | parágrafo 26.4
+49. O que faz alguém confiar em uma marca que acabou de conhecer
+    SEO 100/100 | Legibilidade 100/100 | 1536 palavras | frase 12.0 | parágrafo 26.8
+50. O cliente decidiu não comprar antes de chegar ao preço — descubra por quê
+    SEO 100/100 | Legibilidade 100/100 | 1562 palavras | frase 12.1 | parágrafo 26.6

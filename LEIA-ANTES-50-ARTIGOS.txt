@@ -1,0 +1,61 @@
+PACOTE MPMV — 50 ARTIGOS
+Data: 16/08/2026
+
+Este ZIP foi montado como pacote incremental para o blog HTML/Vercel.
+Ele inclui 50 artigos, 50 imagens SVG, blog.html atualizado, sitemap.xml, vercel.json e data/blog-posts.json.
+Não substitui /admin/blog.
+
+ORDEM DOS ARTIGOS:
+01. Sua marca pode estar afastando clientes sem você perceber: 11 sinais de alerta — /blog/marca-afastando-clientes-sinais/
+02. O cliente está olhando sua oferta — mas alguma coisa está fazendo ele fugir — /blog/cliente-foge-da-oferta/
+03. 7 erros de persuasão que podem destruir uma venda antes do cliente dizer “não” — /blog/erros-de-persuasao-destroem-vendas/
+04. Por que ninguém compra de você mesmo quando seu produto é bom — /blog/produto-bom-nao-vende/
+05. O erro silencioso que faz o cliente desconfiar da sua oferta — /blog/erro-silencioso-cliente-desconfiar-oferta/
+06. Seu conteúdo está treinando as pessoas a ignorarem você? — /blog/conteudo-treinando-pessoas-a-ignorar/
+07. 9 sinais de que sua comunicação está matando suas vendas — /blog/sinais-comunicacao-matando-vendas/
+08. Por que as pessoas visitam sua página, mas desaparecem antes de comprar — /blog/visitam-pagina-mas-nao-compram/
+09. Você pode estar pagando para anunciar para pessoas que nunca vão comprar — /blog/anunciando-para-pessoas-que-nao-compram/
+10. O que acontece quando o cliente percebe que você está tentando persuadi-lo — /blog/cliente-percebe-persuasao/
+11. Gatilhos mentais ainda funcionam ou o consumidor já aprendeu a ignorá-los? — /blog/gatilhos-mentais-ainda-funcionam/
+12. A técnica de vendas que funciona tão bem que pode destruir sua reputação se usada errado — /blog/tecnica-de-vendas-destroi-reputacao/
+13. Persuasão ou manipulação? A linha que muitas marcas atravessam sem perceber — /blog/persuasao-ou-manipulacao/
+14. O lado sombrio dos gatilhos mentais no marketing digital — /blog/lado-sombrio-gatilhos-mentais/
+15. Por que tentar convencer demais pode fazer você vender menos — /blog/convencer-demais-vender-menos/
+16. O efeito psicológico que faz uma oferta barata parecer cara — /blog/oferta-barata-parecer-cara/
+17. Por que R$ 97 parece barato em uma página e caro em outra — /blog/preco-97-barato-ou-caro/
+18. Como o cérebro decide se um preço é caro antes mesmo de analisar o produto — /blog/como-cliente-decide-preco-caro/
+19. Por que três opções podem vender mais do que uma — e quando acontece o contrário — /blog/tres-opcoes-vendem-mais/
+20. A psicologia por trás do “mais vendido” e por que isso influencia decisões — /blog/psicologia-mais-vendido/
+21. Por que mostrar o preço errado primeiro pode destruir sua oferta — /blog/preco-errado-primeiro/
+22. O efeito contraste: como o cérebro compara preços, produtos e oportunidades — /blog/efeito-contraste-marketing/
+23. Aversão à perda: por que temos mais medo de perder do que vontade de ganhar — /blog/aversao-a-perda-marketing/
+24. Prova social: por que seguimos desconhecidos na internet antes mesmo de perceber — /blog/prova-social-na-internet/
+25. O efeito manada no marketing: por que queremos aquilo que todo mundo parece querer — /blog/efeito-manada-marketing/
+26. Por que depoimentos ruins podem diminuir suas vendas — /blog/depoimentos-ruins-diminuem-vendas/
+27. O paradoxo da confiança: quanto mais você diz que é confiável, menos confiável pode parecer — /blog/paradoxo-da-confianca/
+28. Por que esconder o preço pode aumentar curiosidade — ou destruir sua conversão — /blog/esconder-preco-conversao/
+29. Como transformar uma oferta comum em algo difícil de ignorar — /blog/oferta-comum-dificil-de-ignorar/
+30. A diferença entre uma oferta que informa e uma oferta que faz o cliente agir — /blog/oferta-que-faz-cliente-agir/
+31. Como escrever uma headline que faz a pessoa parar de rolar a tela — /blog/headline-para-parar-scroll/
+32. 10 palavras que deixam sua copy mais fraca sem você perceber — /blog/palavras-copy-mais-fraca/
+33. Por que sua headline pode estar matando um conteúdo excelente — /blog/headline-matando-conteudo/
+34. Como criar curiosidade sem usar clickbait barato — /blog/criar-curiosidade-sem-clickbait/
+35. O erro de copy que faz uma oferta parecer golpe — /blog/erro-de-copy-oferta-parecer-golpe/
+36. Como vender sem parecer que está desesperado para vender — /blog/vender-sem-parecer-desesperado/
+37. Por que falar demais do produto pode diminuir o desejo de compra — /blog/falar-demais-do-produto/
+38. Características não vendem: como transformar qualquer produto em benefício percebido — /blog/caracteristicas-em-beneficio-percebido/
+39. O cliente não quer seu produto: ele quer o que acontece depois de comprá-lo — /blog/cliente-nao-quer-seu-produto/
+40. Por que conteúdos com muitas visualizações podem gerar zero vendas — /blog/muitas-visualizacoes-zero-vendas/
+41. O algoritmo não é o culpado: 7 motivos pelos quais seus posts flopam — /blog/motivos-posts-flopam/
+42. Como transformar seguidores em clientes sem postar todos os dias — /blog/transformar-seguidores-em-clientes/
+43. Por que seu Reels prende atenção, mas não gera nenhum cliente — /blog/reels-prende-atencao-nao-gera-cliente/
+44. O maior erro de quem usa ChatGPT para criar conteúdo de vendas — /blog/erro-chatgpt-conteudo-de-vendas/
+45. Como usar inteligência artificial sem deixar sua comunicação com cara de IA — /blog/usar-inteligencia-artificial-sem-cara-de-ia/
+46. Seu concorrente não precisa ser melhor — basta parecer mais confiável — /blog/concorrente-mais-confiavel/
+47. Por que clientes compram produtos piores mesmo conhecendo alternativas melhores — /blog/clientes-compram-produtos-piores/
+48. A guerra pela atenção: por que sua marca tem menos de segundos para ser percebida — /blog/guerra-pela-atencao/
+49. O que faz alguém confiar em uma marca que acabou de conhecer — /blog/confiar-em-uma-marca/
+50. O cliente decidiu não comprar antes de chegar ao preço — descubra por quê — /blog/cliente-decidiu-nao-comprar/
+
+CTA principal dos artigos: Guia Prático Persuasão pra Vender Todo Santo Dia, apontando para /.
+Os títulos mantêm o padrão visual branco + destaque dourado.
