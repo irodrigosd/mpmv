@@ -205,14 +205,6 @@
       "destination": "/cliente-foge-da-oferta.html"
     },
     {
-      "source": "/blog/erros-de-persuasao-destroem-vendas",
-      "destination": "/erros-de-persuasao-destroem-vendas.html"
-    },
-    {
-      "source": "/blog/erros-de-persuasao-destroem-vendas/",
-      "destination": "/erros-de-persuasao-destroem-vendas.html"
-    },
-    {
       "source": "/blog/erro-silencioso-cliente-desconfiar-oferta",
       "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
     },
