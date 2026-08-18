@@ -1,6 +1,4 @@
 const API='https://api.github.com';
-const VERCEL_API='https://api.vercel.com';
-
 const json=(res,status,data)=>{
   res.statusCode=status;
   res.setHeader('Content-Type','application/json; charset=utf-8');
@@ -167,73 +165,6 @@ function upsertSitemap(xml,post){
 ${entry}
 </urlset>
 `;
-}
-
-async function triggerVercelDeployment({owner,repo,branch,commitSha}){
-  // Opção 1: Deploy Hook. É a forma mais simples se VERCEL_DEPLOY_HOOK_URL estiver configurada.
-  const hook=String(process.env.VERCEL_DEPLOY_HOOK_URL||'').trim();
-  if(hook){
-    const r=await fetch(hook,{method:'POST'});
-    const text=await r.text().catch(()=> '');
-    let data={};
-    try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
-    if(!r.ok) throw new Error(`Vercel Deploy Hook: ${r.status} ${text.slice(0,220)}`);
-    return {triggered:true,method:'deploy-hook',id:data.job?.id||data.id||null,url:data.url||null};
-  }
-
-  // Opção 2: API da Vercel. Requer VERCEL_TOKEN.
-  const token=String(process.env.VERCEL_TOKEN||'').trim();
-  if(!token){
-    return {
-      triggered:false,
-      method:null,
-      reason:'Configure VERCEL_DEPLOY_HOOK_URL ou VERCEL_TOKEN no Vercel para ativar o deploy automático.'
-    };
-  }
-
-  const teamId=String(process.env.VERCEL_TEAM_ID||'team_BVsuVX2DEGb6PtSNkqdRlzjB').trim();
-  const projectName=String(process.env.VERCEL_PROJECT_NAME||'mpmv').trim();
-  const qs=teamId?`?teamId=${encodeURIComponent(teamId)}`:'';
-
-  const payload={
-    name:projectName,
-    target:'production',
-    withLatestCommit:true,
-    gitSource:{
-      type:'github',
-      repo,
-      ref:branch,
-      org:owner
-    },
-    gitMetadata:{
-      commitRef:branch,
-      commitSha,
-      remoteUrl:`https://github.com/${owner}/${repo}`,
-      ci:'true',
-      ciType:'custom'
-    }
-  };
-
-  const r=await fetch(`${VERCEL_API}/v13/deployments${qs}`,{
-    method:'POST',
-    headers:{
-      'Authorization':`Bearer ${token}`,
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify(payload)
-  });
-  const text=await r.text();
-  let data={};
-  try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
-  if(!r.ok) throw new Error(`Vercel API: ${r.status} ${text.slice(0,300)}`);
-
-  return {
-    triggered:true,
-    method:'vercel-api',
-    id:data.id||null,
-    url:data.url||null,
-    status:data.status||data.readyState||null
-  };
 }
 
 export default async function handler(req,res){
@@ -450,24 +381,14 @@ export default async function handler(req,res){
       throw new Error(`GitHub UPDATE REF: ${updateRefRes.status} ${t.slice(0,220)}`);
     }
 
-    // NOVO: dispara o deploy de produção sem depender do webhook GitHub -> Vercel.
-    // A publicação no GitHub já terminou neste ponto. Se a Vercel falhar, o artigo fica salvo
-    // e a resposta informa o erro de deployment, sem perder o commit.
-    let deployment;
-    try{
-      deployment=await triggerVercelDeployment({
-        owner,
-        repo,
-        branch,
-        commitSha:newCommit.sha
-      });
-    }catch(deployErr){
-      console.error('Falha ao disparar deploy Vercel:',deployErr);
-      deployment={
-        triggered:false,
-        error:String(deployErr.message||deployErr)
-      };
-    }
+    // O commit no branch principal é o único gatilho de publicação.
+    // A integração GitHub -> Vercel cuida do deployment; não criamos um segundo deployment
+    // por Deploy Hook ou API, evitando consumo duplicado da cota do plano.
+    const deployment={
+      triggered:false,
+      method:'git-integration',
+      reason:'Deploy adicional desativado. O commit no main é o único gatilho para a Vercel.'
+    };
 
     return json(res,200,{
       ok:true,

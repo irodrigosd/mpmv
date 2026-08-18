@@ -1,28 +1,4 @@
-MAPA DE ARQUIVOS — ATIVO 50 ARTIGOS
-
-como-criar-50-artigos-com-chatgpt-em-20-minutos.html
-→ Artigo pronto para o blog.
-
-WORKFLOW-50-ARTIGOS.md
-→ Processo completo que usamos.
-
-PROMPT-MESTRE-50-ARTIGOS.txt
-→ Prompt reutilizável para novos lotes.
-
-CHECKLIST-SEO-LEGIBILIDADE-PUBLICACAO.txt
-→ Checklist antes de publicar.
-
-SNIPPET-BLOG-CARD.html
-→ Card pronto para inserir em /blog/.
-
-SNIPPET-VERCEL-ROTA.json
-→ Rotas limpas para vercel.json.
-
-SNIPPET-SITEMAP.xml
-→ Entrada para sitemap.xml.
-
-SEO-CONFIG.json
-→ Metadados do artigo.
-
-Observação:
-“20 minutos” descreve um workflow acelerado com padrões já definidos. Não é uma garantia universal de tempo.
+Correção MPMV: 1 upload = 1 commit = 1 deployment.
+Substitui apenas api/admin-blog-upload.js.
+Remove o disparo manual adicional via Vercel Deploy Hook/API.
+O commit no branch main passa a ser o único gatilho para a integração GitHub -> Vercel.
