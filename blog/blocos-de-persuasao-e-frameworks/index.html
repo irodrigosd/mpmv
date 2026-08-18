@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blocos de Persuasão e Frameworks para Infoprodutos | MPMV</title>
+  <meta name="description" content="Entenda o que são blocos de persuasão e frameworks, veja como eles se conectam e aprenda a usar essa estrutura para vender seu infoproduto.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Rodrigo Castro">
+  <meta name="keywords" content="blocos de persuasão, frameworks de copywriting, framework de vendas, copy para infoproduto, AIDA, persuasão para infoprodutores, estrutura de copy">
+  <link rel="canonical" href="https://www.maispersuasaomaisvendas.com.br/blog/blocos-de-persuasao-e-frameworks/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="MPMV — Mais Persuasão, Mais Vendas">
+  <meta property="og:title" content="Blocos de persuasão e frameworks: como usar os dois para vender seu infoproduto">
+  <meta property="og:description" content="Entenda o que são blocos de persuasão e frameworks, veja como eles se conectam e aprenda a usar essa estrutura para vender seu infoproduto.">
+  <meta property="og:url" content="https://www.maispersuasaomaisvendas.com.br/blog/blocos-de-persuasao-e-frameworks/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root{
+      --bg:#0b0b0b;--paper:#f4f0e8;--ink:#171512;--muted:#756e65;
+      --red:#a51f27;--gold:#d1a447;--cream:#fffaf0;--line:#d8d0c6;
+      --grad:linear-gradient(90deg,#a51f27 0%,#e25c2d 48%,#d1a447 100%);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .wrap{width:min(1140px,calc(100% - 38px));margin:auto}
+    .nav{background:#0b0b0b;color:#fff;border-bottom:1px solid #26221f}
+    .navin{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:900}
+    .mark{width:40px;height:40px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#090909;font-weight:950}
+    .navlinks{display:flex;align-items:center;gap:20px;font-size:14px}
+    .navlinks a{text-decoration:none;color:#d7d0c8}
+    .navlinks a:hover{color:#fff}
+    .hero{position:relative;overflow:hidden;background:
+      radial-gradient(circle at 81% 20%,rgba(209,164,71,.20),transparent 21%),
+      radial-gradient(circle at 87% 70%,rgba(165,31,39,.18),transparent 28%),
+      linear-gradient(135deg,#090909,#151311 68%,#241012);color:#fff;padding:62px 0 58px}
+    .crumb{font-size:13px;color:#aaa29a;margin-bottom:32px}
+    .crumb a{color:#d7bd7e;text-decoration:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:46px;align-items:center}
+    .category{display:inline-flex;align-items:center;gap:10px;color:#e0bc65;font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+    .category:before{content:"";width:30px;height:2px;background:var(--grad)}
+    h1{font-size:clamp(42px,5.7vw,72px);line-height:1.01;letter-spacing:-.052em;margin:17px 0 20px;max-width:900px}
+    .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:clamp(18px,2vw,22px);line-height:1.55;color:#d3cdc6;max-width:790px;margin:0}
+    .meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;font-size:13px;color:#a9a29a}
+    .visual{display:grid;gap:14px;align-content:center}
+    .model{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:18px;padding:18px 19px;display:flex;align-items:center;gap:14px}
+    .model:nth-child(2){transform:translateX(24px)}
+    .model:nth-child(3){transform:translateX(8px)}
+    .icon{width:46px;height:46px;border-radius:14px;background:var(--grad);color:#0a0a0a;display:grid;place-items:center;font-weight:950}
+    .model b{display:block;font-size:18px}
+    .model span{display:block;color:#bfb8b0;font-size:13px;line-height:1.4}
+    .article{padding:64px 0 84px}
+    .article-grid{display:grid;grid-template-columns:minmax(0,760px) 290px;gap:54px;align-items:start}
+    article p{font-size:18px;margin:0 0 22px}
+    article h2{font-size:clamp(30px,4vw,45px);line-height:1.08;letter-spacing:-.035em;margin:58px 0 20px}
+    article h3{font-size:25px;line-height:1.2;letter-spacing:-.02em;margin:36px 0 14px}
+    article a{color:#8b651b;font-weight:800;text-decoration-thickness:1px;text-underline-offset:3px}
+    .intro{font-size:21px}
+    .pull{margin:38px 0;padding:26px 28px;background:#171412;color:#fff;border-left:5px solid var(--gold);border-radius:0 16px 16px 0;font-size:25px;line-height:1.35;font-weight:800}
+    .tip{background:#fff7df;border:1px solid #e5ca83;border-radius:18px;padding:22px 24px;margin:30px 0}
+    .tip strong{display:block;margin-bottom:6px}
+    .comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+    .box{background:#fff;border:1px solid #ddd5ca;border-radius:16px;padding:20px}
+    .box strong{display:block;font-size:19px;margin-bottom:8px}
+    .box p{font-size:16px;margin:0;color:#5f5851}
+    .checklist{padding-left:22px}
+    .checklist li{margin:10px 0;font-size:17px}
+    .steps{display:grid;gap:14px;margin:26px 0}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:14px;background:#fff;border:1px solid #ded6cb;border-radius:16px;padding:17px}
+    .stepn{width:38px;height:38px;border-radius:50%;background:#171412;color:#e7bd5d;display:grid;place-items:center;font-weight:900}
+    .framework{background:#171412;color:#fff;border-radius:18px;padding:24px;margin:26px 0}
+    .framework b{color:#e8c36b}
+    .framework p{font-size:17px;color:#d2cbc3;margin:10px 0 0}
+    .internal{background:#fff;border:1px solid #ddd5ca;border-radius:18px;padding:22px 24px;margin:30px 0}
+    .internal strong{display:block;margin-bottom:8px}
+    .internal a{display:inline-block;margin:4px 0}
+    .faq{border-top:1px solid var(--line);margin-top:54px;padding-top:18px}
+    details{background:#fff;border:1px solid #ddd5ca;border-radius:14px;padding:17px 19px;margin:12px 0}
+    summary{cursor:pointer;font-weight:900;font-size:17px}
+    details p{font-size:16px;margin:12px 0 0;color:#5f5851}
+    .sidebar{position:sticky;top:24px;display:grid;gap:18px}
+    .sidecard{background:#111;color:#fff;border-radius:20px;padding:24px;border:1px solid #28231f}
+    .sidecard .eyebrow{color:#d1a447;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900}
+    .sidecard h3{font-size:25px;line-height:1.12;margin:10px 0 12px}
+    .sidecard p{font-size:15px;line-height:1.55;color:#bbb3aa;margin:0 0 18px}
+    .btn{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;padding:13px 16px;border-radius:999px;background:var(--grad);color:#090909!important;font-weight:950;font-size:13px}
+    .sidequote{background:linear-gradient(145deg,#4f1117,#17100d);color:#fff;border-radius:20px;padding:24px}
+    .sidequote b{display:block;color:#e8c36b;font-size:32px;line-height:1}
+    .sidequote p{font-size:18px;line-height:1.42;margin:13px 0 0}
+    .closing{margin-top:54px;background:#101010;color:#fff;border-radius:24px;padding:34px}
+    .closing h2{margin:0 0 15px;font-size:34px}
+    .closing p{color:#cbc4bc}
+    .closing a{color:#efc768;font-weight:900}
+    footer{background:#0b0b0b;color:#9e978f;border-top:1px solid #24211e;padding:28px 0;font-size:13px}
+    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .foot a{color:#ddd4c8;text-decoration:none}
+    @media(max-width:920px){.hero-grid,.article-grid{grid-template-columns:1fr}.visual{max-width:520px}.sidebar{position:static;grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.comparison{grid-template-columns:1fr}}
+    @media(max-width:640px){.navlinks a:first-child{display:none}.hero{padding:42px 0}.sidebar{grid-template-columns:1fr}.article{padding-top:42px}.pull{font-size:21px}.closing{padding:26px}article p{font-size:17px}.model:nth-child(2),.model:nth-child(3){transform:none}}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Blocos de persuasão e frameworks: como usar os dois para vender seu infoproduto",
+    "description":"Entenda o que são blocos de persuasão e frameworks, veja como eles se conectam e aprenda a usar essa estrutura para vender seu infoproduto.",
+    "datePublished":"2026-08-18",
+    "dateModified":"2026-08-18",
+    "author":{"@type":"Person","name":"Rodrigo Castro"},
+    "publisher":{"@type":"Organization","name":"MPMV — Mais Persuasão, Mais Vendas"},
+    "mainEntityOfPage":"https://www.maispersuasaomaisvendas.com.br/blog/blocos-de-persuasao-e-frameworks/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"O que são blocos de persuasão?",
+        "acceptedAnswer":{"@type":"Answer","text":"São partes da comunicação com uma função definida, como headline, analogia, prova, autoridade, tratamento de objeção, garantia, oferta e CTA."}
+      },
+      {
+        "@type":"Question",
+        "name":"O que é um framework de copywriting?",
+        "acceptedAnswer":{"@type":"Answer","text":"É uma estrutura usada para organizar a sequência do raciocínio de uma copy. AIDA, por exemplo, distribui a comunicação em Atenção, Interesse, Desejo e Ação."}
+      },
+      {
+        "@type":"Question",
+        "name":"Qual é a diferença entre framework e bloco de persuasão?",
+        "acceptedAnswer":{"@type":"Answer","text":"O framework organiza o percurso da comunicação. Os blocos ocupam as etapas desse percurso com funções específicas."}
+      },
+      {
+        "@type":"Question",
+        "name":"Como usar blocos de persuasão para vender um infoproduto?",
+        "acceptedAnswer":{"@type":"Answer","text":"Primeiro diagnostique o nível de consciência do público e a mudança de crença necessária. Depois escolha o framework e selecione os blocos que ajudam cada etapa a cumprir sua função."}
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="/"><span class="mark">MP</span><span>Mais Persuasão, Mais Vendas</span></a>
+      <div class="navlinks"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/curso/">Curso</a></div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › Copywriting + Infoprodutos</div>
+      <div class="hero-grid">
+        <div>
+          <div class="category">Copywriting + Infoprodutos</div>
+          <h1>Blocos de persuasão e frameworks: <span class="accent">como usar os dois para vender seu infoproduto</span></h1>
+          <p class="lead">Framework organiza o caminho. Blocos de persuasão ocupam cada etapa com uma função. Quando você entende essa relação, a copy deixa de ser um monte de técnicas empilhadas.</p>
+          <div class="meta">
+            <span>18 de agosto de 2026</span>
+            <span>Rodrigo Castro</span>
+            <span>12 min de leitura</span>
+          </div>
+        </div>
+        <div class="visual" aria-hidden="true">
+          <div class="model"><div class="icon">1</div><div><b>Diagnóstico</b><span>Público, consciência e mudança de crença.</span></div></div>
+          <div class="model"><div class="icon">2</div><div><b>Framework</b><span>A sequência que organiza o raciocínio.</span></div></div>
+          <div class="model"><div class="icon">3</div><div><b>Blocos</b><span>As peças usadas dentro de cada etapa.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="article">
+    <div class="wrap article-grid">
+      <article>
+        <p class="intro"><strong>Blocos de persuasão</strong> e frameworks aparecem o tempo inteiro no copywriting. AIDA, headline, prova, autoridade, objeção, garantia, CTA. O problema começa quando tudo isso vira uma lista de ingredientes e a pessoa tenta colocar cada técnica na mesma copy.</p>
+
+        <p>O texto pode até ficar cheio de elementos. Ainda assim, falta uma decisão anterior: <strong>qual função cada parte precisa cumprir?</strong></p>
+
+        <p>Se você já entende a base de <a href="/blog/o-que-e-copywriting/">copywriting e escrita persuasiva</a>, este artigo ajuda a dar o próximo passo: organizar a arquitetura da comunicação.</p>
+
+        <div class="pull">Pense em LEGO. O framework funciona como o projeto da construção. Os blocos de persuasão são as peças que você escolhe para montar cada parte.</div>
+
+        <h2>O que são blocos de persuasão?</h2>
+
+        <p>Um bloco de persuasão é uma parte da comunicação com uma função definida. Ele existe para fazer um trabalho dentro da copy.</p>
+
+        <p>Uma headline pode chamar atenção. Uma analogia pode tornar um conceito compreensível. Uma prova pode reduzir dúvida. Uma garantia pode diminuir percepção de risco. Um CTA mostra qual passo o leitor deve tomar.</p>
+
+        <p>Alguns exemplos de blocos:</p>
+
+        <ul class="checklist">
+          <li>Headline ou título.</li>
+          <li>Quebra de padrão.</li>
+          <li>Abrir loop ou antecipação.</li>
+          <li>Analogia.</li>
+          <li>Autoridade.</li>
+          <li>Prova.</li>
+          <li>Estudo de caso.</li>
+          <li>Bullet points.</li>
+          <li>Tratamento de objeções.</li>
+          <li>Future pacing.</li>
+          <li>Garantia.</li>
+          <li>Apresentação e recapitulação da oferta.</li>
+          <li>Preço e ancoragem.</li>
+          <li>CTA.</li>
+        </ul>
+
+        <p>Os <a href="/blog/gatilhos-mentais/">gatilhos mentais</a> entram nesse universo como recursos de decisão, mas vale separar as coisas. Um bloco pode usar autoridade, escassez ou reciprocidade. Ele também pode cumprir sua função por meio de história, comparação, prova, demonstração ou explicação.</p>
+
+        <div class="tip">
+          <strong>Uma pergunta simples ajuda a escolher o bloco:</strong>
+          “O que o leitor precisa compreender, sentir, acreditar ou fazer neste ponto da comunicação?”
+        </div>
+
+        <h2>O que são frameworks de copywriting?</h2>
+
+        <p>Framework é uma estrutura de organização. Ele ajuda a decidir a sequência da conversa.</p>
+
+        <p>O exemplo mais conhecido é o AIDA:</p>
+
+        <div class="framework">
+          <b>Atenção → Interesse → Desejo → Ação</b>
+          <p>Cada etapa representa um trabalho que a comunicação precisa cumprir antes de avançar.</p>
+        </div>
+
+        <p>Outro caminho possível:</p>
+
+        <div class="framework">
+          <b>Atenção → Conexão → Problema → Solução → Oferta</b>
+          <p>A sequência abre espaço para identificação, desenvolvimento do problema, apresentação da solução e venda.</p>
+        </div>
+
+        <p>Também existem estruturas baseadas em promessa, cenário futuro, prova e ação. Em outros casos, a conversa pode ser conduzida por storytelling.</p>
+
+        <p>Framework, portanto, funciona como um mapa. Ele ajuda a visualizar o percurso do leitor dentro da peça.</p>
+
+        <h2>A diferença entre framework e bloco de persuasão</h2>
+
+        <div class="comparison">
+          <div class="box">
+            <strong>Framework</strong>
+            <p>Organiza a sequência da comunicação. Define o percurso.</p>
+          </div>
+          <div class="box">
+            <strong>Bloco de persuasão</strong>
+            <p>Cumpre uma função dentro do percurso. Entrega uma parte do argumento.</p>
+          </div>
+        </div>
+
+        <p>Imagine uma casa.</p>
+
+        <p>A planta mostra onde ficam sala, cozinha, quartos e circulação. Tijolo, porta, janela, piso e estrutura ocupam essas partes.</p>
+
+        <p>Na copy, o framework cumpre o papel da planta. Os blocos de persuasão são os componentes usados para construir cada etapa.</p>
+
+        <p>Essa distinção evita um erro comum em <a href="/blog/persuasao-para-infoprodutores/">persuasão para infoprodutores</a>: escolher técnicas antes de decidir qual conversa precisa acontecer.</p>
+
+        <h2>Como combinar framework e blocos na prática</h2>
+
+        <p>Vamos usar AIDA como exemplo.</p>
+
+        <h3>1. Atenção</h3>
+
+        <p>A pergunta aqui é: por que a pessoa deveria parar?</p>
+
+        <p>Blocos possíveis:</p>
+
+        <ul class="checklist">
+          <li>Headline.</li>
+          <li>Quebra de padrão.</li>
+          <li>Promessa.</li>
+          <li>Especificidade.</li>
+          <li>Curiosidade.</li>
+        </ul>
+
+        <p>Exemplo para um curso de conteúdo:</p>
+
+        <div class="tip"><strong>“Seu conteúdo pode estar recebendo atenção e, ao mesmo tempo, ensinando o público a não comprar.”</strong></div>
+
+        <p>A frase abre uma tensão. Agora a comunicação precisa sustentar o interesse.</p>
+
+        <h3>2. Interesse</h3>
+
+        <p>A pergunta muda: por que essa pessoa deveria continuar?</p>
+
+        <p>Blocos possíveis:</p>
+
+        <ul class="checklist">
+          <li>Antecipação.</li>
+          <li>Analogia.</li>
+          <li>História.</li>
+          <li>Conteúdo.</li>
+          <li>Identificação.</li>
+        </ul>
+
+        <p>Exemplo:</p>
+
+        <div class="tip">“É como lotar uma loja e deixar todo mundo andando pelos corredores sem entender o que escolher. Atenção entrou. Direção ainda não.”</div>
+
+        <h3>3. Desejo</h3>
+
+        <p>Nesta etapa, o leitor precisa enxergar valor, aplicação e consequência.</p>
+
+        <p>Podem entrar:</p>
+
+        <ul class="checklist">
+          <li>Benefícios.</li>
+          <li>Prova.</li>
+          <li>Demonstração.</li>
+          <li>Estudo de caso.</li>
+          <li>Future pacing.</li>
+          <li>Tratamento de objeções.</li>
+        </ul>
+
+        <p>Um bom produto precisa transformar características em consequências percebidas pelo cliente. Se quiser aprofundar essa parte, veja o artigo sobre <a href="/blog/transformar-caracteristicas-em-beneficios/">como transformar características em benefícios</a>.</p>
+
+        <h3>4. Ação</h3>
+
+        <p>A comunicação chega ao momento de orientar o próximo passo.</p>
+
+        <p>Podem entrar:</p>
+
+        <ul class="checklist">
+          <li>Recapitulação da oferta.</li>
+          <li>Garantia, quando ela realmente existir.</li>
+          <li>Preço.</li>
+          <li>Tratamento de uma objeção de compra.</li>
+          <li>CTA.</li>
+        </ul>
+
+        <p>Aqui a estrutura da oferta pesa bastante. O artigo <a href="/blog/como-escrever-uma-oferta-que-vende/">como escrever uma oferta que vende</a> mostra como organizar promessa, benefício, prova, preço e CTA dentro da mesma decisão.</p>
+
+        <h2>O framework muda conforme o nível de consciência</h2>
+
+        <p>É aqui que muita copy perde força.</p>
+
+        <p>Duas pessoas podem ter o mesmo perfil demográfico e precisar de comunicações completamente diferentes.</p>
+
+        <p>Uma ainda não percebe o problema. Outra já reconhece o problema e está comparando soluções. Outra já decidiu comprar e quer saber qual produto oferece o melhor encaixe.</p>
+
+        <p>O framework precisa acompanhar esse estágio.</p>
+
+        <p>Para um público que ainda precisa ganhar consciência, uma sequência com história, conexão e demonstração pode fazer mais sentido.</p>
+
+        <p>Para quem já procura uma solução, uma comunicação mais direta pode abrir com promessa, benefício, prova e oferta.</p>
+
+        <div class="pull">Antes de escolher framework ou bloco, diagnostique a conversa que já existe na cabeça do cliente.</div>
+
+        <p>Esse raciocínio é especialmente importante em <a href="/blog/persuasao-para-vender-curso-online/">persuasão para vender curso online</a>, porque o mesmo infoproduto pode receber tráfego de públicos em estágios diferentes.</p>
+
+        <h2>O erro de transformar framework em formulário</h2>
+
+        <p>AIDA pode virar uma prisão quando a pessoa escreve assim:</p>
+
+        <p>“Agora preciso de uma frase de atenção. Agora uma de interesse. Agora uma de desejo. Agora um CTA.”</p>
+
+        <p>O texto fica com cara de exercício preenchido.</p>
+
+        <p>Um caminho melhor é transformar cada etapa em pergunta.</p>
+
+        <div class="steps">
+          <div class="step"><div class="stepn">A</div><div><strong>Atenção:</strong><br>Por que essa pessoa deveria parar aqui?</div></div>
+          <div class="step"><div class="stepn">I</div><div><strong>Interesse:</strong><br>Que informação faz ela continuar?</div></div>
+          <div class="step"><div class="stepn">D</div><div><strong>Desejo:</strong><br>Que consequência torna essa solução relevante?</div></div>
+          <div class="step"><div class="stepn">A</div><div><strong>Ação:</strong><br>Qual próximo passo faz sentido agora?</div></div>
+        </div>
+
+        <p>Depois das respostas, você escolhe os blocos.</p>
+
+        <p>A estrutura passa a servir ao raciocínio. E cada bloco entra porque existe um trabalho a ser feito.</p>
+
+        <h2>Você não precisa usar todos os blocos na mesma copy</h2>
+
+        <p>Ter dezenas de possibilidades não significa transformar cada anúncio em uma página de vendas.</p>
+
+        <p>Um Reels de 30 segundos pode usar headline, analogia, demonstração e CTA.</p>
+
+        <p>Um e-mail pode usar história, antecipação, objeção e CTA.</p>
+
+        <p>Uma página de vendas comporta uma sequência maior de provas, benefícios, objeções, garantia, oferta e fechamento.</p>
+
+        <p>É parecido com tempero. A cozinha pode ter vinte potes. Isso não obriga você a colocar os vinte na mesma panela.</p>
+
+        <p>Blocos de persuasão ganham força quando a escolha nasce da função da peça.</p>
+
+        <h2>Um processo em 5 passos para o seu infoproduto</h2>
+
+        <div class="steps">
+          <div class="step"><div class="stepn">1</div><div><strong>Diagnostique o público.</strong><br>O que ele já sabe? O que acredita ser a causa? O que já tentou? Que soluções conhece?</div></div>
+          <div class="step"><div class="stepn">2</div><div><strong>Defina a mudança de crença.</strong><br>Registre o que ele acredita antes da peça e o que precisa considerar depois.</div></div>
+          <div class="step"><div class="stepn">3</div><div><strong>Defina a função da peça.</strong><br>Atenção, consciência, consideração, prova, venda ou remarketing.</div></div>
+          <div class="step"><div class="stepn">4</div><div><strong>Escolha o framework.</strong><br>Use a estrutura que melhor organiza a conversa necessária naquele estágio.</div></div>
+          <div class="step"><div class="stepn">5</div><div><strong>Selecione os blocos.</strong><br>Escolha as peças que ajudam cada etapa a cumprir sua função.</div></div>
+        </div>
+
+        <p>Se você quiser ter uma base prática para organizar produto, cliente, argumentos e comunicação, o <a href="/guia-mais-persuasao-mais-vendas/">Guia Prático Mais Persuasão, Mais Vendas</a> aprofunda esses fundamentos e ajuda a levar o raciocínio para a aplicação.</p>
+
+        <h2>Exemplo completo: vendendo um curso para especialistas</h2>
+
+        <p>Imagine um curso que ensina especialistas a vender usando conteúdo.</p>
+
+        <p>O público publica, recebe visualizações, mas gera poucas vendas.</p>
+
+        <p>Hipótese de crença atual:</p>
+
+        <div class="tip"><strong>“Meu problema é alcance.”</strong></div>
+
+        <p>Mudança de crença desejada:</p>
+
+        <div class="tip"><strong>“Meu conteúdo pode estar chamando atenção sem conduzir uma decisão.”</strong></div>
+
+        <p>Framework escolhido:</p>
+
+        <div class="framework">
+          <b>Atenção → Conexão → Problema → Solução → Oferta</b>
+        </div>
+
+        <h3>Atenção</h3>
+
+        <p><strong>Blocos:</strong> headline + quebra de padrão.</p>
+
+        <div class="tip">“10 mil pessoas podem assistir ao seu conteúdo e nenhuma entender por que deveria comprar de você.”</div>
+
+        <h3>Conexão</h3>
+
+        <p><strong>Blocos:</strong> identificação + analogia.</p>
+
+        <div class="tip">“É como lotar uma loja de visitantes e esquecer de colocar vendedores no salão.”</div>
+
+        <h3>Problema</h3>
+
+        <p><strong>Blocos:</strong> conteúdo + demonstração.</p>
+
+        <div class="tip">“Visualização mede atenção. Venda exige outras etapas: compreensão, confiança, desejo e decisão.”</div>
+
+        <h3>Solução</h3>
+
+        <p><strong>Blocos:</strong> método + demonstração.</p>
+
+        <div class="tip">“O curso organiza cada conteúdo pela função que ele cumpre: atrair, mudar uma crença, apresentar prova ou conduzir para a oferta.”</div>
+
+        <h3>Oferta</h3>
+
+        <p><strong>Blocos:</strong> descrição + benefício + prova real disponível + CTA.</p>
+
+        <p>Perceba a sequência: o produto aparece depois que a comunicação construiu contexto suficiente para a oferta fazer sentido.</p>
+
+        <h2>Como usar isso no ChatGPT sem receber uma copy genérica</h2>
+
+        <p>Quando você pede apenas “faça uma copy persuasiva para vender meu curso”, a IA precisa adivinhar público, estágio, crença, estrutura e argumento.</p>
+
+        <p>Quanto mais decisões ficam escondidas, maior a chance de sair um texto genérico.</p>
+
+        <p>O artigo sobre <a href="/blog/erro-chatgpt-conteudo-de-vendas/">o maior erro de quem usa ChatGPT para criar conteúdo de vendas</a> aprofunda esse problema.</p>
+
+        <p>Um pedido com arquitetura fica mais útil:</p>
+
+        <div class="tip">
+          <strong>Exemplo de instrução</strong>
+          “O público sabe que precisa produzir conteúdo, mas acredita que falta alcance. Quero levá-lo a considerar que falta estrutura de persuasão. Use Atenção, Conexão, Problema, Solução e Oferta. Na atenção, use quebra de padrão. Na conexão, use analogia. Na solução, ensine algo. Antes da oferta, use prova real disponível. Termine com um CTA compatível com esse estágio.”
+        </div>
+
+        <p>A IA recebe direção. O texto passa a executar decisões que você tomou antes.</p>
+
+        <div class="internal">
+          <strong>Continue por estes artigos:</strong>
+          <a href="/blog/persuasao-para-infoprodutores/">Persuasão para infoprodutores →</a><br>
+          <a href="/blog/como-escrever-uma-oferta-que-vende/">Como escrever uma oferta que vende →</a><br>
+          <a href="/blog/gatilhos-mentais/">Gatilhos mentais: exemplos e uso com ética →</a>
+        </div>
+
+        <h2>Framework organiza. Blocos constroem. Diagnóstico decide.</h2>
+
+        <p>Guarda essa imagem:</p>
+
+        <p><strong>O framework é a planta. Os blocos são as peças da construção.</strong></p>
+
+        <p>E existe uma decisão anterior aos dois: entender quem vai entrar nessa construção.</p>
+
+        <p>Seu público. A situação em que ele está. O que já sabe. O que acredita. O que precisa compreender para avançar.</p>
+
+        <p>Quando isso fica definido, frameworks começam a ganhar utilidade e os blocos de persuasão deixam de parecer uma coleção de truques.</p>
+
+        <p>Você passa a olhar para anúncio, página, e-mail ou roteiro e perguntar:</p>
+
+        <div class="pull">“Qual trabalho este trecho precisa fazer agora?”</div>
+
+        <p>Encontrou a resposta? Escolha o bloco. Defina onde ele entra. Continue construindo.</p>
+
+        <div class="closing">
+          <h2>Quer uma base para aplicar persuasão no seu produto?</h2>
+          <p>No <strong>Guia Prático Mais Persuasão, Mais Vendas</strong>, você encontra fundamentos para organizar produto, cliente, argumentos e comunicação antes de começar a empilhar técnicas.</p>
+          <p><a href="/guia-mais-persuasao-mais-vendas/">Acesse o Guia Prático de Persuasão →</a></p>
+        </div>
+
+        <section class="faq">
+          <h2>Perguntas frequentes</h2>
+
+          <details>
+            <summary>O que são blocos de persuasão?</summary>
+            <p>São partes da comunicação que cumprem uma função, como headline, analogia, prova, autoridade, objeção, garantia, oferta e CTA.</p>
+          </details>
+
+          <details>
+            <summary>O que é um framework de copywriting?</summary>
+            <p>É uma estrutura que organiza a sequência do raciocínio. AIDA, por exemplo, distribui a comunicação em Atenção, Interesse, Desejo e Ação.</p>
+          </details>
+
+          <details>
+            <summary>Qual é a diferença entre framework e bloco?</summary>
+            <p>O framework organiza o percurso. O bloco executa uma função dentro desse percurso.</p>
+          </details>
+
+          <details>
+            <summary>Qual framework é melhor para vender infoproduto?</summary>
+            <p>Depende do nível de consciência, da função da peça e da mudança de crença. AIDA pode funcionar em uma situação; uma estrutura com conexão, problema, solução e oferta pode funcionar melhor em outra.</p>
+          </details>
+
+          <details>
+            <summary>Quantos blocos devo usar em uma copy?</summary>
+            <p>Use os blocos necessários para a função da peça. Um anúncio curto tende a exigir menos componentes do que uma página de vendas longa.</p>
+          </details>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="sidecard">
+          <div class="eyebrow">Guia prático</div>
+          <h3>Persuasão pra vender todo santo dia</h3>
+          <p>Organize produto, cliente, argumentos e comunicação antes de aumentar a pressão da venda.</p>
+          <a class="btn" href="/guia-mais-persuasao-mais-vendas/">Quero acessar o guia</a>
+        </div>
+
+        <div class="sidequote">
+          <b>“</b>
+          <p>Framework organiza o caminho. Blocos cumprem o trabalho de cada etapa.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 Mais Persuasão, Mais Vendas</span>
+      <span><a href="/blog/">Blog</a> · <a href="/curso/">Curso</a></span>
+    </div>
+  </footer>
+</body>
+</html>
