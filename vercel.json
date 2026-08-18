@@ -387,6 +387,16 @@
       "source": "/blog/copywriting-o-que-e-como-aplicar/",
       "destination": "/blog/o-que-e-copywriting/",
       "permanent": true
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas/",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
