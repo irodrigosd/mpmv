@@ -1,13 +1,41 @@
-TÍTULO: MSN, Orkut e persuasão: o que a internet dos anos 2000 ensina sobre atenção
-SLUG: msn-orkut-persuasao-atencao
-URL ESPERADA: /blog/msn-orkut-persuasao-atencao/
-FRASE-CHAVE PRINCIPAL: MSN Orkut persuasão
-TÍTULO SEO: MSN, Orkut e Persuasão: o Que os Anos 2000 Ensinam Sobre Atenção
-META DESCRIÇÃO: MSN, Orkut, lan house e internet discada já usavam curiosidade, identificação e prova antes de falarmos em hooks e retenção.
-CANONICAL: https://www.maispersuasaomaisvendas.com.br/blog/msn-orkut-persuasao-atencao/
+TÍTULO SEO
+MSN e Orkut: lições de persuasão e atenção | MPMV
 
-LINKS INTERNOS USADOS:
-- /blog/criar-curiosidade-sem-clickbait/
-- /blog/persuasao-para-infoprodutores/
-- /blog/o-que-e-copywriting/
-- /guia-mais-persuasao-mais-vendas/
+SLUG
+msn-orkut-persuasao-atencao
+
+PALAVRA-CHAVE PRINCIPAL
+MSN e Orkut
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+nostalgia no marketing
+persuasão e atenção
+curiosidade no copywriting
+Orkut e marketing
+MSN Messenger
+internet anos 2000
+
+META DESCRIPTION
+MSN e Orkut já usavam curiosidade, identificação e prova antes de esses nomes virarem marketing. Veja o que isso ensina sobre atenção e persuasão.
+
+H1
+MSN e Orkut: o que a internet dos anos 2000 ensina sobre persuasão
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/msn-orkut-persuasao-atencao/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o que experiências de MSN e Orkut ensinam, por analogia, sobre curiosidade, identificação, prova, relevância, atenção e persuasão.
+
+FONTES PRINCIPAIS
+Guia Prático — Mais Persuasão, Mais Vendas
+Artigos internos do MPMV sobre copywriting, curiosidade e persuasão
+
+CATEGORIA
+Persuasão + Conteúdo
+
+DATA
+2026-08-18
+
+AUTOR
+Rodrigo Castro

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+<title id="t">MSN e Orkut: nostalgia, persuasão e atenção</title>
+<desc id="d">Composição editorial com monitor de tubo, janela de mensageiro e referências visuais à internet dos anos 2000.</desc>
+<defs>
+  <linearGradient id="g" x1="0" x2="1"><stop stop-color="#a51f27"/><stop offset=".48" stop-color="#e25c2d"/><stop offset="1" stop-color="#d1a447"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-opacity=".35"/></filter>
+</defs>
+<rect width="1200" height="900" fill="#0b0b0b"/>
+<circle cx="1010" cy="120" r="250" fill="#a51f27" opacity=".16"/>
+<circle cx="950" cy="720" r="280" fill="#d1a447" opacity=".10"/>
+<g filter="url(#shadow)">
+  <rect x="110" y="145" width="690" height="510" rx="28" fill="#201d1b" stroke="#4b443e" stroke-width="8"/>
+  <rect x="155" y="190" width="600" height="390" rx="22" fill="#dedbd4"/>
+  <rect x="185" y="225" width="540" height="55" rx="8" fill="#b9b5ad"/>
+  <circle cx="222" cy="252" r="16" fill="#666"/>
+  <text x="255" y="262" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#2d2926">Messenger</text>
+  <rect x="190" y="315" width="255" height="205" rx="16" fill="#f5f1e8"/>
+  <circle cx="255" cy="385" r="36" fill="#9b978f"/>
+  <circle cx="315" cy="385" r="36" fill="#706c66"/>
+  <rect x="225" y="425" width="120" height="58" rx="28" fill="#8a857e"/>
+  <text x="475" y="350" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#3b3733">Online</text>
+  <text x="475" y="405" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#3b3733">• Ana</text>
+  <text x="475" y="450" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#3b3733">• Bruno</text>
+  <text x="475" y="495" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#3b3733">• Carol</text>
+  <rect x="205" y="650" width="500" height="38" rx="18" fill="#151311"/>
+  <rect x="310" y="688" width="290" height="32" rx="10" fill="#191614"/>
+</g>
+<g transform="translate(735 420) rotate(-5)" filter="url(#shadow)">
+  <rect width="350" height="230" rx="24" fill="#fffaf0"/>
+  <rect width="350" height="55" rx="24" fill="#fffaf0"/>
+  <text x="28" y="42" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="900" fill="#d62976">orkut</text>
+  <line x1="25" y1="68" x2="325" y2="68" stroke="#d62976" stroke-width="3"/>
+  <text x="30" y="120" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="900" fill="#151311">EU ODEIO</text>
+  <text x="30" y="160" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="900" fill="#151311">ACORDAR CEDO.</text>
+  <rect x="30" y="185" width="200" height="28" rx="12" fill="#d62976"/>
+</g>
+<rect x="785" y="180" width="260" height="70" rx="35" fill="url(#g)"/>
+<text x="915" y="226" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="900" fill="#0b0b0b">MSN + ORKUT</text>
+<text x="110" y="805" font-family="Arial,Helvetica,sans-serif" font-size="42" font-weight="900" fill="#fff">Nostalgia chama atenção.</text>
+<text x="110" y="853" font-family="Arial,Helvetica,sans-serif" font-size="33" fill="#d1a447">A persuasão explica por quê.</text>
+</svg>
