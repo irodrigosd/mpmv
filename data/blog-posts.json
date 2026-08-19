@@ -1,25 +1,5 @@
 [
   {
-    "id": "teste-publicacao-api-2026-08-19",
-    "title": "Teste de publicação via API",
-    "seoTitle": "Teste de publicação MPMV",
-    "metaDescription": "Publicação de teste via operação publishBlogPost.",
-    "focusKeyphrase": "teste publicação MPMV",
-    "secondaryKeyphrases": [
-      "publishBlogPost",
-      "integração MPMV"
-    ],
-    "slug": "teste-publicacao-api",
-    "url": "/blog/teste-publicacao-api/",
-    "file": "blog/teste-publicacao-api/index.html",
-    "status": "published",
-    "category": "Teste",
-    "publishedAt": "2026-08-19",
-    "author": "Rodrigo Castro",
-    "deletable": true,
-    "batchOrder": 1
-  },
-  {
     "id": "efeito-dotacao-marketing-2026-08-19",
     "title": "Efeito dotação no marketing: por que possuir algo pode fazer aquilo parecer mais valioso",
     "seoTitle": "Efeito Dotação no Marketing: Por Que Possuir Aumenta o Valor | MPMV",
