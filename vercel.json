@@ -61,6 +61,14 @@
       "destination": "/blog.html"
     },
     {
+      "source": "/politica-de-privacidade",
+      "destination": "/politica-de-privacidade.html"
+    },
+    {
+      "source": "/politica-de-privacidade/",
+      "destination": "/politica-de-privacidade.html"
+    },
+    {
       "source": "/blog/persuasao-para-infoprodutores",
       "destination": "/persuasao-para-infoprodutores.html"
     },
