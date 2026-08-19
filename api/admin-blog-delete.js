@@ -40,7 +40,14 @@ export default async function handler(req,res){
     if(blog){let html=Buffer.from(blog.content,'base64').toString('utf8');const re=new RegExp(`\\s*<!-- POST:${slug} START -->[\\s\\S]*?<!-- POST:${slug} END -->\\s*`,'g');const next=html.replace(re,'\n');if(next!==html)await updateFile('blog.html',next,blog.sha,`blog: remover ${slug} do índice`);}
 
     const sitemap=await getFile('sitemap.xml');
-    if(sitemap){let xml=Buffer.from(sitemap.content,'base64').toString('utf8');const esc=post.url.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');const re=new RegExp(`\\s*<url>[\\s\\S]*?<loc>https://www\\.maispersuasaomaisvendas\\.com\\.br${esc}<\\/loc>[\\s\\S]*?<\\/url>\\s*`,'g');const next=xml.replace(re,'\n');if(next!==xml)await updateFile('sitemap.xml',next,sitemap.sha,`blog: remover ${slug} do sitemap`);}
+    if(sitemap){
+      const xml=Buffer.from(sitemap.content,'base64').toString('utf8');
+      const absolute=`https://www.maispersuasaomaisvendas.com.br${post.url}`;
+      const next=xml
+        .replace(/<url>[\s\S]*?<\/url>/g,block=>block.includes(`<loc>${absolute}</loc>`)?'':block)
+        .replace(/\n{3,}/g,'\n\n');
+      if(next!==xml) await updateFile('sitemap.xml',next,sitemap.sha,`blog: remover ${slug} do sitemap`);
+    }
 
     const vercel=await getFile('vercel.json');
     if(vercel){const cfg=JSON.parse(Buffer.from(vercel.content,'base64').toString('utf8'));cfg.rewrites=(cfg.rewrites||[]).filter(r=>r.source!==post.url.replace(/\/$/,'')&&r.source!==post.url);await updateFile('vercel.json',JSON.stringify(cfg,null,2)+'\n',vercel.sha,`blog: remover rota ${slug}`);}
