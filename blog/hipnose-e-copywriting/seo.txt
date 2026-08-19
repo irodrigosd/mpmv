@@ -1,0 +1,65 @@
+MPMV /admin/blog — SEO
+========================
+
+Título:
+Hipnose e copywriting: como uma boa copy conduz sua atenção
+
+SEO title:
+Hipnose e Copywriting: Como a Copy Conduz Atenção | MPMV
+
+Frase-chave foco:
+hipnose e copywriting
+
+Meta description:
+Entenda a relação entre hipnose e copywriting e como atenção, curiosidade, expectativa e sugestão ajudam uma mensagem a prender o leitor.
+
+Slug:
+hipnose-e-copywriting
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/hipnose-e-copywriting/
+
+Categoria:
+Copywriting + Persuasão
+
+Autor:
+Rodrigo Castro
+
+Data:
+2026-08-18
+
+Palavras-chave secundárias:
+copywriting
+atenção
+curiosidade
+persuasão
+abrir loop
+future pacing
+gatilhos mentais
+
+Links internos incluídos:
+/
+ /blog/
+ /blog/o-que-e-copywriting/
+ /blog/lado-sexy-da-persuasao/
+ /blog/blocos-de-persuasao-e-frameworks/
+
+Checklist SEO:
+- Frase-chave no SEO title: OK
+- Frase-chave no H1: OK
+- Frase-chave na introdução: OK
+- Frase-chave em H2: OK
+- Frase-chave no FAQ: OK
+- Meta description: OK
+- Canonical: OK
+- Robots index/follow: OK
+- Article Schema: OK
+- FAQ Schema: OK
+- Links internos: OK
+- Estrutura H1/H2: OK
+- Mobile responsivo: OK
+- CTA para Guia: OK
+- Layout atual MPMV: OK
+
+Observação editorial:
+A relação entre hipnose e copywriting é apresentada como metáfora de condução de atenção, sem afirmar equivalência técnica entre os dois campos.
