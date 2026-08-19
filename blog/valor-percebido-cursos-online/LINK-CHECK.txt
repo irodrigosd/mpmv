@@ -1,0 +1,22 @@
+LINK CHECK — 2026-08-19
+
+LINKS INTERNOS
+/ — Guia Prático. Confirmado no index.html atual do repositório e usado como landing page do Guia.
+/curso/ — Curso Como Criar Posts Virais com Persuasão no ChatGPT. Confirmado no curso.html e no vercel.json.
+/blog/ — Blog. Confirmado no vercel.json.
+/blog/como-cliente-decide-preco-caro/ — Confirmado por arquivo e rota.
+/blog/efeito-contraste-marketing/ — Confirmado por arquivo e rota.
+/blog/efeito-de-ancoragem-precos-vendas/ — Confirmado por arquivo e rota.
+/blog/transformar-caracteristicas-em-beneficios/ — Confirmado por arquivo e rota.
+/blog/como-escrever-uma-oferta-que-vende/ — Confirmado por arquivo e rota.
+/blog/persuasao-para-vender-curso-online/ — Confirmado por arquivo e rota.
+/politica-de-privacidade/ — Página presente no repositório.
+
+LINKS EXTERNOS
+https://www.sciencedirect.com/science/article/pii/S1057740805701030 — Journal of Consumer Psychology.
+https://www.mdpi.com/1660-4601/18/23/12674 — artigo sobre decoy effect.
+https://www.nature.com/articles/palcomms201682 — Humanities and Social Sciences Communications.
+https://br.hubspot.com/ofertas/cursos-online — material da HubSpot sobre cursos online.
+
+OBSERVAÇÃO
+O artigo evita afirmar que preço alto, sozinho, aumenta vendas. As fontes sustentam que preço pode funcionar como pista de qualidade e que o contexto de escolha pode alterar preferências sob condições específicas.
