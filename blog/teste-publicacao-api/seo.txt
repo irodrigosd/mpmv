@@ -1,0 +1,21 @@
+SLUG
+teste-publicacao-api
+
+TÍTULO SEO
+Teste de publicação MPMV
+
+META DESCRIPTION
+Publicação de teste via operação publishBlogPost.
+
+PALAVRA-CHAVE PRINCIPAL
+teste publicação MPMV
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+publishBlogPost
+integração MPMV
+
+CATEGORIA
+Teste
+
+AUTOR
+Rodrigo Castro
