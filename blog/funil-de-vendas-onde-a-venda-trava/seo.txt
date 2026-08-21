@@ -1,5 +1,37 @@
-TITULO: Funil de vendas: o ponto onde sua estratégia pode estar perdendo vendas
-DESCRICAO: Entenda como analisar um funil de vendas e descobrir onde sua estratégia pode estar perdendo vendas.
-SLUG: funil-de-vendas-onde-a-venda-trava
-CANONICAL: /blog/funil-de-vendas-onde-a-venda-trava/
-PALAVRA_FOCO: funil de vendas
+TÍTULO SEO
+Funil de Vendas: Onde Sua Estratégia Perde Vendas | MPMV
+
+SLUG
+funil-de-vendas-onde-a-venda-trava
+
+PALAVRA-CHAVE PRINCIPAL
+funil de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+etapas do funil de vendas
+gargalo no funil de vendas
+como analisar um funil de vendas
+perda de vendas
+taxa de abandono
+otimização de conversão
+
+META DESCRIPTION
+Aprenda a analisar cada etapa do funil de vendas, encontrar o ponto de abandono e corrigir mensagem, oferta, página e checkout.
+
+H1
+Funil de vendas: o ponto onde sua estratégia pode estar perdendo vendas
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/funil-de-vendas-onde-a-venda-trava/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação prática: entender o funil de vendas, localizar o gargalo e decidir qual etapa deve ser corrigida primeiro.
+
+CATEGORIA
+Funil + Conversão
+
+DATA
+2026-08-21
+
+AUTOR
+Rodrigo Castro

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Funil de vendas e ponto de perda</title>
+  <desc id="desc">Ilustração em preto, dourado e vermelho com as etapas atenção, interesse, decisão e compra. Um corte vermelho marca o ponto de perda entre interesse e decisão.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080808"/><stop offset="0.67" stop-color="#171310"/><stop offset="1" stop-color="#260f13"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d47d"/><stop offset="0.55" stop-color="#c99635"/><stop offset="1" stop-color="#885014"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000" flood-opacity="0.55"/></filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="18" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="1500" rx="64" fill="url(#bg)"/>
+  <circle cx="178" cy="200" r="250" fill="#c99635" opacity="0.09"/>
+  <circle cx="1038" cy="1180" r="330" fill="#a51f27" opacity="0.13"/>
+  <g opacity="0.16" stroke="#d9b35b" fill="none"><path d="M80 350H1120"/><path d="M80 560H1120"/><path d="M80 770H1120"/><path d="M80 980H1120"/><path d="M80 1190H1120"/></g>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="84" y="112" fill="#e6be63" font-size="26" font-weight="800" letter-spacing="5">MPMV • DIAGNÓSTICO</text>
+    <text x="84" y="192" fill="#ffffff" font-size="67" font-weight="900">ONDE A VENDA</text>
+    <text x="84" y="267" fill="url(#gold)" font-size="67" font-weight="900">ESTÁ ESCAPANDO?</text>
+    <text x="84" y="318" fill="#bfb6ad" font-size="25">Compare uma etapa com a seguinte.</text>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M146 420H1054L930 620H270Z" fill="#24201b" stroke="#d4ab52" stroke-width="3"/>
+    <path d="M270 658H930L810 858H390Z" fill="#201c18" stroke="#c49334" stroke-width="3"/>
+    <path d="M390 930H810L706 1110H494Z" fill="#1c1916" stroke="#ad7725" stroke-width="3"/>
+    <path d="M494 1150H706L666 1322H534Z" fill="url(#gold)"/>
+  </g>
+  <g font-family="Inter,Arial,sans-serif" text-anchor="middle">
+    <text x="600" y="520" fill="#f0d17d" font-size="33" font-weight="900" letter-spacing="4">ATENÇÃO</text>
+    <text x="600" y="756" fill="#e6c266" font-size="33" font-weight="900" letter-spacing="4">INTERESSE</text>
+    <text x="600" y="1026" fill="#d9b35b" font-size="33" font-weight="900" letter-spacing="4">DECISÃO</text>
+    <text x="600" y="1260" fill="#111111" font-size="33" font-weight="950" letter-spacing="4">COMPRA</text>
+  </g>
+  <g filter="url(#glow)">
+    <path d="M316 884H884" stroke="#a51f27" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="878" cy="884" r="34" fill="#a51f27"/>
+    <path d="M878 884l98 48" stroke="#a51f27" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="792" y="872" width="318" height="126" rx="24" fill="#a51f27"/>
+    <text x="826" y="923" fill="#fff" font-size="23" font-weight="900" letter-spacing="2">PONTO DE PERDA</text>
+    <text x="826" y="960" fill="#f6dfe1" font-size="20">mensagem, oferta ou fricção?</text>
+  </g>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="84" y="1410" fill="#ffffff" font-size="29" font-weight="900">A venda deixa rastros.</text>
+    <text x="84" y="1453" fill="#bdb4ab" font-size="22">Mapeie. Compare. Corrija o gargalo.</text>
+  </g>
+</svg>
