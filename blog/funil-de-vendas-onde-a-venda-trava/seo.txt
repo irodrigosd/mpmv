@@ -1,0 +1,5 @@
+TITULO: Seu funil de vendas não está quebrado: descubra onde a venda está travando
+DESCRICAO: Entenda como analisar um funil de vendas e descobrir onde a comunicação e a oferta podem estar reduzindo conversões.
+SLUG: funil-de-vendas-onde-a-venda-trava
+CANONICAL: /blog/funil-de-vendas-onde-a-venda-trava/
+PALAVRA_FOCO: funil de vendas
