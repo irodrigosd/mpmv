@@ -1,0 +1,26 @@
+COMO PUBLICAR — PSICOLOGIA DE PREÇOS PARA INFOPRODUTOS
+
+1. Abra /admin/blog/
+2. Clique em “Escolher ZIP”.
+3. Selecione o arquivo psicologia-de-precos-para-infoprodutos.zip.
+4. Clique em “Subir ZIP e publicar”.
+5. Aguarde o commit e o novo deploy da Vercel.
+
+URL ESPERADA
+https://www.maispersuasaomaisvendas.com.br/blog/psicologia-de-precos-para-infoprodutos/
+
+O PAINEL FARÁ AUTOMATICAMENTE
+- publicação do artigo em blog/psicologia-de-precos-para-infoprodutos/;
+- criação do card em blog.html;
+- registro em data/blog-posts.json;
+- inclusão no sitemap.xml.
+
+ARQUIVOS DO PACOTE
+- index.html
+- assets/psicologia-precos-infoprodutos.svg
+- seo.txt
+- FONTES.txt
+- VALIDACAO-SEO-LEGIBILIDADE.txt
+- LEIA-ME.txt
+
+O pacote não inclui nem sobrescreve arquivos do painel administrativo.

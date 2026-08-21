@@ -1,0 +1,29 @@
+FONTES — PSICOLOGIA DE PREÇOS PARA INFOPRODUTOS
+
+1. Thaler, R. (1985) — Mental Accounting and Consumer Choice
+Marketing Science, 4(3), 199–214.
+https://pubsonline.informs.org/doi/10.1287/mksc.4.3.199
+
+2. Ariely, D.; Loewenstein, G.; Prelec, D. (2003) — Coherent Arbitrariness: Stable Demand Curves Without Stable Preferences
+The Quarterly Journal of Economics, 118(1), 73–106.
+https://academic.oup.com/qje/article-abstract/118/1/73/1917051
+
+3. Simonson, I.; Tversky, A. (1992) — Choice in Context: Tradeoff Contrast and Extremeness Aversion
+Journal of Marketing Research, 29(3), 281–295.
+https://journals.sagepub.com/doi/10.1177/002224379202900301
+
+4. Gourville, J. T. (1998) — Pennies-a-Day: The Effect of Temporal Reframing on Transaction Evaluation
+Journal of Consumer Research, 24(4), 395–408.
+https://academic.oup.com/jcr/article-abstract/24/4/395/1797969
+
+5. Grewal, D.; Monroe, K. B.; Krishnan, R. (1998) — The Effects of Price-Comparison Advertising on Buyers’ Perceptions of Acquisition Value, Transaction Value, and Behavioral Intentions
+Journal of Marketing, 62(2), 46–59.
+https://journals.sagepub.com/doi/10.1177/002224299806200204
+
+6. Kurz, J. (2023) — Pricey therefore good? Price affects expectations, but not quality perceptions and liking
+Psychology & Marketing, 40(5), 897–916.
+https://doi.org/10.1002/mar.21799
+
+NOTA DE POSTURA
+O artigo trata os efeitos como dependentes de contexto. Não promete aumento automático de conversão, não recomenda preço fictício e diferencia expectativa de qualidade da experiência real com o produto.
+

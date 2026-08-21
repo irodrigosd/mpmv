@@ -1,0 +1,66 @@
+VALIDAÇÃO SEO + LEGIBILIDADE — PSICOLOGIA DE PREÇOS PARA INFOPRODUTOS
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/psicologia-de-precos-para-infoprodutos/
+
+TÍTULO SEO
+Psicologia de Preços para Infoprodutos | MPMV
+Caracteres: 45
+
+META DESCRIPTION
+Aprenda a estruturar preço, planos, parcelamento e comparação em cursos e mentorias para aumentar clareza e valor percebido sem truques.
+Caracteres: 136
+
+FRASE-CHAVE DE FOCO
+psicologia de preços para infoprodutos
+Ocorrências exatas no conteúdo visível: 5
+
+CONTEÚDO
+Palavras aproximadas: 2.166
+H1: 1
+H2: 14
+H3: 11
+Links internos: 18
+Links externos/fontes: 6
+Imagem editorial original com ALT: 1
+
+CHECKLIST SEO DO PAINEL
+[OK] Frase-chave no título e no H1
+[OK] Frase-chave nas primeiras 150 palavras
+[OK] Frase-chave em subtítulo
+[OK] Meta description entre 115 e 160 caracteres
+[OK] Título SEO entre 35 e 62 caracteres
+[OK] Canonical definido
+[OK] Mais de dois links internos
+[OK] Imagem com texto alternativo
+[OK] Conteúdo com mais de 1.000 palavras
+[OK] Frase-chave distribuída pelo texto
+[OK] Estrutura com mais de três H2
+
+LEGIBILIDADE
+Média aproximada: 10,5 palavras por frase
+Frases acima de 25 palavras: 1,0%
+Média aproximada: 28,8 palavras por parágrafo
+Maior parágrafo: 49 palavras
+Palavras por subtítulo: 86,6
+[OK] Parágrafos curtos
+[OK] Subtítulos frequentes
+[OK] Listas, cards e tabelas
+[OK] Transições distribuídas
+[OK] Leitura escaneável em desktop e celular
+
+SCHEMA
+[OK] BlogPosting
+[OK] BreadcrumbList
+[OK] FAQPage
+
+POSTURA / PRECISÃO
+[OK] Exemplos numéricos identificados como ilustrativos
+[OK] Sem recomendação universal de preço
+[OK] Sem promessa automática de conversão
+[OK] Limitação do sinal preço–qualidade incluída
+[OK] Referências comparativas precisam ser reais e defensáveis
+
+OBSERVAÇÃO TÉCNICA
+O ZIP contém um único index.html, seo.txt, imagem e documentos de apoio. O /admin/blog identifica o slug pelo canonical, publica em /blog/slug/, registra o card e atualiza sitemap e data/blog-posts.json automaticamente.
+
