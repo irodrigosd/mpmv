@@ -1,5 +1,5 @@
-TITULO: Funil de vendas: como descobrir onde sua venda está travando
-DESCRICAO: Aprenda como analisar um funil de vendas, identificar gargalos e melhorar a conversão de infoprodutos usando copy, oferta e persuasão.
+TITULO: Funil de vendas: guia completo para criar, analisar e melhorar conversões
+DESCRICAO: Aprenda o que é um funil de vendas, suas etapas, como analisar conversões e melhorar vendas de infoprodutos.
 SLUG: funil-de-vendas-onde-a-venda-trava
 CANONICAL: /blog/funil-de-vendas-onde-a-venda-trava/
 PALAVRA_FOCO: funil de vendas
