@@ -1,5 +1,5 @@
-TITULO: Funil de vendas: como identificar onde sua estratégia está perdendo vendas
-DESCRICAO: Aprenda como analisar um funil de vendas, encontrar gargalos e melhorar conversões de infoprodutos usando copy, oferta e persuasão.
+TITULO: Funil de vendas: o ponto onde sua estratégia pode estar perdendo vendas
+DESCRICAO: Descubra como analisar um funil de vendas, identificar gargalos e melhorar conversões de infoprodutos.
 SLUG: funil-de-vendas-onde-a-venda-trava
 CANONICAL: /blog/funil-de-vendas-onde-a-venda-trava/
 PALAVRA_FOCO: funil de vendas
