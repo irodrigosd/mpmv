@@ -1147,5 +1147,92 @@
     "publishedAt": "2026-08-15",
     "author": "Rodrigo Castro",
     "deletable": true
+  },
+  {
+    "id": "meu-anuncio-nao-vende-2026-08-17",
+    "title": "Meu anúncio não vende: talvez o problema tenha começado antes dele existir",
+    "seoTitle": "Meu anúncio não vende: o que revisar antes de gastar mais",
+    "metaDescription": "Seu anúncio recebe cliques, mas não vende? Veja o que revisar na mensagem, oferta, página, prova e CTA antes de aumentar o tráfego.",
+    "focusKeyphrase": "meu anúncio não vende",
+    "secondaryKeyphrases": [
+      "anúncio não converte",
+      "cliques sem vendas",
+      "otimização de anúncio",
+      "oferta e tráfego",
+      "página de vendas"
+    ],
+    "slug": "meu-anuncio-nao-vende",
+    "url": "/blog/meu-anuncio-nao-vende/",
+    "file": "blog/meu-anuncio-nao-vende/index.html",
+    "status": "published",
+    "category": "Tráfego + Conversão",
+    "publishedAt": "2026-08-17",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "como-criar-50-artigos-com-chatgpt-em-20-minutos-2026-08-16",
+    "title": "Como criar 50 artigos em 20 minutos com ChatGPT",
+    "seoTitle": "Como Criar 50 Artigos com ChatGPT em 20 Minutos | MPMV",
+    "metaDescription": "Veja o workflow para criar 50 artigos com ChatGPT em lote, revisar SEO e legibilidade, gerar schema, links internos, sitemap e ZIPs prontos para publicar.",
+    "focusKeyphrase": "criar 50 artigos com ChatGPT",
+    "secondaryKeyphrases": [
+      "produção de conteúdo em lote",
+      "SEO",
+      "legibilidade",
+      "ChatGPT",
+      "automação de conteúdo"
+    ],
+    "slug": "como-criar-50-artigos-com-chatgpt-em-20-minutos",
+    "url": "/blog/como-criar-50-artigos-com-chatgpt-em-20-minutos/",
+    "file": "blog/como-criar-50-artigos-com-chatgpt-em-20-minutos/index.html",
+    "status": "published",
+    "category": "IA + Produção de Conteúdo",
+    "publishedAt": "2026-08-16",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "como-criar-posts-que-vendem-com-chatgpt-2026-08-15",
+    "title": "Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico",
+    "seoTitle": "Como criar posts que vendem com ChatGPT: 7 passos | MPMV",
+    "metaDescription": "Aprenda como criar posts que vendem com ChatGPT usando tema, ângulo, argumento, prova, estrutura e CTA em um processo de 7 passos.",
+    "focusKeyphrase": "como criar posts que vendem com ChatGPT",
+    "secondaryKeyphrases": [
+      "posts de vendas",
+      "ChatGPT para copywriting",
+      "conteúdo que vende",
+      "CTA para redes sociais"
+    ],
+    "slug": "como-criar-posts-que-vendem-com-chatgpt",
+    "url": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+    "file": "blog/como-criar-posts-que-vendem-com-chatgpt/index.html",
+    "status": "published",
+    "category": "IA + Copywriting",
+    "publishedAt": "2026-08-15",
+    "author": "Rodrigo Castro",
+    "deletable": true
+  },
+  {
+    "id": "como-usar-persuasao-para-vender-mais-2026-08-15",
+    "title": "Como usar persuasão para vender mais: 7 aplicações práticas",
+    "seoTitle": "Como usar persuasão para vender mais: 7 aplicações | MPMV",
+    "metaDescription": "Aprenda como usar persuasão para vender mais com 7 aplicações em oferta, autoridade, prova, especificidade, reciprocidade, escassez e contraste.",
+    "focusKeyphrase": "como usar persuasão para vender mais",
+    "secondaryKeyphrases": [
+      "persuasão em vendas",
+      "prova social",
+      "escassez",
+      "reciprocidade",
+      "contraste"
+    ],
+    "slug": "como-usar-persuasao-para-vender-mais",
+    "url": "/blog/como-usar-persuasao-para-vender-mais/",
+    "file": "blog/como-usar-persuasao-para-vender-mais/index.html",
+    "status": "published",
+    "category": "Persuasão + Vendas",
+    "publishedAt": "2026-08-15",
+    "author": "Rodrigo Castro",
+    "deletable": true
   }
 ]
