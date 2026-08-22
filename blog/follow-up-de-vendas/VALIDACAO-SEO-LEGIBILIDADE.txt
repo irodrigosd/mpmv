@@ -1,0 +1,67 @@
+VALIDAÇÃO FINAL — SEO, LEGIBILIDADE E LINKS
+
+ARTIGO
+Follow-up de vendas: como recuperar leads sem parecer insistente
+
+1. CANIBALIZAÇÃO
+- Foram revisados os 72 artigos listados no blog no momento da auditoria.
+- O tema aparece apenas de forma lateral em conteúdos sobre funil, cliques sem venda e transformação de seguidores em clientes.
+- Não foi encontrado artigo dedicado à intenção de busca "follow-up de vendas".
+- Diferencial deste conteúdo: diagnóstico do silêncio, cadência, exemplos por canal, erros, métricas, checklist e FAQ.
+
+2. SEO ON-PAGE
+- Título SEO: 48 caracteres.
+- Meta description: 143 caracteres.
+- Palavra-chave no H1: sim.
+- Palavra-chave nas primeiras 150 palavras: sim.
+- Palavra-chave em subtítulo: sim.
+- Ocorrências exatas da palavra-chave no corpo: 5.
+- URL canônica: configurada.
+- H2 no corpo: 12.
+- H3 no corpo: 8.
+- Links internos no corpo: 9.
+- Referências externas no corpo: 3.
+- Imagem com ALT descritivo: sim.
+- Dados estruturados: Article, BreadcrumbList e FAQPage.
+
+3. LEGIBILIDADE
+- Palavras no corpo: aproximadamente 1.982.
+- Média estimada: 11,2 palavras por frase.
+- Frases acima de 25 palavras: 0,6%.
+- Média estimada: 28 palavras por parágrafo.
+- Maior parágrafo: 46 palavras.
+- Listas, exemplos, mensagens-modelo e blocos de destaque: presentes.
+- Texto revisado em português brasileiro e sem promessas universais de conversão.
+
+4. VALIDAÇÃO DE LINKS — 22/08/2026
+Todos os links presentes no HTML foram testados antes do empacotamento.
+
+INTERNOS — HTTP 200
+- https://www.maispersuasaomaisvendas.com.br/
+- https://www.maispersuasaomaisvendas.com.br/blog/
+- https://www.maispersuasaomaisvendas.com.br/politica-de-privacidade/
+- https://www.maispersuasaomaisvendas.com.br/blog/funil-de-vendas-onde-a-venda-trava/
+- https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+- https://www.maispersuasaomaisvendas.com.br/blog/como-usar-prova-social-sem-parecer-forcado/
+- https://www.maispersuasaomaisvendas.com.br/blog/persuasao-para-vender-curso-online/
+- https://www.maispersuasaomaisvendas.com.br/blog/cliques-sem-vendas-anuncio-nao-converte/
+- https://www.maispersuasaomaisvendas.com.br/blog/persuasao-para-infoprodutores/
+- https://www.maispersuasaomaisvendas.com.br/blog/blocos-de-persuasao-e-frameworks/
+
+EXTERNOS — HTTP 200
+- https://business.whatsapp.com/resources/resource-library/api-onboarding
+- https://business.whatsapp.com/products/business-platform-features
+- https://business.whatsapp.com/products/conversation-categories/marketing
+
+OBSERVAÇÃO SOBRE A URL CANÔNICA
+A URL do novo artigo passará a responder após o upload e a publicação pelo /admin/blog.
+
+5. IMAGEM
+- Dimensões: 1200 x 800 px.
+- Formato: JPEG.
+- Tamanho aproximado: 112 KB.
+- Sem marca d'água.
+- Fonte e crédito registrados em FONTES.txt.
+
+STATUS FINAL
+Pronto para envio pelo /admin/blog.
