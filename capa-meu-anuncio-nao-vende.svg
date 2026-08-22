@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111111"/>
+  <circle cx="1040" cy="115" r="150" fill="#a71919" opacity="0.95"/>
+  <rect x="78" y="78" width="174" height="8" rx="4" fill="#c9a227"/>
+  <text x="78" y="155" fill="#f4f0e7" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">MPMV • MAIS PERSUASÃO, MAIS VENDAS</text>
+  <text x="78" y="285" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900">MEU ANÚNCIO</text>
+  <text x="78" y="378" fill="#c9a227" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="900">NÃO VENDE.</text>
+  <text x="82" y="455" fill="#d7d7d7" font-family="Arial, Helvetica, sans-serif" font-size="32">Talvez o problema tenha começado antes dele existir.</text>
+  <rect x="78" y="515" width="330" height="60" rx="12" fill="#a71919"/>
+  <text x="106" y="556" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">CLIQUE NÃO PAGA BOLETO</text>
+</svg>

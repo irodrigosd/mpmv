@@ -1,4 +1,21 @@
-Correção MPMV: 1 upload = 1 commit = 1 deployment.
-Substitui apenas api/admin-blog-upload.js.
-Remove o disparo manual adicional via Vercel Deploy Hook/API.
-O commit no branch main passa a ser o único gatilho para a integração GitHub -> Vercel.
+CORREÇÃO DO BLOG MPMV
+
+Este ZIP contém somente os arquivos necessários para corrigir os artigos 404.
+
+O que foi feito:
+- 24 cards órfãos, sem artigo existente, foram removidos de blog.html.
+- 2 artigos com conteúdo completo foram restaurados e publicados nas rotas corretas.
+- 2 artigos que já funcionavam no site foram registrados no blog e no painel.
+- blog.html, data/blog-posts.json e sitemap ficam alinhados em 56 artigos.
+
+Arquivos que devem substituir os atuais no repositório:
+- blog.html
+- data/blog-posts.json
+
+Pastas novas que devem ser adicionadas:
+- blog/como-criar-50-artigos-com-chatgpt-em-20-minutos/
+- blog/meu-anuncio-nao-vende/
+
+Commit local de referência: 5959b58
+
+Depois de enviar os arquivos ao GitHub, a Vercel deverá iniciar o deploy automaticamente.
