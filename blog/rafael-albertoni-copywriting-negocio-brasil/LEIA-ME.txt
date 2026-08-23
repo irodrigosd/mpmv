@@ -1,0 +1,29 @@
+PACOTE PARA /admin/blog
+
+Este ZIP contém somente os arquivos do artigo:
+
+- index.html
+- assets/rafael-albertoni-copywriting-negocio.png
+- seo.txt
+- FONTES.txt
+- VALIDACAO-SEO-LEGIBILIDADE.txt
+- LEIA-ME.txt
+
+COMO PUBLICAR
+1. Acesse /admin/blog.
+2. Escolha este arquivo ZIP.
+3. Confira slug, título, meta description e imagem.
+4. Publique o artigo.
+5. Abra a URL final e confira no celular e no computador.
+
+SLUG ESPERADO
+rafael-albertoni-copywriting-negocio-brasil
+
+URL FINAL ESPERADA
+https://www.maispersuasaomaisvendas.com.br/blog/rafael-albertoni-copywriting-negocio-brasil/
+
+IMPORTANTE
+Não é necessário criar uma pasta antes do upload. O publicador usa o slug para montar o diretório, cadastrar o card e atualizar os registros do site.
+
+NOTA SOBRE A CAPA
+O PNG final já incorpora a fotografia. Os arquivos de trabalho SVG, JPG e WEBP não precisam ser enviados.

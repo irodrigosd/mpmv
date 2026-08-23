@@ -1,0 +1,36 @@
+VALIDAÇÃO EDITORIAL — RAFAEL ALBERTONI
+
+SEO
+[OK] Palavra-chave principal no título, H1, abertura, corpo, FAQ e dados estruturados.
+[OK] Título SEO com 49 caracteres.
+[OK] Meta description com 146 caracteres.
+[OK] Slug descritivo e sem acentos.
+[OK] URL canônica, Open Graph, Twitter Card e Article schema configurados.
+[OK] BreadcrumbList e FAQPage em JSON-LD.
+[OK] Imagem destacada em 1200 × 800 px, com alt descritivo.
+[OK] Hierarquia organizada em um H1 e seções H2/H3.
+
+LEGIBILIDADE
+[OK] Texto com aproximadamente 1.976 palavras e 10 minutos de leitura.
+[OK] Abertura apresenta personagem, tensão e tese.
+[OK] Parágrafos curtos, boxes, listas, exemplos e FAQ.
+[OK] Método de cinco passos explicado em ordem.
+[OK] Aplicação prática adaptada para infoprodutos.
+[OK] Tom natural em português do Brasil.
+[OK] CTA principal no encerramento e CTA persistente na lateral.
+[OK] Layout responsivo para desktop e celular.
+
+CONFERÊNCIA DE VERDADE
+[OK] R$ 200 milhões tratado como declaração oficial, sem sugerir auditoria.
+[OK] Evolução das atribuições de R$ 100 mi, R$ 150 mi e R$ 200 mi contextualizada.
+[OK] “Primeiro copywriter” tratado como posicionamento, não fato histórico absoluto.
+[OK] Cinco passos conferidos em registro da RD Station sobre o RD Summit.
+[OK] Papel da SBCopy atribuído à fonte da Hotmart.
+[OK] Aplicações editoriais separadas das declarações do profissional.
+[OK] Fontes e limitações explícitas no corpo e no arquivo FONTES.txt.
+
+APRESENTAÇÃO
+[OK] Identidade preto, dourado e vermelho da série Gigantes do Marketing.
+[OK] Foto real de Rafael retirada de seu site oficial.
+[OK] Imagem exportada em PNG para evitar falhas no publicador.
+[OK] Nenhuma legenda automática adicionada.
