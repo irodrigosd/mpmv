@@ -41,6 +41,9 @@ LIMITES DA PROVA
 - A frase "targeting is dead" é apresentada como tese de Ryan, sem leitura literal sobre o fim dos recursos de segmentação.
 
 IMAGEM DESTACADA
-Arquivos: assets/ryan-deiss-anuncios.svg (matriz) e assets/ryan-deiss-anuncios.png (prévia social)
-Autoria: MPMV
-Descrição: composição editorial vetorial criada para o artigo, sem fotografia de terceiros e sem imagem gerada por IA.
+Arquivos em uso: assets/ryan-deiss-foto-capa-v2.svg (matriz), assets/ryan-deiss-foto-capa-v2.png (prévia social) e assets/ryan-deiss-oficial.png (fotografia recortada)
+Design: MPMV
+Fotografia de Ryan Deiss: página oficial do DigitalMarketer
+Página-fonte: https://www.digitalmarketer.com/faculty/ryan-deiss/
+Arquivo-fonte: https://www.digitalmarketer.com/wp-content/uploads/2022/06/TEMPLATE_BIOPAGE_HEADERIMAGE.png
+Descrição: composição editorial com fotografia oficial de Ryan Deiss; sem imagem gerada por IA.

@@ -41,7 +41,7 @@ RESUMO PARA O CARD DO BLOG
 Entenda como Ryan Deiss conecta mensagem, testes, conteúdo e segmentação no sistema que atribuiu US$ 54 milhões em receita a US$ 8,2 milhões em mídia.
 
 IMAGEM DESTACADA
-assets/ryan-deiss-anuncios.png
+assets/ryan-deiss-foto-capa-v2.png
 
 ALT DA IMAGEM
-Diagrama editorial com os números e as três etapas da técnica apresentada por Ryan Deiss
+Capa editorial com uma fotografia de Ryan Deiss e os principais números analisados no artigo
