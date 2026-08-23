@@ -1,0 +1,44 @@
+VALIDAÇÃO — RYAN DEISS: TÉCNICA, ANÚNCIOS E RECEITA
+
+Data da conferência: 22 de agosto de 2026
+Método: checklist MPMV presente no painel /admin/blog
+
+RESULTADO
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+
+MÉTRICAS DO TEXTO
+- 2.313 palavras no corpo do artigo
+- 183 frases
+- 12,6 palavras por frase, em média
+- 5,5% das frases acima de 25 palavras
+- 35 palavras por parágrafo, em média
+- 10 títulos H2 e 5 títulos H3
+- 154,2 palavras por subtítulo, em média
+- 3 listas
+- 11 ocorrências exatas da frase-chave "Ryan Deiss"
+
+CHECKLIST DE SEO
+- Frase-chave no título/H1: aprovado
+- Frase-chave nas primeiras 150 palavras: aprovado
+- Frase-chave em subtítulo: aprovado
+- Meta description entre 115 e 160 caracteres: aprovado (123)
+- Título SEO entre 35 e 62 caracteres: aprovado (46)
+- URL canônica: aprovada
+- Dois ou mais links internos: aprovado
+- Imagem com texto ALT: aprovado
+- Conteúdo acima de 1.000 palavras: aprovado
+- Frase-chave distribuída pelo texto: aprovado
+- Três ou mais títulos H2: aprovado
+
+VALIDAÇÃO TÉCNICA
+- JSON-LD de artigo, breadcrumbs e FAQ: sintaxe válida
+- Capa social: PNG 1200 x 800 px
+- Matriz da capa: SVG 1200 x 800 px
+- Links internos: sete destinos responderam HTTP 200
+- Fontes externas: seis responderam HTTP 200 por verificação automatizada
+- DigitalMarketer: página confirmada e legível por indexação web; o servidor retornou HTTP 403 ao teste automatizado direto
+- Nenhum placeholder, lorem ipsum ou campo TODO encontrado
+
+OBSERVAÇÃO
+As notas são do checklist editorial do site e não representam pontuação oficial de ferramentas externas como Yoast, Google Search Console ou Lighthouse.
