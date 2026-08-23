@@ -3,11 +3,7 @@ PACOTE PARA /admin/blog
 Este ZIP contém somente os arquivos do artigo, no formato esperado pelo publicador:
 
 - index.html
-- assets/ryan-deiss-anuncios.svg
-- assets/ryan-deiss-anuncios.png
-- assets/ryan-deiss-oficial.png
-- assets/ryan-deiss-foto-capa-v2.svg
-- assets/ryan-deiss-foto-capa-v2.png
+- assets/ryan-deiss-foto-capa-v3.png
 - seo.txt
 - FONTES.txt
 - VALIDACAO-SEO-LEGIBILIDADE.txt
