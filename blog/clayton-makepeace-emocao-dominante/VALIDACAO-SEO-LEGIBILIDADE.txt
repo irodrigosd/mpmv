@@ -1,0 +1,34 @@
+VALIDAÇÃO EDITORIAL — CLAYTON MAKEPEACE
+
+SEO
+[OK] Palavra-chave principal aparece no título, H1, abertura, corpo, FAQ e dados estruturados.
+[OK] Título SEO com 45 caracteres.
+[OK] Meta description com 137 caracteres.
+[OK] Slug curto, descritivo e sem acentos.
+[OK] URL canônica, Open Graph, Twitter Card e Article schema configurados.
+[OK] BreadcrumbList e FAQPage em JSON-LD.
+[OK] Imagem destacada em 1200 × 800 px, com alt descritivo.
+[OK] Hierarquia de títulos organizada em um H1 e seções H2/H3.
+
+LEGIBILIDADE
+[OK] Abertura apresenta personagem, resultado atribuído e tese.
+[OK] Parágrafos curtos e exemplos concretos.
+[OK] Termos técnicos explicados em português.
+[OK] Listas, boxes e cards quebram blocos longos.
+[OK] Voz natural em português do Brasil.
+[OK] Uma chamada principal no encerramento e uma chamada persistente na lateral.
+[OK] Layout responsivo para desktop e celular.
+
+CONFERÊNCIA DE VERDADE
+[OK] US$ 1,5 bilhão tratado como atribuição de AWAI/CopyChief, sem sugerir auditoria.
+[OK] Vendas de moedas e royalties identificados como relatos do próprio Clayton.
+[OK] Datas biográficas conferidas em obituário público.
+[OK] Conceito de emoção dominante fundamentado em artigo assinado por Clayton.
+[OK] Aplicações a infoprodutos apresentadas como adaptação editorial, não como casos de Clayton.
+[OK] Fontes e limitações explícitas no corpo e no arquivo FONTES.txt.
+
+APRESENTAÇÃO
+[OK] Identidade visual preto, dourado e vermelho da série Gigantes do Marketing.
+[OK] Foto real de Clayton na capa.
+[OK] Imagem exportada em PNG para evitar falhas de renderização no publicador.
+[OK] Nenhuma legenda automática adicionada.
