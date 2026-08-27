@@ -13,6 +13,79 @@ function getListId() {
   return Number.isFinite(id) && id > 0 ? id : 5;
 }
 
+const LEAD_NOTIFICATION_EMAIL = 'irodrigosd@gmail.com';
+let notificationSenderPromise;
+
+async function getNotificationSender() {
+  if (!notificationSenderPromise) {
+    notificationSenderPromise = (async () => {
+      const response = await fetch(BREVO_BASE + '/senders', {
+        headers: { accept: 'application/json', 'api-key': getApiKey() }
+      });
+      const text = await response.text();
+      if (!response.ok) throw new Error(`Brevo senders ${response.status}: ${text}`);
+
+      let data = {};
+      try { data = text ? JSON.parse(text) : {}; } catch (_) {}
+      const senders = Array.isArray(data.senders) ? data.senders : [];
+      const sender = senders.find(item => item && item.email && item.active !== false);
+      if (!sender) throw new Error('Nenhum remetente ativo encontrado na Brevo.');
+
+      return { name: String(sender.name || 'MPMV Leads'), email: String(sender.email) };
+    })();
+  }
+  return notificationSenderPromise;
+}
+
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+async function notifyGuideLead({ name, email, source, page }) {
+  const sender = await getNotificationSender();
+  const submittedAt = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  const subject = `Novo lead do Guia — ${name}`;
+  const text = [
+    'Novo lead recebido pelo Guia Prático.',
+    '',
+    `Nome: ${name}`,
+    `E-mail: ${email}`,
+    `Origem: ${source}`,
+    `Página: ${page}`,
+    `Data: ${submittedAt}`
+  ].join('\n');
+  const html = `<h2>Novo lead do Guia</h2>
+    <p><strong>Nome:</strong> ${escapeHtml(name)}</p>
+    <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Origem:</strong> ${escapeHtml(source)}</p>
+    <p><strong>Página:</strong> ${escapeHtml(page)}</p>
+    <p><strong>Data:</strong> ${escapeHtml(submittedAt)}</p>`;
+
+  const response = await fetch(BREVO_BASE + '/smtp/email', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'api-key': getApiKey(),
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      sender,
+      to: [{ email: LEAD_NOTIFICATION_EMAIL, name: 'Rodrigo Castro' }],
+      subject,
+      textContent: text,
+      htmlContent: html
+    })
+  });
+
+  const responseText = await response.text();
+  if (!response.ok) throw new Error(`Brevo notification ${response.status}: ${responseText}`);
+}
+
 function adminAuthorized(req) {
   const expected = process.env.LEADS_ADMIN_TOKEN || '';
   if (!expected) return false;
@@ -98,6 +171,16 @@ export default async function handler(req, res) {
         return json(res, 502, { ok:false, error:'brevo_error', status:brevo.status });
       }
 
+      const source = String(body.source || 'guia-pratico').trim().slice(0, 80);
+      const page = String(body.page || '/').trim().slice(0, 200);
+
+      try {
+        await notifyGuideLead({ name, email, source, page });
+      } catch (notificationError) {
+        // O cadastro não pode falhar por causa do aviso administrativo.
+        console.error('Lead notification error', notificationError);
+      }
+
       return json(res, 200, { ok:true });
     } catch (error) {
       console.error('Lead POST error', error);
@@ -139,3 +222,4 @@ export default async function handler(req, res) {
   res.setHeader('Allow', 'GET, POST, OPTIONS');
   return json(res, 405, { ok:false, error:'method_not_allowed' });
 }
+

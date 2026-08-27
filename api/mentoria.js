@@ -25,6 +25,71 @@ function configuredMentoriaListId() {
   return Number.isFinite(id) && id > 0 ? id : 0;
 }
 
+const LEAD_NOTIFICATION_EMAIL = 'irodrigosd@gmail.com';
+let notificationSenderPromise;
+
+async function getNotificationSender() {
+  if (!notificationSenderPromise) {
+    notificationSenderPromise = (async () => {
+      const data = await brevo('/senders');
+      const senders = Array.isArray(data.senders) ? data.senders : [];
+      const sender = senders.find(item => item && item.email && item.active !== false);
+      if (!sender) throw new Error('Nenhum remetente ativo encontrado na Brevo.');
+
+      return { name: String(sender.name || 'MPMV Leads'), email: String(sender.email) };
+    })();
+  }
+  return notificationSenderPromise;
+}
+
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+async function notifyMentoriaApplication(application) {
+  const sender = await getNotificationSender();
+  const submittedAt = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  const subject = `Nova aplicação para Mentoria — ${application.name}`;
+  const rows = [
+    ['Nome', application.name],
+    ['E-mail', application.email],
+    ['Telefone', application.phone],
+    ['Faturamento mensal', application.revenue],
+    ['Produto ou serviço', application.product],
+    ['Perfil profissional', application.role],
+    ['O que chamou atenção', application.attention],
+    ['Por que escolher o projeto', application.whyYou],
+    ['Por que escolheu Rodrigo', application.whyRodrigo],
+    ['Ciente sobre resultados', application.resultsAgreement],
+    ['De acordo com o investimento', application.priceAgreement],
+    ['Data', submittedAt]
+  ];
+  const text = [
+    'Nova aplicação recebida para a Mentoria Individual.',
+    '',
+    ...rows.map(([label, value]) => `${label}: ${value}`)
+  ].join('\n');
+  const html = `<h2>Nova aplicação para Mentoria</h2>${rows
+    .map(([label, value]) => `<p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`)
+    .join('')}`;
+
+  await brevo('/smtp/email', {
+    method: 'POST',
+    body: JSON.stringify({
+      sender,
+      to: [{ email: LEAD_NOTIFICATION_EMAIL, name: 'Rodrigo Castro' }],
+      subject,
+      textContent: text,
+      htmlContent: html
+    })
+  });
+}
+
 function adminAuthorized(req) {
   const expected = process.env.LEADS_ADMIN_TOKEN || process.env.BLOG_ADMIN_TOKEN || '';
   if (!expected) return false;
@@ -305,6 +370,14 @@ module.exports = async function handler(req, res) {
       const listId = await findOrCreateMentoriaList();
       const contactId = await upsertContact(application, listId);
       await saveApplicationNote(contactId, application);
+
+      try {
+        await notifyMentoriaApplication(application);
+      } catch (notificationError) {
+        // A aplicação não pode falhar por causa do aviso administrativo.
+        console.error('Mentoria notification error', notificationError);
+      }
+
       return json(res, 200, { ok:true });
     } catch (e) {
       console.error('Mentoria POST error', e.status, e.message, e.data || '');
@@ -336,3 +409,4 @@ module.exports = async function handler(req, res) {
   res.setHeader('Allow', 'GET, POST, OPTIONS');
   return json(res, 405, { ok:false, error:'method_not_allowed' });
 };
+
