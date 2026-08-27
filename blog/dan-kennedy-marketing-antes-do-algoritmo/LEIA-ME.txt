@@ -1,0 +1,27 @@
+PACOTE PARA /admin/blog
+
+Este ZIP contém somente os arquivos do artigo, no formato esperado pelo publicador:
+
+- index.html
+- assets/dan-kennedy-antes-do-algoritmo.png
+- seo.txt
+- FONTES.txt
+- VALIDACAO-SEO-LEGIBILIDADE.txt
+- LEIA-ME.txt
+
+COMO PUBLICAR
+1. Acesse /admin/blog.
+2. Escolha este arquivo ZIP.
+3. Confira os campos importados, principalmente slug, título, meta description e imagem.
+4. Publique o artigo.
+5. Abra a URL final e confira no celular e no computador.
+
+SLUG ESPERADO
+dan-kennedy-marketing-antes-do-algoritmo
+
+URL FINAL ESPERADA
+https://www.maispersuasaomaisvendas.com.br/blog/dan-kennedy-marketing-antes-do-algoritmo/
+
+IMPORTANTE
+Não é necessário criar uma pasta antes do upload. O publicador usa o slug para montar o diretório, cadastrar o card e atualizar os registros do site.
+

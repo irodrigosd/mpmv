@@ -1,0 +1,53 @@
+VALIDAÇÃO EDITORIAL — DAN KENNEDY
+
+SEO
+[OK] Palavra-chave principal no título, H1, abertura, subtítulos, corpo, FAQ e dados estruturados.
+[OK] Título SEO dentro do intervalo editorial.
+[OK] Meta description entre 115 e 160 caracteres.
+[OK] Slug descritivo, sem acentos e sem canibalização com os três artigos anteriores.
+[OK] URL canônica, Open Graph, Twitter Card e Article schema configurados.
+[OK] BreadcrumbList e FAQPage em JSON-LD.
+[OK] Imagem destacada planejada em 1200 × 800 px, com alt descritivo.
+[OK] Mais de dois links internos e três títulos H2.
+
+LEGIBILIDADE
+[OK] Abertura apresenta personagem, contraste e tese.
+[OK] Parágrafos curtos, subtítulos frequentes e exemplos concretos.
+[OK] Termos técnicos explicados em português.
+[OK] Listas, boxes, fluxo e cards quebram blocos longos.
+[OK] Voz natural em português do Brasil.
+[OK] CTA coerente com o Guia Prático.
+
+MÉTRICAS DO TEXTO
+- 2.464 palavras no corpo do artigo.
+- 188 frases.
+- 13,1 palavras por frase, em média.
+- 5,3% das frases acima de 25 palavras.
+- 56 parágrafos.
+- 13 títulos H2 e 3 títulos H3.
+- 5 links internos no corpo do artigo.
+- 19 ocorrências de "Dan Kennedy".
+- Título SEO com 48 caracteres.
+- Meta description com 138 caracteres.
+
+CONFERÊNCIA DE VERDADE
+[OK] Números profissionais tratados como atribuições da Magnetic Marketing.
+[OK] Três Ms fundamentados em artigo assinado por Dan Kennedy.
+[OK] Uso atual de canais digitais reconhecido; sem falsa oposição à tecnologia.
+[OK] Histórias não verificadas sobre idade, castelo e folhas de papel excluídas.
+[OK] Aplicações a infoprodutos identificadas como adaptação editorial.
+
+VALIDAÇÃO TÉCNICA
+[OK] JSON-LD de Article, BreadcrumbList e FAQPage analisado sem erro de sintaxe.
+[OK] Capa em PNG com 1200 × 800 px.
+[OK] Quatro destinos internos responderam HTTP 200.
+[OK] Entrepreneur e I Love Marketing responderam HTTP 200.
+[OK] Magnetic Marketing e Simon & Schuster foram confirmados pela indexação web; os servidores bloquearam o teste automatizado direto com HTTP 403.
+[OK] Nenhum placeholder, lorem ipsum, TODO ou link vazio encontrado.
+
+RESULTADO DO CHECKLIST MPMV
+SEO: 100/100 — Excelente
+Legibilidade: 100/100 — Excelente
+
+OBSERVAÇÃO
+As notas são do checklist editorial do site e não representam pontuação oficial de ferramentas externas como Yoast, Google Search Console ou Lighthouse.
