@@ -98,7 +98,10 @@
     "publishedAt": "2026-08-30",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-08-30",
+    "coverImage": "/assets/images/blog/vies-de-confirmacao-vendas-capa.png",
+    "coverAlt": "Capa editorial sobre viés de confirmação"
   },
   {
     "id": "efeito-de-mera-exposicao-marketing-2026-08-30",
