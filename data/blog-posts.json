@@ -20,7 +20,10 @@
     "publishedAt": "2026-08-30",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-08-30",
+    "coverImage": "/assets/images/blog/heuristica-da-disponibilidade-marketing-capa.png",
+    "coverAlt": "Capa editorial sobre heurística da disponibilidade"
   },
   {
     "id": "vies-de-negatividade-marketing-2026-08-30",
