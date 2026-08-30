@@ -1,5 +1,30 @@
 [
   {
+    "id": "qualificacao-de-leads-2026-08-30",
+    "title": "Qualificação de leads: como descobrir quem merece atenção agora",
+    "seoTitle": "Qualificação de Leads: Como Priorizar Quem Pode Comprar | MPMV",
+    "metaDescription": "Aprenda a fazer qualificação de leads usando perfil, interesse, necessidade, orçamento, momento e critérios de vendas para priorizar oportunidades.",
+    "focusKeyphrase": "qualificação de leads",
+    "secondaryKeyphrases": [
+      "como qualificar leads",
+      "lead qualificado",
+      "MQL e SQL",
+      "lead scoring",
+      "qualificação de vendas",
+      "critérios de qualificação de leads",
+      "lead qualification"
+    ],
+    "slug": "qualificacao-de-leads",
+    "url": "/blog/qualificacao-de-leads/",
+    "file": "blog/qualificacao-de-leads/index.html",
+    "status": "published",
+    "category": "Leads + Vendas",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "chatbot-para-vendas-2026-08-30",
     "title": "Chatbot para vendas: como automatizar conversas sem transformar atendimento em formulário",
     "seoTitle": "Chatbot para Vendas: Como Automatizar Conversas | MPMV",

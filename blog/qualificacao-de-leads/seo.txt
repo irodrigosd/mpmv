@@ -1,0 +1,43 @@
+TÍTULO SEO
+Qualificação de Leads: Como Priorizar Quem Pode Comprar | MPMV
+
+SLUG
+qualificacao-de-leads
+
+PALAVRA-CHAVE PRINCIPAL
+qualificação de leads
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+como qualificar leads
+lead qualificado
+MQL e SQL
+lead scoring
+qualificação de vendas
+critérios de qualificação de leads
+lead qualification
+
+META DESCRIPTION
+Aprenda a fazer qualificação de leads usando perfil, interesse, necessidade, orçamento, momento e critérios de vendas para priorizar oportunidades.
+
+H1
+Qualificação de leads: como descobrir quem merece atenção agora
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/qualificacao-de-leads/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender como identificar leads com maior aderência e prontidão para vendas, quais critérios usar, como fazer perguntas de qualificação e como organizar scoring, MQL e SQL.
+
+FONTES PRINCIPAIS
+Salesforce Trailhead — Get to Know Lead Qualification
+Salesforce Trailhead — Create a Lead Qualification Model
+HubSpot Academy — Developing a Lead Qualification Framework
+
+CATEGORIA
+Leads + Vendas
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
