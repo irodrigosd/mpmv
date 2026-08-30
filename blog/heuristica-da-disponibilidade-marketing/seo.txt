@@ -1,0 +1,40 @@
+TÍTULO SEO
+Heurística da Disponibilidade no Marketing | MPMV
+
+SLUG
+heuristica-da-disponibilidade-marketing
+
+PALAVRA-CHAVE PRINCIPAL
+heurística da disponibilidade
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+marketing
+persuasão
+psicologia do consumidor
+comportamento de compra
+tomada de decisão
+
+META DESCRIPTION
+Entenda a heurística da disponibilidade e veja como exemplos fáceis de lembrar podem influenciar percepção de risco, frequência e decisão de compra.
+
+H1
+Heurística da disponibilidade: por que o que vem fácil à mente parece mais provável
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/heuristica-da-disponibilidade-marketing/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o conceito, a evidência e sua aplicação em marketing, vendas e comunicação.
+
+FONTES PRINCIPAIS
+Tversky & Kahneman (1973) — Availability: A Heuristic for Judging Frequency and Probability
+ScienceDirect — resumo e referência do estudo clássico
+
+CATEGORIA
+Psicologia + Julgamento
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
