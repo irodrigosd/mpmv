@@ -22,7 +22,10 @@
     "publishedAt": "2026-08-30",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-08-30",
+    "coverImage": "/assets/images/blog/russell-brunson-perfect-webinar-funnel-capa.png",
+    "coverAlt": "Diagrama editorial do Perfect Webinar Funnel de Russell Brunson"
   },
   {
     "id": "tijolo-da-supreme-2026-08-18",
