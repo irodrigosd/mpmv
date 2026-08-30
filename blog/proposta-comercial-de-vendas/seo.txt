@@ -1,0 +1,43 @@
+TÍTULO SEO
+Proposta Comercial de Vendas: Como Apresentar Valor | MPMV
+
+SLUG
+proposta-comercial-de-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+proposta comercial de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+proposta comercial
+proposta de vendas
+como fazer proposta comercial
+modelo de proposta comercial
+orçamento comercial
+apresentar proposta
+fechamento de vendas
+
+META DESCRIPTION
+Veja como criar uma proposta comercial de vendas com contexto, valor, escopo, prova, condição e próximo passo sem transformar a decisão em um orçamento frio.
+
+H1
+Proposta comercial de vendas: como apresentar valor sem virar orçamento em PDF
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/proposta-comercial-de-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer saber como estruturar e apresentar uma proposta comercial que organize valor, escopo, preço, prova e próximo passo.
+
+FONTES PRINCIPAIS
+HubSpot — How to Write a Sales Proposal
+Salesforce — Sales Process
+Salesforce — Sales Pipeline
+
+CATEGORIA
+Vendas + Conversão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
