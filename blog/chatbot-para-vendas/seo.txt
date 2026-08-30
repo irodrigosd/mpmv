@@ -1,0 +1,42 @@
+TÍTULO SEO
+Chatbot para Vendas: Como Automatizar Conversas | MPMV
+
+SLUG
+chatbot-para-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+chatbot para vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+chatbot de vendas
+chatbot para atendimento
+automação de vendas
+chatbot com inteligência artificial
+chatbot para qualificar leads
+chatbot para atendimento ao cliente
+
+META DESCRIPTION
+Aprenda a usar chatbot para vendas para qualificar leads, responder dúvidas, conduzir a oferta e transferir a conversa para um humano no momento certo.
+
+H1
+Chatbot para vendas: como automatizar conversas sem transformar atendimento em formulário
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/chatbot-para-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender como usar chatbot no processo de vendas, quais tarefas automatizar, como desenhar a conversa, quando usar IA e quando transferir para atendimento humano.
+
+FONTES PRINCIPAIS
+IBM — O que é um chatbot? (atualizado em 16/07/2026)
+Google for Developers — Como abordar o design de conversas
+Google Cloud — Dialogflow CX handoff
+
+CATEGORIA
+Automação + Vendas
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro

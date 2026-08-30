@@ -1,5 +1,29 @@
 [
   {
+    "id": "chatbot-para-vendas-2026-08-30",
+    "title": "Chatbot para vendas: como automatizar conversas sem transformar atendimento em formulário",
+    "seoTitle": "Chatbot para Vendas: Como Automatizar Conversas | MPMV",
+    "metaDescription": "Aprenda a usar chatbot para vendas para qualificar leads, responder dúvidas, conduzir a oferta e transferir a conversa para um humano no momento certo.",
+    "focusKeyphrase": "chatbot para vendas",
+    "secondaryKeyphrases": [
+      "chatbot de vendas",
+      "chatbot para atendimento",
+      "automação de vendas",
+      "chatbot com inteligência artificial",
+      "chatbot para qualificar leads",
+      "chatbot para atendimento ao cliente"
+    ],
+    "slug": "chatbot-para-vendas",
+    "url": "/blog/chatbot-para-vendas/",
+    "file": "blog/chatbot-para-vendas/index.html",
+    "status": "published",
+    "category": "Automação + Vendas",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "funil-de-vendas-previsivel-2026-08-30",
     "title": "Como criar um funil de vendas previsível : da meta ao número de leads",
     "seoTitle": "Como Criar um Funil de Vendas Previsível | MPMV",
