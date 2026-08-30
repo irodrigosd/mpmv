@@ -1,0 +1,44 @@
+TÍTULO SEO
+Proposta Comercial Persuasiva: Como Vender Valor | MPMV
+
+SLUG
+proposta-comercial-persuasiva
+
+PALAVRA-CHAVE PRINCIPAL
+proposta comercial persuasiva
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+proposta comercial
+como fazer proposta comercial
+proposta de vendas
+modelo de proposta comercial
+proposta comercial que vende
+proposta comercial preço
+proposta comercial exemplo
+
+META DESCRIPTION
+Aprenda a criar uma proposta comercial persuasiva com problema, valor, escopo, prova, preço, prazo e CTA para conduzir o cliente até a decisão.
+
+H1
+Proposta comercial persuasiva: como apresentar valor antes do preço
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/proposta-comercial-persuasiva/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer aprender como criar uma proposta comercial que organize problema, solução, valor, escopo, prova, preço e próximo passo para aumentar a clareza da decisão.
+
+FONTES PRINCIPAIS
+Salesforce Trailhead — Redigir uma proposta de venda
+Salesforce Brasil — Proposta Comercial: como criar uma proposta que converte?
+Salesforce Trailhead — Estratégia de precificação
+HubSpot — Passo a passo para elaborar uma proposta de vendas
+
+CATEGORIA
+Vendas + Proposta
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">Proposta comercial persuasiva</title>
+<desc id="d">Documento comercial organizado por problema, valor, prova, preço e próxima ação</desc>
+<rect width="1200" height="700" fill="#090909"/>
+<circle cx="1040" cy="120" r="210" fill="#f2c62e" opacity=".12"/>
+<circle cx="160" cy="620" r="250" fill="#f2c62e" opacity=".07"/>
+<rect x="90" y="85" width="1020" height="530" rx="28" fill="#151515" stroke="#383838"/>
+<text x="145" y="160" fill="#f2c62e" font-family="Arial,sans-serif" font-size="28" font-weight="700">PROPOSTA COMERCIAL</text>
+<text x="145" y="225" fill="#ffffff" font-family="Arial,sans-serif" font-size="47" font-weight="800">O cliente precisa entender o valor</text>
+<text x="145" y="280" fill="#ffffff" font-family="Arial,sans-serif" font-size="47" font-weight="800">antes de comparar o preço.</text>
+<rect x="145" y="335" width="200" height="82" rx="16" fill="#242424"/>
+<rect x="365" y="335" width="200" height="82" rx="16" fill="#242424"/>
+<rect x="585" y="335" width="200" height="82" rx="16" fill="#242424"/>
+<rect x="805" y="335" width="200" height="82" rx="16" fill="#f2c62e"/>
+<text x="190" y="385" fill="#ffffff" font-family="Arial,sans-serif" font-size="23" font-weight="700">Problema</text>
+<text x="425" y="385" fill="#ffffff" font-family="Arial,sans-serif" font-size="23" font-weight="700">Valor</text>
+<text x="645" y="385" fill="#ffffff" font-family="Arial,sans-serif" font-size="23" font-weight="700">Prova</text>
+<text x="870" y="385" fill="#111111" font-family="Arial,sans-serif" font-size="23" font-weight="800">Preço</text>
+<path d="M155 485 H985" stroke="#f2c62e" stroke-width="7" stroke-linecap="round"/>
+<path d="M985 485 l-28 -18 M985 485 l-28 18" stroke="#f2c62e" stroke-width="7" fill="none" stroke-linecap="round"/>
+<text x="145" y="555" fill="#d5d5d5" font-family="Arial,sans-serif" font-size="27">Contexto → solução → decisão</text>
+</svg>
