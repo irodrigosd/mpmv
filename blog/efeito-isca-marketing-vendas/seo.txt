@@ -1,0 +1,46 @@
+TÍTULO SEO
+Efeito Isca no Marketing e nas Vendas | MPMV
+
+SLUG
+efeito-isca-marketing-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+efeito isca
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+efeito isca marketing
+efeito isca vendas
+decoy effect
+attraction effect
+psicologia de preços
+tabela de preços
+
+META DESCRIPTION
+Entenda o efeito isca e veja como uma terceira opção pode mudar a comparação entre ofertas, preços e planos — além dos limites apontados pela pesquisa.
+
+H1
+Efeito isca: por que uma terceira opção pode mudar qual oferta parece melhor
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-isca-marketing-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o efeito isca, a evidência científica, limites e aplicações em preços, planos e ofertas.
+
+FONTES PRINCIPAIS
+Huber, Payne & Puto (1982)
+Silva et al. (2014)
+Padamwar et al. (2024)
+Devine et al. (2025)
+
+CATEGORIA
+Psicologia + Preço
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
+
+CAPA
+cover.png — 1200x630 px
