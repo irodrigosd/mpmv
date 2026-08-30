@@ -1,0 +1,40 @@
+TÍTULO SEO
+Viés de Confirmação nas Vendas: Como Ele Age | MPMV
+
+SLUG
+vies-de-confirmacao-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+viés de confirmação
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+marketing
+persuasão
+psicologia do consumidor
+comportamento de compra
+tomada de decisão
+
+META DESCRIPTION
+Entenda o viés de confirmação e veja como clientes e equipes procuram evidências que reforçam crenças anteriores durante decisões de compra e marketing.
+
+H1
+Viés de confirmação: como crenças anteriores filtram argumentos de venda
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/vies-de-confirmacao-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o conceito, a evidência e sua aplicação em marketing, vendas e comunicação.
+
+FONTES PRINCIPAIS
+Nickerson (1998) — Confirmation Bias: A Ubiquitous Phenomenon
+Wason (1960) — On the Failure to Eliminate Hypotheses
+
+CATEGORIA
+Psicologia + Decisão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
