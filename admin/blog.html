@@ -279,7 +279,9 @@ async function uploadZip(){
 
     const rawNames=entries.map(e=>e.name.replace(/^\.\/+/,''));
     const firstParts=rawNames.map(n=>n.split('/')[0]);
-    const commonTop=(new Set(firstParts).size===1 && rawNames.every(n=>n.includes('/')))?firstParts[0]+'/':'';
+    const repositoryRoots=new Set(['admin','api','assets','blog','curso','data']);
+    const onlyTop=new Set(firstParts).size===1?firstParts[0]:'';
+    const commonTop=(onlyTop && !repositoryRoots.has(onlyTop) && rawNames.every(n=>n.includes('/')))?onlyTop+'/':'';
 
     const files=[];
     let totalBytes=0;
@@ -538,14 +540,25 @@ function sameImage(a,b){
   const clean=v=>String(v||'').replace(/^https?:\/\/[^/]+/i,'').replace(/[?#].*$/,'');
   return !!a&&!!b&&clean(a)===clean(b);
 }
-function findCoverImage(doc,referenceUrl=''){
-  const marked=doc.querySelector('[data-admin-cover] img,img[data-admin-cover]');
+function findHeroCoverImage(doc){
+  return doc.querySelector('header .hero-art img,.hero .hero-art img,.article-hero img,header picture img');
+}
+function findInlineCoverImage(doc,referenceUrl=''){
+  const article=currentArticle(doc);
+  if(!article)return null;
+  const marked=article.querySelector('[data-admin-cover] img,img[data-admin-cover]');
   if(marked)return marked;
   if(referenceUrl){
-    const matched=[...doc.querySelectorAll('img')].find(node=>sameImage(node.getAttribute('src'),referenceUrl));
-    if(matched)return matched;
+    return [...article.querySelectorAll('img')].find(node=>sameImage(node.getAttribute('src'),referenceUrl))||null;
   }
-  return doc.querySelector('header .hero-art img,.hero .hero-art img,.article-hero img,header picture img');
+  return null;
+}
+function setCoverImageAttributes(img,url,alt){
+  if(!img)return;
+  img.setAttribute('src',url);
+  img.setAttribute('alt',alt);
+  img.setAttribute('loading','eager');
+  img.setAttribute('fetchpriority','high');
 }
 function applyCover(doc,url,alt,visible){
   if(!url)return;
@@ -556,34 +569,30 @@ function applyCover(doc,url,alt,visible){
   upsertMeta(doc,'meta[name="twitter:image:alt"]',{name:'twitter:image:alt'},alt);
 
   const article=currentArticle(doc);
-  let img=findCoverImage(doc,originalCoverUrl);
+  const heroImg=findHeroCoverImage(doc);
+  setCoverImageAttributes(heroImg,url,alt);
+
+  let img=findInlineCoverImage(doc,originalCoverUrl);
+  if(img===heroImg)img=null;
   if(!visible){
-    const target=img?.closest('figure')||img||doc.querySelector('[data-admin-cover]');
+    const target=img?.closest('figure')||img||article?.querySelector('[data-admin-cover]');
     target?.remove();
     return;
   }
   if(!img){
+    if(!article)return;
     img=doc.createElement('img');
-    const heroSlot=doc.querySelector('header .hero-art,.hero .hero-art,.article-hero .hero-art');
-    if(heroSlot){
-      heroSlot.replaceChildren(img);
-    }else{
-      if(!article)return;
-      const figure=doc.createElement('figure');
-      figure.className='article-photo admin-cover';
-      figure.setAttribute('data-admin-cover','true');
-      figure.style.cssText='margin:32px 0;';
-      img.style.cssText='display:block;width:100%;height:auto;border-radius:18px;';
-      figure.appendChild(img);
-      const intro=article.querySelector('p');
-      intro?intro.after(figure):article.prepend(figure);
-    }
+    const figure=doc.createElement('figure');
+    figure.className='article-photo admin-cover';
+    figure.setAttribute('data-admin-cover','true');
+    figure.style.cssText='margin:32px 0;';
+    img.style.cssText='display:block;width:100%;height:auto;border-radius:18px;';
+    figure.appendChild(img);
+    const intro=article.querySelector('p');
+    intro?intro.after(figure):article.prepend(figure);
   }
   img.setAttribute('data-admin-cover','true');
-  img.setAttribute('src',url);
-  img.setAttribute('alt',alt);
-  img.setAttribute('loading','eager');
-  img.setAttribute('fetchpriority','high');
+  setCoverImageAttributes(img,url,alt);
 }
 function showCoverPreview(url){
   coverPreview.replaceChildren();
@@ -609,8 +618,8 @@ function populateVisualFields(doc,post={}){
   editKeyphrase.value=post.focusKeyphrase||doc.querySelector('meta[name="mpmv:focus-keyphrase"]')?.content||'';
   editVisibleTitle.innerHTML=h1.innerHTML;
   editContent.innerHTML=article.innerHTML;
-  originalCoverUrl=doc.querySelector('meta[property="og:image"]')?.content||findCoverImage(doc)?.getAttribute('src')||'';
-  const coverImage=findCoverImage(doc,originalCoverUrl);
+  originalCoverUrl=doc.querySelector('meta[property="og:image"]')?.content||findHeroCoverImage(doc)?.getAttribute('src')||findInlineCoverImage(doc)?.getAttribute('src')||'';
+  const coverImage=findInlineCoverImage(doc,originalCoverUrl);
   editCoverUrl.value=originalCoverUrl;
   editCoverAlt.value=doc.querySelector('meta[property="og:image:alt"]')?.content||coverImage?.getAttribute('alt')||'';
   editCoverVisible.checked=!!coverImage;
@@ -780,8 +789,8 @@ document.getElementById('previewEditBtn').addEventListener('click',()=>{
     const file=editCoverFile.files?.[0];
     const imageUrl=file?URL.createObjectURL(file):'';
     if(imageUrl){
-      const previewCover=findCoverImage(doc,selectedCoverUrl());
-      if(previewCover)previewCover.setAttribute('src',imageUrl);
+      const previewImages=[findHeroCoverImage(doc),findInlineCoverImage(doc,selectedCoverUrl())].filter(Boolean);
+      previewImages.forEach(img=>img.setAttribute('src',imageUrl));
     }
     const url=URL.createObjectURL(new Blob([serializeDocument(doc)],{type:'text/html'}));
     const win=window.open(url,'_blank');
