@@ -1,0 +1,44 @@
+TÍTULO SEO
+Lead Quente e Lead Frio: Como Adaptar Sua Copy | MPMV
+
+SLUG
+lead-quente-lead-frio
+
+PALAVRA-CHAVE PRINCIPAL
+lead quente e lead frio
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+lead quente
+lead frio
+lead morno
+como identificar lead quente
+copy para lead frio
+copy para lead quente
+momento de compra
+temperatura de leads
+
+META DESCRIPTION
+Entenda a diferença entre lead quente e lead frio e veja como adaptar sua copy, oferta, prova e CTA ao momento de compra de cada contato no funil.
+
+H1
+Lead quente e lead frio: como adaptar sua copy ao momento de compra
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/lead-quente-lead-frio/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender a diferença entre lead quente e lead frio, reconhecer sinais de intenção e adaptar copy, prova, oferta e CTA ao estágio de compra.
+
+FONTES PRINCIPAIS
+Salesforce Trailhead — Get to Know Lead Qualification
+HubSpot — Nutrição de leads
+Salesforce — Sales Funnel
+
+CATEGORIA
+Leads + Copy
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
