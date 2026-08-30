@@ -1,5 +1,27 @@
 [
   {
+    "id": "efeito-padrao-escolhas-2026-08-30",
+    "title": "Efeito padrão: por que a opção pré-selecionada influencia decisões",
+    "seoTitle": "Efeito Padrão: Por Que a Opção Pré-Selecionada Influencia | MPMV",
+    "metaDescription": "Entenda o efeito padrão e como opções pré-selecionadas influenciam escolhas. Veja aplicações em planos, formulários e ofertas com autonomia.",
+    "focusKeyphrase": "efeito padrão",
+    "secondaryKeyphrases": [
+      "default",
+      "planos",
+      "inércia",
+      "escolha"
+    ],
+    "slug": "efeito-padrao-escolhas",
+    "url": "/blog/efeito-padrao-escolhas/",
+    "file": "blog/efeito-padrao-escolhas/index.html",
+    "status": "published",
+    "category": "Escolha + Conversão",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "custo-afundado-decisoes-2026-08-30",
     "title": "Custo afundado: por que decisões antigas continuam pesando nas próximas",
     "seoTitle": "Custo Afundado: Por Que Decisões Antigas Pesam nas Próximas | MPMV",

@@ -1,0 +1,40 @@
+TÍTULO SEO
+Efeito Padrão: Por Que a Opção Pré-Selecionada Influencia | MPMV
+
+SLUG
+efeito-padrao-escolhas
+
+PALAVRA-CHAVE PRINCIPAL
+efeito padrão
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+default
+planos
+inércia
+escolha
+
+META DESCRIPTION
+Entenda o efeito padrão e como opções pré-selecionadas influenciam escolhas. Veja aplicações em planos, formulários e ofertas com autonomia.
+
+H1
+Efeito padrão: por que a opção pré-selecionada influencia decisões
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-padrao-escolhas/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o conceito, a evidência e aplicações em marketing, vendas e tomada de decisão.
+
+FONTES PRINCIPAIS
+Madrian & Shea — The Power of Suggestion: Inertia in 401(k) Participation
+Choi, Laibson, Madrian & Metrick — Default Effects and 401(k) Savings Behavior
+Johnson & Goldstein (2003) — Do Defaults Save Lives?
+
+CATEGORIA
+Escolha + Conversão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
