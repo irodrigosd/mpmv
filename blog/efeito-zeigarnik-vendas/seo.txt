@@ -1,6 +1,35 @@
-Título SEO: Efeito Zeigarnik nas vendas: como prender a atenção sem clickbait
-Meta descrição: Entenda como o efeito Zeigarnik pode aumentar atenção e curiosidade em anúncios, páginas de vendas, e-mails e conteúdo sem cair em clickbait.
-Frase-chave foco: efeito Zeigarnik nas vendas
-Slug: efeito-zeigarnik-vendas
-Canonical: https://www.maispersuasaomaisvendas.com.br/blog/efeito-zeigarnik-vendas/
-CTA: /curso
+TÍTULO SEO
+Efeito Zeigarnik nas vendas: como usar curiosidade sem clickbait
+
+META DESCRIPTION
+Entenda o efeito Zeigarnik nas vendas e aprenda a usar lacunas de informação em anúncios, e-mails, conteúdos e páginas sem cair em clickbait.
+
+FRASE-CHAVE FOCO
+efeito Zeigarnik nas vendas
+
+SLUG
+efeito-zeigarnik-vendas
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-zeigarnik-vendas/
+
+LINKS INTERNOS
+/blog/cliques-sem-vendas-anuncio-nao-converte/
+/blog/criar-curiosidade-sem-clickbait/
+/blog/funil-de-vendas-onde-a-venda-trava/
+/curso
+
+SEO ON-PAGE
+- Frase-chave no título: sim
+- Frase-chave no H1: sim
+- Frase-chave no primeiro parágrafo: sim
+- Frase-chave no corpo: sim
+- Frase-chave na conclusão: sim
+- Meta description: sim
+- Canonical: sim
+- Links internos: sim
+- Links externos de referência: sim
+- FAQ: sim
+- Article schema: sim
+- FAQ schema: sim
+- Autor/data/tempo de leitura: sim
