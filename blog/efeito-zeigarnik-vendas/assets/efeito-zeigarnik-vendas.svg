@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">Efeito Zeigarnik nas vendas</title>
+<desc id="d">Representação de uma conversa de vendas com uma informação em aberto e sua resolução</desc>
+<rect width="1200" height="700" fill="#0b0b0b"/>
+<circle cx="970" cy="145" r="220" fill="#f5ca37" opacity=".12"/>
+<circle cx="200" cy="610" r="260" fill="#f5ca37" opacity=".08"/>
+<text x="90" y="160" fill="#f5ca37" font-family="Arial,sans-serif" font-size="34" font-weight="700">UMA PERGUNTA FICA ABERTA...</text>
+<text x="90" y="235" fill="#ffffff" font-family="Arial,sans-serif" font-size="58" font-weight="800">“Por que alguns clientes</text>
+<text x="90" y="305" fill="#ffffff" font-family="Arial,sans-serif" font-size="58" font-weight="800">continuam lendo?”</text>
+<path d="M90 395 H890" stroke="#f5ca37" stroke-width="8" stroke-linecap="round"/>
+<path d="M890 395 l-30 -20 M890 395 l-30 20" stroke="#f5ca37" stroke-width="8" fill="none" stroke-linecap="round"/>
+<rect x="90" y="455" rx="26" ry="26" width="930" height="150" fill="#171717" stroke="#373737"/>
+<text x="135" y="515" fill="#ffffff" font-family="Arial,sans-serif" font-size="34" font-weight="700">Curiosidade funciona quando existe contexto</text>
+<text x="135" y="565" fill="#d6d6d6" font-family="Arial,sans-serif" font-size="28">e a resposta prometida realmente chega.</text>
+</svg>

@@ -1,5 +1,30 @@
 [
   {
+    "id": "efeito-zeigarnik-vendas-2026-08-30",
+    "title": "Efeito Zeigarnik nas vendas: como usar curiosidade sem clickbait",
+    "seoTitle": "Efeito Zeigarnik nas Vendas: Curiosidade sem Clickbait | MPMV",
+    "metaDescription": "Entenda o efeito Zeigarnik nas vendas e veja como usar curiosidade, lacunas de informação e loops abertos sem prometer algo que o conteúdo não entrega.",
+    "focusKeyphrase": "efeito Zeigarnik",
+    "secondaryKeyphrases": [
+      "efeito Zeigarnik nas vendas",
+      "Zeigarnik effect",
+      "curiosidade em vendas",
+      "lacuna de informação",
+      "loop aberto",
+      "curiosity gap",
+      "clickbait"
+    ],
+    "slug": "efeito-zeigarnik-vendas",
+    "url": "/blog/efeito-zeigarnik-vendas/",
+    "file": "blog/efeito-zeigarnik-vendas/index.html",
+    "status": "published",
+    "category": "Psicologia + Persuasão",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "nutricao-de-leads-2026-08-30",
     "title": "Nutrição de leads: o que dizer entre o primeiro contato e a oferta",
     "seoTitle": "Nutrição de Leads: O Que Dizer Antes da Oferta | MPMV",

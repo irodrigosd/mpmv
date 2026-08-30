@@ -1,35 +1,46 @@
 TÍTULO SEO
-Efeito Zeigarnik nas vendas: como usar curiosidade sem clickbait
-
-META DESCRIPTION
-Entenda o efeito Zeigarnik nas vendas e aprenda a usar lacunas de informação em anúncios, e-mails, conteúdos e páginas sem cair em clickbait.
-
-FRASE-CHAVE FOCO
-efeito Zeigarnik nas vendas
+Efeito Zeigarnik nas Vendas: Curiosidade sem Clickbait | MPMV
 
 SLUG
 efeito-zeigarnik-vendas
 
+PALAVRA-CHAVE PRINCIPAL
+efeito Zeigarnik
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+efeito Zeigarnik nas vendas
+Zeigarnik effect
+curiosidade em vendas
+lacuna de informação
+loop aberto
+curiosity gap
+clickbait
+
+META DESCRIPTION
+Entenda o efeito Zeigarnik nas vendas e veja como usar curiosidade, lacunas de informação e loops abertos sem prometer algo que o conteúdo não entrega.
+
+H1
+Efeito Zeigarnik nas vendas: como usar curiosidade sem clickbait
+
 CANONICAL
 https://www.maispersuasaomaisvendas.com.br/blog/efeito-zeigarnik-vendas/
 
-LINKS INTERNOS
-/blog/cliques-sem-vendas-anuncio-nao-converte/
-/blog/criar-curiosidade-sem-clickbait/
-/blog/funil-de-vendas-onde-a-venda-trava/
-/curso
+INTENÇÃO DE BUSCA
+Informacional. O leitor quer entender o efeito Zeigarnik, como ele se relaciona com curiosidade e como aplicar loops abertos em vendas, anúncios, e-mails e páginas sem recorrer a clickbait.
 
-SEO ON-PAGE
-- Frase-chave no título: sim
-- Frase-chave no H1: sim
-- Frase-chave no primeiro parágrafo: sim
-- Frase-chave no corpo: sim
-- Frase-chave na conclusão: sim
-- Meta description: sim
-- Canonical: sim
-- Links internos: sim
-- Links externos de referência: sim
-- FAQ: sim
-- Article schema: sim
-- FAQ schema: sim
-- Autor/data/tempo de leitura: sim
+FONTES PRINCIPAIS
+APA Dictionary of Psychology — Zeigarnik effect
+Frontiers in Psychology — Interruption science as a research field
+Journal of Experimental Social Psychology — Unfulfilled goals interfere with tasks that require executive functions
+Journal of Business Research — Shopping under the influence of curiosity
+Sport Management Review — Curiosity generating advertisements
+Journal of Pragmatics — Clickbait, relevance and the curiosity gap
+
+CATEGORIA
+Psicologia + Persuasão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
