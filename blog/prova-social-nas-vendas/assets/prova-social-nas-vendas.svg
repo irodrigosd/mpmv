@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">Prova social nas vendas</title>
+<desc id="d">Representação de avaliações, depoimentos e cases usados para reduzir incerteza em vendas</desc>
+<rect width="1200" height="700" fill="#090909"/>
+<circle cx="1010" cy="120" r="220" fill="#f2c62e" opacity=".12"/>
+<circle cx="170" cy="630" r="250" fill="#f2c62e" opacity=".07"/>
+<text x="90" y="145" fill="#f2c62e" font-family="Arial,sans-serif" font-size="30" font-weight="700">PROVA SOCIAL</text>
+<text x="90" y="215" fill="#ffffff" font-family="Arial,sans-serif" font-size="54" font-weight="800">A experiência de outras pessoas</text>
+<text x="90" y="278" fill="#ffffff" font-family="Arial,sans-serif" font-size="54" font-weight="800">ajuda a reduzir incerteza.</text>
+<rect x="90" y="340" width="310" height="180" rx="24" fill="#171717" stroke="#3a3a3a"/>
+<rect x="445" y="340" width="310" height="180" rx="24" fill="#171717" stroke="#3a3a3a"/>
+<rect x="800" y="340" width="310" height="180" rx="24" fill="#171717" stroke="#3a3a3a"/>
+<text x="125" y="395" fill="#f2c62e" font-family="Arial,sans-serif" font-size="24" font-weight="700">DEPOIMENTO</text>
+<text x="480" y="395" fill="#f2c62e" font-family="Arial,sans-serif" font-size="24" font-weight="700">CASE</text>
+<text x="835" y="395" fill="#f2c62e" font-family="Arial,sans-serif" font-size="24" font-weight="700">AVALIAÇÃO</text>
+<text x="125" y="445" fill="#dddddd" font-family="Arial,sans-serif" font-size="22">experiência</text>
+<text x="480" y="445" fill="#dddddd" font-family="Arial,sans-serif" font-size="22">contexto + resultado</text>
+<text x="835" y="445" fill="#dddddd" font-family="Arial,sans-serif" font-size="22">opinião pública</text>
+<path d="M110 590 H1030" stroke="#f2c62e" stroke-width="7" stroke-linecap="round"/>
+<path d="M1030 590 l-28 -18 M1030 590 l-28 18" stroke="#f2c62e" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg>
