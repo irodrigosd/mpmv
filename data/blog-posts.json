@@ -1,5 +1,30 @@
 [
   {
+    "id": "nutricao-de-leads-2026-08-30",
+    "title": "Nutrição de leads: o que dizer entre o primeiro contato e a oferta",
+    "seoTitle": "Nutrição de Leads: O Que Dizer Antes da Oferta | MPMV",
+    "metaDescription": "Aprenda a criar uma sequência de nutrição de leads com contexto, conteúdo, prova e CTA para conduzir contatos do primeiro interesse até uma oferta.",
+    "focusKeyphrase": "nutrição de leads",
+    "secondaryKeyphrases": [
+      "lead nurturing",
+      "como nutrir leads",
+      "sequência de nutrição",
+      "fluxo de nutrição de leads",
+      "automação de marketing",
+      "e-mail de nutrição",
+      "nutrição de leads exemplos"
+    ],
+    "slug": "nutricao-de-leads",
+    "url": "/blog/nutricao-de-leads/",
+    "file": "blog/nutricao-de-leads/index.html",
+    "status": "published",
+    "category": "Leads + Conversão",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "qualificacao-de-leads-2026-08-30",
     "title": "Qualificação de leads: como descobrir quem merece atenção agora",
     "seoTitle": "Qualificação de Leads: Como Priorizar Quem Pode Comprar | MPMV",

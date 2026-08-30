@@ -1,0 +1,44 @@
+TÍTULO SEO
+Nutrição de Leads: O Que Dizer Antes da Oferta | MPMV
+
+SLUG
+nutricao-de-leads
+
+PALAVRA-CHAVE PRINCIPAL
+nutrição de leads
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+lead nurturing
+como nutrir leads
+sequência de nutrição
+fluxo de nutrição de leads
+automação de marketing
+e-mail de nutrição
+nutrição de leads exemplos
+
+META DESCRIPTION
+Aprenda a criar uma sequência de nutrição de leads com contexto, conteúdo, prova e CTA para conduzir contatos do primeiro interesse até uma oferta.
+
+H1
+Nutrição de leads: o que dizer entre o primeiro contato e a oferta
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/nutricao-de-leads/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender o que é nutrição de leads, como montar uma sequência, quais mensagens enviar entre a captura e a oferta e como conectar o fluxo à qualificação e às vendas.
+
+FONTES PRINCIPAIS
+Salesforce Trailhead — Engajar clientes em potencial com o cultivo de leads
+Salesforce Trailhead — Lead Nurturing Strategy & Best Practices
+HubSpot — A lógica por trás do Lead Nurturing
+HubSpot — O que é nutrição de leads?
+
+CATEGORIA
+Leads + Conversão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
