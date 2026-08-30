@@ -1,0 +1,40 @@
+TÍTULO SEO
+Aversão à Ambiguidade: Por Que Ofertas Confusas Travam Vendas | MPMV
+
+SLUG
+aversao-ambiguidade-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+aversão à ambiguidade
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+incerteza
+clareza
+risco
+oferta
+
+META DESCRIPTION
+Entenda a aversão à ambiguidade e veja como incerteza sobre preço, entrega, resultado e processo pode fazer clientes preferirem opções mais claras.
+
+H1
+Aversão à ambiguidade: por que ofertas confusas fazem o cliente adiar a compra
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/aversao-ambiguidade-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional: entender o conceito, a evidência e aplicações em marketing, vendas e tomada de decisão.
+
+FONTES PRINCIPAIS
+Ellsberg (1961) — Risk, Ambiguity, and the Savage Axioms
+Fox & Tversky (1995) — Ambiguity Aversion and Comparative Ignorance
+Fox & Weber (2002) — Ambiguity Aversion, Comparative Ignorance, and Decision Context
+
+CATEGORIA
+Decisão + Incerteza
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro

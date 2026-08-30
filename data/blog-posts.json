@@ -1,5 +1,27 @@
 [
   {
+    "id": "aversao-ambiguidade-vendas-2026-08-30",
+    "title": "Aversão à ambiguidade: por que ofertas confusas fazem o cliente adiar a compra",
+    "seoTitle": "Aversão à Ambiguidade: Por Que Ofertas Confusas Travam Vendas | MPMV",
+    "metaDescription": "Entenda a aversão à ambiguidade e veja como incerteza sobre preço, entrega, resultado e processo pode fazer clientes preferirem opções mais claras.",
+    "focusKeyphrase": "aversão à ambiguidade",
+    "secondaryKeyphrases": [
+      "incerteza",
+      "clareza",
+      "risco",
+      "oferta"
+    ],
+    "slug": "aversao-ambiguidade-vendas",
+    "url": "/blog/aversao-ambiguidade-vendas/",
+    "file": "blog/aversao-ambiguidade-vendas/index.html",
+    "status": "published",
+    "category": "Decisão + Incerteza",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "efeito-padrao-escolhas-2026-08-30",
     "title": "Efeito padrão: por que a opção pré-selecionada influencia decisões",
     "seoTitle": "Efeito Padrão: Por Que a Opção Pré-Selecionada Influencia | MPMV",
