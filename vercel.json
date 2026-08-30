@@ -367,6 +367,56 @@
   ],
   "redirects": [
     {
+      "source": "/blog/engenheiro-de-prompts-persuasivo",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/engenheiro-de-prompts-persuasivo/",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/copywriting-para-redes-sociais",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/copywriting-para-redes-sociais/",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prova-social-na-internet",
+      "destination": "/blog/como-usar-prova-social-sem-parecer-forcado/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prova-social-na-internet/",
+      "destination": "/blog/como-usar-prova-social-sem-parecer-forcado/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marca-afastando-clientes-sinais",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marca-afastando-clientes-sinais/",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/produto-bom-nao-vende",
+      "destination": "/blog/clientes-compram-produtos-piores/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/produto-bom-nao-vende/",
+      "destination": "/blog/clientes-compram-produtos-piores/",
+      "permanent": true
+    },
+    {
       "source": "/home",
       "destination": "/",
       "permanent": true
