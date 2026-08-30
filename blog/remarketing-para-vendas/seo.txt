@@ -1,0 +1,43 @@
+TÍTULO SEO
+Remarketing para Vendas: O Que Mostrar Depois do Clique | MPMV
+
+SLUG
+remarketing-para-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+remarketing para vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+remarketing
+remarketing para vender
+campanha de remarketing
+anúncio de remarketing
+retargeting
+remarketing no funil de vendas
+remarketing para quem visitou página de vendas
+
+META DESCRIPTION
+Aprenda a usar remarketing para vendas com prova, objeção, benefício, oferta e CTA para conduzir quem já conhece sua marca até a próxima decisão.
+
+H1
+Remarketing para vendas: o que mostrar para quem já conhece sua oferta
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/remarketing-para-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender o que mostrar no remarketing para pessoas que já tiveram contato com conteúdo, página, oferta ou checkout e como adaptar prova, objeção, benefício e CTA.
+
+FONTES PRINCIPAIS
+Meta Business Help Center
+Google Ads Help
+Salesforce — Sales Funnel
+
+CATEGORIA
+Tráfego + Conversão
+
+DATA
+2026-08-30
+
+AUTOR
+Rodrigo Castro
