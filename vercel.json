@@ -78,11 +78,11 @@
     },
     {
       "source": "/blog/o-que-e-copywriting",
-      "destination": "/o-que-e-copywriting.html"
+      "destination": "/blog/o-que-e-copywriting/index.html"
     },
     {
       "source": "/blog/o-que-e-copywriting/",
-      "destination": "/o-que-e-copywriting.html"
+      "destination": "/blog/o-que-e-copywriting/index.html"
     },
     {
       "source": "/blog/gatilhos-mentais",

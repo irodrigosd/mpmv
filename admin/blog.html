@@ -34,7 +34,7 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
 .field span{font-size:14px;line-height:1.4}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
 .btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer;text-decoration:none;font-size:13px}
-.open{background:#272727;color:#fff}.delete{background:var(--red);color:#fff}.upload{background:var(--gold);color:#15110a}
+.open{background:#272727;color:#fff}.edit{background:var(--blue);color:#fff}.delete{background:var(--red);color:#fff}.upload{background:var(--gold);color:#15110a}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .status{font-size:12px;color:#b9d9c8;background:rgba(61,155,112,.15);padding:5px 8px;border-radius:999px;display:inline-block;margin-top:8px}
 .empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
@@ -51,7 +51,32 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
 .score-loading .score-dot{background:#777}
 .score-detail{margin-top:8px;color:#89827a;font-size:11px}
 
-@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo{grid-template-columns:1fr}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}}
+.modal{position:fixed;inset:0;z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:24px;background:rgba(0,0,0,.82);overflow:auto}
+.modal.show{display:flex}
+.modal-card{width:min(980px,100%);margin:auto;background:#121212;border:1px solid #383838;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.modal-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 20px;border-bottom:1px solid var(--line);background:#121212;border-radius:20px 20px 0 0}
+.modal-head h2{font-size:20px;margin:0}.modal-head p{font-size:12px;color:var(--muted);margin:4px 0 0}
+.modal-body{padding:20px;display:grid;gap:16px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-field{display:grid;gap:7px}.form-field.full{grid-column:1/-1}
+.form-field label,.editor-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#a9a198}
+.input,.textarea{width:100%;border:1px solid #363636;background:#0b0b0b;color:var(--txt);border-radius:10px;padding:12px 13px;font:inherit;outline:none}
+.input:focus,.textarea:focus,.rich:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(209,164,71,.12)}
+.input[readonly]{color:#918a80;cursor:not-allowed}.textarea{min-height:88px;resize:vertical}
+.counter{font-size:11px;color:#777;text-align:right;margin-top:-3px}
+.rich{min-height:72px;border:1px solid #363636;background:#fff;color:#171717;border-radius:10px;padding:18px;outline:none;line-height:1.65;overflow-wrap:anywhere}
+.rich-content{min-height:420px}
+.rich h1,.rich h2,.rich h3{line-height:1.2}.rich a{color:#2459b5}.rich img{max-width:100%;height:auto}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap;padding:9px;background:#0b0b0b;border:1px solid #303030;border-bottom:0;border-radius:10px 10px 0 0}
+.toolbar+.rich{border-radius:0 0 10px 10px}
+.tool{border:1px solid #343434;background:#202020;color:#fff;border-radius:7px;padding:7px 10px;font-weight:800;cursor:pointer}
+.modal-foot{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--line);background:#121212;border-radius:0 0 20px 20px}
+.save{background:var(--gold);color:#15110a;min-width:150px}.cancel{background:#292929;color:#fff}.close{background:transparent;color:#aaa;font-size:24px;padding:4px 8px}
+.edit-status{margin-right:auto;color:var(--muted);font-size:13px;align-self:center}
+.edit-status.error{color:#f08b8f}.edit-status.ok{color:#73c89c}
+.editor-help{margin:0;color:#8f887f;font-size:12px;line-height:1.5}
+
+@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo,.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}.modal{padding:0}.modal-card{min-height:100%;border-radius:0}.modal-head,.modal-foot{border-radius:0}.modal-body{padding:16px}.modal-foot{flex-wrap:wrap}.edit-status{width:100%}.rich-content{min-height:330px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
@@ -82,12 +107,65 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
   <div id="list" class="grid"><div class="empty">Carregando artigos...</div></div>
 </main>
 
+<section id="editModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div><h2 id="editModalTitle">Editar artigo</h2><p>As alterações substituem o artigo atual sem mudar sua URL.</p></div>
+      <button id="closeEditBtn" class="btn close" type="button" aria-label="Fechar editor">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field full"><label for="editSlug">Slug protegido</label><input id="editSlug" class="input" readonly></div>
+        <div class="form-field full"><label for="editSeoTitle">Título SEO</label><input id="editSeoTitle" class="input" maxlength="220"><div id="seoTitleCount" class="counter"></div></div>
+        <div class="form-field full"><label for="editMeta">Meta descrição</label><textarea id="editMeta" class="textarea" maxlength="400"></textarea><div id="metaCount" class="counter"></div></div>
+        <div class="form-field full"><label for="editKeyphrase">Frase-chave de foco</label><input id="editKeyphrase" class="input" maxlength="180"></div>
+      </div>
+
+      <div class="form-field">
+        <span class="editor-label">Título visível do artigo</span>
+        <div id="editVisibleTitle" class="rich" contenteditable="true" role="textbox" aria-label="Título visível do artigo"></div>
+      </div>
+
+      <div class="form-field">
+        <span class="editor-label">Conteúdo do artigo</span>
+        <div class="toolbar" aria-label="Formatação do texto">
+          <button class="tool" type="button" data-cmd="bold">Negrito</button>
+          <button class="tool" type="button" data-cmd="italic">Itálico</button>
+          <button class="tool" type="button" data-block="h2">Título H2</button>
+          <button class="tool" type="button" data-block="h3">Título H3</button>
+          <button class="tool" type="button" data-block="p">Parágrafo</button>
+          <button class="tool" type="button" data-cmd="insertUnorderedList">Lista</button>
+          <button class="tool" type="button" data-link>Inserir link</button>
+        </div>
+        <div id="editContent" class="rich rich-content" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Conteúdo do artigo"></div>
+        <p class="editor-help">Você pode escrever, apagar e colar texto normalmente. Para preservar o design, evite apagar os blocos de CTA, imagens ou tabelas sem necessidade.</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <span id="editStatus" class="edit-status"></span>
+      <button id="cancelEditBtn" class="btn cancel" type="button">Cancelar</button>
+      <button id="saveEditBtn" class="btn save" type="button">Salvar e publicar</button>
+    </div>
+  </div>
+</section>
+
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const zipInput=document.getElementById('zipFile');
 const uploadBtn=document.getElementById('uploadBtn');
 const fileName=document.getElementById('fileName');
 const progress=document.getElementById('uploadProgress');
+const editModal=document.getElementById('editModal');
+const editSlug=document.getElementById('editSlug');
+const editSeoTitle=document.getElementById('editSeoTitle');
+const editMeta=document.getElementById('editMeta');
+const editKeyphrase=document.getElementById('editKeyphrase');
+const editVisibleTitle=document.getElementById('editVisibleTitle');
+const editContent=document.getElementById('editContent');
+const editStatus=document.getElementById('editStatus');
+const saveEditBtn=document.getElementById('saveEditBtn');
+let editDocument=null;
+let editDirty=false;
 
 function getAdminToken(){
   let token=sessionStorage.getItem('mpmv_admin_token');
@@ -279,6 +357,143 @@ async function loadScores(p,articleEl){
   }
 }
 
+function setEditStatus(message,type=''){
+  editStatus.textContent=message;
+  editStatus.className='edit-status'+(type?' '+type:'');
+}
+function updateCounters(){
+  document.getElementById('seoTitleCount').textContent=`${editSeoTitle.value.length}/62 recomendado`;
+  document.getElementById('metaCount').textContent=`${editMeta.value.length}/160 recomendado`;
+}
+function markEditDirty(){editDirty=true;setEditStatus('Alterações ainda não salvas.');}
+function closeEditor(force=false){
+  if(!force&&editDirty&&!confirm('Fechar sem salvar as alterações?'))return;
+  editModal.classList.remove('show');
+  editModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  editDocument=null;
+  editDirty=false;
+  setEditStatus('');
+}
+function upsertMeta(doc,selector,attrs,content){
+  let tag=doc.querySelector(selector);
+  if(!tag){tag=doc.createElement('meta');Object.entries(attrs).forEach(([k,v])=>tag.setAttribute(k,v));doc.head.appendChild(tag);}
+  tag.setAttribute('content',content);
+}
+function updateStructuredData(doc,title,description){
+  doc.querySelectorAll('script[type="application/ld+json"]').forEach(script=>{
+    try{
+      const data=JSON.parse(script.textContent);
+      const visit=value=>{
+        if(Array.isArray(value)){value.forEach(visit);return;}
+        if(!value||typeof value!=='object')return;
+        const types=Array.isArray(value['@type'])?value['@type']:[value['@type']];
+        if(types.some(t=>['Article','BlogPosting','NewsArticle'].includes(t))){
+          value.headline=title;
+          value.description=description;
+          value.dateModified=new Date().toISOString().slice(0,10);
+        }
+        Object.values(value).forEach(visit);
+      };
+      visit(data);
+      script.textContent=JSON.stringify(data,null,2);
+    }catch{}
+  });
+}
+async function openEditor(slug,btn){
+  const token=getAdminToken();
+  if(!token)return;
+  const originalText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='Abrindo...';
+  try{
+    const r=await fetch('/api/admin-blog-edit?slug='+encodeURIComponent(slug),{headers:{'x-admin-token':token},cache:'no-store'});
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){sessionStorage.removeItem('mpmv_admin_token');throw new Error('Token inválido. Tente novamente.');}
+    if(!r.ok)throw new Error(data.error||data.detail||'Não foi possível abrir o artigo.');
+
+    const doc=new DOMParser().parseFromString(data.html,'text/html');
+    const h1=doc.querySelector('h1');
+    const article=doc.querySelector('article')||doc.querySelector('main');
+    if(!h1||!article)throw new Error('Este artigo não possui a estrutura necessária para o editor visual.');
+    if(article.contains(h1))throw new Error('Este artigo usa um formato diferente. Edite-o pelo ZIP para preservar o layout.');
+
+    editDocument=doc;
+    editSlug.value=data.post.slug;
+    editSeoTitle.value=data.post.seoTitle||doc.title||'';
+    editMeta.value=data.post.metaDescription||doc.querySelector('meta[name="description"]')?.content||'';
+    editKeyphrase.value=data.post.focusKeyphrase||'';
+    editVisibleTitle.innerHTML=h1.innerHTML;
+    editContent.innerHTML=article.innerHTML;
+    updateCounters();
+    editDirty=false;
+    saveEditBtn.disabled=false;
+    saveEditBtn.textContent='Salvar e publicar';
+    setEditStatus('Pronto para editar.');
+    editModal.classList.add('show');
+    editModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    editSeoTitle.focus();
+  }catch(e){alert(e.message);}
+  finally{btn.disabled=false;btn.textContent=originalText;}
+}
+async function saveEditor(){
+  if(!editDocument)return;
+  const token=getAdminToken();
+  if(!token)return;
+
+  const title=editVisibleTitle.textContent.replace(/\s+/g,' ').trim();
+  const seoTitle=editSeoTitle.value.trim();
+  const metaDescription=editMeta.value.trim();
+  const focusKeyphrase=editKeyphrase.value.trim();
+  if(!title||!seoTitle||!metaDescription||!focusKeyphrase){alert('Preencha o título, o título SEO, a meta descrição e a frase-chave.');return;}
+
+  const h1=editDocument.querySelector('h1');
+  const article=editDocument.querySelector('article')||editDocument.querySelector('main');
+  h1.innerHTML=editVisibleTitle.innerHTML;
+  article.innerHTML=editContent.innerHTML;
+  editDocument.title=seoTitle;
+  upsertMeta(editDocument,'meta[name="description"]',{name:'description'},metaDescription);
+  upsertMeta(editDocument,'meta[property="og:title"]',{property:'og:title'},seoTitle);
+  upsertMeta(editDocument,'meta[property="og:description"]',{property:'og:description'},metaDescription);
+  upsertMeta(editDocument,'meta[name="twitter:title"]',{name:'twitter:title'},seoTitle);
+  upsertMeta(editDocument,'meta[name="twitter:description"]',{name:'twitter:description'},metaDescription);
+  updateStructuredData(editDocument,title,metaDescription);
+  const html='<!doctype html>\n'+editDocument.documentElement.outerHTML;
+
+  saveEditBtn.disabled=true;
+  saveEditBtn.textContent='Publicando...';
+  setEditStatus('Salvando o artigo e preparando a publicação...');
+  try{
+    const r=await fetch('/api/admin-blog-edit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-admin-token':token},
+      body:JSON.stringify({slug:editSlug.value,title,seoTitle,metaDescription,focusKeyphrase,html})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===401){sessionStorage.removeItem('mpmv_admin_token');throw new Error('Token inválido. Tente novamente.');}
+    if(!r.ok)throw new Error(data.error||data.detail||'Não foi possível salvar o artigo.');
+    editDirty=false;
+    setEditStatus('Salvo. A atualização será publicada em instantes.','ok');
+    saveEditBtn.textContent='Publicado ✓';
+    setTimeout(()=>{closeEditor(true);load();},2500);
+  }catch(e){
+    setEditStatus('Erro: '+e.message,'error');
+    saveEditBtn.disabled=false;
+    saveEditBtn.textContent='Salvar e publicar';
+  }
+}
+
+[editSeoTitle,editMeta,editKeyphrase,editVisibleTitle,editContent].forEach(el=>el.addEventListener('input',()=>{markEditDirty();updateCounters();}));
+document.querySelectorAll('.tool[data-cmd]').forEach(btn=>btn.addEventListener('click',()=>{editContent.focus();document.execCommand(btn.dataset.cmd,false,null);markEditDirty();}));
+document.querySelectorAll('.tool[data-block]').forEach(btn=>btn.addEventListener('click',()=>{editContent.focus();document.execCommand('formatBlock',false,btn.dataset.block);markEditDirty();}));
+document.querySelector('[data-link]').addEventListener('click',()=>{const url=prompt('Cole a URL do link:','https://');if(url){editContent.focus();document.execCommand('createLink',false,url);markEditDirty();}});
+document.getElementById('closeEditBtn').addEventListener('click',()=>closeEditor());
+document.getElementById('cancelEditBtn').addEventListener('click',()=>closeEditor());
+saveEditBtn.addEventListener('click',saveEditor);
+editModal.addEventListener('click',e=>{if(e.target===editModal)closeEditor();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&editModal.classList.contains('show'))closeEditor();});
+
 async function load(){
   const box=document.getElementById('list');
   try{
@@ -299,6 +514,7 @@ async function load(){
         </div>
         <div class="actions">
           <a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a>
+          <button class="btn edit" data-edit="${esc(p.slug)}">Editar</button>
           <button class="btn delete" data-delete="${esc(p.slug)}" ${p.deletable?'':'disabled'}>Excluir artigo</button>
         </div>
       </div>
@@ -309,6 +525,7 @@ async function load(){
         <div class="field"><b>Slug</b><span>${esc(p.slug)}</span></div>
       </div>
     </article>`).join('');
+    document.querySelectorAll('[data-edit]').forEach(btn=>btn.addEventListener('click',()=>openEditor(btn.dataset.edit,btn)));
     document.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>removePost(btn.dataset.delete,btn)));
     [...box.querySelectorAll('.post')].forEach((el,i)=>loadScores(posts[i],el));
   }catch(e){
