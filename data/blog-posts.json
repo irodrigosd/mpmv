@@ -1,5 +1,31 @@
 [
   {
+    "id": "crm-de-vendas-2026-08-30",
+    "title": "CRM de vendas: como organizar leads, conversas e próximos passos",
+    "seoTitle": "CRM de Vendas: Como Organizar Leads e Próximos Passos | MPMV",
+    "metaDescription": "Veja como usar um CRM de vendas para organizar leads, conversas, etapas e próximos passos sem deixar oportunidades comerciais se perderem no caminho.",
+    "focusKeyphrase": "CRM de vendas",
+    "secondaryKeyphrases": [
+      "CRM",
+      "CRM comercial",
+      "CRM para vendas",
+      "pipeline de vendas",
+      "organizar leads",
+      "gestão de leads",
+      "próximo passo comercial",
+      "follow-up no CRM"
+    ],
+    "slug": "crm-de-vendas",
+    "url": "/blog/crm-de-vendas/",
+    "file": "blog/crm-de-vendas/index.html",
+    "status": "published",
+    "category": "Vendas + Processos",
+    "publishedAt": "2026-08-30",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "remarketing-para-vendas-2026-08-30",
     "title": "Remarketing para vendas: o que mostrar para quem já conhece sua oferta",
     "seoTitle": "Remarketing para Vendas: O Que Mostrar Depois do Clique | MPMV",
