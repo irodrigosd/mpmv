@@ -75,8 +75,24 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
 .edit-status{margin-right:auto;color:var(--muted);font-size:13px;align-self:center}
 .edit-status.error{color:#f08b8f}.edit-status.ok{color:#73c89c}
 .editor-help{margin:0;color:#8f887f;font-size:12px;line-height:1.5}
+.edit-tabs{display:flex;gap:8px;overflow-x:auto;padding:0 20px;border-bottom:1px solid var(--line);background:#0f0f0f}
+.edit-tab{border:0;border-bottom:3px solid transparent;background:transparent;color:#999;padding:14px 12px 11px;font-weight:850;white-space:nowrap;cursor:pointer}
+.edit-tab.active{color:#f6e4b4;border-bottom-color:var(--gold)}
+.edit-panel{display:none}.edit-panel.active{display:grid;gap:16px}
+.section-box{display:grid;gap:14px;border:1px solid #2c2c2c;background:#0f0f0f;border-radius:14px;padding:16px}
+.section-title{margin:0;font-size:15px;color:#e7dfd4}.section-copy{margin:-8px 0 0;color:#817a72;font-size:12px;line-height:1.45}
+.image-grid{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:18px;align-items:start}
+.cover-preview{display:grid;place-items:center;min-height:210px;border:1px dashed #3c3c3c;border-radius:14px;background:#080808;overflow:hidden;color:#756f67;font-size:13px;text-align:center}
+.cover-preview img{display:block;width:100%;height:auto;max-height:340px;object-fit:cover}
+.cover-controls{display:grid;gap:13px}.cover-file{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cover-file input{max-width:100%;color:#aaa}
+.check-row{display:flex;align-items:flex-start;gap:10px;color:#c7c0b7;font-size:13px;line-height:1.45}.check-row input{margin-top:3px}
+.raw-editor{min-height:520px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;tab-size:2;white-space:pre;overflow:auto}
+.preview{background:#295e47;color:#fff}.secondary{background:#2b2b2b;color:#fff}
+.field-note{font-size:11px;color:#716b64;margin-top:-3px}
+.mode-warning{border-left:4px solid var(--gold);background:#19150d;color:#cfc0a0;padding:12px 14px;border-radius:0 10px 10px 0;font-size:12px;line-height:1.5}
 
-@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo,.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}.modal{padding:0}.modal-card{min-height:100%;border-radius:0}.modal-head,.modal-foot{border-radius:0}.modal-body{padding:16px}.modal-foot{flex-wrap:wrap}.edit-status{width:100%}.rich-content{min-height:330px}}
+@media(max-width:720px){.row{display:block}.actions{margin-top:14px}.seo,.form-grid,.image-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.upload-actions{width:100%}.file-name{max-width:100%;width:100%}.modal{padding:0}.modal-card{min-height:100%;border-radius:0}.modal-head,.modal-foot{border-radius:0}.modal-body{padding:16px}.modal-foot{flex-wrap:wrap}.edit-status{width:100%}.rich-content{min-height:330px}.edit-tabs{padding:0 10px}.raw-editor{min-height:420px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
@@ -102,7 +118,7 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
     <div id="uploadProgress" class="progress"></div>
   </section>
 
-  <div class="note">Aqui você vê <strong>SEO</strong>, <strong>Legibilidade</strong>, título SEO, meta descrição, frase-chave e slug. As notas são calculadas pelo checklist MPMV diretamente no HTML publicado — servem como diagnóstico do artigo e não representam a pontuação oficial do plugin Yoast. O botão <strong>Excluir artigo</strong> remove o arquivo do repositório e tira o post do índice.</div>
+  <div class="note">Aqui você pode <strong>editar o artigo completo</strong>, trocar a capa, revisar SEO, pré-visualizar e publicar sem alterar a URL. As notas são calculadas pelo checklist MPMV diretamente no HTML publicado — servem como diagnóstico e não representam a pontuação oficial do plugin Yoast.</div>
 
   <div id="list" class="grid"><div class="empty">Carregando artigos...</div></div>
 </main>
@@ -113,36 +129,83 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,
       <div><h2 id="editModalTitle">Editar artigo</h2><p>As alterações substituem o artigo atual sem mudar sua URL.</p></div>
       <button id="closeEditBtn" class="btn close" type="button" aria-label="Fechar editor">×</button>
     </div>
+    <nav class="edit-tabs" aria-label="Áreas do editor">
+      <button class="edit-tab active" type="button" data-edit-tab="content">Conteúdo</button>
+      <button class="edit-tab" type="button" data-edit-tab="cover">Capa e IA</button>
+      <button class="edit-tab" type="button" data-edit-tab="seo">SEO</button>
+      <button class="edit-tab" type="button" data-edit-tab="html">HTML completo</button>
+    </nav>
     <div class="modal-body">
-      <div class="form-grid">
-        <div class="form-field full"><label for="editSlug">Slug protegido</label><input id="editSlug" class="input" readonly></div>
-        <div class="form-field full"><label for="editSeoTitle">Título SEO</label><input id="editSeoTitle" class="input" maxlength="220"><div id="seoTitleCount" class="counter"></div></div>
-        <div class="form-field full"><label for="editMeta">Meta descrição</label><textarea id="editMeta" class="textarea" maxlength="400"></textarea><div id="metaCount" class="counter"></div></div>
-        <div class="form-field full"><label for="editKeyphrase">Frase-chave de foco</label><input id="editKeyphrase" class="input" maxlength="180"></div>
-      </div>
-
-      <div class="form-field">
-        <span class="editor-label">Título visível do artigo</span>
-        <div id="editVisibleTitle" class="rich" contenteditable="true" role="textbox" aria-label="Título visível do artigo"></div>
-      </div>
-
-      <div class="form-field">
-        <span class="editor-label">Conteúdo do artigo</span>
-        <div class="toolbar" aria-label="Formatação do texto">
-          <button class="tool" type="button" data-cmd="bold">Negrito</button>
-          <button class="tool" type="button" data-cmd="italic">Itálico</button>
-          <button class="tool" type="button" data-block="h2">Título H2</button>
-          <button class="tool" type="button" data-block="h3">Título H3</button>
-          <button class="tool" type="button" data-block="p">Parágrafo</button>
-          <button class="tool" type="button" data-cmd="insertUnorderedList">Lista</button>
-          <button class="tool" type="button" data-link>Inserir link</button>
+      <section class="edit-panel active" data-edit-panel="content">
+        <div class="section-box">
+          <h3 class="section-title">Cabeçalho do artigo</h3>
+          <p class="section-copy">Edite os elementos que ficam antes do texto principal.</p>
+          <div class="form-grid">
+            <div class="form-field"><label for="editCategory">Categoria</label><input id="editCategory" class="input" maxlength="100"></div>
+            <div class="form-field"><label for="editKicker">Linha superior</label><input id="editKicker" class="input" maxlength="160"><div class="field-note">Ex.: Copywriting + Benefícios</div></div>
+            <div class="form-field full"><span class="editor-label">Título visível</span><div id="editVisibleTitle" class="rich" contenteditable="true" role="textbox" aria-label="Título visível do artigo"></div></div>
+            <div class="form-field full"><label for="editLead">Subtítulo ou introdução da capa</label><textarea id="editLead" class="textarea" maxlength="700"></textarea></div>
+            <div class="form-field full"><label for="editQuick">Resumo em destaque</label><textarea id="editQuick" class="textarea" maxlength="900"></textarea><div class="field-note">Se o modelo do artigo não tiver esse bloco, o campo ficará vazio.</div></div>
+          </div>
         </div>
-        <div id="editContent" class="rich rich-content" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Conteúdo do artigo"></div>
-        <p class="editor-help">Você pode escrever, apagar e colar texto normalmente. Para preservar o design, evite apagar os blocos de CTA, imagens ou tabelas sem necessidade.</p>
-      </div>
+
+        <div class="form-field">
+          <span class="editor-label">Texto principal completo</span>
+          <div class="toolbar" aria-label="Formatação do texto">
+            <button class="tool" type="button" data-cmd="undo">Desfazer</button>
+            <button class="tool" type="button" data-cmd="redo">Refazer</button>
+            <button class="tool" type="button" data-cmd="bold">Negrito</button>
+            <button class="tool" type="button" data-cmd="italic">Itálico</button>
+            <button class="tool" type="button" data-block="h2">Título H2</button>
+            <button class="tool" type="button" data-block="h3">Título H3</button>
+            <button class="tool" type="button" data-block="p">Parágrafo</button>
+            <button class="tool" type="button" data-cmd="insertUnorderedList">Lista</button>
+            <button class="tool" type="button" data-link>Link</button>
+            <button class="tool" type="button" data-inline-image>Imagem</button>
+            <button class="tool" type="button" data-cmd="removeFormat">Limpar formato</button>
+          </div>
+          <div id="editContent" class="rich rich-content" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Conteúdo do artigo"></div>
+          <p class="editor-help">O editor preserva CTAs, tabelas, imagens e links. O modo “HTML completo” permite alterar qualquer trecho que não apareça nestes campos.</p>
+        </div>
+      </section>
+
+      <section class="edit-panel" data-edit-panel="cover">
+        <div class="section-box">
+          <h3 class="section-title">Imagem principal</h3>
+          <p class="section-copy">Esta imagem será usada no artigo, no compartilhamento e como indicação para buscadores e resultados de IA.</p>
+          <div class="image-grid">
+            <div id="coverPreview" class="cover-preview">Nenhuma capa identificada</div>
+            <div class="cover-controls">
+              <div class="form-field"><label for="editCoverUrl">URL atual da imagem</label><input id="editCoverUrl" class="input" inputmode="url" placeholder="https://... ou /assets/images/..."></div>
+              <div class="form-field"><label for="editCoverAlt">Texto alternativo</label><textarea id="editCoverAlt" class="textarea" maxlength="300"></textarea></div>
+              <div class="form-field"><span class="editor-label">Enviar nova capa</span><div class="cover-file"><input id="editCoverFile" type="file" accept="image/jpeg,image/png,image/webp"><span id="coverFileName" class="file-name">JPG, PNG ou WebP — até 3 MB</span></div></div>
+              <label class="check-row"><input id="editCoverVisible" type="checkbox" checked><span>Mostrar a imagem também dentro do artigo. Isso aumenta a chance de ela ser entendida como imagem principal.</span></label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="edit-panel" data-edit-panel="seo">
+        <div class="section-box">
+          <h3 class="section-title">Dados de busca</h3>
+          <div class="form-grid">
+            <div class="form-field full"><label for="editSlug">Slug protegido</label><input id="editSlug" class="input" readonly><div class="field-note">A URL não muda durante a edição.</div></div>
+            <div class="form-field full"><label for="editSeoTitle">Título SEO</label><input id="editSeoTitle" class="input" maxlength="220"><div id="seoTitleCount" class="counter"></div></div>
+            <div class="form-field full"><label for="editMeta">Meta descrição</label><textarea id="editMeta" class="textarea" maxlength="400"></textarea><div id="metaCount" class="counter"></div></div>
+            <div class="form-field full"><label for="editKeyphrase">Frase-chave de foco</label><input id="editKeyphrase" class="input" maxlength="180"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="edit-panel" data-edit-panel="html">
+        <div class="mode-warning">Modo avançado: aqui você pode modificar qualquer parte da página, inclusive navegação, CTAs, fontes, tabelas e blocos especiais. Alterações feitas no HTML prevalecem sobre os campos visuais.</div>
+        <div class="form-field"><label for="editRawHtml">HTML completo da página</label><textarea id="editRawHtml" class="textarea raw-editor" spellcheck="false"></textarea></div>
+        <button id="syncVisualBtn" class="btn secondary" type="button">Aplicar HTML e voltar ao visual</button>
+      </section>
     </div>
     <div class="modal-foot">
       <span id="editStatus" class="edit-status"></span>
+      <button id="previewEditBtn" class="btn preview" type="button">Pré-visualizar</button>
       <button id="cancelEditBtn" class="btn cancel" type="button">Cancelar</button>
       <button id="saveEditBtn" class="btn save" type="button">Salvar e publicar</button>
     </div>
@@ -157,15 +220,28 @@ const fileName=document.getElementById('fileName');
 const progress=document.getElementById('uploadProgress');
 const editModal=document.getElementById('editModal');
 const editSlug=document.getElementById('editSlug');
+const editCategory=document.getElementById('editCategory');
+const editKicker=document.getElementById('editKicker');
+const editLead=document.getElementById('editLead');
+const editQuick=document.getElementById('editQuick');
 const editSeoTitle=document.getElementById('editSeoTitle');
 const editMeta=document.getElementById('editMeta');
 const editKeyphrase=document.getElementById('editKeyphrase');
 const editVisibleTitle=document.getElementById('editVisibleTitle');
 const editContent=document.getElementById('editContent');
+const editCoverUrl=document.getElementById('editCoverUrl');
+const editCoverAlt=document.getElementById('editCoverAlt');
+const editCoverFile=document.getElementById('editCoverFile');
+const editCoverVisible=document.getElementById('editCoverVisible');
+const coverPreview=document.getElementById('coverPreview');
+const coverFileName=document.getElementById('coverFileName');
+const editRawHtml=document.getElementById('editRawHtml');
 const editStatus=document.getElementById('editStatus');
 const saveEditBtn=document.getElementById('saveEditBtn');
 let editDocument=null;
 let editDirty=false;
+let rawDirty=false;
+let originalCoverUrl='';
 
 function getAdminToken(){
   let token=sessionStorage.getItem('mpmv_admin_token');
@@ -373,6 +449,8 @@ function closeEditor(force=false){
   document.body.style.overflow='';
   editDocument=null;
   editDirty=false;
+  rawDirty=false;
+  editCoverFile.value='';
   setEditStatus('');
 }
 function upsertMeta(doc,selector,attrs,content){
@@ -380,7 +458,33 @@ function upsertMeta(doc,selector,attrs,content){
   if(!tag){tag=doc.createElement('meta');Object.entries(attrs).forEach(([k,v])=>tag.setAttribute(k,v));doc.head.appendChild(tag);}
   tag.setAttribute('content',content);
 }
-function updateStructuredData(doc,title,description){
+function ensureFavicon(doc){
+  const icons=[...doc.querySelectorAll('link[rel="icon"],link[rel="shortcut icon"]')];
+  let icon=icons.shift();
+  icons.forEach(node=>node.remove());
+  if(!icon){icon=doc.createElement('link');doc.head.appendChild(icon);}
+  icon.setAttribute('rel','icon');
+  icon.setAttribute('href','/favicon-mpmv.png?v=3');
+  icon.setAttribute('type','image/png');
+  let apple=doc.querySelector('link[rel="apple-touch-icon"]');
+  if(!apple){apple=doc.createElement('link');doc.head.appendChild(apple);}
+  apple.setAttribute('href','/apple-touch-icon-mpmv.png?v=3');
+}
+function absoluteImageUrl(url){
+  if(!url)return '';
+  if(/^https?:\/\//i.test(url))return url;
+  return 'https://www.maispersuasaomaisvendas.com.br/'+String(url).replace(/^\/+/, '');
+}
+function imageExtension(file){
+  return ({'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[file?.type]||'';
+}
+function selectedCoverUrl(){
+  const file=editCoverFile.files?.[0];
+  const ext=imageExtension(file);
+  if(file&&ext)return `/assets/images/blog/${editSlug.value}-capa.${ext}`;
+  return editCoverUrl.value.trim();
+}
+function updateStructuredData(doc,title,description,imageUrl=''){
   doc.querySelectorAll('script[type="application/ld+json"]').forEach(script=>{
     try{
       const data=JSON.parse(script.textContent);
@@ -392,6 +496,7 @@ function updateStructuredData(doc,title,description){
           value.headline=title;
           value.description=description;
           value.dateModified=new Date().toISOString().slice(0,10);
+          if(imageUrl)value.image=[absoluteImageUrl(imageUrl)];
         }
         Object.values(value).forEach(visit);
       };
@@ -399,6 +504,158 @@ function updateStructuredData(doc,title,description){
       script.textContent=JSON.stringify(data,null,2);
     }catch{}
   });
+}
+function serializeDocument(doc){return '<!doctype html>\n'+doc.documentElement.outerHTML;}
+function parseDocument(html){
+  const doc=new DOMParser().parseFromString(String(html||''),'text/html');
+  if(!doc.querySelector('html')||!doc.querySelector('h1'))throw new Error('O HTML completo precisa conter a página e um título H1.');
+  return doc;
+}
+function textOf(doc,selector){return doc.querySelector(selector)?.textContent?.replace(/\s+/g,' ').trim()||'';}
+function currentArticle(doc){return doc.querySelector('article')||doc.querySelector('main');}
+function currentLead(doc){return doc.querySelector('header .lead,.hero .lead,.article-hero .lead');}
+function currentQuick(doc){return doc.querySelector('header .quick p,.hero .quick p,.quick p');}
+function currentKicker(doc){return doc.querySelector('header .kicker,.hero .kicker,.article-hero .kicker,.kicker');}
+function setOrCreateText(doc,selector,value,kind){
+  let el=doc.querySelector(selector);
+  if(el){el.textContent=value;return el;}
+  if(!value)return null;
+  const h1=doc.querySelector('h1');
+  if(!h1)return null;
+  if(kind==='kicker'){
+    el=doc.createElement('div');el.className='kicker';el.textContent=value;h1.before(el);return el;
+  }
+  if(kind==='lead'){
+    el=doc.createElement('p');el.className='lead';el.textContent=value;h1.after(el);return el;
+  }
+  if(kind==='quick'){
+    const box=doc.createElement('aside');box.className='quick';box.innerHTML='<b>Em uma frase</b><p></p>';box.querySelector('p').textContent=value;
+    const grid=h1.closest('.hero-grid');(grid||h1.parentElement).appendChild(box);return box.querySelector('p');
+  }
+  return null;
+}
+function sameImage(a,b){
+  const clean=v=>String(v||'').replace(/^https?:\/\/[^/]+/i,'').replace(/[?#].*$/,'');
+  return !!a&&!!b&&clean(a)===clean(b);
+}
+function applyCover(doc,url,alt,visible){
+  if(!url)return;
+  const absolute=absoluteImageUrl(url);
+  upsertMeta(doc,'meta[property="og:image"]',{property:'og:image'},absolute);
+  upsertMeta(doc,'meta[property="og:image:alt"]',{property:'og:image:alt'},alt);
+  upsertMeta(doc,'meta[name="twitter:image"]',{name:'twitter:image'},absolute);
+  upsertMeta(doc,'meta[name="twitter:image:alt"]',{name:'twitter:image:alt'},alt);
+
+  const article=currentArticle(doc);
+  if(!article)return;
+  let img=article.querySelector('[data-admin-cover] img');
+  if(!img&&originalCoverUrl)img=[...article.querySelectorAll('img')].find(node=>sameImage(node.getAttribute('src'),originalCoverUrl));
+  if(!visible){
+    const target=img?.closest('figure')||img||article.querySelector('[data-admin-cover]');
+    target?.remove();
+    return;
+  }
+  if(!img){
+    const figure=doc.createElement('figure');
+    figure.className='article-photo admin-cover';
+    figure.setAttribute('data-admin-cover','true');
+    figure.style.cssText='margin:32px 0;';
+    img=doc.createElement('img');
+    img.style.cssText='display:block;width:100%;height:auto;border-radius:18px;';
+    figure.appendChild(img);
+    const intro=article.querySelector('p');
+    intro?intro.after(figure):article.prepend(figure);
+  }
+  img.setAttribute('src',url);
+  img.setAttribute('alt',alt);
+  img.setAttribute('loading','eager');
+  img.setAttribute('fetchpriority','high');
+}
+function showCoverPreview(url){
+  coverPreview.replaceChildren();
+  if(!url){coverPreview.textContent='Nenhuma capa identificada';return;}
+  const img=document.createElement('img');
+  img.alt='Prévia da capa do artigo';
+  img.src=url;
+  img.onerror=()=>{coverPreview.textContent='Não foi possível carregar a prévia desta imagem.';};
+  coverPreview.appendChild(img);
+}
+function populateVisualFields(doc,post={}){
+  const h1=doc.querySelector('h1');
+  const article=currentArticle(doc);
+  if(!h1||!article)throw new Error('Este artigo não possui a estrutura necessária para o editor visual.');
+  if(article.contains(h1))throw new Error('Este artigo usa um formato diferente. Use a aba HTML completo.');
+  editCategory.value=post.category||textOf(doc,'header .kicker,.hero .kicker,.kicker').replace(/\s*[+•|·].*$/,'')||'Conteúdo';
+  editKicker.value=textOf(doc,'header .kicker,.hero .kicker,.article-hero .kicker,.kicker');
+  editLead.value=textOf(doc,'header .lead,.hero .lead,.article-hero .lead');
+  editQuick.value=textOf(doc,'header .quick p,.hero .quick p,.quick p');
+  editSlug.value=post.slug||editSlug.value;
+  editSeoTitle.value=post.seoTitle||doc.title||'';
+  editMeta.value=post.metaDescription||doc.querySelector('meta[name="description"]')?.content||'';
+  editKeyphrase.value=post.focusKeyphrase||doc.querySelector('meta[name="mpmv:focus-keyphrase"]')?.content||'';
+  editVisibleTitle.innerHTML=h1.innerHTML;
+  editContent.innerHTML=article.innerHTML;
+  originalCoverUrl=doc.querySelector('meta[property="og:image"]')?.content||article.querySelector('img')?.getAttribute('src')||'';
+  const coverImage=[...article.querySelectorAll('img')].find(node=>sameImage(node.getAttribute('src'),originalCoverUrl))||article.querySelector('[data-admin-cover] img');
+  editCoverUrl.value=originalCoverUrl;
+  editCoverAlt.value=doc.querySelector('meta[property="og:image:alt"]')?.content||coverImage?.getAttribute('alt')||'';
+  editCoverVisible.checked=!!coverImage;
+  editCoverFile.value='';
+  coverFileName.textContent='JPG, PNG ou WebP — até 3 MB';
+  showCoverPreview(originalCoverUrl);
+  editRawHtml.value=serializeDocument(doc);
+  updateCounters();
+}
+function buildVisualDocument(){
+  const doc=parseDocument(serializeDocument(editDocument));
+  const title=editVisibleTitle.textContent.replace(/\s+/g,' ').trim();
+  const seoTitle=editSeoTitle.value.trim();
+  const metaDescription=editMeta.value.trim();
+  const focusKeyphrase=editKeyphrase.value.trim();
+  if(!title||!seoTitle||!metaDescription||!focusKeyphrase)throw new Error('Preencha o título, o título SEO, a meta descrição e a frase-chave.');
+
+  doc.querySelector('h1').innerHTML=editVisibleTitle.innerHTML;
+  currentArticle(doc).innerHTML=editContent.innerHTML;
+  setOrCreateText(doc,'header .kicker,.hero .kicker,.article-hero .kicker,.kicker',editKicker.value.trim(),'kicker');
+  setOrCreateText(doc,'header .lead,.hero .lead,.article-hero .lead',editLead.value.trim(),'lead');
+  setOrCreateText(doc,'header .quick p,.hero .quick p,.quick p',editQuick.value.trim(),'quick');
+  doc.title=seoTitle;
+  upsertMeta(doc,'meta[name="description"]',{name:'description'},metaDescription);
+  upsertMeta(doc,'meta[name="mpmv:focus-keyphrase"]',{name:'mpmv:focus-keyphrase'},focusKeyphrase);
+  upsertMeta(doc,'meta[name="mpmv:seo-title"]',{name:'mpmv:seo-title'},seoTitle);
+  upsertMeta(doc,'meta[name="mpmv:meta-description"]',{name:'mpmv:meta-description'},metaDescription);
+  upsertMeta(doc,'meta[property="og:title"]',{property:'og:title'},title);
+  upsertMeta(doc,'meta[property="og:description"]',{property:'og:description'},metaDescription);
+  upsertMeta(doc,'meta[name="twitter:title"]',{name:'twitter:title'},title);
+  upsertMeta(doc,'meta[name="twitter:description"]',{name:'twitter:description'},metaDescription);
+  const cover=selectedCoverUrl();
+  applyCover(doc,cover,editCoverAlt.value.trim()||title,editCoverVisible.checked);
+  updateStructuredData(doc,title,metaDescription,cover);
+  return doc;
+}
+function documentForOutput(){
+  if(rawDirty){
+    const doc=parseDocument(editRawHtml.value);
+    const cover=selectedCoverUrl();
+    if(cover){
+      const title=textOf(doc,'h1');
+      const description=doc.querySelector('meta[name="description"]')?.content||'';
+      applyCover(doc,cover,editCoverAlt.value.trim()||title,editCoverVisible.checked);
+      updateStructuredData(doc,title,description,cover);
+    }
+    ensureFavicon(doc);
+    return doc;
+  }
+  const doc=buildVisualDocument();
+  ensureFavicon(doc);
+  return doc;
+}
+function switchEditTab(name){
+  document.querySelectorAll('[data-edit-tab]').forEach(btn=>btn.classList.toggle('active',btn.dataset.editTab===name));
+  document.querySelectorAll('[data-edit-panel]').forEach(panel=>panel.classList.toggle('active',panel.dataset.editPanel===name));
+  if(name==='html'&&!rawDirty){
+    try{editRawHtml.value=serializeDocument(buildVisualDocument());}catch{}
+  }
 }
 async function openEditor(slug,btn){
   const token=getAdminToken();
@@ -413,23 +670,14 @@ async function openEditor(slug,btn){
     if(!r.ok)throw new Error(data.error||data.detail||'Não foi possível abrir o artigo.');
 
     const doc=new DOMParser().parseFromString(data.html,'text/html');
-    const h1=doc.querySelector('h1');
-    const article=doc.querySelector('article')||doc.querySelector('main');
-    if(!h1||!article)throw new Error('Este artigo não possui a estrutura necessária para o editor visual.');
-    if(article.contains(h1))throw new Error('Este artigo usa um formato diferente. Edite-o pelo ZIP para preservar o layout.');
-
     editDocument=doc;
-    editSlug.value=data.post.slug;
-    editSeoTitle.value=data.post.seoTitle||doc.title||'';
-    editMeta.value=data.post.metaDescription||doc.querySelector('meta[name="description"]')?.content||'';
-    editKeyphrase.value=data.post.focusKeyphrase||'';
-    editVisibleTitle.innerHTML=h1.innerHTML;
-    editContent.innerHTML=article.innerHTML;
-    updateCounters();
+    populateVisualFields(doc,data.post);
     editDirty=false;
+    rawDirty=false;
     saveEditBtn.disabled=false;
     saveEditBtn.textContent='Salvar e publicar';
     setEditStatus('Pronto para editar.');
+    switchEditTab('content');
     editModal.classList.add('show');
     editModal.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
@@ -441,34 +689,32 @@ async function saveEditor(){
   if(!editDocument)return;
   const token=getAdminToken();
   if(!token)return;
-
-  const title=editVisibleTitle.textContent.replace(/\s+/g,' ').trim();
-  const seoTitle=editSeoTitle.value.trim();
-  const metaDescription=editMeta.value.trim();
-  const focusKeyphrase=editKeyphrase.value.trim();
-  if(!title||!seoTitle||!metaDescription||!focusKeyphrase){alert('Preencha o título, o título SEO, a meta descrição e a frase-chave.');return;}
-
-  const h1=editDocument.querySelector('h1');
-  const article=editDocument.querySelector('article')||editDocument.querySelector('main');
-  h1.innerHTML=editVisibleTitle.innerHTML;
-  article.innerHTML=editContent.innerHTML;
-  editDocument.title=seoTitle;
-  upsertMeta(editDocument,'meta[name="description"]',{name:'description'},metaDescription);
-  upsertMeta(editDocument,'meta[property="og:title"]',{property:'og:title'},seoTitle);
-  upsertMeta(editDocument,'meta[property="og:description"]',{property:'og:description'},metaDescription);
-  upsertMeta(editDocument,'meta[name="twitter:title"]',{name:'twitter:title'},seoTitle);
-  upsertMeta(editDocument,'meta[name="twitter:description"]',{name:'twitter:description'},metaDescription);
-  updateStructuredData(editDocument,title,metaDescription);
-  const html='<!doctype html>\n'+editDocument.documentElement.outerHTML;
+  let output;
+  try{output=documentForOutput();}catch(e){alert(e.message);return;}
+  const title=textOf(output,'h1');
+  const seoTitle=output.title.trim();
+  const metaDescription=output.querySelector('meta[name="description"]')?.content?.trim()||'';
+  const focusKeyphrase=output.querySelector('meta[name="mpmv:focus-keyphrase"]')?.content?.trim()||editKeyphrase.value.trim();
+  if(!title||!seoTitle||!metaDescription||!focusKeyphrase){alert('O HTML precisa ter título, título SEO, meta descrição e frase-chave.');return;}
+  const html=serializeDocument(output);
+  const file=editCoverFile.files?.[0];
+  if(file&&(!imageExtension(file)||file.size>3_000_000)){alert('A capa precisa ser JPG, PNG ou WebP e ter no máximo 3 MB.');return;}
 
   saveEditBtn.disabled=true;
   saveEditBtn.textContent='Publicando...';
   setEditStatus('Salvando o artigo e preparando a publicação...');
   try{
+    let imageFile=null;
+    if(file){
+      const bytes=new Uint8Array(await file.arrayBuffer());
+      let binary='';const chunk=0x8000;
+      for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode.apply(null,bytes.subarray(i,i+chunk));
+      imageFile={name:file.name,type:file.type,content:btoa(binary)};
+    }
     const r=await fetch('/api/admin-blog-edit',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-admin-token':token},
-      body:JSON.stringify({slug:editSlug.value,title,seoTitle,metaDescription,focusKeyphrase,html})
+      body:JSON.stringify({slug:editSlug.value,title,seoTitle,metaDescription,focusKeyphrase,category:editCategory.value.trim(),coverImage:selectedCoverUrl(),coverAlt:editCoverAlt.value.trim(),imageFile,html})
     });
     const data=await r.json().catch(()=>({}));
     if(r.status===401){sessionStorage.removeItem('mpmv_admin_token');throw new Error('Token inválido. Tente novamente.');}
@@ -484,10 +730,42 @@ async function saveEditor(){
   }
 }
 
-[editSeoTitle,editMeta,editKeyphrase,editVisibleTitle,editContent].forEach(el=>el.addEventListener('input',()=>{markEditDirty();updateCounters();}));
+[editCategory,editKicker,editLead,editQuick,editSeoTitle,editMeta,editKeyphrase,editVisibleTitle,editContent,editCoverUrl,editCoverAlt,editCoverVisible].forEach(el=>el.addEventListener('input',()=>{markEditDirty();updateCounters();if(el===editCoverUrl)showCoverPreview(editCoverUrl.value.trim());}));
+document.querySelectorAll('[data-edit-tab]').forEach(btn=>btn.addEventListener('click',()=>switchEditTab(btn.dataset.editTab)));
 document.querySelectorAll('.tool[data-cmd]').forEach(btn=>btn.addEventListener('click',()=>{editContent.focus();document.execCommand(btn.dataset.cmd,false,null);markEditDirty();}));
 document.querySelectorAll('.tool[data-block]').forEach(btn=>btn.addEventListener('click',()=>{editContent.focus();document.execCommand('formatBlock',false,btn.dataset.block);markEditDirty();}));
 document.querySelector('[data-link]').addEventListener('click',()=>{const url=prompt('Cole a URL do link:','https://');if(url){editContent.focus();document.execCommand('createLink',false,url);markEditDirty();}});
+document.querySelector('[data-inline-image]').addEventListener('click',()=>{
+  const url=prompt('Cole a URL da imagem:','https://');if(!url)return;
+  const alt=prompt('Descreva a imagem para acessibilidade e SEO:','')||'';
+  editContent.focus();document.execCommand('insertHTML',false,`<figure class="article-photo"><img src="${esc(url)}" alt="${esc(alt)}" loading="lazy"><figcaption>${esc(alt)}</figcaption></figure>`);markEditDirty();
+});
+editCoverFile.addEventListener('change',()=>{
+  const file=editCoverFile.files?.[0];
+  if(!file){coverFileName.textContent='JPG, PNG ou WebP — até 3 MB';showCoverPreview(editCoverUrl.value.trim());return;}
+  if(!imageExtension(file)||file.size>3_000_000){alert('Escolha uma imagem JPG, PNG ou WebP de até 3 MB.');editCoverFile.value='';return;}
+  coverFileName.textContent=file.name;
+  showCoverPreview(URL.createObjectURL(file));
+  markEditDirty();
+});
+editRawHtml.addEventListener('input',()=>{rawDirty=true;markEditDirty();setEditStatus('O HTML completo será usado ao salvar.');});
+document.getElementById('syncVisualBtn').addEventListener('click',()=>{
+  try{
+    const doc=parseDocument(editRawHtml.value);
+    editDocument=doc;
+    populateVisualFields(doc,{slug:editSlug.value,category:editCategory.value,seoTitle:doc.title,metaDescription:doc.querySelector('meta[name="description"]')?.content||'',focusKeyphrase:doc.querySelector('meta[name="mpmv:focus-keyphrase"]')?.content||editKeyphrase.value});
+    rawDirty=false;markEditDirty();switchEditTab('content');setEditStatus('HTML aplicado ao editor visual.');
+  }catch(e){alert(e.message);}
+});
+document.getElementById('previewEditBtn').addEventListener('click',()=>{
+  try{
+    const doc=documentForOutput();
+    const url=URL.createObjectURL(new Blob([serializeDocument(doc)],{type:'text/html'}));
+    const win=window.open(url,'_blank');
+    if(!win)alert('Permita pop-ups para abrir a pré-visualização.');
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  }catch(e){alert(e.message);}
+});
 document.getElementById('closeEditBtn').addEventListener('click',()=>closeEditor());
 document.getElementById('cancelEditBtn').addEventListener('click',()=>closeEditor());
 saveEditBtn.addEventListener('click',saveEditor);

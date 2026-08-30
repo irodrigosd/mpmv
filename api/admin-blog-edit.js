@@ -104,6 +104,10 @@ export default async function handler(req,res){
     const seoTitle=cleanText(body.seoTitle,220);
     const metaDescription=cleanText(body.metaDescription,400);
     const focusKeyphrase=cleanText(body.focusKeyphrase,180);
+    const category=cleanText(body.category,100)||currentPost.category||'Conteúdo';
+    const coverImage=String(body.coverImage||'').trim().slice(0,1000);
+    const coverAlt=cleanText(body.coverAlt,300);
+    const imageFile=body.imageFile&&typeof body.imageFile==='object'?body.imageFile:null;
     if(!title||!seoTitle||!metaDescription||!focusKeyphrase) return json(res,400,{error:'Preencha título, título SEO, meta descrição e frase-chave.'});
     if(html.length<500||html.length>1_200_000||!/<html\b/i.test(html)||!/<h1\b/i.test(html)){
       return json(res,400,{error:'O HTML do artigo parece incompleto ou inválido.'});
@@ -111,9 +115,25 @@ export default async function handler(req,res){
     if(!new RegExp(`/blog/${slug}/?`,'i').test(html)){
       return json(res,400,{error:'O HTML não corresponde à URL deste artigo. O slug não pode ser alterado por aqui.'});
     }
+    if(coverImage&&!/^https?:\/\//i.test(coverImage)&&!/^\/[A-Za-z0-9._~!$&'()*+,;=:@%\/-]+$/.test(coverImage)){
+      return json(res,400,{error:'A URL da capa é inválida.'});
+    }
+
+    let imageUpload=null;
+    if(imageFile){
+      const extensions={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
+      const ext=extensions[String(imageFile.type||'')];
+      const content=String(imageFile.content||'').replace(/\s/g,'');
+      if(!ext||!/^[A-Za-z0-9+/]*={0,2}$/.test(content)) return json(res,400,{error:'O arquivo da capa é inválido.'});
+      const bytes=Buffer.from(content,'base64');
+      if(!bytes.length||bytes.length>3_000_000) return json(res,400,{error:'A capa deve ter no máximo 3 MB.'});
+      imageUpload={path:`assets/images/blog/${slug}-capa.${ext}`,content};
+    }
 
     const today=new Date().toISOString().slice(0,10);
-    const nextPost={...currentPost,title,seoTitle,metaDescription,focusKeyphrase,updatedAt:today};
+    const nextPost={...currentPost,title,seoTitle,metaDescription,focusKeyphrase,category,updatedAt:today};
+    if(coverImage)nextPost.coverImage=coverImage;
+    if(coverAlt)nextPost.coverAlt=coverAlt;
     manifest[index]=nextPost;
 
     const [blogFile,sitemapFile,commitRes]=await Promise.all([
@@ -127,20 +147,21 @@ export default async function handler(req,res){
     const nextBlog=updateBlogCard(decode(blogFile),nextPost);
     const nextSitemap=sitemapFile?updateSitemap(decode(sitemapFile),nextPost,today):null;
 
-    async function createBlob(content){
+    async function createBlob(content,encoding='utf-8'){
       const r=await fetch(`${API}/repos/${owner}/${repo}/git/blobs`,{
         method:'POST',headers:{...headers,'Content-Type':'application/json'},
-        body:JSON.stringify({content,encoding:'utf-8'})
+        body:JSON.stringify({content,encoding})
       });
       if(!r.ok)throw new Error(`GitHub BLOB: ${r.status}`);
       return (await r.json()).sha;
     }
 
-    const [articleBlob,manifestBlob,blogBlob,sitemapBlob]=await Promise.all([
+    const [articleBlob,manifestBlob,blogBlob,sitemapBlob,imageBlob]=await Promise.all([
       createBlob(html),
       createBlob(JSON.stringify(manifest,null,2)+'\n'),
       createBlob(nextBlog),
-      nextSitemap===null?Promise.resolve(null):createBlob(nextSitemap)
+      nextSitemap===null?Promise.resolve(null):createBlob(nextSitemap),
+      imageUpload?createBlob(imageUpload.content,'base64'):Promise.resolve(null)
     ]);
     const tree=[
       {path:currentPost.file,mode:'100644',type:'blob',sha:articleBlob},
@@ -148,6 +169,7 @@ export default async function handler(req,res){
       {path:'blog.html',mode:'100644',type:'blob',sha:blogBlob}
     ];
     if(sitemapBlob) tree.push({path:'sitemap.xml',mode:'100644',type:'blob',sha:sitemapBlob});
+    if(imageBlob) tree.push({path:imageUpload.path,mode:'100644',type:'blob',sha:imageBlob});
 
     const treeRes=await fetch(`${API}/repos/${owner}/${repo}/git/trees`,{
       method:'POST',headers:{...headers,'Content-Type':'application/json'},
