@@ -1,0 +1,75 @@
+TÍTULO SEO
+Como Quebrar Objeções de Vendas: Passo a Passo | MPMV
+
+SLUG
+como-quebrar-objecoes-de-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+como quebrar objeções de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+objeções de vendas
+como lidar com objeções de clientes
+como responder objeções de vendas
+quebra de objeções
+objeção de preço
+objeções em página de vendas
+copy para objeções
+como aumentar conversão da página de vendas
+
+META DESCRIPTION
+Aprenda como quebrar objeções de vendas dentro da página: identifique dúvidas, responda com contexto e prova e coloque cada argumento no ponto certo.
+
+H1
+Como quebrar objeções de vendas: passo a passo para usar na sua página
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/como-quebrar-objecoes-de-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer identificar objeções que impedem a compra e aprender como respondê-las dentro de uma página de vendas, com exemplos e ordem de aplicação.
+
+FONTE PRINCIPAL
+Guia Prático — Mais Persuasão, Mais Vendas: capítulos O Cliente, O Produto, A Ideia Central de Vendas e O Script.
+Biblioteca de Blocos de Persuasão do projeto MPMV: blocos de eliminação e resposta a objeções, usados como repertório e adaptados ao contexto de página de vendas.
+
+LINKS INTERNOS CONFERIDOS EM 31/08/2026
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+https://www.maispersuasaomaisvendas.com.br/blog/transformar-caracteristicas-em-beneficios/
+https://www.maispersuasaomaisvendas.com.br/blog/persuasao-para-infoprodutores/
+
+CHECKLIST SEO/LEGIBILIDADE
+- palavra-chave no título SEO
+- palavra-chave no H1
+- palavra-chave no primeiro bloco de conteúdo
+- palavra-chave em H2
+- variações semânticas distribuídas no corpo
+- slug curto e descritivo
+- meta description com palavra-chave
+- canonical definido
+- 3 links internos para artigos existentes e conferidos
+- CTA principal para o Guia Prático
+- FAQ visível + schema FAQPage
+- schema BlogPosting
+- schema BreadcrumbList
+- resposta direta no início
+- parágrafos curtos
+- subtítulos frequentes
+- tabelas de aplicação
+- exemplos hipotéticos identificados
+- processo em 6 passos
+- checklist de revisão
+- sem resultados inventados
+- sem urgência ou escassez artificial
+- histórias apresentadas apenas como orientação para uso de casos reais
+- prova exigida após reformulações e comparações
+- texto construído para leitura natural
+
+CATEGORIA
+Copywriting + Página de Vendas
+
+DATA
+2026-08-31
+
+AUTOR
+Rodrigo Castro
