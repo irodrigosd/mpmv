@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Como Fazer Research para Copywriting</title>
+  <desc id="desc">Arte MPMV representando pesquisa de produto, cliente, concorrência e provas antes da escrita da copy.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#f0d07a"/><stop offset=".58" stop-color="#bd8125"/><stop offset="1" stop-color="#8c5616"/></linearGradient>
+    <radialGradient id="glow" cx="18%" cy="18%" r="72%"><stop offset="0" stop-color="#c99c3d" stop-opacity=".30"/><stop offset="1" stop-color="#0b0b0b" stop-opacity="0"/></radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0b0b"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="1050" cy="500" r="235" fill="#9d1f27" opacity=".14"/>
+  <g transform="translate(76 64)">
+    <rect width="76" height="76" rx="20" fill="url(#gold)"/>
+    <text x="38" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="900" fill="#111">MPMV</text>
+    <text x="96" y="31" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800" fill="#f4f0e8">MAIS PERSUASÃO, MAIS VENDAS</text>
+    <text x="96" y="55" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#a9a29a">COPYWRITING + PESQUISA</text>
+  </g>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#fff">
+    <text x="76" y="235" font-size="64" font-weight="900" letter-spacing="-2">RESEARCH PARA</text>
+    <text x="76" y="307" font-size="64" font-weight="900" letter-spacing="-2" fill="url(#gold)">COPYWRITING</text>
+    <text x="76" y="360" font-size="27" fill="#d7d0c8">O que pesquisar antes de escrever a primeira linha.</text>
+  </g>
+  <g transform="translate(76 414)" filter="url(#shadow)">
+    <rect width="1048" height="128" rx="24" fill="#f4f0e8"/>
+    <g font-family="Arial,Helvetica,sans-serif" font-weight="900" fill="#171512" font-size="21">
+      <text x="36" y="48">PRODUTO</text><text x="218" y="48">CLIENTE</text><text x="390" y="48">PROBLEMA</text><text x="600" y="48">CONCORRÊNCIA</text><text x="865" y="48">PROVA</text>
+    </g>
+    <line x1="36" y1="74" x2="1010" y2="74" stroke="#d8cfc2" stroke-width="2"/>
+    <text x="36" y="103" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="800" fill="#8d6a12">Matéria-prima primeiro. Copy depois.</text>
+  </g>
+</svg>
