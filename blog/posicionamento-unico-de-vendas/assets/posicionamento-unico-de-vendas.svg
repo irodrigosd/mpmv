@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Posicionamento Único de Vendas</title>
+  <desc id="desc">Arte MPMV com uma frase central sendo condensada até virar uma mensagem curta de posicionamento.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#f0d07a"/><stop offset=".58" stop-color="#bd8125"/><stop offset="1" stop-color="#8c5616"/></linearGradient>
+    <radialGradient id="glow" cx="20%" cy="20%" r="70%"><stop offset="0" stop-color="#c99c3d" stop-opacity=".28"/><stop offset="1" stop-color="#0b0b0b" stop-opacity="0"/></radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0b0b"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="1040" cy="515" r="230" fill="#9d1f27" opacity=".13"/>
+  <g transform="translate(76 68)">
+    <rect width="76" height="76" rx="20" fill="url(#gold)"/>
+    <text x="38" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="900" fill="#111">MPMV</text>
+    <text x="96" y="31" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800" fill="#f4f0e8">MAIS PERSUASÃO, MAIS VENDAS</text>
+    <text x="96" y="55" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#a9a29a">COPYWRITING + POSICIONAMENTO</text>
+  </g>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#fff">
+    <text x="76" y="240" font-size="66" font-weight="900" letter-spacing="-2">POSICIONAMENTO</text>
+    <text x="76" y="312" font-size="66" font-weight="900" letter-spacing="-2" fill="url(#gold)">ÚNICO DE VENDAS</text>
+    <text x="76" y="365" font-size="27" fill="#d7d0c8">Como explicar, em uma frase, por que sua oferta merece atenção.</text>
+  </g>
+  <g transform="translate(76 420)" filter="url(#shadow)">
+    <rect width="1048" height="124" rx="24" fill="#f4f0e8"/>
+    <text x="34" y="42" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800" fill="#8d6a12" letter-spacing="2">A FRASE QUE ABRE A CONVERSA</text>
+    <text x="34" y="84" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" fill="#171512">Público + entrega + resultado que ele quer entender.</text>
+  </g>
+</svg>

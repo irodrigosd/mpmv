@@ -1,0 +1,71 @@
+TÍTULO SEO
+Posicionamento Único de Vendas: Como Criar o Seu | MPMV
+
+SLUG
+posicionamento-unico-de-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+posicionamento único de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+posicionamento unico de vendas
+como criar posicionamento de vendas
+PUV vendas
+posicionamento de produto
+frase de posicionamento
+pitch de elevador vendas
+proposta de valor
+como explicar o que eu vendo
+
+META DESCRIPTION
+Aprenda a criar um posicionamento único de vendas em uma frase simples, ligando público, entrega e resultado para abrir a conversa com o cliente.
+
+H1
+Posicionamento único de vendas: como explicar em uma frase por que alguém deveria comprar de você
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/posicionamento-unico-de-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender o que é posicionamento único de vendas, como construir uma frase de posicionamento e como usar essa frase em bio, página, apresentação, anúncio e conversa comercial.
+
+FONTE PRINCIPAL
+Guia Prático — Mais Persuasão, Mais Vendas: capítulos O P.U.V., O Cliente, O Produto, A Ideia Central de Vendas e O Script.
+
+LINKS INTERNOS CONFERIDOS
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+https://www.maispersuasaomaisvendas.com.br/blog/transformar-caracteristicas-em-beneficios/
+https://www.maispersuasaomaisvendas.com.br/blog/persuasao-para-infoprodutores/
+
+CHECKLIST SEO/LEGIBILIDADE
+- palavra-chave no título SEO
+- palavra-chave no H1
+- palavra-chave no primeiro bloco de conteúdo
+- palavra-chave em H2
+- palavra-chave distribuída no corpo
+- slug curto e descritivo
+- meta description com palavra-chave
+- canonical definido
+- 3 links internos para artigos existentes e conferidos
+- CTA para o Guia Prático
+- FAQ visível + schema FAQPage
+- schema BlogPosting
+- schema BreadcrumbList
+- parágrafos curtos
+- subtítulos frequentes
+- tabela comparativa
+- exemplos hipotéticos identificados
+- processo em 6 passos
+- checklist de revisão
+- sem resultados inventados
+- sem urgência ou escassez artificial
+- texto construído para leitura natural em voz alta
+
+CATEGORIA
+Copywriting + Posicionamento
+
+DATA
+2026-08-31
+
+AUTOR
+Rodrigo Castro
