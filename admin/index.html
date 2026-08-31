@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | MPMV</title>
+<style>
+:root{--bg:#0b0b0b;--card:#151515;--line:#2b2b2b;--txt:#f5f1e8;--muted:#a59e94;--gold:#d1a447;--green:#3d9b70;--blue:#2968c8;--red:#c63b42}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial,sans-serif}.wrap{width:min(980px,calc(100% - 32px));margin:40px auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}.brand{font-weight:900;font-size:24px}.brand span{color:var(--gold)}.back{color:var(--muted);text-decoration:none}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:22px}.card h2{margin:0 0 8px;font-size:21px}.card p{margin:0 0 18px;color:var(--muted);line-height:1.55;font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:0;border-radius:10px;padding:0 15px;font-weight:850;cursor:pointer;text-decoration:none;font-size:14px}.blog{background:var(--blue);color:#fff}.backup{background:var(--gold);color:#15110a}.btn:disabled{opacity:.5;cursor:not-allowed}.status{display:none;margin-top:15px;border:1px solid #302b21;background:#0e0e0e;border-radius:11px;padding:12px 14px;color:#cfc7bc;font-size:13px;line-height:1.5}.status.show{display:block}.status.ok{border-color:rgba(61,155,112,.5);color:#b9d9c8}.status.error{border-color:rgba(198,59,66,.55);color:#f0a4a8}.note{margin-top:20px;border:1px solid var(--line);background:#101010;padding:16px 18px;border-radius:14px;color:var(--muted);font-size:13px;line-height:1.55}.note strong{color:#ddd}.meta{margin-top:12px;font-size:12px;color:#777}.warn{color:#ddbd73}@media(max-width:720px){.grid{grid-template-columns:1fr}.top{align-items:flex-start}.wrap{margin-top:26px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <div class="brand"><span>MPMV</span> / Admin</div>
+    <a class="back" href="/blog/">Ver blog</a>
+  </div>
+
+  <section class="grid">
+    <article class="card">
+      <h2>Gerenciar blog</h2>
+      <p>Suba artigos em ZIP, edite conteúdo, capa e SEO e publique sem mudar a URL.</p>
+      <a class="btn blog" href="/admin/blog/">Abrir Admin Blog</a>
+    </article>
+
+    <article class="card">
+      <h2>Backup completo do site</h2>
+      <p>Baixa a branch <strong>main</strong> do GitHub e recria um ZIP portátil sem a pasta <code>mpmv-main/</code>. Ao extrair, os arquivos já ficam prontos para a raiz de outro repositório.</p>
+      <button id="backupBtn" class="btn backup" type="button">Baixar backup completo .ZIP</button>
+      <div id="backupStatus" class="status" aria-live="polite"></div>
+      <div id="backupMeta" class="meta"></div>
+    </article>
+  </section>
+
+  <div class="note"><strong>Importante:</strong> o backup contém os arquivos versionados no GitHub no momento do clique. Variáveis de ambiente, chaves da Vercel e segredos não entram no ZIP. O arquivo <code>.env.example</code> permanece como referência, mas valores reais precisam ser configurados novamente no novo ambiente.</div>
+</main>
+
+<script>
+const REPO='irodrigosd/mpmv';
+const BRANCH='main';
+const backupBtn=document.getElementById('backupBtn');
+const backupStatus=document.getElementById('backupStatus');
+const backupMeta=document.getElementById('backupMeta');
+
+function setStatus(text,type=''){
+  backupStatus.textContent=text;
+  backupStatus.className='status show'+(type?' '+type:'');
+}
+function localStamp(){
+  const d=new Date();
+  const pad=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}-${pad(d.getHours())}h${pad(d.getMinutes())}`;
+}
+function saveBlob(blob,name){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1200);
+}
+async function json(url){
+  const r=await fetch(url,{headers:{Accept:'application/vnd.github+json'},cache:'no-store'});
+  if(!r.ok)throw new Error(`GitHub respondeu ${r.status}.`);
+  return r.json();
+}
+async function createPortableBackup(){
+  backupBtn.disabled=true;
+  try{
+    setStatus('Consultando o commit atual da branch main...');
+    const branch=await json(`https://api.github.com/repos/${REPO}/branches/${BRANCH}`);
+    const sha=branch?.commit?.sha||'desconhecido';
+    const shortSha=sha.slice(0,7);
+    const committedAt=branch?.commit?.commit?.committer?.date||branch?.commit?.commit?.author?.date||'';
+    backupMeta.textContent=`Commit: ${shortSha}${committedAt?' • '+new Date(committedAt).toLocaleString('pt-BR'):''}`;
+
+    setStatus('Baixando todos os arquivos do repositório...');
+    const archiveResponse=await fetch(`https://api.github.com/repos/${REPO}/zipball/${encodeURIComponent(sha)}`,{headers:{Accept:'application/vnd.github+json'}});
+    if(!archiveResponse.ok)throw new Error(`Não consegui baixar o ZIP do GitHub (${archiveResponse.status}).`);
+    const source=await archiveResponse.blob();
+
+    setStatus('Preparando ZIP portátil e removendo a pasta intermediária...');
+    const input=await JSZip.loadAsync(source);
+    const output=new JSZip();
+    const names=Object.keys(input.files);
+    const root=names.find(n=>n.endsWith('/')&&n.split('/').filter(Boolean).length===1) || '';
+
+    for(const name of names){
+      const entry=input.files[name];
+      if(entry.dir)continue;
+      let relative=root&&name.startsWith(root)?name.slice(root.length):name;
+      relative=relative.replace(/^\/+/, '');
+      if(!relative)continue;
+      const bytes=await entry.async('uint8array');
+      output.file(relative,bytes,{binary:true,date:entry.date});
+    }
+
+    const info=[
+      'MPMV — BACKUP COMPLETO',
+      '',
+      `Gerado em: ${new Date().toLocaleString('pt-BR')}`,
+      `Repositório: ${REPO}`,
+      `Branch: ${BRANCH}`,
+      `Commit: ${sha}`,
+      '',
+      'RESTAURAÇÃO',
+      '1. Crie ou abra um repositório/diretório vazio.',
+      '2. Extraia este ZIP diretamente na raiz.',
+      '3. Faça commit e push dos arquivos.',
+      '4. Reconfigure as variáveis de ambiente e segredos no ambiente de deploy.',
+      '',
+      'SEGURANÇA',
+      'Este ZIP é criado a partir dos arquivos versionados no GitHub.',
+      'Segredos e variáveis configurados na Vercel/GitHub não fazem parte deste backup.'
+    ].join('\n');
+    output.file('BACKUP-INFO.txt',info);
+
+    const result=await output.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},m=>{
+      setStatus(`Compactando backup... ${Math.round(m.percent)}%`);
+    });
+    const filename=`MPMV-backup-${localStamp()}-${shortSha}.zip`;
+    saveBlob(result,filename);
+    setStatus(`Backup pronto: ${filename}`,'ok');
+  }catch(err){
+    console.error(err);
+    setStatus(`Erro: ${err.message} Se o repositório estiver privado, faça o backup direto pelo GitHub ou torne esta rotina autenticada no servidor.`,'error');
+  }finally{
+    backupBtn.disabled=false;
+  }
+}
+backupBtn.addEventListener('click',createPortableBackup);
+</script>
+</body>
+</html>
