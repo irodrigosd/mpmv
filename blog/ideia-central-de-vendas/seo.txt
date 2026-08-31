@@ -1,0 +1,68 @@
+TÍTULO SEO
+Ideia Central de Vendas: Como Criar uma Mensagem | MPMV
+
+SLUG
+ideia-central-de-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+ideia central de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+como criar uma ideia central de vendas
+ideia central copywriting
+mensagem de vendas
+ideia principal da oferta
+headline de vendas
+argumentos de vendas
+copy de vendas
+
+META DESCRIPTION
+Aprenda a criar uma ideia central de vendas que organiza promessa, argumentos, prova e CTA para manter sua copy na mesma direção.
+
+H1
+Como criar uma ideia central de vendas: a frase que faz o cliente querer ouvir o resto
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/ideia-central-de-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender o que é uma ideia central de vendas, como construí-la e como usá-la para dar direção à headline, aos argumentos, às provas, à oferta e ao CTA.
+
+FONTE PRINCIPAL
+Guia Prático — Mais Persuasão, Mais Vendas: capítulos Research/Autoridade, O Cliente, A Ideia Central de Vendas, O Produto e O Script.
+
+LINKS INTERNOS CONFERIDOS
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+https://www.maispersuasaomaisvendas.com.br/blog/transformar-caracteristicas-em-beneficios/
+https://www.maispersuasaomaisvendas.com.br/blog/persuasao-para-infoprodutores/
+
+CHECKLIST SEO/LEGIBILIDADE
+- palavra-chave no título SEO
+- palavra-chave no H1
+- palavra-chave no primeiro bloco de conteúdo
+- palavra-chave em H2
+- palavra-chave distribuída no corpo
+- slug curto e descritivo
+- meta description com palavra-chave
+- canonical definido
+- 3 links internos para artigos existentes
+- CTA para o Guia Prático
+- FAQ visível + schema FAQPage
+- schema BlogPosting
+- schema BreadcrumbList
+- parágrafos curtos
+- subtítulos frequentes
+- tabela comparativa
+- exemplos hipotéticos identificados
+- listas de processo e checklist
+- sem números de resultado inventados
+- sem escassez ou urgência artificial
+
+CATEGORIA
+Copywriting + Persuasão
+
+DATA
+2026-08-31
+
+AUTOR
+Rodrigo Castro

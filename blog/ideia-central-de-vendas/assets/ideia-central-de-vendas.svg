@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Ideia central de vendas</title>
+  <desc id="desc">Linhas de argumentos convergem para uma ideia central e seguem para uma seta de ação.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b0b"/>
+      <stop offset="0.65" stop-color="#171310"/>
+      <stop offset="1" stop-color="#2a1013"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d07a"/>
+      <stop offset="0.55" stop-color="#c99c3d"/>
+      <stop offset="1" stop-color="#8c5616"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+  <circle cx="975" cy="660" r="240" fill="#9d1f27" opacity=".13"/>
+  <circle cx="190" cy="120" r="220" fill="#c99c3d" opacity=".08"/>
+  <text x="76" y="92" fill="#c99c3d" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800" letter-spacing="4">MPMV</text>
+  <text x="76" y="150" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" opacity=".82">MAIS PERSUASÃO, MAIS VENDAS</text>
+
+  <g stroke="#d8d0c4" stroke-width="6" fill="none" opacity=".72">
+    <path d="M100 285 C260 285 315 350 455 400"/>
+    <path d="M100 365 C260 365 330 390 455 410"/>
+    <path d="M100 445 C270 445 340 430 455 420"/>
+    <path d="M100 525 C255 525 325 465 455 430"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#e8e2d8">
+    <text x="102" y="276">BENEFÍCIO</text>
+    <text x="102" y="356">PROVA</text>
+    <text x="102" y="436">EXEMPLO</text>
+    <text x="102" y="516">OBJEÇÃO</text>
+  </g>
+
+  <rect x="455" y="305" width="395" height="230" rx="34" fill="#151210" stroke="url(#gold)" stroke-width="5" filter="url(#glow)"/>
+  <text x="652" y="372" text-anchor="middle" fill="#c99c3d" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900" letter-spacing="2">IDEIA CENTRAL</text>
+  <text x="652" y="430" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="900">UMA DIREÇÃO.</text>
+  <text x="652" y="478" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="900">TODO O RESTO PROVA.</text>
+
+  <path d="M850 420 H1050" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1017 374 L1075 420 L1017 466" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="920" y="372" fill="#e8e2d8" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800">AÇÃO</text>
+  <text x="76" y="708" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-2">A frase que faz o cliente</text>
+  <text x="76" y="766" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-2">querer ouvir o resto.</text>
+</svg>
