@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+<linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#f0d07a"/><stop offset=".56" stop-color="#c38f2f"/><stop offset="1" stop-color="#86500f"/></linearGradient>
+<radialGradient id="r" cx="84%" cy="18%" r="70%"><stop offset="0" stop-color="#8e1f27" stop-opacity=".34"/><stop offset="1" stop-color="#0b0b0b" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="#0b0b0b"/>
+<rect width="1200" height="630" fill="url(#r)"/>
+<g transform="translate(72 62)">
+<rect width="72" height="72" rx="18" fill="url(#gold)"/>
+<text x="36" y="45" text-anchor="middle" font-family="Arial" font-size="21" font-weight="900" fill="#111">MPMV</text>
+<text x="92" y="30" font-family="Arial" font-size="18" font-weight="800" fill="#f3efe9">MAIS PERSUASÃO, MAIS VENDAS</text>
+<text x="92" y="54" font-family="Arial" font-size="14" fill="#aaa39b">OFERTA + PERCEPÇÃO DE VALOR</text>
+</g>
+<g font-family="Arial" fill="#fff">
+<text x="72" y="220" font-size="50" font-weight="900">COMO CRIAR UMA OFERTA</text>
+<text x="72" y="280" font-size="52" font-weight="900" fill="url(#gold)">IRRESISTÍVEL</text>
+<text x="72" y="340" font-size="42" font-weight="900">SEM DAR DESCONTO</text>
+<text x="72" y="392" font-size="36" font-weight="900">NEM ENCHER DE BÔNUS</text>
+<text x="72" y="445" font-size="23" fill="#d1cbc4">Mais valor percebido. Menos gambiarra promocional.</text>
+</g>
+<g transform="translate(830 175)">
+<rect x="0" y="0" width="285" height="250" rx="28" fill="#171412" stroke="#c38f2f" stroke-width="4"/>
+<rect x="40" y="40" width="205" height="54" rx="14" fill="#f1ede7"/>
+<text x="142" y="74" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900" fill="#171412">OFERTA</text>
+<rect x="40" y="120" width="205" height="18" rx="9" fill="#6d665f"/>
+<rect x="40" y="154" width="165" height="18" rx="9" fill="#6d665f"/>
+<rect x="40" y="195" width="205" height="38" rx="19" fill="url(#gold)"/>
+<text x="142" y="220" text-anchor="middle" font-family="Arial" font-size="16" font-weight="900" fill="#111">QUERO ISSO</text>
+</g>
+</svg>
