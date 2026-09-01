@@ -1,0 +1,65 @@
+TÍTULO SEO
+Por Que o Cliente Adia a Compra Mesmo Querendo? | MPMV
+
+SLUG
+por-que-o-cliente-adia-a-compra
+
+PALAVRA-CHAVE PRINCIPAL
+por que o cliente adia a compra
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+cliente quer mas não compra
+procrastinação na compra
+adiamento da decisão de compra
+fricção na compra
+risco percebido
+paralisia de decisão
+como reduzir dúvida na compra
+como fazer o cliente decidir
+
+META DESCRIPTION
+Entenda por que o cliente adia uma compra mesmo quando quer o produto e como reduzir fricção, risco percebido, dúvida e procrastinação na decisão.
+
+H1
+Por que o cliente adia a compra mesmo quando quer o produto
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/por-que-o-cliente-adia-a-compra/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender por que desejo não vira ação e como reduzir elementos que mantêm o cliente parado.
+
+ÂNGULO PARA EVITAR CANIBALIZAÇÃO
+O foco não é "como escrever uma oferta", "quebrar objeções" ou "aumentar percepção de valor". O foco é o adiamento da decisão mesmo quando já existe desejo, explorando fricção, risco, esforço mental, excesso de opções e ausência de um motivo concreto para agir agora.
+
+LINKS INTERNOS
+https://www.maispersuasaomaisvendas.com.br/blog/como-quebrar-objecoes-de-vendas/
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-zeigarnik-vendas/
+
+CHECKLIST SEO/LEGIBILIDADE
+- keyword no título e introdução
+- resposta direta no topo
+- slug curto
+- meta description específica
+- canonical
+- H2s orientados à intenção
+- exemplos práticos
+- tabela de diagnóstico
+- checklist
+- FAQ visível + schema
+- BlogPosting + BreadcrumbList
+- links internos
+- parágrafos curtos
+- linguagem natural PT-BR
+- sem urgência falsa
+- sem promessas inventadas
+
+CATEGORIA
+Decisão de compra
+
+DATA
+2026-09-01
+
+AUTOR
+Rodrigo Castro

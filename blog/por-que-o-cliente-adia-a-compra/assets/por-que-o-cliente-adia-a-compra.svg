@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+<linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#efcf79"/><stop offset=".55" stop-color="#c49332"/><stop offset="1" stop-color="#875313"/></linearGradient>
+<radialGradient id="r" cx="80%" cy="22%" r="70%"><stop offset="0" stop-color="#8f2028" stop-opacity=".28"/><stop offset="1" stop-color="#0b0b0b" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="#0b0b0b"/>
+<rect width="1200" height="630" fill="url(#r)"/>
+<g transform="translate(72 64)">
+<rect width="72" height="72" rx="18" fill="url(#gold)"/>
+<text x="36" y="45" text-anchor="middle" font-family="Arial" font-size="21" font-weight="900" fill="#111">MPMV</text>
+<text x="92" y="31" font-family="Arial" font-size="18" font-weight="800" fill="#f1ede7">MAIS PERSUASÃO, MAIS VENDAS</text>
+<text x="92" y="55" font-family="Arial" font-size="14" fill="#aaa39b">DECISÃO DE COMPRA</text>
+</g>
+<g font-family="Arial" fill="#fff">
+<text x="72" y="235" font-size="58" font-weight="900">ELE QUER.</text>
+<text x="72" y="300" font-size="58" font-weight="900" fill="url(#gold)">MAS NÃO COMPRA.</text>
+<text x="72" y="353" font-size="26" fill="#d1cbc4">Desejo não elimina dúvida, risco, esforço nem adiamento.</text>
+</g>
+<g transform="translate(735 175)">
+<circle cx="175" cy="140" r="125" fill="#171412" stroke="#c49332" stroke-width="5"/>
+<circle cx="175" cy="140" r="96" fill="none" stroke="#4d4438" stroke-width="3"/>
+<line x1="175" y1="140" x2="175" y2="77" stroke="#efcf79" stroke-width="10" stroke-linecap="round"/>
+<line x1="175" y1="140" x2="228" y2="170" stroke="#efcf79" stroke-width="10" stroke-linecap="round"/>
+<circle cx="175" cy="140" r="12" fill="#efcf79"/>
+<rect x="36" y="285" width="278" height="80" rx="40" fill="#f2eee8"/>
+<text x="175" y="335" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#171412">“DEPOIS EU VEJO”</text>
+</g>
+</svg>
