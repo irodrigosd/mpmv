@@ -1,0 +1,78 @@
+TÍTULO SEO
+Por Que Clientes Escolhem a Oferta Mais Cara? | MPMV
+
+SLUG
+por-que-clientes-escolhem-oferta-mais-cara
+
+PALAVRA-CHAVE PRINCIPAL
+por que clientes escolhem a oferta mais cara
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+cliente escolhe produto mais caro
+preço e percepção de qualidade
+ancoragem de preço
+valor percebido
+efeito contraste em preços
+como apresentar opções de preço
+arquitetura de oferta
+preço como sinal de qualidade
+
+META DESCRIPTION
+Entenda por que clientes às vezes escolhem uma oferta mais cara: preço como sinal, comparação, ancoragem, risco percebido e arquitetura da oferta.
+
+H1
+Por que clientes escolhem uma oferta mais cara mesmo quando existe uma opção mais barata
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/por-que-clientes-escolhem-oferta-mais-cara/
+
+INTENÇÃO DE BUSCA
+Informacional/comercial. O leitor quer entender por que uma opção mais cara pode vencer uma alternativa barata e como aplicar preço, comparação, prova, redução de risco e diferenciação de forma legítima em uma oferta.
+
+ÂNGULO PARA EVITAR CANIBALIZAÇÃO
+O artigo não ensina genericamente “como criar uma oferta” nem “como aumentar percepção de valor”. A intenção central é a escolha ENTRE opções de preço. A pergunta é por que o cliente escolhe a alternativa mais cara quando existe uma opção mais barata.
+
+LINKS INTERNOS
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-uma-oferta-que-vende/
+https://www.maispersuasaomaisvendas.com.br/blog/transformar-caracteristicas-em-beneficios/
+https://www.maispersuasaomaisvendas.com.br/blog/efeito-contraste-marketing/
+
+FONTES EXTERNAS
+Cronley et al. (2005), Journal of Consumer Psychology — price-quality inference:
+https://doi.org/10.1207/s15327663jcp1502_8
+
+Luppe & Angelo (2010), Revista de Administração Mackenzie / SciELO — ancoragem e decisões de consumo:
+https://doi.org/10.1590/S1678-69712010000600006
+
+Luppe & Angelo (2010), International Review of Retail, Distribution and Consumer Research:
+https://doi.org/10.1080/09593969.2010.520504
+
+CHECKLIST SEO/LEGIBILIDADE
+- palavra-chave no título e H1
+- resposta direta no início
+- slug curto e descritivo
+- meta description específica
+- canonical definido
+- intenção distinta dos artigos sobre oferta e benefícios
+- links internos contextuais
+- fontes acadêmicas para price-quality inference e ancoragem
+- exemplos hipotéticos identificados como exemplos
+- FAQ visível + schema FAQPage
+- schema BlogPosting
+- schema BreadcrumbList
+- parágrafos curtos
+- tabela comparativa
+- checklist prático
+- sem resultados inventados
+- sem urgência falsa
+- sem recomendar preço anterior fictício
+- leitura natural em PT-BR
+
+CATEGORIA
+Preço + Persuasão
+
+DATA
+2026-09-01
+
+AUTOR
+Rodrigo Castro

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Por que clientes escolhem a oferta mais cara</title>
+<desc id="desc">Arte MPMV com três opções de preço e destaque para a escolha de maior valor percebido.</desc>
+<defs>
+  <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#f0d07a"/><stop offset=".58" stop-color="#bd8125"/><stop offset="1" stop-color="#8c5616"/></linearGradient>
+  <radialGradient id="glow" cx="18%" cy="18%" r="72%"><stop offset="0" stop-color="#c99c3d" stop-opacity=".30"/><stop offset="1" stop-color="#0b0b0b" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="#0b0b0b"/>
+<rect width="1200" height="630" fill="url(#glow)"/>
+<circle cx="1060" cy="500" r="240" fill="#9d1f27" opacity=".15"/>
+<g transform="translate(76 64)">
+  <rect width="76" height="76" rx="20" fill="url(#gold)"/>
+  <text x="38" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="900" fill="#111">MPMV</text>
+  <text x="96" y="31" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800" fill="#f4f0e8">MAIS PERSUASÃO, MAIS VENDAS</text>
+  <text x="96" y="55" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#a9a29a">PREÇO + DECISÃO DE COMPRA</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" fill="#fff">
+  <text x="76" y="235" font-size="56" font-weight="900" letter-spacing="-2">POR QUE O CLIENTE</text>
+  <text x="76" y="301" font-size="56" font-weight="900" letter-spacing="-2" fill="url(#gold)">ESCOLHE O MAIS CARO?</text>
+  <text x="76" y="352" font-size="25" fill="#d7d0c8">Preço não é avaliado sozinho. Ele ganha sentido na comparação.</text>
+</g>
+<g transform="translate(76 405)">
+  <rect x="0" y="0" width="310" height="132" rx="22" fill="#f4f0e8"/>
+  <rect x="330" y="-18" width="350" height="168" rx="22" fill="#fff8e6" stroke="#d1a447" stroke-width="5"/>
+  <rect x="700" y="0" width="348" height="132" rx="22" fill="#f4f0e8"/>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#171512">
+    <text x="28" y="42" font-size="18" font-weight="900">BÁSICO</text><text x="28" y="88" font-size="34" font-weight="900">R$ 297</text>
+    <text x="362" y="31" font-size="18" font-weight="900">PRO</text><text x="362" y="83" font-size="42" font-weight="900" fill="#8d6a12">R$ 497</text><text x="362" y="119" font-size="16" font-weight="800">MAIS VALOR PERCEBIDO</text>
+    <text x="730" y="42" font-size="18" font-weight="900">PREMIUM</text><text x="730" y="88" font-size="34" font-weight="900">R$ 897</text>
+  </g>
+</g>
+</svg>
