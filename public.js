@@ -136,12 +136,15 @@ if(form)form.addEventListener('submit',async function(e){
   }
 
   try{
+    var tracking=(window.MPMVTracking&&window.MPMVTracking.getContext)?window.MPMVTracking.getContext():null;
     await sendLead({
       name:name,
       email:email,
       source:'guia-pratico',
-      page:location.pathname
+      page:location.pathname,
+      tracking:tracking
     });
+    if(window.MPMVTracking&&window.MPMVTracking.markConversion)window.MPMVTracking.markConversion('guia',{name:name,email:email});
 
     hide(formView);
     show(successView);
