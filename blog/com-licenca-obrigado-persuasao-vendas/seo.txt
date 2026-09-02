@@ -1,0 +1,52 @@
+TÍTULO SEO
+Com Licença e Obrigado: uma Aula de Persuasão | MPMV
+
+SLUG
+com-licenca-obrigado-persuasao-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+com licença e obrigado persuasão
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+persuasão em vendas
+como abordar cliente
+resistência do cliente
+comunicação persuasiva
+educação em vendas
+copy de vendas
+reciprocidade
+como vender sem pressionar
+
+META DESCRIPTION
+Veja o que “com licença” e “obrigado” ensinam sobre persuasão, vendas, confiança e como entrar na conversa do cliente sem criar resistência.
+
+H1
+Malandro entra e sai de qualquer lugar só com um “com licença” e um “obrigado”
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/com-licenca-obrigado-persuasao-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional e reflexiva. O leitor busca entender uma frase popular e sua relação com persuasão, vendas, abordagem, confiança e comportamento.
+
+CATEGORIA
+Persuasão + Vendas
+
+DATA
+2026-09-02
+
+AUTOR
+Rodrigo Castro
+
+LINKS INTERNOS
+/blog/headline-como-criar-titulos-que-prendem-atencao/
+/blog/call-to-action-como-criar-exemplos/
+/blog/copy-para-whatsapp/
+/blog/transformar-caracteristicas-em-beneficios/
+/blog/formula-pas-copywriting/
+
+NOTAS SEO
+- Palavra-chave e tema presentes no title, H1, introdução, desenvolvimento e FAQ.
+- JSON-LD de BlogPosting, BreadcrumbList e FAQPage incluídos.
+- Canonical, OG, Twitter Card, favicon e analytics incluídos.
+- Capa 1200x900 em PNG.
