@@ -5,6 +5,11 @@ function authorized(req){const expected=process.env.LEADS_ADMIN_TOKEN||process.e
 async function brevo(path){const r=await fetch(BREVO_BASE+path,{headers:{accept:'application/json','api-key':key()}});const text=await r.text();let data={};try{data=text?JSON.parse(text):{};}catch(_){data={raw:text};}if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}return data;}
 function eventDate(e){return e&&String(e.date||e.eventTime||e.createdAt||'');}
 function eventType(e){return String(e&&e.event||'').toLowerCase();}
+function isOpen(t){return ['opened','unique_opened','first_opening','proxy_open','unique_proxy_open'].includes(String(t||'').toLowerCase());}
+function isClick(t){t=String(t||'').toLowerCase();return t==='click'||t==='clicked';}
+function messageKey(prefix,id,fallback){return prefix+':'+String(id||fallback||'unknown');}
+function latest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)>new Date(b)?a:b;}
+function earliest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)<new Date(b)?a:b;}
 export default async function handler(req,res){
  if(req.method==='OPTIONS')return res.status(204).end();
  if(req.method!=='GET'){res.setHeader('Allow','GET, OPTIONS');return json(res,405,{ok:false,error:'method_not_allowed'});}
@@ -22,18 +27,35 @@ export default async function handler(req,res){
    const campaignOpens=Array.isArray(campaign.opened)?campaign.opened:[];
    const campaignClicks=Array.isArray(campaign.clicked)?campaign.clicked:[];
    const sentCampaigns=Array.isArray(campaign.messagesSent)?campaign.messagesSent:[];
-   const txOpened=events.filter(e=>['opened','unique_opened','first_opening','proxy_open','unique_proxy_open'].includes(eventType(e)));
-   const txClicked=events.filter(e=>eventType(e)==='click'||eventType(e)==='clicked');
+   const txOpened=events.filter(e=>isOpen(eventType(e)));
+   const txClicked=events.filter(e=>isClick(eventType(e)));
    const txDelivered=events.filter(e=>eventType(e)==='delivered');
    const txSent=events.filter(e=>eventType(e)==='sent');
    const opened=campaignOpens.length>0||txOpened.length>0;
    const clicked=campaignClicks.length>0||txClicked.length>0;
    const sent=sentCampaigns.length>0||txSent.length>0||txDelivered.length>0||opened||clicked;
    const activity=[];
-   for(const e of events){activity.push({type:eventType(e)||'evento',date:eventDate(e),subject:String(e.subject||''),messageId:String(e.messageId||''),source:'transactional'});}
-   for(const o of campaignOpens){activity.push({type:'opened',date:String(o.eventTime||o.date||''),campaignId:o.campaignId||null,source:'campaign'});}
-   for(const c of campaignClicks){const links=Array.isArray(c.links)?c.links:[];if(links.length){for(const l of links)activity.push({type:'clicked',date:String(l.eventTime||''),campaignId:c.campaignId||null,url:String(l.url||''),count:Number(l.count||1),source:'campaign'});}else activity.push({type:'clicked',date:String(c.eventTime||''),campaignId:c.campaignId||null,source:'campaign'});}
+   const grouped={};
+   for(const e of events){
+     const type=eventType(e)||'evento',date=eventDate(e),mid=String(e.messageId||e.message_id||''),subject=String(e.subject||'');
+     activity.push({type,date,subject,messageId:mid,source:'transactional'});
+     const k=messageKey('tx',mid,subject+'|'+date.slice(0,16));
+     const m=grouped[k]||(grouped[k]={kind:'transactional',messageId:mid,campaignId:null,subject:subject||'E-mail transacional',sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]});
+     if(subject&&!m.subject)m.subject=subject;
+     m.lastEventAt=latest(m.lastEventAt,date);
+     if(type==='sent'){m.sent=true;m.sentAt=earliest(m.sentAt,date);}
+     if(type==='delivered'){m.sent=true;m.delivered=true;m.deliveredAt=earliest(m.deliveredAt,date);}
+     if(isOpen(type)){m.sent=true;m.opened=true;m.opens++;m.openedAt=earliest(m.openedAt,date);}
+     if(isClick(type)){m.sent=true;m.clicked=true;m.clicks++;m.clickedAt=earliest(m.clickedAt,date);if(e.link||e.url)m.urls.push(String(e.link||e.url));}
+   }
+   const campaignIds=new Set();
+   for(const s of sentCampaigns){if(s&&s.campaignId!=null)campaignIds.add(String(s.campaignId));const id=s&&s.campaignId;const date=String(s&&s.eventTime||s&&s.date||'');const k=messageKey('campaign',id,date);const m=grouped[k]||(grouped[k]={kind:'campaign',messageId:'',campaignId:id||null,subject:'Campanha '+String(id||''),sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]});m.sent=true;m.sentAt=earliest(m.sentAt,date);m.lastEventAt=latest(m.lastEventAt,date);}
+   for(const o of campaignOpens){const id=o&&o.campaignId;if(id!=null)campaignIds.add(String(id));const date=String(o&&o.eventTime||o&&o.date||'');activity.push({type:'opened',date,campaignId:id||null,source:'campaign'});const k=messageKey('campaign',id,date);const m=grouped[k]||(grouped[k]={kind:'campaign',messageId:'',campaignId:id||null,subject:'Campanha '+String(id||''),sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]});m.sent=true;m.opened=true;m.opens++;m.openedAt=earliest(m.openedAt,date);m.lastEventAt=latest(m.lastEventAt,date);}
+   for(const c of campaignClicks){const id=c&&c.campaignId;if(id!=null)campaignIds.add(String(id));const links=Array.isArray(c&&c.links)?c.links:[];const baseDate=String(c&&c.eventTime||c&&c.date||'');if(links.length){for(const l of links){const date=String(l&&l.eventTime||baseDate||'');const url=String(l&&l.url||'');activity.push({type:'clicked',date,campaignId:id||null,url,count:Number(l&&l.count||1),source:'campaign'});const k=messageKey('campaign',id,date);const m=grouped[k]||(grouped[k]={kind:'campaign',messageId:'',campaignId:id||null,subject:'Campanha '+String(id||''),sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]});m.sent=true;m.clicked=true;m.clicks+=Number(l&&l.count||1);m.clickedAt=earliest(m.clickedAt,date);m.lastEventAt=latest(m.lastEventAt,date);if(url)m.urls.push(url);}}else{activity.push({type:'clicked',date:baseDate,campaignId:id||null,source:'campaign'});const k=messageKey('campaign',id,baseDate);const m=grouped[k]||(grouped[k]={kind:'campaign',messageId:'',campaignId:id||null,subject:'Campanha '+String(id||''),sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]});m.sent=true;m.clicked=true;m.clicks++;m.clickedAt=earliest(m.clickedAt,baseDate);m.lastEventAt=latest(m.lastEventAt,baseDate);}}
+   const campaignNames={};
+   await Promise.all(Array.from(campaignIds).slice(0,30).map(async id=>{try{const d=await brevo('/emailCampaigns/'+encodeURIComponent(id));campaignNames[id]=String(d&&d.name||d&&d.subject||('Campanha '+id));}catch(_){campaignNames[id]='Campanha '+id;}}));
+   const messages=Object.values(grouped).map(m=>{if(m.kind==='campaign'&&m.campaignId!=null)m.subject=campaignNames[String(m.campaignId)]||m.subject;m.urls=Array.from(new Set(m.urls)).slice(0,10);m.date=m.sentAt||m.deliveredAt||m.openedAt||m.clickedAt||m.lastEventAt||'';return m;}).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
    activity.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
-   return json(res,200,{ok:true,email,summary:{sent,opened,clicked,opens:campaignOpens.length+txOpened.length,clicks:campaignClicks.length+txClicked.length,delivered:txDelivered.length},activity:activity.slice(0,100),campaignStatsAvailable:campaignResult.status==='fulfilled',transactionalStatsAvailable:eventResult.status==='fulfilled'});
+   return json(res,200,{ok:true,email,summary:{sent,opened,clicked,opens:campaignOpens.length+txOpened.length,clicks:campaignClicks.length+txClicked.length,delivered:txDelivered.length,messages:messages.length},messages:messages.slice(0,100),activity:activity.slice(0,150),campaignStatsAvailable:campaignResult.status==='fulfilled',transactionalStatsAvailable:eventResult.status==='fulfilled'});
  }catch(e){console.error('Brevo activity error',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});}
 }
