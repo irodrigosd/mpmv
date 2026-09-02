@@ -1,5 +1,7 @@
 const BREVO_BASE = 'https://api.brevo.com/v3';
 const TRACK_PREFIX = 'MPMV_TRACK|';
+const TRACK_CONTACT_EMAIL = 'rastreamento@maispersuasaomaisvendas.com.br';
+let trackingContactPromise;
 
 function apiKey(){
   return process.env.BREVO_API_KEY || process.env.BREVO_KEY || process.env.SENDINBLUE_API_KEY || '';
@@ -58,8 +60,36 @@ async function brevo(path,options={}){
   });
   const text=await r.text(); let data={};
   try{data=text?JSON.parse(text):{};}catch(_){data={raw:text};}
-  if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;throw e;}
+  if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}
   return data;
+}
+async function ensureTrackingContact(){
+  if(trackingContactPromise) return trackingContactPromise;
+  trackingContactPromise=(async()=>{
+    try{
+      const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
+      if(contact&&Number(contact.id)>0) return Number(contact.id);
+    }catch(e){
+      if(e.status!==404) throw e;
+    }
+
+    try{
+      const created=await brevo('/contacts',{
+        method:'POST',
+        body:JSON.stringify({email:TRACK_CONTACT_EMAIL,updateEnabled:true,getId:true})
+      });
+      if(created&&Number(created.id)>0) return Number(created.id);
+    }catch(e){
+      if(e.status!==400) throw e;
+    }
+
+    const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
+    if(!contact||!Number(contact.id)) throw new Error('tracking_contact_missing');
+    return Number(contact.id);
+  })();
+
+  try{return await trackingContactPromise;}
+  catch(e){trackingContactPromise=null;throw e;}
 }
 function allowedOrigin(req){
   const origin=String(req.headers.origin||'');
@@ -80,20 +110,28 @@ module.exports=async function handler(req,res){
       const data=cleanObj(body.data||{});
       if(!data.sessionId) return json(res,400,{ok:false,error:'missing_session'});
       data.updatedAt=new Date().toISOString();
+      const trackingContactId=await ensureTrackingContact();
+
       if(action==='start'){
-        const created=await brevo('/crm/notes',{method:'POST',body:JSON.stringify({text:encodeTrack(data)})});
+        const created=await brevo('/crm/notes',{
+          method:'POST',
+          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
+        });
         return json(res,200,{ok:true,noteId:String(created.id||'')});
       }
       if(action==='update'){
         const noteId=clean(body.noteId||data.noteId,100);
         if(!noteId) return json(res,400,{ok:false,error:'missing_note_id'});
         data.noteId=noteId;
-        await brevo('/crm/notes/'+encodeURIComponent(noteId),{method:'PATCH',body:JSON.stringify({text:encodeTrack(data)})});
+        await brevo('/crm/notes/'+encodeURIComponent(noteId),{
+          method:'PATCH',
+          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
+        });
         return json(res,200,{ok:true});
       }
       return json(res,400,{ok:false,error:'invalid_action'});
     }catch(e){
-      console.error('Tracking POST',e);
+      console.error('Tracking POST Error:',e);
       return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});
     }
   }
@@ -104,10 +142,18 @@ module.exports=async function handler(req,res){
       const days=Math.max(1,Math.min(90,Number(req.query&&req.query.days)||7));
       const limit=Math.max(50,Math.min(1000,Number(req.query&&req.query.limit)||500));
       const dateFrom=Date.now()-days*86400000;
+      const trackingContactId=await ensureTrackingContact();
       let offset=0, all=[];
       while(all.length<limit){
         const size=Math.min(100,limit-all.length);
-        const q=new URLSearchParams({dateFrom:String(dateFrom),offset:String(offset),limit:String(size),sort:'desc'});
+        const q=new URLSearchParams({
+          entity:'contacts',
+          entityIds:String(trackingContactId),
+          dateFrom:String(dateFrom),
+          offset:String(offset),
+          limit:String(size),
+          sort:'desc'
+        });
         const chunk=await brevo('/crm/notes?'+q.toString());
         const arr=Array.isArray(chunk)?chunk:(Array.isArray(chunk.notes)?chunk.notes:[]);
         all=all.concat(arr);
@@ -117,7 +163,7 @@ module.exports=async function handler(req,res){
       const sessions=all.map(parseTrack).filter(Boolean).sort((a,b)=>new Date(b.startedAt||b.createdAt||0)-new Date(a.startedAt||a.createdAt||0));
       return json(res,200,{ok:true,days,count:sessions.length,sessions});
     }catch(e){
-      console.error('Tracking GET',e);
+      console.error('Tracking GET Error:',e);
       return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});
     }
   }
