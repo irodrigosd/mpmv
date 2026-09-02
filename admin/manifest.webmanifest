@@ -1,0 +1,19 @@
+{
+  "name": "MPMV OS",
+  "short_name": "MPMV OS",
+  "description": "Central operacional da Mais Persuasão, Mais Vendas.",
+  "start_url": "/admin/",
+  "scope": "/admin/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07101a",
+  "theme_color": "#07101a",
+  "icons": [
+    {
+      "src": "/admin/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
