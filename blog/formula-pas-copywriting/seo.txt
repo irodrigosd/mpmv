@@ -1,0 +1,59 @@
+TÍTULO SEO
+Fórmula PAS: Como Usar em Copywriting | MPMV
+
+SLUG
+formula-pas-copywriting
+
+PALAVRA-CHAVE PRINCIPAL
+fórmula PAS
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+PAS copywriting
+problema agitação solução
+como usar PAS
+estrutura PAS
+exemplos de PAS
+copy PAS
+PAS marketing
+PAS vendas
+
+META DESCRIPTION
+Aprenda a fórmula PAS e use Problema, Agitação e Solução para escrever copy de vendas com progressão, contexto e CTA sem deixar o texto forçado.
+
+H1
+Fórmula PAS: como escrever uma copy de vendas sem deixar o texto forçado
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/formula-pas-copywriting/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação prática. O leitor quer entender o que é a fórmula PAS, como usar Problema, Agitação e Solução e ver exemplos em anúncios, e-mails, páginas, Instagram e WhatsApp.
+
+FONTES PRINCIPAIS
+Guia Prático Mais Persuasão, Mais Vendas — capítulos Manipulação x Persuasão, A Emoção e O Script
+Diretriz de Escrita Falada MPMV — estrutura escondida, progressão, benefício em movimento e linguagem de conversa
+Manual Operacional MPMV — promessa, prova, CTA, coerência e regras para artigos
+Observação: os materiais MPMV consultados sustentam a lógica de problema, consequência, solução, prova e ação, mas não nomeiam diretamente a sigla PAS. A nomenclatura PAS é usada neste artigo como framework complementar de copywriting.
+
+CATEGORIA
+Copywriting + Persuasão
+
+DATA
+2026-09-02
+
+AUTOR
+Rodrigo Castro
+
+LINKS INTERNOS
+/blog/headline-como-criar-titulos-que-prendem-atencao/
+/blog/transformar-caracteristicas-em-beneficios/
+/blog/call-to-action-como-criar-exemplos/
+/blog/como-criar-uma-oferta-irresistivel-sem-dar-desconto-nem-encher-de-bonus/
+/blog/copy-para-whatsapp/
+
+NOTAS SEO
+- Palavra-chave principal no title, H1, introdução, corpo e FAQ.
+- H2 cobre significado, aplicação, exemplos, erros, canais e checklist.
+- FAQPage, BlogPosting e BreadcrumbList incluídos em JSON-LD.
+- Canonical, OG, Twitter Card, favicon e analytics incluídos.
+- Capa 1200x900 em PNG para compartilhamento.
