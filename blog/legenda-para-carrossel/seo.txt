@@ -1,0 +1,47 @@
+ARTIGO: Como escrever legendas para o seu carrossel e transformar atenção em ação
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/legenda-para-carrossel/
+
+SLUG:
+legenda-para-carrossel
+
+PALAVRA-CHAVE PRINCIPAL:
+legenda para carrossel
+
+PALAVRAS-CHAVE SECUNDÁRIAS:
+- como escrever legenda para carrossel
+- legenda para carrossel no Instagram
+- o que escrever na legenda de carrossel
+- modelo de legenda para carrossel
+- legenda para carrossel de venda
+- legenda para carrossel educativo
+- CTA para carrossel
+
+TÍTULO SEO:
+Legenda para Carrossel: Como Escrever e Gerar Ação | MPMV
+
+META DESCRIÇÃO:
+Aprenda como escrever legenda para carrossel sem repetir os slides, usando gancho, contexto, complemento e CTA para gerar ação no Instagram.
+
+CATEGORIA:
+Instagram + Conteúdo
+
+INTENÇÃO DE BUSCA:
+Informacional com aplicação comercial. O leitor quer saber o que escrever na legenda de um carrossel e como transformar o conteúdo em comentários, salvamentos, cliques ou vendas.
+
+CTA:
+Baixar gratuitamente o [Guia Prático] Persuasão pra Vender Todo Santo Dia.
+
+LINKS INTERNOS:
+- /blog/copy-para-instagram/
+- /blog/transformar-caracteristicas-em-beneficios/
+
+SCHEMAS:
+- BlogPosting
+- BreadcrumbList
+- FAQPage
+
+FAVICON:
+- <link href="/favicon.png" rel="icon" type="image/png">
+- favicon.png incluído na raiz do ZIP
