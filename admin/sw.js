@@ -1,4 +1,4 @@
-const CACHE='mpmv-os-v5';
+const CACHE='mpmv-os-v6';
 const SHELL=['/admin/','/admin/leads360/','/admin/brevo/','/admin/relatorios/','/admin/manifest.webmanifest','/admin/icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
