@@ -1,0 +1,54 @@
+ARTIGO: Roteiros cinematográficos: o segredo por trás
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/roteiros-cinematograficos-o-segredo-por-tras/
+
+SLUG:
+roteiros-cinematograficos-o-segredo-por-tras
+
+PALAVRA-CHAVE PRINCIPAL:
+roteiros cinematográficos
+
+PALAVRAS-CHAVE SECUNDÁRIAS:
+- roteiro cinematográfico
+- como escrever um roteiro cinematográfico
+- estrutura de roteiro
+- segredo de um bom roteiro
+- roteiro e storytelling
+- roteiro para conteúdo
+- storytelling para vendas
+
+TÍTULO SEO:
+Roteiros Cinematográficos: O Segredo por Trás | MPMV
+
+META DESCRIÇÃO:
+Descubra o segredo por trás dos roteiros cinematográficos e aprenda a usar objetivo, conflito, expectativa e recompensa em conteúdo, copy e vendas.
+
+CATEGORIA:
+Storytelling + Persuasão
+
+INTENÇÃO DE BUSCA:
+Informacional. O leitor quer entender como roteiros cinematográficos prendem a atenção e como aplicar os mesmos princípios em histórias, conteúdo e vendas.
+
+CTA:
+Baixar gratuitamente o [Guia Prático] Persuasão pra Vender Todo Santo Dia.
+
+LINKS INTERNOS:
+- /blog/ideia-central-de-vendas/
+- /blog/copy-para-instagram/
+
+FONTE EXTERNA:
+- https://digitalcollections.oscars.org/
+
+SCHEMAS:
+- BlogPosting
+- BreadcrumbList
+- FAQPage
+
+FAVICON:
+- <link href="/favicon.png" rel="icon" type="image/png">
+- favicon.png incluído na raiz do ZIP
+
+CAPA:
+- Vídeo MP4 em loop, sem áudio, com autoplay, muted e playsinline
+- SVG mantido como poster, fallback e imagem de compartilhamento
