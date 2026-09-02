@@ -22,10 +22,7 @@ function adminAuthorized(req){
 function clean(v,max=500){ return String(v==null?'':v).trim().slice(0,max); }
 function cleanObj(raw){
   const d=raw&&typeof raw==='object'?raw:{};
-  const pages=Array.isArray(d.pages)?d.pages.slice(-25).map(p=>({
-    path:clean(p&&p.path,300),
-    at:clean(p&&p.at,40)
-  })):[];
+  const pages=Array.isArray(d.pages)?d.pages.slice(-25).map(p=>({path:clean(p&&p.path,300),at:clean(p&&p.at,40)})):[];
   return {
     sessionId:clean(d.sessionId,100), noteId:clean(d.noteId,100),
     startedAt:clean(d.startedAt,40), updatedAt:clean(d.updatedAt,40),
@@ -42,9 +39,7 @@ function cleanObj(raw){
     pages
   };
 }
-function encodeTrack(data){
-  return TRACK_PREFIX + Buffer.from(JSON.stringify(cleanObj(data)),'utf8').toString('base64');
-}
+function encodeTrack(data){ return TRACK_PREFIX + Buffer.from(JSON.stringify(cleanObj(data)),'utf8').toString('base64'); }
 function parseTrack(note){
   const text=String(note&&note.text||'').replace(/<[^>]+>/g,'').trim();
   if(!text.startsWith(TRACK_PREFIX)) return null;
@@ -54,10 +49,7 @@ function parseTrack(note){
   }catch(_){ return null; }
 }
 async function brevo(path,options={}){
-  const r=await fetch(BREVO_BASE+path,{
-    ...options,
-    headers:{accept:'application/json','api-key':apiKey(),'content-type':'application/json',...(options.headers||{})}
-  });
+  const r=await fetch(BREVO_BASE+path,{...options,headers:{accept:'application/json','api-key':apiKey(),'content-type':'application/json',...(options.headers||{})}});
   const text=await r.text(); let data={};
   try{data=text?JSON.parse(text):{};}catch(_){data={raw:text};}
   if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}
@@ -69,24 +61,16 @@ async function ensureTrackingContact(){
     try{
       const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
       if(contact&&Number(contact.id)>0) return Number(contact.id);
-    }catch(e){
-      if(e.status!==404) throw e;
-    }
+    }catch(e){ if(e.status!==404) throw e; }
     try{
-      const created=await brevo('/contacts',{
-        method:'POST',
-        body:JSON.stringify({email:TRACK_CONTACT_EMAIL,updateEnabled:true,getId:true})
-      });
+      const created=await brevo('/contacts',{method:'POST',body:JSON.stringify({email:TRACK_CONTACT_EMAIL,updateEnabled:true,getId:true})});
       if(created&&Number(created.id)>0) return Number(created.id);
-    }catch(e){
-      if(e.status!==400) throw e;
-    }
+    }catch(e){ if(e.status!==400) throw e; }
     const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
     if(!contact||!Number(contact.id)) throw new Error('tracking_contact_missing');
     return Number(contact.id);
   })();
-  try{return await trackingContactPromise;}
-  catch(e){trackingContactPromise=null;throw e;}
+  try{return await trackingContactPromise;}catch(e){trackingContactPromise=null;throw e;}
 }
 function allowedOrigin(req){
   const origin=String(req.headers.origin||'');
@@ -109,20 +93,15 @@ module.exports=async function handler(req,res){
       data.updatedAt=new Date().toISOString();
       const trackingContactId=await ensureTrackingContact();
       if(action==='start'){
-        const created=await brevo('/crm/notes',{
-          method:'POST',
-          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
-        });
+        const created=await brevo('/crm/notes',{method:'POST',body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})});
+        console.log('Tracking START',{noteId:String(created.id||''),contactId:trackingContactId,sessionId:data.sessionId});
         return json(res,200,{ok:true,noteId:String(created.id||'')});
       }
       if(action==='update'){
         const noteId=clean(body.noteId||data.noteId,100);
         if(!noteId) return json(res,400,{ok:false,error:'missing_note_id'});
         data.noteId=noteId;
-        await brevo('/crm/notes/'+encodeURIComponent(noteId),{
-          method:'PATCH',
-          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
-        });
+        await brevo('/crm/notes/'+encodeURIComponent(noteId),{method:'PATCH',body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})});
         return json(res,200,{ok:true});
       }
       return json(res,400,{ok:false,error:'invalid_action'});
@@ -137,25 +116,25 @@ module.exports=async function handler(req,res){
     try{
       const days=Math.max(1,Math.min(90,Number(req.query&&req.query.days)||7));
       const limit=Math.max(50,Math.min(1000,Number(req.query&&req.query.limit)||500));
-      const dateFrom=Date.now()-days*86400000;
+      const cutoff=Date.now()-days*86400000;
+      const trackingContactId=await ensureTrackingContact();
       let offset=0, all=[];
       while(all.length<limit){
         const size=Math.min(100,limit-all.length);
-        const q=new URLSearchParams({
-          dateFrom:String(dateFrom),
-          offset:String(offset),
-          limit:String(size),
-          sort:'desc'
-        });
+        const q=new URLSearchParams({entity:'contacts',entityIds:String(trackingContactId),offset:String(offset),limit:String(size),sort:'desc'});
         const chunk=await brevo('/crm/notes?'+q.toString());
         const arr=Array.isArray(chunk)?chunk:(Array.isArray(chunk.notes)?chunk.notes:(Array.isArray(chunk.items)?chunk.items:[]));
         all=all.concat(arr);
         if(arr.length<size) break;
         offset+=arr.length;
       }
-      const sessions=all.map(parseTrack).filter(Boolean).sort((a,b)=>new Date(b.startedAt||b.createdAt||0)-new Date(a.startedAt||a.createdAt||0));
-      console.log('Tracking GET diagnostic',{rawNotes:all.length,parsedSessions:sessions.length,firstPrefix:all[0]&&String(all[0].text||'').slice(0,24)});
-      return json(res,200,{ok:true,days,count:sessions.length,sessions,diagnostic:{rawNotes:all.length,parsedSessions:sessions.length}});
+      const parsed=all.map(parseTrack).filter(Boolean);
+      const sessions=parsed.filter(s=>{
+        const t=Date.parse(s.startedAt||s.createdAt||'');
+        return !Number.isFinite(t) || t>=cutoff;
+      }).sort((a,b)=>new Date(b.startedAt||b.createdAt||0)-new Date(a.startedAt||a.createdAt||0));
+      console.log('Tracking GET diagnostic',{contactId:trackingContactId,rawNotes:all.length,parsedSessions:parsed.length,afterDateFilter:sessions.length,firstPrefix:all[0]&&String(all[0].text||'').slice(0,24)});
+      return json(res,200,{ok:true,days,count:sessions.length,sessions,diagnostic:{contactId:trackingContactId,rawNotes:all.length,parsedSessions:parsed.length,afterDateFilter:sessions.length}});
     }catch(e){
       console.error('Tracking GET Error:',e);
       return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});
