@@ -1,0 +1,57 @@
+TÍTULO SEO
+Método AIDA: Como Usar em Copywriting | MPMV
+
+SLUG
+metodo-aida-copywriting
+
+PALAVRA-CHAVE PRINCIPAL
+método AIDA
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+AIDA copywriting
+AIDA marketing
+como usar AIDA
+AIDA exemplos
+estrutura AIDA
+AIDA vendas
+AIDA atenção interesse desejo ação
+copywriting AIDA
+
+META DESCRIPTION
+Aprenda o método AIDA e use Atenção, Interesse, Desejo e Ação para escrever copy de vendas com progressão, exemplos e CTA sem soar como fórmula pronta.
+
+H1
+Método AIDA: como escrever uma copy de vendas sem deixar o texto com cara de fórmula
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/metodo-aida-copywriting/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação prática. O leitor quer entender o que é o método AIDA, como usar cada etapa e ver exemplos de AIDA em copywriting, Instagram, e-mail e página de vendas.
+
+FONTES PRINCIPAIS
+Guia Prático Mais Persuasão, Mais Vendas — capítulo O Script (AIDA: Atenção, Interesse, Desejo e Ação)
+Diretriz de Escrita Falada MPMV — estrutura escondida, progressão e linguagem de conversa
+Manual Operacional MPMV — promessa, prova, CTA e regras para artigos
+
+CATEGORIA
+Copywriting + Persuasão
+
+DATA
+2026-09-02
+
+AUTOR
+Rodrigo Castro
+
+LINKS INTERNOS
+/blog/headline-como-criar-titulos-que-prendem-atencao/
+/blog/transformar-caracteristicas-em-beneficios/
+/blog/call-to-action-como-criar-exemplos/
+/blog/como-escrever-email-de-vendas/
+
+NOTAS SEO
+- Palavra-chave principal no title, H1, introdução, FAQ e corpo.
+- H2 responde intenções complementares: significado, uso, exemplos, erros e checklist.
+- FAQPage, BlogPosting e BreadcrumbList incluídos em JSON-LD.
+- Canonical, OG, Twitter Card, favicon e analytics incluídos.
+- Capa 1200x900 em PNG para compartilhamento.
