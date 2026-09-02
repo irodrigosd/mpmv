@@ -1,0 +1,46 @@
+ARTIGO: Como fazer copy matadora pra vender no Instagram sem parecer propaganda
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/copy-para-instagram/
+
+SLUG:
+copy-para-instagram
+
+PALAVRA-CHAVE PRINCIPAL:
+copy para Instagram
+
+PALAVRAS-CHAVE SECUNDÁRIAS:
+- como fazer copy para Instagram
+- copy para vendas no Instagram
+- copywriting para Instagram
+- legenda para vender no Instagram
+- como vender no Instagram sem parecer propaganda
+- exemplos de copy para Instagram
+- CTA para Instagram
+
+TÍTULO SEO:
+Copy para Instagram: Como Vender Sem Parecer Propaganda
+
+META DESCRIÇÃO:
+Aprenda a criar copy para Instagram com gancho, benefício, prova e CTA para vender em posts, Reels e Stories sem soar como propaganda.
+
+CATEGORIA:
+Instagram + Copywriting
+
+INTENÇÃO DE BUSCA:
+Informacional com aplicação comercial. O leitor quer aprender a escrever textos, legendas e roteiros que ajudem a vender no Instagram.
+
+CTA:
+Baixar gratuitamente o Guia Prático Persuasão pra Vender Todo Santo Dia.
+
+LINKS INTERNOS:
+- /blog/o-que-e-copywriting/
+- /blog/ideia-central-de-vendas/
+- /blog/transformar-caracteristicas-em-beneficios/
+- /blog/prova-social-nas-vendas/
+- /blog/como-criar-posts-que-vendem-com-chatgpt/
+
+SCHEMAS:
+- BlogPosting
+- BreadcrumbList
+- FAQPage
