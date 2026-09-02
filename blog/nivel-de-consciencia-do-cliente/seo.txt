@@ -1,0 +1,66 @@
+TÍTULO SEO
+Nível de Consciência do Cliente: Como Adaptar sua Copy | MPMV
+
+SLUG
+nivel-de-consciencia-do-cliente
+
+PALAVRA-CHAVE PRINCIPAL
+nível de consciência do cliente
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+níveis de consciência
+consciência do cliente
+copy para cada nível de consciência
+como adaptar a copy
+mensagem de vendas
+cliente sem urgência
+cliente com urgência
+upsell
+
+META DESCRIPTION
+Aprenda a adaptar sua copy ao nível de consciência do cliente. Veja os 4 níveis usados no MPMV e como mudar abordagem, prova, benefício e CTA em cada situação.
+
+H1
+Como adaptar sua copy ao nível de consciência do cliente sem falar com todo mundo do mesmo jeito
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/nivel-de-consciencia-do-cliente/
+
+INTENÇÃO DE BUSCA
+Informacional e prática. O leitor quer entender o que são níveis de consciência, identificar em qual situação o cliente está e adaptar a mensagem de vendas a esse estágio.
+
+CATEGORIA
+Copywriting + Estratégia de Mensagem
+
+DATA
+2026-09-02
+
+AUTOR
+Rodrigo Castro
+
+FONTES PRINCIPAIS
+Guia Prático Mais Persuasão, Mais Vendas — Capítulo V, O Cliente, páginas 13 e 14.
+Diretriz de Escrita Falada MPMV — progressão, linguagem de conversa e estrutura escondida.
+Manual Operacional MPMV — profundidade conforme nível de consciência, intenção de busca e etapa do funil.
+
+NOTA DE PRECISÃO
+Este artigo usa os 4 níveis descritos no Guia Prático MPMV:
+1. cliente não sabe que tem um problema;
+2. cliente sabe que tem o problema, mas não tem urgência;
+3. cliente sabe que tem o problema e tem urgência;
+4. cliente já comprou.
+O artigo não apresenta essa classificação como equivalente automática a outros modelos de níveis de consciência existentes no copywriting.
+
+LINKS INTERNOS
+/blog/storytelling-para-vender-sem-inventar-historias/
+/blog/headline-como-criar-titulos-que-prendem-atencao/
+/blog/call-to-action-como-criar-exemplos/
+/blog/como-criar-uma-oferta-irresistivel-sem-dar-desconto-nem-encher-de-bonus/
+/blog/copy-para-whatsapp/
+
+NOTAS SEO
+- Palavra-chave principal no title, H1, abertura, H2 e FAQ.
+- Estrutura orientada à intenção de busca: definição, diagnóstico, aplicação por nível, exemplos, erros e checklist.
+- JSON-LD de BlogPosting, BreadcrumbList e FAQPage.
+- Canonical, Open Graph, Twitter Card, favicon e analytics incluídos.
+- Capa 1200x900 em PNG.
