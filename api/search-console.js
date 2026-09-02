@@ -19,7 +19,7 @@ async function accessToken(){
   const sign=crypto.createSign('RSA-SHA256');sign.update(unsigned);sign.end();
   const sig=sign.sign(PRIVATE_KEY).toString('base64').replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
   const assertion=unsigned+'.'+sig;
-  const r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({grant_type:'urn:ietf:params:oauth2:grant-type:jwt-bearer',assertion})});
+  const r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({grant_type:'urn:ietf:params:oauth:grant-type:jwt-bearer',assertion})});
   const data=await r.json().catch(()=>({}));
   if(!r.ok||!data.access_token) throw Object.assign(new Error(data.error_description||data.error||'google_auth_failed'),{status:r.status||500});
   return data.access_token;
