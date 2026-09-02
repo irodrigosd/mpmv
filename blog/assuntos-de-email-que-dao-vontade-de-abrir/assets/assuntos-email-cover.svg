@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780">
+<rect width="1200" height="780" fill="#eaf7ff"/><circle cx="1040" cy="90" r="210" fill="#91d4ff" opacity=".25"/>
+<rect x="82" y="88" width="160" height="38" rx="19" fill="#08263f"/>
+<text x="162" y="113" fill="#dff3ff" font-size="14" font-weight="700" text-anchor="middle" font-family="Arial">ASSUNTO DE E-MAIL</text>
+<text x="82" y="210" fill="#10283e" font-size="64" font-weight="800" font-family="Arial">Dê um motivo</text>
+<text x="82" y="282" fill="#10283e" font-size="64" font-weight="800" font-family="Arial">para abrir.</text>
+<text x="82" y="350" fill="#0874ad" font-size="30" font-weight="700" font-family="Arial">Curiosidade + clareza + promessa paga</text>
+<rect x="710" y="180" width="395" height="470" rx="28" fill="#fff" stroke="#c3ddea" stroke-width="3"/>
+<text x="742" y="230" fill="#17384d" font-size="20" font-weight="800" font-family="Arial">Caixa de entrada</text>
+<rect x="738" y="270" width="340" height="80" rx="16" fill="#e8f5fc"/>
+<text x="768" y="302" fill="#17384d" font-size="14" font-weight="800" font-family="Arial">MPMV</text>
+<text x="768" y="330" fill="#17384d" font-size="17" font-family="Arial">O ponto da oferta que ninguém revisa</text>
+<rect x="738" y="372" width="340" height="80" rx="16" fill="#fff" stroke="#e2edf3"/>
+<text x="768" y="404" fill="#718493" font-size="14" font-weight="800" font-family="Arial">Newsletter</text>
+<text x="768" y="432" fill="#718493" font-size="17" font-family="Arial">Novidades e ofertas imperdíveis</text>
+<rect x="738" y="474" width="340" height="80" rx="16" fill="#fff" stroke="#e2edf3"/>
+<text x="768" y="506" fill="#718493" font-size="14" font-weight="800" font-family="Arial">Marketing</text>
+<text x="768" y="534" fill="#718493" font-size="17" font-family="Arial">Confira nossas condições especiais</text>
+<text x="82" y="720" fill="#08263f" font-size="20" font-weight="800" font-family="Arial">MPMV — MAIS PERSUASÃO, MAIS VENDAS</text></svg>
