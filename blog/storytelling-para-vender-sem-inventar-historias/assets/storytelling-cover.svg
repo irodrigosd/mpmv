@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+    <stop offset="0" stop-color="#fbfdff"/>
+    <stop offset="0.62" stop-color="#e9f7ff"/>
+    <stop offset="1" stop-color="#c8eaff"/>
+  </linearGradient>
+  <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#16455f" flood-opacity=".16"/>
+  </filter>
+</defs>
+<rect width="1200" height="780" rx="44" fill="url(#bg)"/>
+<circle cx="1030" cy="90" r="210" fill="#94d7ff" opacity=".22"/>
+<circle cx="70" cy="720" r="260" fill="#94d7ff" opacity=".16"/>
+
+<g transform="translate(82 86)">
+  <rect x="0" y="0" width="134" height="38" rx="19" fill="#08263f"/>
+  <text x="67" y="25" fill="#dff3ff" font-size="14" font-weight="800" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="1.3">STORYTELLING</text>
+  <text x="0" y="120" fill="#10283e" font-size="64" font-weight="800" font-family="Arial, sans-serif">História que vende</text>
+  <text x="0" y="190" fill="#10283e" font-size="64" font-weight="800" font-family="Arial, sans-serif">sem inventar.</text>
+  <text x="0" y="253" fill="#0874ad" font-size="29" font-weight="700" font-family="Arial, sans-serif">Fato → conflito → mudança → prova → oferta</text>
+  <text x="0" y="307" fill="#4c687b" font-size="23" font-family="Arial, sans-serif">Como transformar experiência real em argumento de venda.</text>
+</g>
+
+<g transform="translate(710 185)" filter="url(#s)">
+  <rect x="0" y="0" width="385" height="470" rx="28" fill="#fff" stroke="#c2ddea" stroke-width="3"/>
+  <rect x="32" y="34" width="110" height="26" rx="13" fill="#dff3ff"/>
+  <text x="87" y="52" fill="#086b9f" font-size="12" font-weight="900" text-anchor="middle" font-family="Arial, sans-serif">CASO REAL</text>
+  <line x1="68" y1="118" x2="68" y2="382" stroke="#9bd8fb" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="68" cy="132" r="18" fill="#08263f"/>
+  <circle cx="68" cy="225" r="18" fill="#08263f"/>
+  <circle cx="68" cy="318" r="18" fill="#08263f"/>
+  <circle cx="68" cy="386" r="18" fill="#0874ad"/>
+
+  <text x="105" y="128" fill="#17384d" font-size="20" font-weight="800" font-family="Arial, sans-serif">Antes</text>
+  <text x="105" y="153" fill="#557084" font-size="16" font-family="Arial, sans-serif">O problema que existia.</text>
+
+  <text x="105" y="221" fill="#17384d" font-size="20" font-weight="800" font-family="Arial, sans-serif">Conflito</text>
+  <text x="105" y="246" fill="#557084" font-size="16" font-family="Arial, sans-serif">O que travava a mudança.</text>
+
+  <text x="105" y="314" fill="#17384d" font-size="20" font-weight="800" font-family="Arial, sans-serif">Decisão</text>
+  <text x="105" y="339" fill="#557084" font-size="16" font-family="Arial, sans-serif">O que foi feito de verdade.</text>
+
+  <text x="105" y="382" fill="#17384d" font-size="20" font-weight="800" font-family="Arial, sans-serif">Resultado</text>
+  <text x="105" y="407" fill="#557084" font-size="16" font-family="Arial, sans-serif">Só o que pode ser provado.</text>
+</g>
+
+<text x="82" y="716" fill="#08263f" font-size="20" font-weight="800" font-family="Arial, sans-serif">MPMV — MAIS PERSUASÃO, MAIS VENDAS</text>
+</svg>
