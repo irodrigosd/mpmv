@@ -1,30 +1,166 @@
-const BREVO_BASE='https://api.brevo.com/v3';
-const TRACK_PREFIX='MPMV_TRACK|';
-const TRACK_CONTACT_EMAIL='rastreamento@maispersuasaomaisvendas.com.br';
+const BREVO_BASE = 'https://api.brevo.com/v3';
+const TRACK_PREFIX = 'MPMV_TRACK|';
+const TRACK_CONTACT_EMAIL = 'rastreamento@maispersuasaomaisvendas.com.br';
 let trackingContactPromise;
 
-function apiKey(){return process.env.BREVO_API_KEY||process.env.BREVO_KEY||process.env.SENDINBLUE_API_KEY||''}
-function json(res,status,body){res.setHeader('Cache-Control','no-store, max-age=0');res.setHeader('X-Content-Type-Options','nosniff');return res.status(status).json(body)}
-function adminAuthorized(req){const expected=process.env.LEADS_ADMIN_TOKEN||process.env.BLOG_ADMIN_TOKEN||'';if(!expected)return false;const direct=String(req.headers['x-admin-token']||'');const auth=String(req.headers.authorization||'');const bearer=auth.toLowerCase().startsWith('bearer ')?auth.slice(7).trim():'';return direct===expected||bearer===expected}
-function clean(v,max=500){return String(v==null?'':v).trim().slice(0,max)}
-function cleanObj(raw){const d=raw&&typeof raw==='object'?raw:{};const pages=Array.isArray(d.pages)?d.pages.slice(-25).map(p=>({path:clean(p&&p.path,300),at:clean(p&&p.at,40)})):[];return {sessionId:clean(d.sessionId,100),noteId:clean(d.noteId,100),startedAt:clean(d.startedAt,40),updatedAt:clean(d.updatedAt,40),landingPage:clean(d.landingPage,500),currentPage:clean(d.currentPage,500),referrer:clean(d.referrer,1000),source:clean(d.source,150),medium:clean(d.medium,150),campaign:clean(d.campaign,250),adset:clean(d.adset,250),ad:clean(d.ad,250),term:clean(d.term,250),fbclid:clean(d.fbclid,500),gclid:clean(d.gclid,500),activeSeconds:Math.max(0,Math.min(86400,Number(d.activeSeconds)||0)),elapsedSeconds:Math.max(0,Math.min(86400,Number(d.elapsedSeconds)||0)),pageViews:Math.max(1,Math.min(100,Number(d.pageViews)||1)),device:clean(d.device,80),browser:clean(d.browser,120),converted:!!d.converted,conversionType:clean(d.conversionType,80),convertedAt:clean(d.convertedAt,40),name:clean(d.name,120),email:clean(d.email,180),phone:clean(d.phone,80),pages}}
-function encodeTrack(data){return TRACK_PREFIX+Buffer.from(JSON.stringify(cleanObj(data)),'utf8').toString('base64')}
-function parseTrack(note){let text=String(note&&note.text||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim();const i=text.indexOf(TRACK_PREFIX);if(i<0)return null;text=text.slice(i+TRACK_PREFIX.length).trim();try{const data=JSON.parse(Buffer.from(text,'base64').toString('utf8'));return {...cleanObj(data),noteId:String(note.id||data.noteId||''),createdAt:note.createdAt||'',noteUpdatedAt:note.updatedAt||''}}catch(_){return null}}
-async function brevo(path,options={}){const r=await fetch(BREVO_BASE+path,{...options,headers:{accept:'application/json','api-key':apiKey(),'content-type':'application/json',...(options.headers||{})}});const text=await r.text();let data={};try{data=text?JSON.parse(text):{}}catch(_){data={raw:text}}if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e}return data}
-async function ensureTrackingContact(){if(trackingContactPromise)return trackingContactPromise;trackingContactPromise=(async()=>{try{const c=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));if(c&&Number(c.id)>0)return Number(c.id)}catch(e){if(e.status!==404)throw e}try{const c=await brevo('/contacts',{method:'POST',body:JSON.stringify({email:TRACK_CONTACT_EMAIL,updateEnabled:true,getId:true})});if(c&&Number(c.id)>0)return Number(c.id)}catch(e){if(e.status!==400)throw e}const c=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));if(!c||!Number(c.id))throw new Error('tracking_contact_missing');return Number(c.id)})();try{return await trackingContactPromise}catch(e){trackingContactPromise=null;throw e}}
-function allowedOrigin(req){const origin=String(req.headers.origin||'');if(!origin)return true;const host=String(req.headers.host||'');try{return new URL(origin).host===host}catch(_){return false}}
-function noteArray(chunk){if(Array.isArray(chunk))return chunk;if(!chunk||typeof chunk!=='object')return [];for(const k of ['notes','items','data','results'])if(Array.isArray(chunk[k]))return chunk[k];return []}
+function apiKey(){
+  return process.env.BREVO_API_KEY || process.env.BREVO_KEY || process.env.SENDINBLUE_API_KEY || '';
+}
+function json(res,status,body){
+  res.setHeader('Cache-Control','no-store, max-age=0');
+  res.setHeader('X-Content-Type-Options','nosniff');
+  return res.status(status).json(body);
+}
+function adminAuthorized(req){
+  const expected = process.env.LEADS_ADMIN_TOKEN || process.env.BLOG_ADMIN_TOKEN || '';
+  if(!expected) return false;
+  const direct=String(req.headers['x-admin-token']||'');
+  const auth=String(req.headers.authorization||'');
+  const bearer=auth.toLowerCase().startsWith('bearer ')?auth.slice(7).trim():'';
+  return direct===expected || bearer===expected;
+}
+function clean(v,max=500){ return String(v==null?'':v).trim().slice(0,max); }
+function cleanObj(raw){
+  const d=raw&&typeof raw==='object'?raw:{};
+  const pages=Array.isArray(d.pages)?d.pages.slice(-25).map(p=>({
+    path:clean(p&&p.path,300),
+    at:clean(p&&p.at,40)
+  })):[];
+  return {
+    sessionId:clean(d.sessionId,100), noteId:clean(d.noteId,100),
+    startedAt:clean(d.startedAt,40), updatedAt:clean(d.updatedAt,40),
+    landingPage:clean(d.landingPage,500), currentPage:clean(d.currentPage,500),
+    referrer:clean(d.referrer,1000), source:clean(d.source,150), medium:clean(d.medium,150),
+    campaign:clean(d.campaign,250), adset:clean(d.adset,250), ad:clean(d.ad,250), term:clean(d.term,250),
+    fbclid:clean(d.fbclid,500), gclid:clean(d.gclid,500),
+    activeSeconds:Math.max(0,Math.min(86400,Number(d.activeSeconds)||0)),
+    elapsedSeconds:Math.max(0,Math.min(86400,Number(d.elapsedSeconds)||0)),
+    pageViews:Math.max(1,Math.min(100,Number(d.pageViews)||1)),
+    device:clean(d.device,80), browser:clean(d.browser,120),
+    converted:!!d.converted, conversionType:clean(d.conversionType,80),
+    convertedAt:clean(d.convertedAt,40), name:clean(d.name,120), email:clean(d.email,180), phone:clean(d.phone,80),
+    pages
+  };
+}
+function encodeTrack(data){
+  return TRACK_PREFIX + Buffer.from(JSON.stringify(cleanObj(data)),'utf8').toString('base64');
+}
+function parseTrack(note){
+  const text=String(note&&note.text||'').replace(/<[^>]+>/g,'').trim();
+  if(!text.startsWith(TRACK_PREFIX)) return null;
+  try{
+    const data=JSON.parse(Buffer.from(text.slice(TRACK_PREFIX.length),'base64').toString('utf8'));
+    return {...cleanObj(data), noteId:String(note.id||data.noteId||''), createdAt:note.createdAt||'', noteUpdatedAt:note.updatedAt||''};
+  }catch(_){ return null; }
+}
+async function brevo(path,options={}){
+  const r=await fetch(BREVO_BASE+path,{
+    ...options,
+    headers:{accept:'application/json','api-key':apiKey(),'content-type':'application/json',...(options.headers||{})}
+  });
+  const text=await r.text(); let data={};
+  try{data=text?JSON.parse(text):{};}catch(_){data={raw:text};}
+  if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}
+  return data;
+}
+async function ensureTrackingContact(){
+  if(trackingContactPromise) return trackingContactPromise;
+  trackingContactPromise=(async()=>{
+    try{
+      const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
+      if(contact&&Number(contact.id)>0) return Number(contact.id);
+    }catch(e){
+      if(e.status!==404) throw e;
+    }
+    try{
+      const created=await brevo('/contacts',{
+        method:'POST',
+        body:JSON.stringify({email:TRACK_CONTACT_EMAIL,updateEnabled:true,getId:true})
+      });
+      if(created&&Number(created.id)>0) return Number(created.id);
+    }catch(e){
+      if(e.status!==400) throw e;
+    }
+    const contact=await brevo('/contacts/'+encodeURIComponent(TRACK_CONTACT_EMAIL));
+    if(!contact||!Number(contact.id)) throw new Error('tracking_contact_missing');
+    return Number(contact.id);
+  })();
+  try{return await trackingContactPromise;}
+  catch(e){trackingContactPromise=null;throw e;}
+}
+function allowedOrigin(req){
+  const origin=String(req.headers.origin||'');
+  if(!origin) return true;
+  const host=String(req.headers.host||'');
+  try{return new URL(origin).host===host;}catch(_){return false;}
+}
 
 module.exports=async function handler(req,res){
- if(req.method==='OPTIONS')return res.status(204).end();
- if(!apiKey())return json(res,503,{ok:false,error:'brevo_not_configured'});
- if(req.method==='POST'){
-  if(!allowedOrigin(req))return json(res,403,{ok:false,error:'origin_not_allowed'});
-  try{const body=typeof req.body==='string'?JSON.parse(req.body):(req.body||{});const action=clean(body.action,20);const data=cleanObj(body.data||{});if(!data.sessionId)return json(res,400,{ok:false,error:'missing_session'});data.updatedAt=new Date().toISOString();const cid=await ensureTrackingContact();if(action==='start'){const created=await brevo('/crm/notes',{method:'POST',body:JSON.stringify({text:encodeTrack(data),contactIds:[cid]})});return json(res,200,{ok:true,noteId:String(created.id||'')})}if(action==='update'){const noteId=clean(body.noteId||data.noteId,100);if(!noteId)return json(res,400,{ok:false,error:'missing_note_id'});data.noteId=noteId;await brevo('/crm/notes/'+encodeURIComponent(noteId),{method:'PATCH',body:JSON.stringify({text:encodeTrack(data),contactIds:[cid]})});return json(res,200,{ok:true})}return json(res,400,{ok:false,error:'invalid_action'})}catch(e){console.error('Tracking POST Error:',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'})}
- }
- if(req.method==='GET'){
-  if(!adminAuthorized(req))return json(res,401,{ok:false,error:'unauthorized'});
-  try{const days=Math.max(1,Math.min(90,Number(req.query&&req.query.days)||7));const limit=Math.max(50,Math.min(1000,Number(req.query&&req.query.limit)||500));const dateFrom=Date.now()-days*86400000;const cid=await ensureTrackingContact();let offset=0,all=[];while(all.length<limit){const size=Math.min(100,limit-all.length);const q=new URLSearchParams({entity:'contacts',entityIds:String(cid),dateFrom:String(dateFrom),offset:String(offset),limit:String(size),sort:'desc'});const chunk=await brevo('/crm/notes?'+q.toString());const arr=noteArray(chunk);all=all.concat(arr);if(arr.length<size)break;offset+=arr.length}const parsed=all.map(parseTrack).filter(Boolean);const sessions=parsed.sort((a,b)=>new Date(b.startedAt||b.createdAt||0)-new Date(a.startedAt||a.createdAt||0));console.log('Tracking GET', {rawNotes:all.length,parsed:sessions.length,contactId:cid});return json(res,200,{ok:true,days,count:sessions.length,sessions})}catch(e){console.error('Tracking GET Error:',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'})}
- }
- res.setHeader('Allow','GET, POST, OPTIONS');return json(res,405,{ok:false,error:'method_not_allowed'});
+  if(req.method==='OPTIONS') return res.status(204).end();
+  if(!apiKey()) return json(res,503,{ok:false,error:'brevo_not_configured'});
+
+  if(req.method==='POST'){
+    if(!allowedOrigin(req)) return json(res,403,{ok:false,error:'origin_not_allowed'});
+    try{
+      const body=typeof req.body==='string'?JSON.parse(req.body):(req.body||{});
+      const action=clean(body.action,20);
+      const data=cleanObj(body.data||{});
+      if(!data.sessionId) return json(res,400,{ok:false,error:'missing_session'});
+      data.updatedAt=new Date().toISOString();
+      const trackingContactId=await ensureTrackingContact();
+      if(action==='start'){
+        const created=await brevo('/crm/notes',{
+          method:'POST',
+          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
+        });
+        return json(res,200,{ok:true,noteId:String(created.id||'')});
+      }
+      if(action==='update'){
+        const noteId=clean(body.noteId||data.noteId,100);
+        if(!noteId) return json(res,400,{ok:false,error:'missing_note_id'});
+        data.noteId=noteId;
+        await brevo('/crm/notes/'+encodeURIComponent(noteId),{
+          method:'PATCH',
+          body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})
+        });
+        return json(res,200,{ok:true});
+      }
+      return json(res,400,{ok:false,error:'invalid_action'});
+    }catch(e){
+      console.error('Tracking POST Error:',e);
+      return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});
+    }
+  }
+
+  if(req.method==='GET'){
+    if(!adminAuthorized(req)) return json(res,401,{ok:false,error:'unauthorized'});
+    try{
+      const days=Math.max(1,Math.min(90,Number(req.query&&req.query.days)||7));
+      const limit=Math.max(50,Math.min(1000,Number(req.query&&req.query.limit)||500));
+      const dateFrom=Date.now()-days*86400000;
+      let offset=0, all=[];
+      while(all.length<limit){
+        const size=Math.min(100,limit-all.length);
+        const q=new URLSearchParams({
+          dateFrom:String(dateFrom),
+          offset:String(offset),
+          limit:String(size),
+          sort:'desc'
+        });
+        const chunk=await brevo('/crm/notes?'+q.toString());
+        const arr=Array.isArray(chunk)?chunk:(Array.isArray(chunk.notes)?chunk.notes:(Array.isArray(chunk.items)?chunk.items:[]));
+        all=all.concat(arr);
+        if(arr.length<size) break;
+        offset+=arr.length;
+      }
+      const sessions=all.map(parseTrack).filter(Boolean).sort((a,b)=>new Date(b.startedAt||b.createdAt||0)-new Date(a.startedAt||a.createdAt||0));
+      console.log('Tracking GET diagnostic',{rawNotes:all.length,parsedSessions:sessions.length,firstPrefix:all[0]&&String(all[0].text||'').slice(0,24)});
+      return json(res,200,{ok:true,days,count:sessions.length,sessions,diagnostic:{rawNotes:all.length,parsedSessions:sessions.length}});
+    }catch(e){
+      console.error('Tracking GET Error:',e);
+      return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});
+    }
+  }
+  res.setHeader('Allow','GET, POST, OPTIONS');
+  return json(res,405,{ok:false,error:'method_not_allowed'});
 };
