@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+    <stop offset="0" stop-color="#f8fcff"/>
+    <stop offset="0.55" stop-color="#e2f5ff"/>
+    <stop offset="1" stop-color="#b9e4ff"/>
+  </linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#184d70" flood-opacity=".16"/>
+  </filter>
+</defs>
+<rect width="1200" height="780" rx="44" fill="url(#bg)"/>
+<circle cx="1000" cy="90" r="190" fill="#8fd3ff" opacity=".22"/>
+<circle cx="90" cy="710" r="230" fill="#8fd3ff" opacity=".18"/>
+
+<g transform="translate(88 92)">
+  <rect x="0" y="0" width="120" height="38" rx="19" fill="#08263f"/>
+  <text x="60" y="25" fill="#dff3ff" font-size="15" font-weight="800" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="1.4">WHATSAPP</text>
+  <text x="0" y="114" fill="#10283e" font-size="66" font-weight="800" font-family="Arial, sans-serif">Copy que parece</text>
+  <text x="0" y="184" fill="#10283e" font-size="66" font-weight="800" font-family="Arial, sans-serif">conversa.</text>
+  <text x="0" y="247" fill="#0874ad" font-size="30" font-weight="700" font-family="Arial, sans-serif">Sem abrir o chat empurrando a oferta.</text>
+  <text x="0" y="300" fill="#4c687b" font-size="24" font-family="Arial, sans-serif">Estrutura + exemplos + 12 mensagens para adaptar</text>
+</g>
+
+<g transform="translate(720 205)" filter="url(#shadow)">
+  <rect x="0" y="0" width="365" height="455" rx="44" fill="#ffffff" stroke="#bdddeb" stroke-width="3"/>
+  <rect x="124" y="18" width="118" height="13" rx="7" fill="#d4e5ee"/>
+  <text x="34" y="83" fill="#18364c" font-size="22" font-weight="700" font-family="Arial, sans-serif">Conversa</text>
+
+  <rect x="34" y="113" width="252" height="72" rx="20" fill="#e8f4fa"/>
+  <text x="53" y="141" fill="#24485f" font-size="17" font-family="Arial, sans-serif">Oi, Ana. Vi que você pediu</text>
+  <text x="53" y="165" fill="#24485f" font-size="17" font-family="Arial, sans-serif">informação sobre a mentoria.</text>
+
+  <rect x="98" y="202" width="233" height="72" rx="20" fill="#cfefff"/>
+  <text x="117" y="230" fill="#123047" font-size="17" font-family="Arial, sans-serif">Sim. Quero entender</text>
+  <text x="117" y="254" fill="#123047" font-size="17" font-family="Arial, sans-serif">como funciona.</text>
+
+  <rect x="34" y="291" width="280" height="98" rx="20" fill="#e8f4fa"/>
+  <text x="53" y="319" fill="#24485f" font-size="17" font-family="Arial, sans-serif">Perfeito. Antes de te explicar,</text>
+  <text x="53" y="343" fill="#24485f" font-size="17" font-family="Arial, sans-serif">me diz uma coisa: hoje o que</text>
+  <text x="53" y="367" fill="#24485f" font-size="17" font-family="Arial, sans-serif">mais trava suas vendas?</text>
+
+  <circle cx="319" cy="421" r="17" fill="#8fd3ff"/>
+  <path d="M313 421l5 5 9-11" fill="none" stroke="#08263f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
+<text x="88" y="714" fill="#08263f" font-size="20" font-weight="800" font-family="Arial, sans-serif">MPMV — MAIS PERSUASÃO, MAIS VENDAS</text>
+</svg>
