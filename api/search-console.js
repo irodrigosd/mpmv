@@ -19,7 +19,7 @@ async function accessToken(){
   const sign=crypto.createSign('RSA-SHA256');sign.update(unsigned);sign.end();
   const sig=sign.sign(PRIVATE_KEY).toString('base64').replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
   const assertion=unsigned+'.'+sig;
-  const r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({grant_type:'urn:ietf:params:oauth:grant-type:jwt-bearer',assertion})});
+  const r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({grant_type:'urn:ietf:params:oauth2:grant-type:jwt-bearer',assertion})});
   const data=await r.json().catch(()=>({}));
   if(!r.ok||!data.access_token) throw Object.assign(new Error(data.error_description||data.error||'google_auth_failed'),{status:r.status||500});
   return data.access_token;
@@ -56,6 +56,12 @@ function mergePageRows(rows){
   }));
 }
 
+function firstRow(data){
+  return data&&Array.isArray(data.rows)&&data.rows[0]
+    ? row(data.rows[0])
+    : {keys:[],clicks:0,impressions:0,ctr:0,position:0};
+}
+
 module.exports=async function handler(req,res){
   if(req.method==='OPTIONS')return res.status(204).end();
   if(req.method!=='GET'){res.setHeader('Allow','GET, OPTIONS');return json(res,405,{ok:false,error:'method_not_allowed'})}
@@ -66,18 +72,35 @@ module.exports=async function handler(req,res){
     const start=new Date(end);start.setUTCDate(start.getUTCDate()-days+1);
     const token=await accessToken();
     const base={startDate:isoDate(start),endDate:isoDate(end),type:'web',rowLimit:25000,dataState:'final'};
-    const [pagesData,queriesData,totalsData]=await Promise.all([
+    const articleFilter={dimensionFilterGroups:[{groupType:'and',filters:[{dimension:'page',operator:'contains',expression:'/blog/'}]}]};
+
+    const [pagesData,queriesData,totalsData,articleTotalsData]=await Promise.all([
       query(token,{...base,dimensions:['page']}),
       query(token,{...base,dimensions:['query'],rowLimit:1000}),
-      query(token,{...base,dimensions:[]})
+      query(token,{...base,dimensions:[]}),
+      query(token,{...base,...articleFilter,dimensions:[]})
     ]);
+
     const mergedPages=mergePageRows((pagesData.rows||[]).map(row));
     const pages=mergedPages.filter(x=>canonicalPath(x.keys[0]||'').startsWith('/blog/')).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
     const queries=(queriesData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
-    const total=(totalsData.rows&&totalsData.rows[0])?row(totalsData.rows[0]):{keys:[],clicks:0,impressions:0,ctr:0,position:0};
-    const articleTotals=pages.reduce((a,p)=>({clicks:a.clicks+p.clicks,impressions:a.impressions+p.impressions}),{clicks:0,impressions:0});
-    articleTotals.ctr=articleTotals.impressions?articleTotals.clicks/articleTotals.impressions:0;
+    const total=firstRow(totalsData);
+    const articleTotals=firstRow(articleTotalsData);
     const opportunities=pages.filter(p=>p.clicks===0&&p.impressions>=5&&p.position>0&&p.position<=12).sort((a,b)=>a.position-b.position||b.impressions-a.impressions).slice(0,20);
-    return json(res,200,{ok:true,siteUrl:SITE_URL,canonicalOrigin:CANONICAL_ORIGIN,startDate:isoDate(start),endDate:isoDate(end),days,total,articleTotals,pages:pages.slice(0,100),queries:queries.slice(0,100),opportunities});
+
+    return json(res,200,{
+      ok:true,
+      siteUrl:SITE_URL,
+      canonicalOrigin:CANONICAL_ORIGIN,
+      startDate:isoDate(start),
+      endDate:isoDate(end),
+      days,
+      total,
+      articleTotals,
+      pages:pages.slice(0,100),
+      queries:queries.slice(0,100),
+      opportunities,
+      aggregationNote:'total e articleTotals usam consultas sem dimensão; pages usa dimensão page. Os totais deixam de ser a soma das linhas por URL, evitando dupla contagem causada pela agregação do Search Console.'
+    });
   }catch(e){console.error('Search Console Error',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'})}
 };
