@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Promessa de vendas</title>
+  <desc id="desc">Uma promessa passa por quatro filtros: público, resultado, mecanismo e prova.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfeff"/><stop offset="1" stop-color="#ccecff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071724"/><stop offset="1" stop-color="#0d4164"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0b3957" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" rx="42" fill="url(#bg)"/>
+  <circle cx="1070" cy="138" r="92" fill="#8fd3ff" opacity=".55"/>
+  <circle cx="110" cy="790" r="118" fill="#fff" opacity=".65"/>
+  <g filter="url(#shadow)">
+    <rect x="108" y="112" width="984" height="676" rx="36" fill="#fff"/>
+    <rect x="108" y="112" width="984" height="164" rx="36" fill="url(#dark)"/>
+    <path d="M108 238h984v38H108z" fill="url(#dark)"/>
+    <text x="168" y="179" fill="#9dd9ff" font-family="Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="5">COPYWRITING + OFERTA</text>
+    <text x="168" y="230" fill="#fff" font-family="Arial,sans-serif" font-size="38" font-weight="900">UMA PROMESSA QUE SE SUSTENTA</text>
+    <g font-family="Arial,sans-serif">
+      <rect x="166" y="345" width="342" height="112" rx="22" fill="#e5f6ff" stroke="#9fd2ef"/>
+      <circle cx="218" cy="401" r="28" fill="#0b73a9"/>
+      <text x="218" y="410" text-anchor="middle" fill="#fff" font-size="24" font-weight="900">1</text>
+      <text x="266" y="390" fill="#14233a" font-size="18" font-weight="800">PÚBLICO</text>
+      <text x="266" y="422" fill="#486174" font-size="17">Para quem isso importa?</text>
+
+      <rect x="540" y="345" width="342" height="112" rx="22" fill="#f5f9fc" stroke="#cbdde9"/>
+      <circle cx="592" cy="401" r="28" fill="#08263f"/>
+      <text x="592" y="410" text-anchor="middle" fill="#9dd9ff" font-size="24" font-weight="900">2</text>
+      <text x="640" y="390" fill="#14233a" font-size="18" font-weight="800">RESULTADO</text>
+      <text x="640" y="422" fill="#486174" font-size="17">O que muda depois?</text>
+
+      <rect x="166" y="490" width="342" height="112" rx="22" fill="#f5f9fc" stroke="#cbdde9"/>
+      <circle cx="218" cy="546" r="28" fill="#08263f"/>
+      <text x="218" y="555" text-anchor="middle" fill="#9dd9ff" font-size="24" font-weight="900">3</text>
+      <text x="266" y="535" fill="#14233a" font-size="18" font-weight="800">MECANISMO</text>
+      <text x="266" y="567" fill="#486174" font-size="17">Como a mudança acontece?</text>
+
+      <rect x="540" y="490" width="342" height="112" rx="22" fill="#e9f8f3" stroke="#9ccfbe"/>
+      <circle cx="592" cy="546" r="28" fill="#1c8567"/>
+      <text x="592" y="555" text-anchor="middle" fill="#fff" font-size="24" font-weight="900">4</text>
+      <text x="640" y="535" fill="#14233a" font-size="18" font-weight="800">PROVA</text>
+      <text x="640" y="567" fill="#486174" font-size="17">Por que acreditar?</text>
+
+      <path d="M934 350l76 77-76 77-76-77z" fill="#8fd3ff"/>
+      <path d="M901 428l23 23 48-53" fill="none" stroke="#08263f" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="934" y="552" text-anchor="middle" fill="#0874ad" font-size="15" font-weight="900" letter-spacing="3">PROMESSA</text>
+      <text x="934" y="584" text-anchor="middle" fill="#14233a" font-size="22" font-weight="900">PLAUSÍVEL</text>
+
+      <rect x="166" y="657" width="860" height="70" rx="18" fill="#08263f"/>
+      <text x="596" y="701" text-anchor="middle" fill="#fff" font-size="24" font-weight="800">Desejo para atrair. Clareza para convencer.</text>
+    </g>
+  </g>
+</svg>
