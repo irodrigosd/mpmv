@@ -1,34 +1,27 @@
-COMO SUBIR — garantia-de-satisfacao
+COMO SUBIR — upsell-aumentar-valor-da-venda
 
-1. Criar/publicar a rota:
-   /blog/garantia-de-satisfacao/
+1. Publicar a rota:
+   /blog/upsell-aumentar-valor-da-venda/
 
-2. Usar o arquivo:
-   garantia-de-satisfacao.html
+2. Usar:
+   upsell-aumentar-valor-da-venda.html
 
-3. Confirmar que /favicon.png existe na raiz.
-   O HTML já referencia:
-   <link rel="icon" href="/favicon.png" type="image/png">
+3. Confirmar /favicon.png na raiz.
 
-4. Adicionar o card ao blog.html:
-   Título: Garantia de satisfação: como tirar o risco da compra sem desvalorizar sua oferta
-   Descrição: Entenda como usar garantia de satisfação para reduzir o risco percebido, aumentar a confiança e fortalecer sua oferta sem desvalorizar o produto.
-   Categoria: Persuasão + Oferta
-   Data: 3 set 2026
-   Href: /blog/garantia-de-satisfacao/
+4. Adicionar o card ao blog.html usando o arquivo:
+   CARD-PARA-BLOG-HTML.txt
 
 5. Validar o CTA:
-   O HTML usa /#mentoria.
-   Trocar somente se a âncora/rota real da mentoria for diferente.
+   /#mentoria
 
 6. Depois do deploy:
-   - abrir a URL canônica
-   - checar title e meta description
+   - abrir a URL
+   - checar title/meta
    - checar favicon
-   - testar os 4 links internos
-   - testar CTA da mentoria
-   - solicitar indexação no Search Console, se desejar
+   - testar links internos
+   - testar CTA
+   - solicitar indexação no Search Console
 
-OBSERVAÇÃO DE CANIBALIZAÇÃO
-Tema deliberadamente restrito a garantia de satisfação/redução de risco.
-Evitar transformar este artigo em outro conteúdo amplo sobre oferta irresistível.
+OBSERVAÇÃO
+Manter este conteúdo focado em upsell.
+Evitar expandir demais para order bump, tripwire ou funil, pois esses temas já têm páginas próprias.

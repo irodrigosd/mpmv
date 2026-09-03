@@ -1,3 +1,3 @@
-<!-- POST:garantia-de-satisfacao START -->
-<a class="post" href="/blog/garantia-de-satisfacao/"><div class="post-copy"><div class="date">3 set 2026<br/>Persuasão + Oferta</div><h3>Garantia de satisfação: como tirar o risco da compra sem desvalorizar sua oferta</h3><p>Entenda como usar garantia de satisfação para reduzir o risco percebido, aumentar a confiança e fortalecer sua oferta sem desvalorizar o produto.</p></div></a>
-<!-- POST:garantia-de-satisfacao END -->
+<!-- POST:upsell-aumentar-valor-da-venda START -->
+<a class="post" href="/blog/upsell-aumentar-valor-da-venda/"><div class="post-copy"><div class="date">3 set 2026<br/>Vendas + Monetização</div><h3>Upsell: como aumentar o valor de cada venda sem precisar conquistar outro cliente</h3><p>Entenda o que é upsell, quando usar e como aumentar o valor de cada venda com uma oferta que amplia a compra principal.</p></div></a>
+<!-- POST:upsell-aumentar-valor-da-venda END -->
