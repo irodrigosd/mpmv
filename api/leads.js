@@ -23,6 +23,21 @@ function clean(value, max = 500) {
   return String(value == null ? '' : value).trim().slice(0, max);
 }
 
+function splitMetaValue(value) {
+  const raw = clean(value, 500);
+  if (!raw) return { raw:'', id:'', name:'' };
+  const separator = raw.indexOf('~');
+  if (separator > 0) {
+    return {
+      raw,
+      id: clean(raw.slice(0, separator), 120),
+      name: clean(raw.slice(separator + 1), 250)
+    };
+  }
+  if (/^\d{8,}$/.test(raw)) return { raw, id:raw, name:'' };
+  return { raw, id:'', name:raw };
+}
+
 async function brevoJson(path, options = {}) {
   const response = await fetch(BREVO_BASE + path, {
     ...options,
@@ -114,6 +129,12 @@ function normalizeAttribution(raw, { name, email, page }) {
   const currentPage = clean(d.currentPage, 500) || clean(page, 500) || '/';
   const landingPage = clean(d.landingPage, 500) || currentPage;
   const pages = [{ path:currentPage, at:capturedAt }];
+  const campaignRaw = clean(d.campaign, 500);
+  const adsetRaw = clean(d.adset || d.term, 500);
+  const adRaw = clean(d.ad || d.content, 500);
+  const campaignMeta = splitMetaValue(campaignRaw);
+  const adsetMeta = splitMetaValue(adsetRaw);
+  const adMeta = splitMetaValue(adRaw);
 
   return {
     sessionId: clean(d.sessionId, 100) || `lead-${Date.now()}-${Math.random().toString(36).slice(2,10)}`,
@@ -125,10 +146,16 @@ function normalizeAttribution(raw, { name, email, page }) {
     referrer: clean(d.referrer, 1000),
     source: sourceGuess(d),
     medium: clean(d.medium, 150),
-    campaign: clean(d.campaign, 250),
-    adset: clean(d.adset || d.term, 250),
-    ad: clean(d.ad || d.content, 250),
-    term: clean(d.term || d.adset, 250),
+    campaign: campaignRaw,
+    campaignId: clean(d.campaignId || campaignMeta.id, 120),
+    campaignName: clean(d.campaignName || campaignMeta.name, 250),
+    adset: adsetRaw,
+    adsetId: clean(d.adsetId || adsetMeta.id, 120),
+    adsetName: clean(d.adsetName || adsetMeta.name, 250),
+    ad: adRaw,
+    adId: clean(d.adId || adMeta.id, 120),
+    adName: clean(d.adName || adMeta.name, 250),
+    term: adsetRaw,
     fbclid: clean(d.fbclid, 500),
     gclid: clean(d.gclid, 500),
     activeSeconds: 0,
@@ -174,9 +201,20 @@ function escapeHtml(value) {
 async function notifyGuideLead({ name, email, source, page, attribution }) {
   const sender = await getNotificationSender();
   const submittedAt = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  const campaign = clean(attribution && attribution.campaign, 250);
   const medium = clean(attribution && attribution.medium, 150);
   const referrer = clean(attribution && attribution.referrer, 1000);
+  const campaignRaw = clean(attribution && attribution.campaign, 500);
+  const adsetRaw = clean(attribution && attribution.adset, 500);
+  const adRaw = clean(attribution && attribution.ad, 500);
+  const campaignMeta = splitMetaValue(campaignRaw);
+  const adsetMeta = splitMetaValue(adsetRaw);
+  const adMeta = splitMetaValue(adRaw);
+  const campaignId = clean((attribution && attribution.campaignId) || campaignMeta.id, 120);
+  const campaignName = clean((attribution && attribution.campaignName) || campaignMeta.name, 250);
+  const adsetId = clean((attribution && attribution.adsetId) || adsetMeta.id, 120);
+  const adsetName = clean((attribution && attribution.adsetName) || adsetMeta.name, 250);
+  const adId = clean((attribution && attribution.adId) || adMeta.id, 120);
+  const adName = clean((attribution && attribution.adName) || adMeta.name, 250);
   const subject = `Novo lead do Guia — ${name}`;
   const text = [
     'Novo lead recebido pelo Guia Prático.',
@@ -185,7 +223,12 @@ async function notifyGuideLead({ name, email, source, page, attribution }) {
     `E-mail: ${email}`,
     `Origem: ${source}`,
     `Mídia: ${medium || '—'}`,
-    `Campanha: ${campaign || '—'}`,
+    `Campanha: ${campaignName || campaignRaw || '—'}`,
+    `Campaign ID: ${campaignId || '—'}`,
+    `Conjunto: ${adsetName || adsetRaw || '—'}`,
+    `Adset ID: ${adsetId || '—'}`,
+    `Anúncio: ${adName || adRaw || '—'}`,
+    `Ad ID: ${adId || '—'}`,
     `Página: ${page}`,
     `Referrer: ${referrer || '—'}`,
     `Data: ${submittedAt}`
@@ -195,7 +238,12 @@ async function notifyGuideLead({ name, email, source, page, attribution }) {
     <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
     <p><strong>Origem:</strong> ${escapeHtml(source)}</p>
     <p><strong>Mídia:</strong> ${escapeHtml(medium || '—')}</p>
-    <p><strong>Campanha:</strong> ${escapeHtml(campaign || '—')}</p>
+    <p><strong>Campanha:</strong> ${escapeHtml(campaignName || campaignRaw || '—')}</p>
+    <p><strong>Campaign ID:</strong> ${escapeHtml(campaignId || '—')}</p>
+    <p><strong>Conjunto:</strong> ${escapeHtml(adsetName || adsetRaw || '—')}</p>
+    <p><strong>Adset ID:</strong> ${escapeHtml(adsetId || '—')}</p>
+    <p><strong>Anúncio:</strong> ${escapeHtml(adName || adRaw || '—')}</p>
+    <p><strong>Ad ID:</strong> ${escapeHtml(adId || '—')}</p>
     <p><strong>Página:</strong> ${escapeHtml(page)}</p>
     <p><strong>Referrer:</strong> ${escapeHtml(referrer || '—')}</p>
     <p><strong>Data:</strong> ${escapeHtml(submittedAt)}</p>`;
