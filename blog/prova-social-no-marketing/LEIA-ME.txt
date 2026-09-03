@@ -1,0 +1,12 @@
+MPMV — Artigo pronto para /admin/blog
+
+Tema: Prova social no marketing
+Headline: Prova social no marketing: a maioria dos depoimentos não prova nada
+
+COMO PUBLICAR
+1. Entre em /admin/blog.
+2. Clique em “Subir ZIP e publicar”.
+3. Selecione este ZIP.
+4. O admin identifica o slug pelo canonical e atualiza o índice e o sitemap.
+
+O favicon usa caminho absoluto /favicon-mpmv.png.
