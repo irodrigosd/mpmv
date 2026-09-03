@@ -1,0 +1,47 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="90" y1="70" x2="1120" y2="840" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#F9FDFF"/>
+    <stop offset="0.55" stop-color="#E8F6FF"/>
+    <stop offset="1" stop-color="#C8EAFF"/>
+  </linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0B3756" flood-opacity=".14"/>
+  </filter>
+</defs>
+
+<rect width="1200" height="900" rx="48" fill="url(#bg)"/>
+<circle cx="160" cy="120" r="150" fill="#8FD3FF" opacity=".38"/>
+<circle cx="1060" cy="760" r="220" fill="#7CCBFF" opacity=".22"/>
+
+<rect x="70" y="70" width="116" height="42" rx="21" fill="#08263F"/>
+<text x="128" y="97" text-anchor="middle" fill="#A6DDFF" font-size="19" font-family="Arial, Helvetica, sans-serif" font-weight="800">MPMV</text>
+
+<text x="72" y="220" fill="#0A263E" font-size="38" font-family="Arial, Helvetica, sans-serif" font-weight="800" letter-spacing="2">FUNIL + CONVERSÃO</text>
+<text x="72" y="330" fill="#0874AD" font-size="92" font-family="Arial, Helvetica, sans-serif" font-weight="900">TRIPWIRE</text>
+<text x="72" y="405" fill="#18384F" font-size="41" font-family="Arial, Helvetica, sans-serif" font-weight="750">a ponte entre lead e primeira compra</text>
+
+<g filter="url(#shadow)">
+  <rect x="88" y="530" width="250" height="150" rx="28" fill="white"/>
+  <text x="213" y="585" text-anchor="middle" fill="#0874AD" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="800">ETAPA 1</text>
+  <text x="213" y="635" text-anchor="middle" fill="#0A263E" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="900">LEAD</text>
+
+  <path d="M355 604H428" stroke="#0874AD" stroke-width="12" stroke-linecap="round"/>
+  <path d="M413 584L438 604L413 624" stroke="#0874AD" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="454" y="500" width="292" height="210" rx="32" fill="#08263F"/>
+  <text x="600" y="558" text-anchor="middle" fill="#9DD9FF" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="800">OFERTA DE ENTRADA</text>
+  <text x="600" y="620" text-anchor="middle" fill="white" font-size="39" font-family="Arial, Helvetica, sans-serif" font-weight="900">1ª COMPRA</text>
+  <text x="600" y="662" text-anchor="middle" fill="#D7EAF6" font-size="21" font-family="Arial, Helvetica, sans-serif">menos risco • resultado específico</text>
+
+  <path d="M764 604H837" stroke="#0874AD" stroke-width="12" stroke-linecap="round"/>
+  <path d="M822 584L847 604L822 624" stroke="#0874AD" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="862" y="530" width="250" height="150" rx="28" fill="white"/>
+  <text x="987" y="585" text-anchor="middle" fill="#0874AD" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="800">ETAPA 3</text>
+  <text x="987" y="623" text-anchor="middle" fill="#0A263E" font-size="27" font-family="Arial, Helvetica, sans-serif" font-weight="900">OFERTA</text>
+  <text x="987" y="654" text-anchor="middle" fill="#0A263E" font-size="27" font-family="Arial, Helvetica, sans-serif" font-weight="900">PRINCIPAL</text>
+</g>
+
+<text x="72" y="812" fill="#48677D" font-size="25" font-family="Arial, Helvetica, sans-serif" font-weight="650">Como transformar interesse em uma primeira transação</text>
+</svg>

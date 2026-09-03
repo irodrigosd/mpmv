@@ -1,0 +1,21 @@
+PACOTE DO ARTIGO MPMV
+
+Slug:
+tripwire-oferta-de-entrada
+
+Arquivos:
+- index.html
+- favicon.png
+- seo.txt
+- assets/tripwire-oferta-de-entrada-cover.svg
+
+URL prevista:
+https://www.maispersuasaomaisvendas.com.br/blog/tripwire-oferta-de-entrada/
+
+O artigo foi criado no sistema visual atual da MPMV:
+azul-claro + branco + azul-marinho.
+
+Antes de publicar:
+1. Confira a pré-visualização.
+2. Confirme se os links internos abrem.
+3. Publique mantendo o slug informado em seo.txt.

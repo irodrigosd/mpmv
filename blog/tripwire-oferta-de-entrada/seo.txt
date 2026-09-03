@@ -1,0 +1,69 @@
+MPMV — SEO DO ARTIGO
+
+TÍTULO EDITORIAL
+Tripwire: como transformar leads em clientes com uma oferta de entrada
+
+TÍTULO SEO
+Tripwire: Como Criar uma Oferta de Entrada | MPMV
+
+SLUG
+tripwire-oferta-de-entrada
+
+URL
+https://www.maispersuasaomaisvendas.com.br/blog/tripwire-oferta-de-entrada/
+
+PALAVRA-CHAVE PRINCIPAL
+tripwire
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+oferta tripwire
+oferta de entrada
+produto de entrada
+como transformar leads em clientes
+tripwire marketing
+
+META DESCRIPTION
+Entenda o que é tripwire, como criar uma oferta de entrada e transformar leads em compradores sem depender de desconto na oferta principal.
+
+H1
+Tripwire: como transformar leads em clientes com uma oferta de entrada
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/tripwire-oferta-de-entrada/
+
+INTENÇÃO DE BUSCA
+Informacional + comercial. O usuário quer entender o que é tripwire, onde ele entra no funil e como criar uma oferta de entrada que leve à primeira compra.
+
+FONTES PRINCIPAIS
+DigitalMarketer — Tripwire (Digital Marketing Dictionary)
+DigitalMarketer — Customer Value Optimization
+
+CATEGORIA
+Funil + Conversão
+
+DATA
+2026-09-03
+
+AUTOR
+Rodrigo Castro
+
+LINKS INTERNOS USADOS
+- /blog/como-criar-uma-isca-digital/
+- /blog/funil-de-vendas-previsivel/
+- /blog/order-bump-aumentar-ticket-medio-checkout/
+- /blog/pagina-de-obrigado-que-vende/
+- /blog/como-criar-uma-oferta-irresistivel-sem-dar-desconto-nem-encher-de-bonus/
+
+CTA PRINCIPAL
+Mentoria de Persuasão e Vendas → /mentoria/
+
+CTA SECUNDÁRIO
+Guia Prático Persuasão pra Vender Todo Santo Dia → /
+
+CANIBALIZAÇÃO
+Busca no repositório atual não encontrou artigo dedicado a "tripwire".
+O artigo de order bump tem intenção distinta: oferta complementar no checkout de uma compra já decidida.
+O artigo de isca digital trata captura de lead, enquanto este artigo trata a primeira transação paga.
+
+IDENTIDADE VISUAL
+Sistema MPMV atual — azul-claro, branco, azul-marinho, cards claros, hero em gradiente azul e marca MPMV.
