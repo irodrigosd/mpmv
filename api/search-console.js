@@ -55,11 +55,33 @@ function mergePageRows(rows){
     position:x.impressions?x.positionWeighted/x.impressions:0
   }));
 }
+function firstRow(data){return data&&Array.isArray(data.rows)&&data.rows[0]?row(data.rows[0]):{keys:[],clicks:0,impressions:0,ctr:0,position:0}}
 
-function firstRow(data){
-  return data&&Array.isArray(data.rows)&&data.rows[0]
-    ? row(data.rows[0])
-    : {keys:[],clicks:0,impressions:0,ctr:0,position:0};
+function normalizePageQueryRows(rows){
+  return rows.map(r=>{
+    const x=row(r);
+    const page=x.keys[0]||'';
+    const queryText=x.keys[1]||'';
+    const path=canonicalPath(page);
+    return {page:path?CANONICAL_ORIGIN+path:page,query:queryText,clicks:x.clicks,impressions:x.impressions,ctr:x.ctr,position:x.position};
+  }).filter(x=>x.page.includes('/blog/')&&x.query);
+}
+
+function findCannibalization(pageQueries){
+  const byQuery=new Map();
+  for(const x of pageQueries){
+    const q=x.query.trim().toLowerCase();
+    if(!q)continue;
+    const g=byQuery.get(q)||{query:q,impressions:0,clicks:0,pages:new Map()};
+    g.impressions+=x.impressions; g.clicks+=x.clicks;
+    const p=g.pages.get(x.page)||{page:x.page,impressions:0,clicks:0,positionWeighted:0};
+    p.impressions+=x.impressions; p.clicks+=x.clicks; p.positionWeighted+=x.position*x.impressions;
+    g.pages.set(x.page,p); byQuery.set(q,g);
+  }
+  return Array.from(byQuery.values()).map(g=>{
+    const pages=Array.from(g.pages.values()).map(p=>({page:p.page,impressions:p.impressions,clicks:p.clicks,position:p.impressions?p.positionWeighted/p.impressions:0})).sort((a,b)=>b.impressions-a.impressions);
+    return {query:g.query,impressions:g.impressions,clicks:g.clicks,pages};
+  }).filter(g=>g.pages.length>=2&&g.impressions>=2).sort((a,b)=>b.impressions-a.impressions).slice(0,30);
 }
 
 module.exports=async function handler(req,res){
@@ -74,11 +96,12 @@ module.exports=async function handler(req,res){
     const base={startDate:isoDate(start),endDate:isoDate(end),type:'web',rowLimit:25000,dataState:'final'};
     const articleFilter={dimensionFilterGroups:[{groupType:'and',filters:[{dimension:'page',operator:'contains',expression:'/blog/'}]}]};
 
-    const [pagesData,queriesData,totalsData,articleTotalsData]=await Promise.all([
+    const [pagesData,queriesData,totalsData,articleTotalsData,pageQueriesData]=await Promise.all([
       query(token,{...base,dimensions:['page']}),
       query(token,{...base,dimensions:['query'],rowLimit:1000}),
       query(token,{...base,dimensions:[]}),
-      query(token,{...base,...articleFilter,dimensions:[]})
+      query(token,{...base,...articleFilter,dimensions:[]}),
+      query(token,{...base,...articleFilter,dimensions:['page','query'],rowLimit:25000})
     ]);
 
     const mergedPages=mergePageRows((pagesData.rows||[]).map(row));
@@ -86,7 +109,9 @@ module.exports=async function handler(req,res){
     const queries=(queriesData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
     const total=firstRow(totalsData);
     const articleTotals=firstRow(articleTotalsData);
+    const pageQueries=normalizePageQueryRows(pageQueriesData.rows||[]).sort((a,b)=>b.impressions-a.impressions||a.position-b.position);
     const opportunities=pages.filter(p=>p.clicks===0&&p.impressions>=5&&p.position>0&&p.position<=12).sort((a,b)=>a.position-b.position||b.impressions-a.impressions).slice(0,20);
+    const cannibalizationCandidates=findCannibalization(pageQueries);
 
     return json(res,200,{
       ok:true,
@@ -99,8 +124,10 @@ module.exports=async function handler(req,res){
       articleTotals,
       pages:pages.slice(0,100),
       queries:queries.slice(0,100),
+      pageQueries:pageQueries.slice(0,500),
+      cannibalizationCandidates,
       opportunities,
-      aggregationNote:'total e articleTotals usam consultas sem dimensão; pages usa dimensão page. Os totais deixam de ser a soma das linhas por URL, evitando dupla contagem causada pela agregação do Search Console.'
+      aggregationNote:'total e articleTotals usam consultas sem dimensão; pages usa dimensão page. pageQueries usa página + consulta e serve para diagnosticar disputa entre URLs pela mesma busca.'
     });
   }catch(e){console.error('Search Console Error',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'})}
 };
