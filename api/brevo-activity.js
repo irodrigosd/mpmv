@@ -1,16 +1,49 @@
 const BREVO_BASE='https://api.brevo.com/v3';
+const AUTO_OPEN_WINDOW_MS=5000;
 function key(){return process.env.BREVO_API_KEY||process.env.BREVO_KEY||process.env.SENDINBLUE_API_KEY||'';}
 function json(res,status,body){res.setHeader('Cache-Control','no-store, max-age=0');res.setHeader('X-Content-Type-Options','nosniff');return res.status(status).json(body);}
 function authorized(req){const expected=process.env.LEADS_ADMIN_TOKEN||process.env.BLOG_ADMIN_TOKEN||'';if(!expected)return false;const direct=String(req.headers['x-admin-token']||'');const auth=String(req.headers.authorization||'');const bearer=auth.toLowerCase().startsWith('bearer ')?auth.slice(7).trim():'';return direct===expected||bearer===expected;}
 async function brevo(path){const r=await fetch(BREVO_BASE+path,{headers:{accept:'application/json','api-key':key()}});const text=await r.text();let data={};try{data=text?JSON.parse(text):{};}catch(_){data={raw:text};}if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}return data;}
 function eventDate(e){return e&&String(e.date||e.eventTime||e.createdAt||'');}
 function eventType(e){return String(e&&e.event||'').toLowerCase();}
-function isOpen(t){return ['opened','unique_opened','first_opening','proxy_open','unique_proxy_open'].includes(String(t||'').toLowerCase());}
+function isProxyOpen(t){return ['proxy_open','unique_proxy_open'].includes(String(t||'').toLowerCase());}
+function isStandardOpen(t){return ['opened','unique_opened','first_opening'].includes(String(t||'').toLowerCase());}
+function isOpen(t){return isStandardOpen(t)||isProxyOpen(t);}
 function isClick(t){t=String(t||'').toLowerCase();return t==='click'||t==='clicked';}
 function messageKey(prefix,id,fallback){return prefix+':'+String(id||fallback||'unknown');}
 function latest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)>new Date(b)?a:b;}
 function earliest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)<new Date(b)?a:b;}
-function baseMessage(kind,id,subject){return{kind,messageId:'',campaignId:id==null?null:id,subject:subject||'',sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[],clickedUrls:[]};}
+function dateMs(v){const n=new Date(v||0).getTime();return Number.isFinite(n)?n:0;}
+function baseMessage(kind,id,subject){return{kind,messageId:'',campaignId:id==null?null:id,subject:subject||'',sentAt:'',deliveredAt:'',openedAt:'',rawOpenedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,rawOpened:false,suspectedAutomaticOpen:false,openClassification:'none',clicked:false,opens:0,rawOpens:0,automaticOpens:0,clicks:0,urls:[],clickedUrls:[],_standardOpenDates:[],_proxyOpenDates:[]};}
+function classifyOpen(m){
+  const delivered=dateMs(m.deliveredAt);
+  const standard=(m._standardOpenDates||[]).filter(Boolean);
+  const proxy=(m._proxyOpenDates||[]).filter(Boolean);
+  const human=[];
+  const automatic=[];
+  for(const d of standard){
+    const t=dateMs(d);
+    if(!t){continue;}
+    if(!delivered){human.push(d);continue;}
+    const delta=t-delivered;
+    if(delta>AUTO_OPEN_WINDOW_MS)human.push(d);else automatic.push(d);
+  }
+  for(const d of proxy)automatic.push(d);
+  m.rawOpens=standard.length+proxy.length;
+  m.rawOpened=m.rawOpens>0;
+  m.rawOpenedAt=[...standard,...proxy].reduce((a,d)=>earliest(a,d),'');
+  m.automaticOpens=automatic.length;
+  m.opens=human.length;
+  m.opened=human.length>0||m.clicked;
+  m.openedAt=human.reduce((a,d)=>earliest(a,d),'');
+  m.suspectedAutomaticOpen=m.rawOpened&&!m.opened;
+  if(m.opened)m.openClassification=human.length>0?'likely_human':'likely_human_via_click';
+  else if(m.rawOpened)m.openClassification='suspected_automatic';
+  else m.openClassification='none';
+  delete m._standardOpenDates;
+  delete m._proxyOpenDates;
+  return m;
+}
 
 export default async function handler(req,res){
  if(req.method==='OPTIONS')return res.status(204).end();
@@ -34,16 +67,15 @@ export default async function handler(req,res){
    const txClicked=events.filter(e=>isClick(eventType(e)));
    const txDelivered=events.filter(e=>eventType(e)==='delivered');
    const txSent=events.filter(e=>eventType(e)==='sent');
-   const opened=campaignOpens.length>0||txOpened.length>0;
    const clicked=campaignClicks.length>0||txClicked.length>0;
    const delivered=campaignDelivered.length>0||txDelivered.length>0;
-   const sent=sentCampaigns.length>0||txSent.length>0||delivered||opened||clicked;
+   const sent=sentCampaigns.length>0||txSent.length>0||delivered||txOpened.length>0||clicked;
    const activity=[];
    const grouped={};
 
    for(const e of events){
      const type=eventType(e)||'evento',date=eventDate(e),mid=String(e.messageId||e.message_id||''),subject=String(e.subject||''),url=String(e.link||e.url||'');
-     activity.push({type,date,subject,messageId:mid,url:isClick(type)?url:'',source:'transactional'});
+     activity.push({type,date,subject,messageId:mid,url:isClick(type)?url:'',source:'transactional',automaticOpen:isProxyOpen(type)});
      const k=messageKey('tx',mid,subject+'|'+date.slice(0,16));
      const m=grouped[k]||(grouped[k]=baseMessage('transactional',null,subject||'E-mail transacional'));
      m.messageId=mid||m.messageId;
@@ -51,7 +83,7 @@ export default async function handler(req,res){
      m.lastEventAt=latest(m.lastEventAt,date);
      if(type==='sent'){m.sent=true;m.sentAt=earliest(m.sentAt,date);}
      if(type==='delivered'){m.sent=true;m.delivered=true;m.deliveredAt=earliest(m.deliveredAt,date);}
-     if(isOpen(type)){m.sent=true;m.opened=true;m.opens++;m.openedAt=earliest(m.openedAt,date);}
+     if(isOpen(type)){m.sent=true;if(isProxyOpen(type))m._proxyOpenDates.push(date);else m._standardOpenDates.push(date);}
      if(isClick(type)){m.sent=true;m.clicked=true;m.clicks++;m.clickedAt=earliest(m.clickedAt,date);if(url){m.urls.push(url);m.clickedUrls.push(url);}}
    }
 
@@ -73,8 +105,8 @@ export default async function handler(req,res){
    }
    for(const o of campaignOpens){
      const id=o&&o.campaignId,date=eventDate(o),m=campaignMessage(id,date);
-     activity.push({type:'opened',date,campaignId:id||null,source:'campaign'});
-     m.sent=true;m.opened=true;m.opens++;m.openedAt=earliest(m.openedAt,date);m.lastEventAt=latest(m.lastEventAt,date);
+     activity.push({type:'opened',date,campaignId:id||null,source:'campaign',automaticOpen:false});
+     m.sent=true;m._standardOpenDates.push(date);m.lastEventAt=latest(m.lastEventAt,date);
    }
    for(const c of campaignClicks){
      const id=c&&c.campaignId,links=Array.isArray(c&&c.links)?c.links:[],baseDate=eventDate(c),m=campaignMessage(id,baseDate);
@@ -97,15 +129,23 @@ export default async function handler(req,res){
      if(m.kind==='campaign'&&m.campaignId!=null)m.subject=campaignNames[String(m.campaignId)]||m.subject;
      m.clickedUrls=Array.from(new Set(m.clickedUrls||m.urls||[])).slice(0,10);
      m.urls=m.clickedUrls.slice();
-     m.date=m.sentAt||m.deliveredAt||m.openedAt||m.clickedAt||m.lastEventAt||'';
+     classifyOpen(m);
+     m.date=m.sentAt||m.deliveredAt||m.rawOpenedAt||m.clickedAt||m.lastEventAt||'';
      return m;
    }).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
    activity.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
 
+   const opened=messages.some(m=>m.opened);
+   const rawOpened=messages.some(m=>m.rawOpened);
+   const opens=messages.reduce((n,m)=>n+(Number(m.opens)||0),0);
+   const rawOpens=messages.reduce((n,m)=>n+(Number(m.rawOpens)||0),0);
+   const automaticOpens=messages.reduce((n,m)=>n+(Number(m.automaticOpens)||0),0);
+   const suspectedAutomaticOpen=messages.some(m=>m.suspectedAutomaticOpen);
+
    return json(res,200,{
      ok:true,
      email,
-     summary:{sent,delivered,opened,clicked,opens:campaignOpens.length+txOpened.length,clicks:campaignClicks.length+txClicked.length,deliveredEvents:campaignDelivered.length+txDelivered.length,messages:messages.length},
+     summary:{sent,delivered,opened,rawOpened,suspectedAutomaticOpen,clicked,opens,rawOpens,automaticOpens,clicks:campaignClicks.length+txClicked.length,deliveredEvents:campaignDelivered.length+txDelivered.length,messages:messages.length},
      messages:messages.slice(0,100),
      activity:activity.slice(0,150),
      diagnostics:{
@@ -113,6 +153,10 @@ export default async function handler(req,res){
        transactionalStatsAvailable:eventResult.status==='fulfilled',
        transactionalClickEvents:txClicked.length,
        campaignClickGroups:campaignClicks.length,
+       openClassificationWindowSeconds:AUTO_OPEN_WINDOW_MS/1000,
+       openClassificationIsEstimate:true,
+       openClassificationRule:'proxy_open/unique_proxy_open = automática; abertura não-proxy até 5s da entrega = suspeita automática; abertura não-proxy após 5s = provável humana; qualquer clique confirma engajamento humano.',
+       openMetricMeaning:'opened/opens representam provável abertura humana. rawOpened/rawOpens preservam todas as aberturas informadas pela Brevo. suspectedAutomaticOpen/automaticOpens destacam aberturas automáticas ou suspeitas.',
        urlFieldMeaning:'urls e clickedUrls contêm somente URLs que tiveram evento de clique. Array vazio significa nenhum clique registrado; não significa que o e-mail foi enviado sem links.'
      },
      campaignStatsAvailable:campaignResult.status==='fulfilled',
