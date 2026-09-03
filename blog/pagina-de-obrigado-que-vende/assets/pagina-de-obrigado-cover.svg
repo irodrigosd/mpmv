@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#effaff"/><stop offset="1" stop-color="#bfe7ff"/></linearGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f6fbff"/></linearGradient>
+  <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0b4c73" flood-opacity=".16"/></filter>
+</defs>
+<rect width="1200" height="900" rx="48" fill="url(#bg)"/>
+<circle cx="160" cy="130" r="110" fill="#8fd3ff" opacity=".45"/>
+<circle cx="1060" cy="760" r="170" fill="#dff3ff" opacity=".7"/>
+<g filter="url(#s)">
+<rect x="120" y="160" width="960" height="580" rx="34" fill="url(#card)" stroke="#b9d7e8" stroke-width="3"/>
+<rect x="120" y="160" width="960" height="74" rx="34" fill="#09243a"/>
+<circle cx="174" cy="197" r="10" fill="#8fd3ff"/><circle cx="208" cy="197" r="10" fill="#dff3ff"/><circle cx="242" cy="197" r="10" fill="#ffffff" opacity=".7"/>
+<rect x="305" y="184" width="480" height="26" rx="13" fill="#1c4058"/>
+<g transform="translate(205 300)">
+  <circle cx="85" cy="85" r="85" fill="#dff3ff"/>
+  <circle cx="85" cy="85" r="52" fill="#8fd3ff"/>
+  <path d="M56 84l20 20 41-48" fill="none" stroke="#09243a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="190" y="46" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#14233a">Cadastro confirmado</text>
+  <text x="190" y="90" font-family="Arial,sans-serif" font-size="22" fill="#4e6477">Seu material está pronto.</text>
+  <rect x="190" y="125" width="245" height="58" rx="29" fill="#09243a"/>
+  <text x="312" y="162" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#ffffff">BAIXAR AGORA</text>
+</g>
+<path d="M570 525 C680 525 685 410 790 410" fill="none" stroke="#8fd3ff" stroke-width="10" stroke-linecap="round"/>
+<path d="M775 392l28 18-28 18" fill="none" stroke="#8fd3ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="790" y="330" width="220" height="170" rx="24" fill="#eaf7ff" stroke="#8fd3ff" stroke-width="3"/>
+<text x="900" y="377" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0874ad">PRÓXIMO PASSO</text>
+<text x="900" y="414" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#14233a">Ver a aula</text>
+<rect x="825" y="444" width="150" height="34" rx="17" fill="#8fd3ff"/>
+</g>
+<rect x="120" y="780" width="300" height="48" rx="24" fill="#09243a"/>
+<text x="270" y="811" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#ffffff">MPMV • FUNIL + CONVERSÃO</text>
+</svg>

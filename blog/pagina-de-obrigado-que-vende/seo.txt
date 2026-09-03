@@ -1,0 +1,42 @@
+MPMV — SEO DO ARTIGO
+
+Título editorial:
+Como criar uma página de obrigado que vende mais depois do cadastro
+
+SEO title:
+Página de Obrigado: Como Criar e Vender Mais | MPMV
+
+Slug:
+pagina-de-obrigado-que-vende
+
+URL:
+https://www.maispersuasaomaisvendas.com.br/blog/pagina-de-obrigado-que-vende/
+
+Frase-chave foco:
+página de obrigado
+
+Meta description:
+Aprenda a criar uma página de obrigado que confirma a conversão, orienta o próximo passo e aproveita o pós-cadastro para gerar mais vendas.
+
+Intenção de busca:
+Informacional + comercial. Usuário quer entender o que é uma página de obrigado, o que colocar nela e como usá-la no funil.
+
+Links internos usados:
+- /blog/como-aumentar-a-conversao-da-landing-page-sem-gastar-mais-com-anuncios/
+- /blog/como-criar-uma-isca-digital/
+- /blog/nutricao-de-leads/
+- /blog/call-to-action-como-criar-exemplos/
+- /blog/order-bump-aumentar-ticket-medio-checkout/
+
+CTA principal:
+Guia Prático Persuasão pra Vender Todo Santo Dia → /
+
+CTA secundário:
+Mentoria de persuasão e vendas → /mentoria/
+
+Canibalização:
+Busca no diretório atual do blog não encontrou artigo com slug ou intenção principal "página de obrigado".
+Existe /blog/com-licenca-obrigado-persuasao-vendas/, mas o tema é persuasão por linguagem/cortesia; a intenção de busca é diferente.
+
+Identidade visual:
+Sistema MPMV atual — azul-claro, branco, azul-marinho, cards claros, hero em gradiente azul e marca MPMV.
