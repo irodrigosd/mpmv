@@ -1,0 +1,41 @@
+TÍTULO SEO
+Calendário de Conteúdo com ChatGPT: Passo a Passo | MPMV
+
+SLUG
+calendario-de-conteudo-com-chatgpt
+
+PALAVRA-CHAVE PRINCIPAL
+calendário de conteúdo com ChatGPT
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+como criar calendário de conteúdo
+calendário editorial com ChatGPT
+planejamento de conteúdo com IA
+prompt para calendário de conteúdo
+calendário de posts para Instagram
+ChatGPT para criar conteúdo
+
+META DESCRIPTION
+Aprenda a criar um calendário de conteúdo com ChatGPT sem receber ideias genéricas. Veja o passo a passo, um prompt completo e um modelo de 30 dias.
+
+H1
+Como criar um calendário de conteúdo com ChatGPT sem receber 30 ideias genéricas
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/calendario-de-conteudo-com-chatgpt/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação prática em planejamento de conteúdo para Instagram e outras redes sociais.
+
+FONTES PRINCIPAIS
+https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt
+https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt
+
+CATEGORIA
+IA + Conteúdo
+
+DATA
+2026-09-03
+
+AUTOR
+Rodrigo Castro

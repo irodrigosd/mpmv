@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Calendário de conteúdo com ChatGPT</title>
+  <desc id="desc">Calendário editorial com temas, ângulos, formatos e objetivos de conteúdo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfeff"/><stop offset="1" stop-color="#c9ebff"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#08263f"/><stop offset="1" stop-color="#0b73a9"/></linearGradient>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0b3957" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" rx="42" fill="url(#bg)"/>
+  <circle cx="1040" cy="132" r="74" fill="#8fd3ff" opacity=".48"/>
+  <circle cx="108" cy="783" r="104" fill="#fff" opacity=".62"/>
+  <g filter="url(#s)">
+    <rect x="115" y="130" width="760" height="635" rx="28" fill="#fff"/>
+    <path d="M143 130h704a28 28 0 0 1 28 28v108H115V158a28 28 0 0 1 28-28z" fill="url(#head)"/>
+    <text x="165" y="193" fill="#9dd9ff" font-family="Arial, sans-serif" font-size="21" font-weight="800" letter-spacing="4">PLANO DE 30 DIAS</text>
+    <text x="165" y="238" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="800">CONTEÚDO COM DIREÇÃO</text>
+    <g font-family="Arial, sans-serif" font-weight="800" text-anchor="middle">
+      <g fill="#486174" font-size="15"><text x="184" y="310">SEG</text><text x="286" y="310">TER</text><text x="388" y="310">QUA</text><text x="490" y="310">QUI</text><text x="592" y="310">SEX</text><text x="694" y="310">SÁB</text><text x="796" y="310">DOM</text></g>
+      <g fill="#14233a" font-size="21">
+        <rect x="140" y="336" width="88" height="72" rx="14" fill="#dff3ff"/><text x="184" y="380">01</text>
+        <rect x="242" y="336" width="88" height="72" rx="14" fill="#f3f8fb"/><text x="286" y="380">02</text>
+        <rect x="344" y="336" width="88" height="72" rx="14" fill="#dff3ff"/><text x="388" y="380">03</text>
+        <rect x="446" y="336" width="88" height="72" rx="14" fill="#f3f8fb"/><text x="490" y="380">04</text>
+        <rect x="548" y="336" width="88" height="72" rx="14" fill="#dff3ff"/><text x="592" y="380">05</text>
+        <rect x="650" y="336" width="88" height="72" rx="14" fill="#f3f8fb"/><text x="694" y="380">06</text>
+        <rect x="752" y="336" width="88" height="72" rx="14" fill="#f3f8fb"/><text x="796" y="380">07</text>
+      </g>
+    </g>
+    <g font-family="Arial, sans-serif">
+      <rect x="140" y="448" width="700" height="66" rx="16" fill="#f5f9fc" stroke="#d2e3ed"/><rect x="158" y="465" width="74" height="32" rx="16" fill="#08263f"/><text x="195" y="487" text-anchor="middle" fill="#9dd9ff" font-size="13" font-weight="800">TEMA</text><text x="254" y="489" fill="#14233a" font-size="20" font-weight="700">O assunto que merece espaço</text>
+      <rect x="140" y="532" width="700" height="66" rx="16" fill="#f5f9fc" stroke="#d2e3ed"/><rect x="158" y="549" width="74" height="32" rx="16" fill="#0b73a9"/><text x="195" y="571" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">ÂNGULO</text><text x="254" y="573" fill="#14233a" font-size="20" font-weight="700">A leitura que cria interesse</text>
+      <rect x="140" y="616" width="700" height="66" rx="16" fill="#f5f9fc" stroke="#d2e3ed"/><rect x="158" y="633" width="74" height="32" rx="16" fill="#1c8567"/><text x="195" y="655" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">AÇÃO</text><text x="254" y="657" fill="#14233a" font-size="20" font-weight="700">O próximo passo do público</text>
+  </g>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="910" y="272" width="210" height="300" rx="30" fill="#08263f" filter="url(#s)"/>
+    <circle cx="1015" cy="348" r="46" fill="#9dd9ff"/><path d="M989 350c13-26 39-30 56-9-1 31-20 52-48 49-13-9-17-24-8-40z" fill="none" stroke="#08263f" stroke-width="7" stroke-linecap="round"/>
+    <text x="1015" y="438" text-anchor="middle" fill="#9dd9ff" font-size="15" font-weight="800" letter-spacing="3">CHATGPT</text>
+    <text x="1015" y="483" text-anchor="middle" fill="#fff" font-size="23" font-weight="800">CONTEXTO</text>
+    <text x="1015" y="516" text-anchor="middle" fill="#fff" font-size="23" font-weight="800">ANTES DO</text>
+    <text x="1015" y="549" text-anchor="middle" fill="#fff" font-size="23" font-weight="800">PROMPT</text>
+  </g>
+</svg>
