@@ -1,0 +1,38 @@
+VALIDAÇÃO MPMV — Como vender sem parecer que está desesperado para vender
+Data: 2026-09-03
+
+CANIBALIZAÇÃO
+- Palavra-chave principal: vender sem parecer desesperado
+- Não foi encontrado no repositório um artigo com esse slug ou essa frase-chave como foco.
+- Artigos próximos: "convencer demais vender menos" e "follow-up de vendas".
+- Diferenciação aplicada: este artigo trata dos sinais de pressa/pressão na comunicação antes e durante a decisão; o follow-up fica restrito à retomada de leads.
+
+SEO
+- SEO title: 42 caracteres
+- Meta description: 139 caracteres
+- Conteúdo: 1827 palavras
+- Links internos: 15
+- H2: 7
+- Imagens com ALT: 1
+- Ocorrências da frase-chave no artigo: 7
+
+LEGIBILIDADE
+- Média aproximada de palavras por frase: 14.5
+- Média aproximada de palavras por parágrafo: 36.2
+
+CHECKLIST
+- OK — frase-chave no title/H1
+- OK — frase-chave nos primeiros 150 termos
+- OK — frase-chave em subtítulo
+- OK — meta 115-160
+- OK — SEO title 35-62
+- OK — canonical
+- OK — 2+ links internos
+- OK — imagem com ALT
+- OK — 1000+ palavras
+- OK — frase-chave distribuída 3+
+- OK — 3+ H2
+- OK — FAQPage schema
+- OK — BlogPosting schema
+- OK — BreadcrumbList schema
+- OK — favicon
