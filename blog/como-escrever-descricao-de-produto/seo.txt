@@ -1,0 +1,49 @@
+TÍTULO SEO
+Descrição de Produto: Como Escrever para Vender | MPMV
+
+SLUG
+como-escrever-descricao-de-produto
+
+PALAVRA-CHAVE PRINCIPAL
+descrição de produto
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+como escrever descrição de produto
+descrição de produto que vende
+exemplos de descrição de produto
+copy para produto
+descrição de produto para e-commerce
+descrição de produto com ChatGPT
+
+META DESCRIPTION
+Aprenda como escrever uma descrição de produto com benefícios, especificações, contexto e prova para despertar desejo sem parecer propaganda.
+
+H1
+Como escrever uma descrição de produto que desperta desejo sem parecer propaganda
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/como-escrever-descricao-de-produto/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação prática em páginas de produto, e-commerce, catálogos, serviços e infoprodutos.
+
+CATEGORIA
+Copywriting + Produto
+
+DATA
+2026-09-03
+
+AUTOR
+Rodrigo Castro
+
+CTA PRINCIPAL
+Guia Prático Persuasão pra Vender Todo Santo Dia — gratuito — link para a página inicial.
+
+LINKS INTERNOS
+/blog/como-fazer-research-copywriting/
+/blog/transformar-caracteristicas-em-beneficios/
+/blog/storytelling-para-vender-sem-inventar-historias/
+
+FONTES EXTERNAS
+https://support.google.com/merchants/answer/7052112
+https://pt.squarespace.com/blog/Como-fazer-a-descricao-de-um-produto

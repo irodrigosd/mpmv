@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Estrutura de uma descrição de produto</title>
+  <desc id="desc">Uma página de produto transforma características em benefícios e cenas de uso.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfeff"/><stop offset="1" stop-color="#c9ebff"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071724"/><stop offset="1" stop-color="#0c466d"/></linearGradient>
+    <linearGradient id="product" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8fd3ff"/><stop offset="1" stop-color="#3da7df"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0b3957" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" rx="42" fill="url(#bg)"/>
+  <circle cx="1060" cy="126" r="78" fill="#8fd3ff" opacity=".55"/>
+  <circle cx="112" cy="790" r="115" fill="#fff" opacity=".7"/>
+  <g filter="url(#shadow)">
+    <rect x="104" y="108" width="992" height="684" rx="36" fill="#fff"/>
+    <rect x="104" y="108" width="992" height="164" rx="36" fill="url(#head)"/>
+    <path d="M104 238h992v34H104z" fill="url(#head)"/>
+    <text x="164" y="174" fill="#9dd9ff" font-family="Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="5">COPYWRITING + PRODUTO</text>
+    <text x="164" y="228" fill="#fff" font-family="Arial,sans-serif" font-size="40" font-weight="900">DESCRIÇÃO QUE CRIA UMA CENA</text>
+    <g font-family="Arial,sans-serif">
+      <rect x="160" y="342" width="318" height="334" rx="28" fill="#f4f9fc" stroke="#cbdde9"/>
+      <rect x="202" y="382" width="234" height="182" rx="26" fill="url(#product)"/>
+      <path d="M270 455h98M319 406v98" stroke="#fff" stroke-width="18" stroke-linecap="round" opacity=".92"/>
+      <text x="319" y="608" text-anchor="middle" fill="#14233a" font-size="20" font-weight="900">O PRODUTO</text>
+      <text x="319" y="640" text-anchor="middle" fill="#4e6477" font-size="17">material • medida • função</text>
+
+      <path d="M510 505h83" stroke="#0b73a9" stroke-width="10" stroke-linecap="round"/>
+      <path d="M574 480l26 25-26 25" fill="none" stroke="#0b73a9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <rect x="625" y="326" width="405" height="374" rx="28" fill="#fff" stroke="#cbdde9"/>
+      <rect x="625" y="326" width="405" height="72" rx="28" fill="#e5f6ff"/>
+      <path d="M625 370h405v28H625z" fill="#e5f6ff"/>
+      <text x="665" y="371" fill="#0874ad" font-size="18" font-weight="900" letter-spacing="2">DESCRIÇÃO</text>
+      <rect x="666" y="437" width="294" height="20" rx="10" fill="#14233a"/>
+      <rect x="666" y="476" width="240" height="13" rx="7" fill="#9cb2c2"/>
+      <rect x="666" y="505" width="318" height="13" rx="7" fill="#c2d2dd"/>
+      <rect x="666" y="534" width="285" height="13" rx="7" fill="#c2d2dd"/>
+      <rect x="666" y="580" width="118" height="44" rx="22" fill="#08263f"/>
+      <text x="725" y="608" text-anchor="middle" fill="#9dd9ff" font-size="14" font-weight="900">BENEFÍCIO</text>
+      <rect x="802" y="580" width="104" height="44" rx="22" fill="#e9f8f3"/>
+      <text x="854" y="608" text-anchor="middle" fill="#1c8567" font-size="14" font-weight="900">PROVA</text>
+      <rect x="924" y="580" width="66" height="44" rx="22" fill="#dff3ff"/>
+      <text x="957" y="608" text-anchor="middle" fill="#0874ad" font-size="14" font-weight="900">CTA</text>
+      <text x="828" y="665" text-anchor="middle" fill="#4e6477" font-size="18">O cliente imagina o uso.</text>
+      <rect x="160" y="720" width="870" height="18" rx="9" fill="#8fd3ff"/>
+    </g>
+  </g>
+</svg>
