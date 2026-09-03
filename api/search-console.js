@@ -126,7 +126,7 @@ module.exports=async function handler(req,res){
       const [contentData,queriesData,totalsData]=await Promise.all([
         query(token,{...base,dimensions:['page']}),
         query(token,{...base,dimensions:['query'],rowLimit:1000}),
-        query(token,{...base,dimensions:[]})
+        query(token,{...base,dimensions:[],aggregationType:'byPage'})
       ]);
       const content=(contentData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
       const queries=(queriesData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
@@ -141,6 +141,7 @@ module.exports=async function handler(req,res){
         endDate:isoDate(end),
         days,
         total:firstRow(totalsData),
+        responseAggregationType:totalsData.responseAggregationType||'byPage',
         content:content.slice(0,200),
         pages:content.slice(0,200),
         reels:reels.slice(0,100),
@@ -151,10 +152,11 @@ module.exports=async function handler(req,res){
 
     const articleFilter={dimensionFilterGroups:[{groupType:'and',filters:[{dimension:'page',operator:'contains',expression:'/blog/'}]}]};
 
-    const [pagesData,queriesData,totalsData,articleTotalsData,pageQueriesData]=await Promise.all([
+    const [pagesData,queriesData,pageTotalsData,propertyTotalsData,articleTotalsData,pageQueriesData]=await Promise.all([
       query(token,{...base,dimensions:['page']}),
       query(token,{...base,dimensions:['query'],rowLimit:1000}),
-      query(token,{...base,dimensions:[]}),
+      query(token,{...base,dimensions:[],aggregationType:'byPage'}),
+      query(token,{...base,dimensions:[],aggregationType:'byProperty'}),
       query(token,{...base,...articleFilter,dimensions:[]}),
       query(token,{...base,...articleFilter,dimensions:['page','query'],rowLimit:25000})
     ]);
@@ -162,7 +164,8 @@ module.exports=async function handler(req,res){
     const mergedPages=mergePageRows((pagesData.rows||[]).map(row));
     const pages=mergedPages.filter(x=>canonicalPath(x.keys[0]||'').startsWith('/blog/')).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
     const queries=(queriesData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
-    const total=firstRow(totalsData);
+    const total=firstRow(pageTotalsData);
+    const propertyTotal=firstRow(propertyTotalsData);
     const articleTotals=firstRow(articleTotalsData);
     const pageQueries=normalizePageQueryRows(pageQueriesData.rows||[]).sort((a,b)=>b.impressions-a.impressions||a.position-b.position);
     const opportunities=pages.filter(p=>p.clicks===0&&p.impressions>=5&&p.position>0&&p.position<=12).sort((a,b)=>a.position-b.position||b.impressions-a.impressions).slice(0,20);
@@ -177,13 +180,19 @@ module.exports=async function handler(req,res){
       endDate:isoDate(end),
       days,
       total,
+      propertyTotal,
       articleTotals,
+      aggregation:{
+        total:pageTotalsData.responseAggregationType||'byPage',
+        propertyTotal:propertyTotalsData.responseAggregationType||'byProperty',
+        articleTotals:articleTotalsData.responseAggregationType||'byPage'
+      },
       pages:pages.slice(0,100),
       queries:queries.slice(0,100),
       pageQueries:pageQueries.slice(0,500),
       cannibalizationCandidates,
       opportunities,
-      aggregationNote:'total e articleTotals usam consultas sem dimensão; pages usa dimensão page. pageQueries usa página + consulta e serve para diagnosticar disputa entre URLs pela mesma busca.'
+      aggregationNote:'total e articleTotals usam agregação por página e podem ser comparados entre si. propertyTotal usa agregação por propriedade e pode ter números diferentes porque o Search Console calcula métricas por página e por propriedade de formas diferentes. pages usa dimensão page; pageQueries usa página + consulta para diagnosticar disputa entre URLs.'
     });
   }catch(e){
     console.error('Search Console Error',e);
