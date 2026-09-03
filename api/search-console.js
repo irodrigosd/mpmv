@@ -1,6 +1,8 @@
 const crypto=require('crypto');
 
 const SITE_URL=process.env.GSC_SITE_URL||'https://www.maispersuasaomaisvendas.com.br/';
+const INSTAGRAM_SITE_URL=process.env.GSC_INSTAGRAM_URL||'';
+const INSTAGRAM_ACCOUNT=(process.env.GSC_INSTAGRAM_ACCOUNT||'maispersuasaomaisvendas').replace(/^@/,'').toLowerCase();
 const CLIENT_EMAIL=process.env.GSC_CLIENT_EMAIL||'';
 const PRIVATE_KEY=(process.env.GSC_PRIVATE_KEY||'').replace(/\\n/g,'\n');
 const CANONICAL_ORIGIN='https://www.maispersuasaomaisvendas.com.br';
@@ -26,11 +28,34 @@ async function accessToken(){
 }
 
 async function query(token,body){
-  const url='https://searchconsole.googleapis.com/webmasters/v3/sites/'+encodeURIComponent(SITE_URL)+'/searchAnalytics/query';
+  const siteUrl=body.siteUrl;
+  delete body.siteUrl;
+  const url='https://searchconsole.googleapis.com/webmasters/v3/sites/'+encodeURIComponent(siteUrl)+'/searchAnalytics/query';
   const r=await fetch(url,{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   const data=await r.json().catch(()=>({}));
   if(!r.ok) throw Object.assign(new Error((data.error&&data.error.message)||'search_console_query_failed'),{status:r.status||500,data});
   return data;
+}
+
+async function listSites(token){
+  const r=await fetch('https://searchconsole.googleapis.com/webmasters/v3/sites',{headers:{Authorization:'Bearer '+token}});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok) throw Object.assign(new Error((data.error&&data.error.message)||'search_console_sites_failed'),{status:r.status||500,data});
+  return Array.isArray(data.siteEntry)?data.siteEntry:[];
+}
+
+function instagramMatch(siteUrl){
+  const raw=String(siteUrl||'').toLowerCase();
+  return raw.includes('instagram.com/')&&raw.includes(INSTAGRAM_ACCOUNT);
+}
+
+async function resolveSiteUrl(token,property){
+  if(property!=='instagram') return SITE_URL;
+  if(INSTAGRAM_SITE_URL) return INSTAGRAM_SITE_URL;
+  const sites=await listSites(token);
+  const match=sites.find(x=>instagramMatch(x.siteUrl));
+  if(match&&match.siteUrl) return match.siteUrl;
+  throw Object.assign(new Error('instagram_property_not_shared'),{status:404});
 }
 
 function row(r){return{keys:r.keys||[],clicks:Number(r.clicks||0),impressions:Number(r.impressions||0),ctr:Number(r.ctr||0),position:Number(r.position||0)}}
@@ -89,11 +114,41 @@ module.exports=async function handler(req,res){
   if(req.method!=='GET'){res.setHeader('Allow','GET, OPTIONS');return json(res,405,{ok:false,error:'method_not_allowed'})}
   if(!authorized(req))return json(res,401,{ok:false,error:'unauthorized'});
   try{
+    const property=String(req.query&&req.query.property||'website').toLowerCase()==='instagram'?'instagram':'website';
     const days=Math.max(1,Math.min(90,Number(req.query&&req.query.days)||28));
     const end=new Date();end.setUTCDate(end.getUTCDate()-2);
     const start=new Date(end);start.setUTCDate(start.getUTCDate()-days+1);
     const token=await accessToken();
-    const base={startDate:isoDate(start),endDate:isoDate(end),type:'web',rowLimit:25000,dataState:'final'};
+    const propertySiteUrl=await resolveSiteUrl(token,property);
+    const base={siteUrl:propertySiteUrl,startDate:isoDate(start),endDate:isoDate(end),type:'web',rowLimit:25000,dataState:'final'};
+
+    if(property==='instagram'){
+      const [contentData,queriesData,totalsData]=await Promise.all([
+        query(token,{...base,dimensions:['page']}),
+        query(token,{...base,dimensions:['query'],rowLimit:1000}),
+        query(token,{...base,dimensions:[]})
+      ]);
+      const content=(contentData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
+      const queries=(queriesData.rows||[]).map(row).sort((a,b)=>b.clicks-a.clicks||b.impressions-a.impressions);
+      const reels=content.filter(x=>/\/reels?\//i.test(String(x.keys&&x.keys[0]||'')));
+      const posts=content.filter(x=>/\/p\//i.test(String(x.keys&&x.keys[0]||'')));
+      return json(res,200,{
+        ok:true,
+        property,
+        siteUrl:propertySiteUrl,
+        account:'@'+INSTAGRAM_ACCOUNT,
+        startDate:isoDate(start),
+        endDate:isoDate(end),
+        days,
+        total:firstRow(totalsData),
+        content:content.slice(0,200),
+        pages:content.slice(0,200),
+        reels:reels.slice(0,100),
+        posts:posts.slice(0,100),
+        queries:queries.slice(0,100)
+      });
+    }
+
     const articleFilter={dimensionFilterGroups:[{groupType:'and',filters:[{dimension:'page',operator:'contains',expression:'/blog/'}]}]};
 
     const [pagesData,queriesData,totalsData,articleTotalsData,pageQueriesData]=await Promise.all([
@@ -115,6 +170,7 @@ module.exports=async function handler(req,res){
 
     return json(res,200,{
       ok:true,
+      property,
       siteUrl:SITE_URL,
       canonicalOrigin:CANONICAL_ORIGIN,
       startDate:isoDate(start),
@@ -129,5 +185,16 @@ module.exports=async function handler(req,res){
       opportunities,
       aggregationNote:'total e articleTotals usam consultas sem dimensão; pages usa dimensão page. pageQueries usa página + consulta e serve para diagnosticar disputa entre URLs pela mesma busca.'
     });
-  }catch(e){console.error('Search Console Error',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'})}
+  }catch(e){
+    console.error('Search Console Error',e);
+    return json(res,e.status&&e.status<600?e.status:500,{
+      ok:false,
+      error:e.message||'internal_error',
+      setup:e.message==='instagram_property_not_shared'?{
+        account:'@'+INSTAGRAM_ACCOUNT,
+        serviceAccount:CLIENT_EMAIL,
+        instruction:'Adicione esta conta de serviço em Configurações > Usuários e permissões da propriedade do Instagram no Search Console.'
+      }:undefined
+    });
+  }
 };
