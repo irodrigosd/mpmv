@@ -1,0 +1,44 @@
+TÍTULO SEO
+Conteúdo para Cada Etapa do Funil de Vendas | MPMV
+
+H1
+Como criar conteúdo para cada etapa do funil de vendas sem postar no escuro
+
+PALAVRA-CHAVE FOCO
+conteúdo para cada etapa do funil de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+conteúdo para funil de vendas
+topo meio e fundo do funil
+conteúdo topo de funil
+conteúdo meio de funil
+conteúdo fundo de funil
+funil de conteúdo
+
+META DESCRIPTION
+Aprenda o que postar no topo, meio e fundo do funil de vendas e transforme conteúdo solto em uma sequência que atrai, nutre e conduz à oferta.
+
+SLUG
+conteudo-para-cada-etapa-do-funil-de-vendas
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/conteudo-para-cada-etapa-do-funil-de-vendas/
+
+CATEGORIA
+Conteúdo + Funil
+
+INTENÇÃO DE BUSCA
+Informacional / prática. Usuário quer saber o que publicar em cada etapa do funil de vendas.
+
+CTA PRINCIPAL
+/curso/ — Como Criar Posts Virais com Persuasão no ChatGPT — R$ 37
+
+LINKS INTERNOS
+/blog/funil-de-vendas-onde-a-venda-trava/
+/blog/calendario-de-conteudo-com-chatgpt/
+/blog/como-criar-uma-isca-digital/
+/blog/nutricao-de-leads/
+/blog/lead-quente-lead-frio/
+
+NOTA DE CANIBALIZAÇÃO
+O artigo mira a intenção “o que postar em cada etapa do funil”. O artigo /blog/funil-de-vendas-onde-a-venda-trava/ mira diagnóstico de gargalos do funil; /blog/lead-quente-lead-frio/ mira adaptação da copy à temperatura do lead; /blog/nutricao-de-leads/ mira sequência após captação. Manter essas intenções separadas.
