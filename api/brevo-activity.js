@@ -10,7 +10,7 @@ function isClick(t){t=String(t||'').toLowerCase();return t==='click'||t==='click
 function messageKey(prefix,id,fallback){return prefix+':'+String(id||fallback||'unknown');}
 function latest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)>new Date(b)?a:b;}
 function earliest(a,b){if(!a)return b||'';if(!b)return a||'';return new Date(a)<new Date(b)?a:b;}
-function baseMessage(kind,id,subject){return{kind,messageId:'',campaignId:id==null?null:id,subject:subject||'',sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[]};}
+function baseMessage(kind,id,subject){return{kind,messageId:'',campaignId:id==null?null:id,subject:subject||'',sentAt:'',deliveredAt:'',openedAt:'',clickedAt:'',lastEventAt:'',sent:false,delivered:false,opened:false,clicked:false,opens:0,clicks:0,urls:[],clickedUrls:[]};}
 
 export default async function handler(req,res){
  if(req.method==='OPTIONS')return res.status(204).end();
@@ -42,8 +42,8 @@ export default async function handler(req,res){
    const grouped={};
 
    for(const e of events){
-     const type=eventType(e)||'evento',date=eventDate(e),mid=String(e.messageId||e.message_id||''),subject=String(e.subject||'');
-     activity.push({type,date,subject,messageId:mid,source:'transactional'});
+     const type=eventType(e)||'evento',date=eventDate(e),mid=String(e.messageId||e.message_id||''),subject=String(e.subject||''),url=String(e.link||e.url||'');
+     activity.push({type,date,subject,messageId:mid,url:isClick(type)?url:'',source:'transactional'});
      const k=messageKey('tx',mid,subject+'|'+date.slice(0,16));
      const m=grouped[k]||(grouped[k]=baseMessage('transactional',null,subject||'E-mail transacional'));
      m.messageId=mid||m.messageId;
@@ -52,7 +52,7 @@ export default async function handler(req,res){
      if(type==='sent'){m.sent=true;m.sentAt=earliest(m.sentAt,date);}
      if(type==='delivered'){m.sent=true;m.delivered=true;m.deliveredAt=earliest(m.deliveredAt,date);}
      if(isOpen(type)){m.sent=true;m.opened=true;m.opens++;m.openedAt=earliest(m.openedAt,date);}
-     if(isClick(type)){m.sent=true;m.clicked=true;m.clicks++;m.clickedAt=earliest(m.clickedAt,date);if(e.link||e.url)m.urls.push(String(e.link||e.url));}
+     if(isClick(type)){m.sent=true;m.clicked=true;m.clicks++;m.clickedAt=earliest(m.clickedAt,date);if(url){m.urls.push(url);m.clickedUrls.push(url);}}
    }
 
    const campaignIds=new Set();
@@ -82,7 +82,7 @@ export default async function handler(req,res){
        for(const l of links){
          const date=eventDate(l)||baseDate,url=String(l&&l.url||''),count=Math.max(1,Number(l&&l.count||1));
          activity.push({type:'clicked',date,campaignId:id||null,url,count,source:'campaign'});
-         m.sent=true;m.clicked=true;m.clicks+=count;m.clickedAt=earliest(m.clickedAt,date);m.lastEventAt=latest(m.lastEventAt,date);if(url)m.urls.push(url);
+         m.sent=true;m.clicked=true;m.clicks+=count;m.clickedAt=earliest(m.clickedAt,date);m.lastEventAt=latest(m.lastEventAt,date);if(url){m.urls.push(url);m.clickedUrls.push(url);}
        }
      }else{
        activity.push({type:'clicked',date:baseDate,campaignId:id||null,source:'campaign'});
@@ -95,12 +95,28 @@ export default async function handler(req,res){
 
    const messages=Object.values(grouped).map(m=>{
      if(m.kind==='campaign'&&m.campaignId!=null)m.subject=campaignNames[String(m.campaignId)]||m.subject;
-     m.urls=Array.from(new Set(m.urls)).slice(0,10);
+     m.clickedUrls=Array.from(new Set(m.clickedUrls||m.urls||[])).slice(0,10);
+     m.urls=m.clickedUrls.slice();
      m.date=m.sentAt||m.deliveredAt||m.openedAt||m.clickedAt||m.lastEventAt||'';
      return m;
    }).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
    activity.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
 
-   return json(res,200,{ok:true,email,summary:{sent,delivered,opened,clicked,opens:campaignOpens.length+txOpened.length,clicks:campaignClicks.length+txClicked.length,deliveredEvents:campaignDelivered.length+txDelivered.length,messages:messages.length},messages:messages.slice(0,100),activity:activity.slice(0,150),campaignStatsAvailable:campaignResult.status==='fulfilled',transactionalStatsAvailable:eventResult.status==='fulfilled'});
+   return json(res,200,{
+     ok:true,
+     email,
+     summary:{sent,delivered,opened,clicked,opens:campaignOpens.length+txOpened.length,clicks:campaignClicks.length+txClicked.length,deliveredEvents:campaignDelivered.length+txDelivered.length,messages:messages.length},
+     messages:messages.slice(0,100),
+     activity:activity.slice(0,150),
+     diagnostics:{
+       campaignStatsAvailable:campaignResult.status==='fulfilled',
+       transactionalStatsAvailable:eventResult.status==='fulfilled',
+       transactionalClickEvents:txClicked.length,
+       campaignClickGroups:campaignClicks.length,
+       urlFieldMeaning:'urls e clickedUrls contêm somente URLs que tiveram evento de clique. Array vazio significa nenhum clique registrado; não significa que o e-mail foi enviado sem links.'
+     },
+     campaignStatsAvailable:campaignResult.status==='fulfilled',
+     transactionalStatsAvailable:eventResult.status==='fulfilled'
+   });
  }catch(e){console.error('Brevo activity error',e);return json(res,e.status&&e.status<600?e.status:500,{ok:false,error:e.message||'internal_error'});}
 }
