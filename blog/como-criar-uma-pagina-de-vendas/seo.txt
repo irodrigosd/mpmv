@@ -1,0 +1,41 @@
+TÍTULO SEO
+Como Criar uma Página de Vendas que Converte | MPMV
+
+SLUG
+como-criar-uma-pagina-de-vendas
+
+PALAVRA-CHAVE PRINCIPAL
+como criar uma página de vendas
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+página de vendas
+estrutura de página de vendas
+copy para página de vendas
+página de vendas para infoproduto
+como fazer uma página de vendas
+
+META DESCRIPTION
+Aprenda como criar uma página de vendas que converte com uma estrutura clara de copy, prova, oferta, objeções e CTA para infoprodutos.
+
+H1
+Como criar uma página de vendas que converte sem depender de um template mágico
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/como-criar-uma-pagina-de-vendas/
+
+INTENÇÃO DE BUSCA
+Informacional com forte intenção comercial: o usuário quer aprender a estruturar uma página de vendas do zero e aplicar em curso, mentoria, serviço ou outro infoproduto.
+
+CATEGORIA
+Copy + Conversão
+
+DATA
+2026-09-03
+
+AUTOR
+Rodrigo Castro
+
+FONTES PRINCIPAIS
+https://hotmart.com/pt-br/blog/pagina-de-vendas
+https://www.maispersuasaomaisvendas.com.br/blog/como-aumentar-a-conversao-da-landing-page-sem-gastar-mais-com-anuncios/
+https://www.maispersuasaomaisvendas.com.br/blog/call-to-action-como-criar-exemplos/

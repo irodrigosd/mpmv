@@ -1,0 +1,14 @@
+MPMV — Artigo pronto para /admin/blog
+
+Arquivo principal: index.html
+Asset: assets/pagina-vendas-cover.svg
+SEO: seo.txt
+
+COMO PUBLICAR
+1. Entre em /admin/blog.
+2. Use "Subir ZIP e publicar".
+3. Selecione este ZIP inteiro.
+4. O admin identifica o slug pelo canonical e atualiza índice do blog, manifest e sitemap.
+
+Observação:
+O favicon usa /favicon-mpmv.png com caminho absoluto para funcionar dentro da rota /blog/<slug>/.
