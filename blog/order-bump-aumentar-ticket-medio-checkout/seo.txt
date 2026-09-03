@@ -1,0 +1,40 @@
+TÍTULO SEO
+Order Bump: aumente o ticket médio no checkout | MPMV
+
+SLUG
+order-bump-aumentar-ticket-medio-checkout
+
+PALAVRA-CHAVE PRINCIPAL
+order bump
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+o que é order bump
+order bump no checkout
+como usar order bump
+aumentar ticket médio
+oferta complementar no checkout
+
+META DESCRIPTION
+Entenda o que é order bump, como escolher uma oferta complementar e como usar o checkout para aumentar o ticket médio sem criar outra campanha.
+
+H1
+Order bump: como aumentar o ticket médio no checkout
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/order-bump-aumentar-ticket-medio-checkout/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação comercial: entender o que é order bump, como escolher uma oferta complementar, escrever a copy, definir uma hipótese de preço e medir o impacto no ticket médio.
+
+FONTES PRINCIPAIS
+https://help.hotmart.com/pt-br/article/360019967392/o-que-e-e-como-configurar-o-order-bump-
+https://hotmart.com/pt-br/checkout
+
+CATEGORIA
+Vendas + Checkout
+
+DATA
+2026-09-03
+
+AUTOR
+Rodrigo Castro

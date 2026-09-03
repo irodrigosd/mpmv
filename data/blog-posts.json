@@ -1,5 +1,28 @@
 [
   {
+    "id": "order-bump-aumentar-ticket-medio-checkout-2026-09-03",
+    "title": "Order bump: como aumentar o ticket médio no checkout",
+    "seoTitle": "Order Bump: aumente o ticket médio no checkout | MPMV",
+    "metaDescription": "Entenda o que é order bump, como escolher uma oferta complementar e como usar o checkout para aumentar o ticket médio sem criar outra campanha.",
+    "focusKeyphrase": "order bump",
+    "secondaryKeyphrases": [
+      "o que é order bump",
+      "order bump no checkout",
+      "como usar order bump",
+      "aumentar ticket médio",
+      "oferta complementar no checkout"
+    ],
+    "slug": "order-bump-aumentar-ticket-medio-checkout",
+    "url": "/blog/order-bump-aumentar-ticket-medio-checkout/",
+    "file": "blog/order-bump-aumentar-ticket-medio-checkout/index.html",
+    "status": "published",
+    "category": "Vendas + Checkout",
+    "publishedAt": "2026-09-03",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "conteudo-para-cada-etapa-do-funil-de-vendas-2026-09-03",
     "title": "Como criar conteúdo para cada etapa do funil de vendas sem postar no escuro",
     "seoTitle": "Conteúdo para Cada Etapa do Funil de Vendas | MPMV",
