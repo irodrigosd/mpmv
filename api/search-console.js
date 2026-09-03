@@ -83,13 +83,29 @@ function mergePageRows(rows){
 function firstRow(data){return data&&Array.isArray(data.rows)&&data.rows[0]?row(data.rows[0]):{keys:[],clicks:0,impressions:0,ctr:0,position:0}}
 
 function normalizePageQueryRows(rows){
-  return rows.map(r=>{
+  const map=new Map();
+  for(const r of rows){
     const x=row(r);
-    const page=x.keys[0]||'';
-    const queryText=x.keys[1]||'';
-    const path=canonicalPath(page);
-    return {page:path?CANONICAL_ORIGIN+path:page,query:queryText,clicks:x.clicks,impressions:x.impressions,ctr:x.ctr,position:x.position};
-  }).filter(x=>x.page.includes('/blog/')&&x.query);
+    const rawPage=x.keys[0]||'';
+    const queryText=String(x.keys[1]||'').trim();
+    const path=canonicalPath(rawPage);
+    const page=path?CANONICAL_ORIGIN+path:rawPage;
+    if(!page.includes('/blog/')||!queryText)continue;
+    const key=page+'\n'+queryText.toLowerCase();
+    const cur=map.get(key)||{page,query:queryText,clicks:0,impressions:0,positionWeighted:0};
+    cur.clicks+=x.clicks;
+    cur.impressions+=x.impressions;
+    cur.positionWeighted+=x.position*x.impressions;
+    map.set(key,cur);
+  }
+  return Array.from(map.values()).map(x=>({
+    page:x.page,
+    query:x.query,
+    clicks:x.clicks,
+    impressions:x.impressions,
+    ctr:x.impressions?x.clicks/x.impressions:0,
+    position:x.impressions?x.positionWeighted/x.impressions:0
+  }));
 }
 
 function findCannibalization(pageQueries){
