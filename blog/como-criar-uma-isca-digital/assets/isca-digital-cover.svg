@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Como criar uma isca digital que atrai compradores</title>
+  <desc id="desc">Ilustração de um guia digital conectando uma promessa a leads com intenção de compra.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fdff"/><stop offset="1" stop-color="#cfeeff"/></linearGradient>
+    <linearGradient id="book" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b2c46"/><stop offset="1" stop-color="#0874ad"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#0b3957" flood-opacity=".20"/></filter>
+  </defs>
+  <rect width="1200" height="900" rx="42" fill="url(#bg)"/>
+  <circle cx="107" cy="113" r="55" fill="#8fd3ff" opacity=".55"/>
+  <circle cx="1090" cy="780" r="98" fill="#ffffff" opacity=".65"/>
+  <path d="M150 700 C330 595 440 736 596 618 S875 492 1050 575" fill="none" stroke="#75c9ff" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 25" opacity=".8"/>
+  <g filter="url(#shadow)">
+    <rect x="180" y="135" width="485" height="620" rx="28" fill="url(#book)"/>
+    <rect x="204" y="159" width="437" height="572" rx="18" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".55"/>
+    <text x="235" y="225" fill="#9dd9ff" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">GUIA PRÁTICO</text>
+    <text x="235" y="320" fill="#ffffff" font-family="Arial, sans-serif" font-size="55" font-weight="800">UMA ISCA</text>
+    <text x="235" y="381" fill="#ffffff" font-family="Arial, sans-serif" font-size="55" font-weight="800">QUE FILTRA</text>
+    <rect x="235" y="426" width="116" height="8" rx="4" fill="#8fd3ff"/>
+    <text x="235" y="490" fill="#dff3ff" font-family="Arial, sans-serif" font-size="27">Problema específico.</text>
+    <text x="235" y="530" fill="#dff3ff" font-family="Arial, sans-serif" font-size="27">Promessa conectada.</text>
+    <text x="235" y="570" fill="#dff3ff" font-family="Arial, sans-serif" font-size="27">Próximo passo.</text>
+    <rect x="235" y="648" width="218" height="48" rx="24" fill="#9dd9ff"/>
+    <text x="344" y="680" text-anchor="middle" fill="#08263f" font-family="Arial, sans-serif" font-size="18" font-weight="800">MPMV</text>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="750" y="158" width="292" height="92" rx="24" fill="#ffffff" stroke="#b4d8ea" stroke-width="2"/>
+    <circle cx="802" cy="204" r="24" fill="#dff3ff"/><path d="M791 204l8 8 16-18" fill="none" stroke="#0874ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="842" y="197" fill="#14233a" font-size="20" font-weight="800">PROBLEMA</text><text x="842" y="224" fill="#4e6477" font-size="17">que o público reconhece</text>
+    <rect x="795" y="297" width="292" height="92" rx="24" fill="#ffffff" stroke="#b4d8ea" stroke-width="2"/>
+    <circle cx="847" cy="343" r="24" fill="#dff3ff"/><path d="M836 343l8 8 16-18" fill="none" stroke="#0874ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="887" y="336" fill="#14233a" font-size="20" font-weight="800">PROMESSA</text><text x="887" y="363" fill="#4e6477" font-size="17">que cabe no material</text>
+    <rect x="750" y="436" width="292" height="92" rx="24" fill="#ffffff" stroke="#b4d8ea" stroke-width="2"/>
+    <circle cx="802" cy="482" r="24" fill="#dff3ff"/><path d="M791 482l8 8 16-18" fill="none" stroke="#0874ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="842" y="475" fill="#14233a" font-size="20" font-weight="800">CONEXÃO</text><text x="842" y="502" fill="#4e6477" font-size="17">com a oferta principal</text>
+    <rect x="795" y="575" width="292" height="116" rx="24" fill="#08263f"/>
+    <text x="941" y="621" text-anchor="middle" fill="#9dd9ff" font-size="18" font-weight="800" letter-spacing="2">RESULTADO</text>
+    <text x="941" y="658" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" letter-spacing=".4">LEAD COM CONTEXTO</text>
+  </g>
+</svg>
