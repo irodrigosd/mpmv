@@ -14,15 +14,18 @@ var downloadKey='mpmv-guide-download-started';
 
 function show(el){if(el)el.classList.remove('mpmv-hidden')}
 function hide(el){if(el)el.classList.add('mpmv-hidden')}
+function relayUrl(href){
+  try{
+    if(window.MPMVAttribution&&window.MPMVAttribution.decorateUrl)return window.MPMVAttribution.decorateUrl(href)||href;
+  }catch(e){}
+  return href;
+}
 
 function openModal(){
   show(backdrop);
   if(backdrop)backdrop.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
-  setTimeout(function(){
-    var i=document.getElementById('mpmv-name');
-    if(i)i.focus();
-  },50);
+  setTimeout(function(){var i=document.getElementById('mpmv-name');if(i)i.focus()},50);
 }
 
 function closeModal(){
@@ -31,142 +34,61 @@ function closeModal(){
   document.body.style.overflow='';
 }
 
-document.querySelectorAll('.js-open,.mpmv-open-extra').forEach(function(btn){
-  btn.addEventListener('click',openModal);
-});
-
+document.querySelectorAll('.js-open,.mpmv-open-extra').forEach(function(btn){btn.addEventListener('click',openModal)});
 if(closeBtn)closeBtn.addEventListener('click',closeModal);
+if(backdrop)backdrop.addEventListener('mousedown',function(e){if(e.target===backdrop)closeModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
 
-if(backdrop)backdrop.addEventListener('mousedown',function(e){
-  if(e.target===backdrop)closeModal();
-});
-
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')closeModal();
-});
-
-try{
-  if(!localStorage.getItem(cookieKey))show(cookie);
-  else hide(cookie);
-}catch(e){
-  show(cookie);
-}
-
+try{if(!localStorage.getItem(cookieKey))show(cookie);else hide(cookie)}catch(e){show(cookie)}
 document.querySelectorAll('[data-mpmv-cookie]').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var v=btn.getAttribute('data-mpmv-cookie');
-    try{localStorage.setItem(cookieKey,v)}catch(e){}
-    hide(cookie);
-  });
+  btn.addEventListener('click',function(){var v=btn.getAttribute('data-mpmv-cookie');try{localStorage.setItem(cookieKey,v)}catch(e){}hide(cookie)});
 });
 
 function startDownloadOnce(){
-  try{
-    if(sessionStorage.getItem(downloadKey)==='1')return;
-    sessionStorage.setItem(downloadKey,'1');
-  }catch(e){}
-
-  var a=document.createElement('a');
-  a.href='/api/guia';
-  a.download='[Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf';
-  a.style.display='none';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  try{if(sessionStorage.getItem(downloadKey)==='1')return;sessionStorage.setItem(downloadKey,'1')}catch(e){}
+  var a=document.createElement('a');a.href='/api/guia';a.download='[Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf';a.style.display='none';document.body.appendChild(a);a.click();a.remove();
 }
 
-function goToThankYou(){
-  window.location.replace('/obrigado/');
-}
+function goToThankYou(){window.location.replace(relayUrl('/obrigado/'))}
 
 document.querySelectorAll('.mpmv-course-cta,[data-mpmv-course]').forEach(function(link){
   link.removeAttribute('download');
   link.setAttribute('href','/curso/');
   link.addEventListener('click',function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    if(e.stopImmediatePropagation)e.stopImmediatePropagation();
-    window.location.href='/curso/';
+    e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();
+    var href=relayUrl(link.getAttribute('href')||'/curso/');
+    window.location.href=href;
   },true);
 });
 
-document.querySelectorAll('.mpmv-mentor-cta').forEach(function(link){
-  link.removeAttribute('download');
-});
+document.querySelectorAll('.mpmv-mentor-cta').forEach(function(link){link.removeAttribute('download')});
 
 async function sendLead(payload){
-  var r=await fetch('/api/leads',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
-  });
-  var body={};
-  try{body=await r.json()}catch(e){}
-  if(!r.ok){
-    var err=new Error(body.message||body.error||('HTTP '+r.status));
-    err.status=r.status;
-    throw err;
-  }
+  var r=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  var body={};try{body=await r.json()}catch(e){}
+  if(!r.ok){var err=new Error(body.message||body.error||('HTTP '+r.status));err.status=r.status;throw err}
   return body;
 }
 
 if(form)form.addEventListener('submit',async function(e){
   e.preventDefault();
-
-  var fd=new FormData(form);
-  var name=String(fd.get('name')||'').trim();
-  var email=String(fd.get('email')||'').trim().toLowerCase();
-  var company=String(fd.get('company')||'');
-
+  var fd=new FormData(form),name=String(fd.get('name')||'').trim(),email=String(fd.get('email')||'').trim().toLowerCase(),company=String(fd.get('company')||'');
   if(company)return;
-
   if(name.length<2||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    if(errorEl){
-      errorEl.textContent='Preencha seu nome e um e-mail válido.';
-      show(errorEl);
-    }
-    return;
+    if(errorEl){errorEl.textContent='Preencha seu nome e um e-mail válido.';show(errorEl)}return;
   }
-
   hide(errorEl);
-
-  if(submit){
-    submit.disabled=true;
-    submit.textContent='LIBERANDO SEU GUIA...';
-  }
-
+  if(submit){submit.disabled=true;submit.textContent='LIBERANDO SEU GUIA...'}
   try{
     var tracking=(window.MPMVTracking&&window.MPMVTracking.getContext)?window.MPMVTracking.getContext():null;
-    await sendLead({
-      name:name,
-      email:email,
-      source:'guia-pratico',
-      page:location.pathname,
-      tracking:tracking
-    });
+    await sendLead({name:name,email:email,source:'guia-pratico',page:location.pathname,tracking:tracking});
     if(window.MPMVTracking&&window.MPMVTracking.markConversion)window.MPMVTracking.markConversion('guia',{name:name,email:email});
-
-    hide(formView);
-    show(successView);
-
-    // 1) inicia o PDF
-    // 2) aguarda o navegador iniciar o download
-    // 3) envia para a página de obrigado
-    setTimeout(function(){
-      startDownloadOnce();
-      setTimeout(goToThankYou,1000);
-    },120);
-
+    hide(formView);show(successView);
+    setTimeout(function(){startDownloadOnce();setTimeout(goToThankYou,1000)},120);
   }catch(err){
-    if(errorEl){
-      errorEl.textContent='Não consegui registrar seu e-mail agora. Tente novamente.';
-      show(errorEl);
-    }
+    if(errorEl){errorEl.textContent='Não consegui registrar seu e-mail agora. Tente novamente.';show(errorEl)}
   }finally{
-    if(submit){
-      submit.disabled=false;
-      submit.textContent='RECEBER O GUIA AGORA';
-    }
+    if(submit){submit.disabled=false;submit.textContent='RECEBER O GUIA AGORA'}
   }
 });
 
