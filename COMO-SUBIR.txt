@@ -1,29 +1,34 @@
-COMO SUBIR
+COMO SUBIR — garantia-de-satisfacao
 
-Suba o conteúdo deste ZIP para a raiz do repositório, preservando as pastas.
+1. Criar/publicar a rota:
+   /blog/garantia-de-satisfacao/
 
-Arquivos principais:
-- copywriting-para-redes-sociais.html
-- blog.html
-- sitemap.xml
-- vercel.json
-- data/blog-posts.json
-- admin/blog.html
-- api/admin-blog-delete.js
+2. Usar o arquivo:
+   garantia-de-satisfacao.html
 
-URL final:
-https://www.maispersuasaomaisvendas.com.br/blog/copywriting-para-redes-sociais/
+3. Confirmar que /favicon.png existe na raiz.
+   O HTML já referencia:
+   <link rel="icon" href="/favicon.png" type="image/png">
 
-O vercel.json deste pacote preserva /curso/, /mentoria/, /obrigado/, /leads/, blog, artigos atuais e /admin/blog/.
+4. Adicionar o card ao blog.html:
+   Título: Garantia de satisfação: como tirar o risco da compra sem desvalorizar sua oferta
+   Descrição: Entenda como usar garantia de satisfação para reduzir o risco percebido, aumentar a confiança e fortalecer sua oferta sem desvalorizar o produto.
+   Categoria: Persuasão + Oferta
+   Data: 3 set 2026
+   Href: /blog/garantia-de-satisfacao/
 
-IMPORTANTE: este pacote restaura no /admin/blog/ os dois recursos: SUBIR ZIP e EXCLUIR ARTIGO.
-Também inclui api/admin-blog-upload.js.
+5. Validar o CTA:
+   O HTML usa /#mentoria.
+   Trocar somente se a âncora/rota real da mentoria for diferente.
 
-NOVO ARTIGO
-- Arquivo: persuasao-no-marketing-digital.html
-- URL: /blog/persuasao-no-marketing-digital/
-- Rota, sitemap, índice e admin já foram atualizados.
+6. Depois do deploy:
+   - abrir a URL canônica
+   - checar title e meta description
+   - checar favicon
+   - testar os 4 links internos
+   - testar CTA da mentoria
+   - solicitar indexação no Search Console, se desejar
 
-ATUALIZAÇÃO DO GUIA
-- O vercel.json inclui a regra de nome amigável no download:
-  [Guia Prático] Persuasao Pra Vender Todo Santo Dia.pdf
+OBSERVAÇÃO DE CANIBALIZAÇÃO
+Tema deliberadamente restrito a garantia de satisfação/redução de risco.
+Evitar transformar este artigo em outro conteúdo amplo sobre oferta irresistível.
