@@ -1,4 +1,6 @@
 const BREVO_BASE = 'https://api.brevo.com/v3';
+const TRACK_PREFIX = 'MPMV_TRACK|';
+const TRACK_CONTACT_EMAIL = 'rastreamento@maispersuasaomaisvendas.com.br';
 
 function json(res, status, body) {
   res.status(status).json(body);
@@ -15,6 +17,33 @@ function getListId() {
 
 const LEAD_NOTIFICATION_EMAIL = 'irodrigosd@gmail.com';
 let notificationSenderPromise;
+let trackingContactPromise;
+
+function clean(value, max = 500) {
+  return String(value == null ? '' : value).trim().slice(0, max);
+}
+
+async function brevoJson(path, options = {}) {
+  const response = await fetch(BREVO_BASE + path, {
+    ...options,
+    headers: {
+      accept: 'application/json',
+      'api-key': getApiKey(),
+      'content-type': 'application/json',
+      ...(options.headers || {})
+    }
+  });
+  const text = await response.text();
+  let data = {};
+  try { data = text ? JSON.parse(text) : {}; } catch (_) { data = { raw:text }; }
+  if (!response.ok) {
+    const error = new Error((data && data.message) || `brevo_${response.status}`);
+    error.status = response.status;
+    error.data = data;
+    throw error;
+  }
+  return data;
+}
 
 async function getNotificationSender() {
   if (!notificationSenderPromise) {
@@ -37,6 +66,102 @@ async function getNotificationSender() {
   return notificationSenderPromise;
 }
 
+async function ensureTrackingContact() {
+  if (trackingContactPromise) return trackingContactPromise;
+  trackingContactPromise = (async () => {
+    try {
+      const contact = await brevoJson('/contacts/' + encodeURIComponent(TRACK_CONTACT_EMAIL));
+      if (contact && Number(contact.id) > 0) return Number(contact.id);
+    } catch (error) {
+      if (error.status !== 404) throw error;
+    }
+
+    try {
+      const created = await brevoJson('/contacts', {
+        method:'POST',
+        body:JSON.stringify({ email:TRACK_CONTACT_EMAIL, updateEnabled:true, getId:true })
+      });
+      if (created && Number(created.id) > 0) return Number(created.id);
+    } catch (error) {
+      if (error.status !== 400) throw error;
+    }
+
+    const contact = await brevoJson('/contacts/' + encodeURIComponent(TRACK_CONTACT_EMAIL));
+    if (!contact || !Number(contact.id)) throw new Error('tracking_contact_missing');
+    return Number(contact.id);
+  })();
+
+  try { return await trackingContactPromise; }
+  catch (error) { trackingContactPromise = null; throw error; }
+}
+
+function sourceGuess(raw) {
+  const source = clean(raw && raw.source, 150);
+  if (source) return source;
+  if (clean(raw && raw.fbclid, 500)) return 'meta';
+  if (clean(raw && raw.gclid, 500)) return 'google';
+
+  const referrer = clean(raw && raw.referrer, 1000).toLowerCase();
+  if (!referrer) return 'direct';
+  if (/instagram|facebook|fb\.com/.test(referrer)) return 'meta-organic';
+  if (/google\.|bing\.|yahoo\.|duckduckgo/.test(referrer)) return 'organic-search';
+  try { return new URL(referrer).hostname; } catch (_) { return 'referral'; }
+}
+
+function normalizeAttribution(raw, { name, email, page }) {
+  const d = raw && typeof raw === 'object' ? raw : {};
+  const capturedAt = new Date().toISOString();
+  const currentPage = clean(d.currentPage, 500) || clean(page, 500) || '/';
+  const landingPage = clean(d.landingPage, 500) || currentPage;
+  const pages = [{ path:currentPage, at:capturedAt }];
+
+  return {
+    sessionId: clean(d.sessionId, 100) || `lead-${Date.now()}-${Math.random().toString(36).slice(2,10)}`,
+    noteId: clean(d.noteId, 100),
+    startedAt: clean(d.startedAt, 40) || capturedAt,
+    updatedAt: capturedAt,
+    landingPage,
+    currentPage,
+    referrer: clean(d.referrer, 1000),
+    source: sourceGuess(d),
+    medium: clean(d.medium, 150),
+    campaign: clean(d.campaign, 250),
+    adset: clean(d.adset || d.term, 250),
+    ad: clean(d.ad || d.content, 250),
+    term: clean(d.term || d.adset, 250),
+    fbclid: clean(d.fbclid, 500),
+    gclid: clean(d.gclid, 500),
+    activeSeconds: 0,
+    elapsedSeconds: 0,
+    pageViews: 1,
+    device: '',
+    browser: '',
+    converted: true,
+    conversionType: 'guia-attribution',
+    convertedAt: capturedAt,
+    name: clean(name, 120),
+    email: clean(email, 180).toLowerCase(),
+    phone: '',
+    pages
+  };
+}
+
+function encodeTrack(data) {
+  return TRACK_PREFIX + Buffer.from(JSON.stringify(data), 'utf8').toString('base64');
+}
+
+async function saveAttributionFallback(attribution) {
+  // Se já há noteId, a sessão consentida existe e o analytics.js fará a atualização da conversão.
+  if (attribution.noteId) return { saved:false, reason:'existing_session' };
+  const trackingContactId = await ensureTrackingContact();
+  const data = { ...attribution, noteId:'' };
+  const created = await brevoJson('/crm/notes', {
+    method:'POST',
+    body:JSON.stringify({ text:encodeTrack(data), contactIds:[trackingContactId] })
+  });
+  return { saved:true, noteId:String(created.id || '') };
+}
+
 function escapeHtml(value) {
   return String(value == null ? '' : value)
     .replace(/&/g, '&amp;')
@@ -46,9 +171,12 @@ function escapeHtml(value) {
     .replace(/'/g, '&#039;');
 }
 
-async function notifyGuideLead({ name, email, source, page }) {
+async function notifyGuideLead({ name, email, source, page, attribution }) {
   const sender = await getNotificationSender();
   const submittedAt = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  const campaign = clean(attribution && attribution.campaign, 250);
+  const medium = clean(attribution && attribution.medium, 150);
+  const referrer = clean(attribution && attribution.referrer, 1000);
   const subject = `Novo lead do Guia — ${name}`;
   const text = [
     'Novo lead recebido pelo Guia Prático.',
@@ -56,14 +184,20 @@ async function notifyGuideLead({ name, email, source, page }) {
     `Nome: ${name}`,
     `E-mail: ${email}`,
     `Origem: ${source}`,
+    `Mídia: ${medium || '—'}`,
+    `Campanha: ${campaign || '—'}`,
     `Página: ${page}`,
+    `Referrer: ${referrer || '—'}`,
     `Data: ${submittedAt}`
   ].join('\n');
   const html = `<h2>Novo lead do Guia</h2>
     <p><strong>Nome:</strong> ${escapeHtml(name)}</p>
     <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
     <p><strong>Origem:</strong> ${escapeHtml(source)}</p>
+    <p><strong>Mídia:</strong> ${escapeHtml(medium || '—')}</p>
+    <p><strong>Campanha:</strong> ${escapeHtml(campaign || '—')}</p>
     <p><strong>Página:</strong> ${escapeHtml(page)}</p>
+    <p><strong>Referrer:</strong> ${escapeHtml(referrer || '—')}</p>
     <p><strong>Data:</strong> ${escapeHtml(submittedAt)}</p>`;
 
   const response = await fetch(BREVO_BASE + '/smtp/email', {
@@ -171,17 +305,30 @@ export default async function handler(req, res) {
         return json(res, 502, { ok:false, error:'brevo_error', status:brevo.status });
       }
 
-      const source = String(body.source || 'guia-pratico').trim().slice(0, 80);
       const page = String(body.page || '/').trim().slice(0, 200);
+      const attribution = normalizeAttribution(body.tracking, { name, email, page });
+      const source = attribution.source || String(body.source || 'direct').trim().slice(0, 80);
+      let attributionResult = { saved:false, reason:'not_attempted' };
 
       try {
-        await notifyGuideLead({ name, email, source, page });
+        attributionResult = await saveAttributionFallback(attribution);
+      } catch (attributionError) {
+        // O cadastro não pode falhar se a atribuição pontual estiver indisponível.
+        console.error('Lead attribution error', attributionError);
+      }
+
+      try {
+        await notifyGuideLead({ name, email, source, page, attribution });
       } catch (notificationError) {
         // O cadastro não pode falhar por causa do aviso administrativo.
         console.error('Lead notification error', notificationError);
       }
 
-      return json(res, 200, { ok:true });
+      return json(res, 200, {
+        ok:true,
+        attributionRecorded: !!attributionResult.saved,
+        attributionSource: source
+      });
     } catch (error) {
       console.error('Lead POST error', error);
       return json(res, 500, { ok:false, error:'internal_error' });
@@ -222,4 +369,3 @@ export default async function handler(req, res) {
   res.setHeader('Allow', 'GET, POST, OPTIONS');
   return json(res, 405, { ok:false, error:'method_not_allowed' });
 }
-
