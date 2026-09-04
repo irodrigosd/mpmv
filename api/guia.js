@@ -1,4 +1,5 @@
-const { handleCampaigns, handleClick, handleUnsubscribe, handleAutomation, handleAutomationCron } = require('../lib/mpmv-email');
+const { handleCampaigns, handleClick, handleUnsubscribe } = require('../lib/mpmv-email');
+const { handleAutomation, handleAutomationCron } = require('../lib/mpmv-automation');
 
 module.exports = async function handler(req, res) {
   const action = String((req.query && req.query.action) || '').trim().toLowerCase();
