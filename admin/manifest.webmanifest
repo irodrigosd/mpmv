@@ -15,5 +15,17 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Automação",
+      "short_name": "Automação",
+      "url": "/admin/automacao/"
+    },
+    {
+      "name": "Campanhas",
+      "short_name": "Campanhas",
+      "url": "/admin/email/"
+    }
   ]
 }
