@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const BREVO_BASE = 'https://api.brevo.com/v3';
 const TRACK_PREFIX = 'MPMV_TRACK|';
 const TRACK_CONTACT_EMAIL = 'rastreamento@maispersuasaomaisvendas.com.br';
@@ -55,6 +56,37 @@ async function brevo(path,options={}){
   if(!r.ok){const e=new Error((data&&data.message)||`brevo_${r.status}`);e.status=r.status;e.data=data;throw e;}
   return data;
 }
+function verifyLeadToken(value){
+  const raw=clean(value,160).replace(/^lead_/, '');
+  const m=raw.match(/^(\d+)\.([a-f0-9]{24})$/i);
+  if(!m||!apiKey()) return null;
+  const id=m[1];
+  const expected=crypto.createHmac('sha256',apiKey()).update('mpmv-email:'+id).digest('hex').slice(0,24);
+  const a=Buffer.from(m[2].toLowerCase()), b=Buffer.from(expected.toLowerCase());
+  if(a.length!==b.length||!crypto.timingSafeEqual(a,b)) return null;
+  return Number(id);
+}
+function contactName(contact){
+  const a=contact&&contact.attributes||{};
+  const explicit=a.NOME||a.NAME||'';
+  const first=a.FIRSTNAME||a.FIRST_NAME||a.FNAME||'';
+  const last=a.LASTNAME||a.LAST_NAME||a.LNAME||'';
+  return clean(explicit||[first,last].filter(Boolean).join(' '),120);
+}
+async function enrichEmailIdentity(data){
+  if(data.email) return data;
+  const contactId=verifyLeadToken(data.adset||data.term);
+  if(!contactId) return data;
+  try{
+    const contact=await brevo('/contacts/'+encodeURIComponent(String(contactId))+'?identifierType=contact_id');
+    const email=clean(contact&&contact.email,180).toLowerCase();
+    if(email) data.email=email;
+    if(!data.name) data.name=contactName(contact);
+  }catch(e){
+    console.error('Email identity resolution error',e.status||'',e.message||e);
+  }
+  return data;
+}
 async function ensureTrackingContact(){
   if(trackingContactPromise) return trackingContactPromise;
   trackingContactPromise=(async()=>{
@@ -88,13 +120,13 @@ module.exports=async function handler(req,res){
     try{
       const body=typeof req.body==='string'?JSON.parse(req.body):(req.body||{});
       const action=clean(body.action,20);
-      const data=cleanObj(body.data||{});
+      const data=await enrichEmailIdentity(cleanObj(body.data||{}));
       if(!data.sessionId) return json(res,400,{ok:false,error:'missing_session'});
       data.updatedAt=new Date().toISOString();
       const trackingContactId=await ensureTrackingContact();
       if(action==='start'){
         const created=await brevo('/crm/notes',{method:'POST',body:JSON.stringify({text:encodeTrack(data),contactIds:[trackingContactId]})});
-        console.log('Tracking START',{noteId:String(created.id||''),contactId:trackingContactId,sessionId:data.sessionId});
+        console.log('Tracking START',{noteId:String(created.id||''),contactId:trackingContactId,sessionId:data.sessionId,email:data.email||''});
         return json(res,200,{ok:true,noteId:String(created.id||'')});
       }
       if(action==='update'){
