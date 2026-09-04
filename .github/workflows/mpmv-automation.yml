@@ -1,0 +1,18 @@
+name: MPMV Mentoria Automation
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Processar automação MPMV
+        run: |
+          curl --fail --silent --show-error \
+            --retry 2 \
+            --max-time 45 \
+            'https://www.maispersuasaomaisvendas.com.br/api/guia?action=automation-cron'
