@@ -23,6 +23,12 @@ function safeDestination(raw){
     return u;
   }catch(_){return null;}
 }
+function addUtm(target,campaign){
+  if(!target.searchParams.has('utm_source'))target.searchParams.set('utm_source','email');
+  if(!target.searchParams.has('utm_medium'))target.searchParams.set('utm_medium','email');
+  if(!target.searchParams.has('utm_campaign'))target.searchParams.set('utm_campaign',campaign||'mpmv_email');
+  if(!target.searchParams.has('utm_content'))target.searchParams.set('utm_content','cta_email');
+}
 
 module.exports=async function handler(req,res){
   if(req.method!=='GET')return res.status(405).send('Method not allowed');
@@ -30,17 +36,11 @@ module.exports=async function handler(req,res){
   const target=safeDestination(req.query&&req.query.to);
   if(!verified||!target)return res.status(400).send('Link inválido.');
   const campaign=clean(req.query&&req.query.c,100).replace(/[^a-zA-Z0-9_-]/g,'');
+  addUtm(target,campaign);
   if(target.origin===SITE_ORIGIN){
-    if(!target.searchParams.has('utm_source'))target.searchParams.set('utm_source','email');
-    if(!target.searchParams.has('utm_medium'))target.searchParams.set('utm_medium','email');
-    if(!target.searchParams.has('utm_campaign'))target.searchParams.set('utm_campaign',campaign||'mpmv_email');
-    if(!target.searchParams.has('utm_content'))target.searchParams.set('utm_content','cta_email');
-    target.searchParams.set('mpmv_lead',verified.token);
-  }else{
-    if(!target.searchParams.has('utm_source'))target.searchParams.set('utm_source','email');
-    if(!target.searchParams.has('utm_medium'))target.searchParams.set('utm_medium','email');
-    if(!target.searchParams.has('utm_campaign'))target.searchParams.set('utm_campaign',campaign||'mpmv_email');
-    if(!target.searchParams.has('utm_content'))target.searchParams.set('utm_content','cta_email');
+    // O rastreador nativo já lê utm_term. O prefixo deixa claro que este termo é identidade de lead,
+    // sem expor o e-mail na URL. A API /rastreamento valida a assinatura antes de associar a pessoa.
+    if(!target.searchParams.has('utm_term'))target.searchParams.set('utm_term','lead_'+verified.token);
   }
   res.setHeader('Cache-Control','no-store, max-age=0');
   res.setHeader('Referrer-Policy','no-referrer');
