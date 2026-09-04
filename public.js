@@ -70,6 +70,16 @@ async function sendLead(payload){
   return body;
 }
 
+async function triggerAutomation(){
+  try{
+    var controller=typeof AbortController!=='undefined'?new AbortController():null;
+    var timer=controller?setTimeout(function(){controller.abort()},8000):null;
+    var r=await fetch('/api/guia?action=automation-cron',{method:'GET',cache:'no-store',signal:controller?controller.signal:undefined});
+    if(timer)clearTimeout(timer);
+    return r.ok;
+  }catch(e){return false}
+}
+
 if(form)form.addEventListener('submit',async function(e){
   e.preventDefault();
   var fd=new FormData(form),name=String(fd.get('name')||'').trim(),email=String(fd.get('email')||'').trim().toLowerCase(),company=String(fd.get('company')||'');
@@ -82,6 +92,7 @@ if(form)form.addEventListener('submit',async function(e){
   try{
     var tracking=(window.MPMVTracking&&window.MPMVTracking.getContext)?window.MPMVTracking.getContext():null;
     await sendLead({name:name,email:email,source:'guia-pratico',page:location.pathname,tracking:tracking});
+    await triggerAutomation();
     if(window.MPMVTracking&&window.MPMVTracking.markConversion)window.MPMVTracking.markConversion('guia',{name:name,email:email});
     hide(formView);show(successView);
     setTimeout(function(){startDownloadOnce();setTimeout(goToThankYou,1000)},120);
