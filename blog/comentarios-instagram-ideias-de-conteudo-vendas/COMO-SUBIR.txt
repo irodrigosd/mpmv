@@ -1,0 +1,15 @@
+COMO SUBIR — Como transformar comentários do Instagram em ideias de conteúdo que podem gerar vendas
+
+Use o recurso SUBIR ZIP do /admin/blog/.
+Selecione este ZIP completo.
+
+URL FINAL
+https://www.maispersuasaomaisvendas.com.br/blog/comentarios-instagram-ideias-de-conteudo-vendas/
+
+O pacote contém um único index.html para acionar o modo de artigo do painel.
+O painel identifica o slug pelo canonical e atualiza automaticamente o inventário do blog e o sitemap.
+
+ARQUIVOS
+- comentarios-instagram-ideias-de-conteudo-vendas/index.html
+- comentarios-instagram-ideias-de-conteudo-vendas/seo.txt
+- comentarios-instagram-ideias-de-conteudo-vendas/assets/comentarios-instagram-cover.svg
