@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#eaf7ff"/>
+  <rect x="64" y="64" width="1072" height="502" rx="32" fill="#ffffff"/>
+  <text x="110" y="150" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#2088c9">
+    MAIS PERSUASÃO, MAIS VENDAS
+  </text>
+  <text x="110" y="250" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#102c3c">
+    <tspan x="110" dy="0">Como criar conteúdo para Instagram</tspan>
+    <tspan x="110" dy="72">quando você não sabe o que postar</tspan>
+  </text>
+  <text x="110" y="455" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#334e5c">
+    Um processo para transformar dúvidas, problemas e objeções em pautas.
+  </text>
+  <circle cx="1020" cy="145" r="42" fill="#bfeaff"/>
+  <circle cx="1065" cy="195" r="24" fill="#d8f3ff"/>
+</svg>
