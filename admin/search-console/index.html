@@ -7,7 +7,7 @@
 <script>
 const $=s=>document.querySelector(s),IG_STORE='mpmv_gsc_instagram_history_v2';
 function token(){let t=sessionStorage.getItem('mpmv_admin_token')||'';if(!t){t=prompt('Digite o token do admin MPMV:','')||'';if(t)sessionStorage.setItem('mpmv_admin_token',t)}return t}
-function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#039;'}[m]))}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function pct(v){return (Number(v||0)*100).toFixed(1)+'%'}function pos(v){return Number(v||0).toFixed(1)}function num(v){return Number(v||0).toLocaleString('pt-BR')}
 function pathOf(v){try{return new URL(v).pathname}catch(_){return v}}
 function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase()}
