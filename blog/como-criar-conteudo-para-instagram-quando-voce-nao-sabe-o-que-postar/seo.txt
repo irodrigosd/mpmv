@@ -1,4 +1,7 @@
 TÍTULO SEO
+O que Postar no Instagram Quando Faltam Ideias | MPMV
+
+H1
 Como criar conteúdo para Instagram quando você não sabe o que postar
 
 SLUG
@@ -7,18 +10,11 @@ como-criar-conteudo-para-instagram-quando-voce-nao-sabe-o-que-postar
 URL CANÔNICA
 https://www.maispersuasaomaisvendas.com.br/blog/como-criar-conteudo-para-instagram-quando-voce-nao-sabe-o-que-postar/
 
-META DESCRIPTION
-Aprenda um processo simples para encontrar ideias de conteúdo para Instagram usando problemas, dúvidas, objeções, desejos, experiências e o seu próprio produto.
-
 PALAVRA-CHAVE PRINCIPAL
 o que postar no Instagram
 
-VARIAÇÕES SEMÂNTICAS
-ideias de conteúdo para Instagram
-não sei o que postar no Instagram
-como ter ideias de conteúdo
-como criar conteúdo para Instagram
-o que postar no Instagram quando estou sem ideias
+META DESCRIPTION
+Não sabe o que postar no Instagram? Veja um processo para transformar dúvidas, problemas, objeções e desejos do público em ideias de conteúdo.
 
 INTENÇÃO DE BUSCA
 Informacional/prática.
@@ -26,17 +22,19 @@ Informacional/prática.
 NÍVEL DE CONSCIÊNCIA
 Consciente do problema -> consciente da solução.
 
-RECORTE PARA EVITAR CANIBALIZAÇÃO
-O artigo resolve o bloqueio de pauta no momento da criação.
-Não é um artigo sobre calendário editorial, planejamento mensal ou frequência de publicação.
+RECORTE ANTICANIBALIZAÇÃO
+Este artigo resolve a falta de pauta no momento da criação.
+O artigo /blog/calendario-de-conteudo-com-chatgpt/ resolve planejamento, sequência, frequência e distribuição editorial.
+Os dois recebem links entre si para deixar a intenção de cada página explícita.
 
 CTA PRINCIPAL
-/curso
+/curso/
 
 OFERTA
 Como Criar Posts Virais com Persuasão no ChatGPT
 
 ARQUIVOS
 index.html
-como-criar-conteudo-para-instagram-quando-voce-nao-sabe-o-que-postar.svg
+favicon.png
+assets/o-que-postar-instagram-cover.svg
 seo.txt
