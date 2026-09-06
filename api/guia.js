@@ -1,4 +1,5 @@
-const { handleCampaigns, handleClick, handleUnsubscribe } = require('../lib/mpmv-email');
+const { handleClick, handleUnsubscribe } = require('../lib/mpmv-email');
+const { handleCampaigns } = require('../lib/mpmv-email-campaigns');
 const { handleAutomation, handleAutomationClick, handleAutomationCron } = require('../lib/mpmv-automation');
 const { handleContactsAdmin } = require('../lib/mpmv-contacts-admin');
 
