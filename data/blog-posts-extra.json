@@ -1,5 +1,22 @@
 [
   {
+    "id": "como-criar-bio-instagram-que-vende-2026-09-07",
+    "title": "Como criar uma bio do Instagram que vende sem parecer propaganda",
+    "seoTitle": "Como Criar uma Bio do Instagram que Vende | MPMV",
+    "metaDescription": "Aprenda como criar uma bio do Instagram que comunica valor, gera confiança e leva a pessoa para a próxima ação sem parecer propaganda.",
+    "focusKeyphrase": "bio do Instagram que vende",
+    "secondaryKeyphrases": ["bio do Instagram","bio para Instagram","bio que vende","como criar bio no Instagram","bio para infoprodutor"],
+    "slug": "como-criar-bio-instagram-que-vende",
+    "url": "/blog/como-criar-bio-instagram-que-vende/",
+    "file": "blog/como-criar-bio-instagram-que-vende/index.html",
+    "status": "published",
+    "category": "Instagram + Conversão",
+    "publishedAt": "2026-09-07",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 0
+  },
+  {
     "id": "garantia-para-infoproduto-2026-09-07",
     "title": "Como criar uma garantia para infoproduto que aumenta vendas sem atrair mais reembolsos",
     "seoTitle": "Garantia para Infoproduto: Como Vender Mais | MPMV",
@@ -13,7 +30,8 @@
     "category": "Oferta + Conversão + Infoprodutos",
     "publishedAt": "2026-09-07",
     "author": "Rodrigo Castro",
-    "deletable": false,
+    "deletable": true,
+    "cover": "/images/blog/garantia-para-infoproduto.svg",
     "batchOrder": 1
   },
   {
@@ -30,7 +48,8 @@
     "category": "Copywriting + Infoprodutos + Conversão",
     "publishedAt": "2026-09-07",
     "author": "Rodrigo Castro",
-    "deletable": false,
+    "deletable": true,
+    "cover": "/images/blog/bullet-points-de-vendas-infoprodutos.svg",
     "batchOrder": 2
   },
   {
@@ -47,7 +66,8 @@
     "category": "Clientes + Comunidade + Crescimento",
     "publishedAt": "2026-09-07",
     "author": "Rodrigo Castro",
-    "deletable": false,
+    "deletable": true,
+    "cover": "/images/blog/transformar-clientes-em-fas.svg",
     "batchOrder": 3
   },
   {
@@ -64,7 +84,8 @@
     "category": "Psicologia + Marketing + Infoprodutos",
     "publishedAt": "2026-09-07",
     "author": "Rodrigo Castro",
-    "deletable": false,
+    "deletable": true,
+    "cover": "/images/blog/piramide-de-maslow-no-marketing.svg",
     "batchOrder": 4
   },
   {
@@ -81,7 +102,8 @@
     "category": "Cases + Copywriting + Vendas",
     "publishedAt": "2026-09-07",
     "author": "Rodrigo Castro",
-    "deletable": false,
+    "deletable": true,
+    "cover": "/images/blog/carta-wall-street-journal-copywriting.svg",
     "batchOrder": 5
   }
 ]
