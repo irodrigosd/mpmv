@@ -1,0 +1,37 @@
+name: Corrigir qualidade do blog em lote
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fix-blog-quality-batch.py'
+      - '.github/workflows/fix-blog-quality-batch.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Corrigir artigos
+        run: python scripts/fix-blog-quality-batch.py
+      - name: Publicar correções
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git config user.name "mpmv-bot"
+          git config user.email "120876080+irodrigosd@users.noreply.github.com"
+          git add blog/
+          git commit -m "blog: corrigir SEO legibilidade e favicon em 31 artigos"
+          git push
