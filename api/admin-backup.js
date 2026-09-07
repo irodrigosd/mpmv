@@ -1,4 +1,7 @@
 const API='https://api.github.com';
+const VERCEL_API='https://api.vercel.com';
+const VERCEL_PROJECT_ID='prj_c8zvkjwMmZmE4My4fiJA8zqcOUSn';
+const VERCEL_TEAM_ID='team_BVsuVX2DEGb6PtSNkqdRlzjB';
 
 function json(res,status,data){
   res.statusCode=status;
@@ -32,12 +35,67 @@ async function mapLimit(items,limit,worker){
   await Promise.all(Array.from({length:count},runner));
 }
 
+async function vercelJson(path,token,options={}){
+  const r=await fetch(VERCEL_API+path,{
+    ...options,
+    headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...(options.headers||{})}
+  });
+  const text=await r.text();
+  let data={};
+  try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
+  if(!r.ok){const e=new Error((data&&data.error&&data.error.message)||data.message||`Vercel ${r.status}`);e.status=r.status;throw e;}
+  return data;
+}
+
+async function listVercelDeployments(token){
+  const all=[];let until='';
+  for(let page=0;page<30;page++){
+    const qs=new URLSearchParams({projectId:VERCEL_PROJECT_ID,teamId:VERCEL_TEAM_ID,limit:'100'});
+    if(until)qs.set('until',until);
+    const data=await vercelJson(`/v6/deployments?${qs.toString()}`,token);
+    const batch=Array.isArray(data.deployments)?data.deployments:[];
+    all.push(...batch);
+    const next=data.pagination&&data.pagination.next;
+    if(!next||!batch.length)break;
+    until=String(next);
+  }
+  all.sort((a,b)=>Number(b.created||b.createdAt||0)-Number(a.created||a.createdAt||0));
+  return all;
+}
+
 export default async function handler(req,res){
   const supplied=String(req.headers['x-admin-token']||'');
   const adminTokens=[process.env.ADMIN_BLOG_TOKEN,process.env.LEADS_ADMIN_TOKEN,process.env.BLOG_ADMIN_TOKEN]
     .filter(Boolean).map(v=>String(v).trim()).filter((v,i,a)=>v&&a.indexOf(v)===i);
   if(!adminTokens.length) return json(res,500,{error:'Token do admin não configurado na Vercel.'});
   if(!adminTokens.includes(supplied)) return json(res,401,{error:'Token inválido.'});
+
+  const action=String(req.query?.action||'').toLowerCase();
+  if(req.method==='POST'&&action==='vercel-cleanup'){
+    try{
+      const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
+      const token=String(body.vercelToken||'').trim();
+      if(!token)return json(res,400,{ok:false,error:'Token temporário da Vercel não informado.'});
+      const deployments=await listVercelDeployments(token);
+      const keep=5,currentUrl=String(process.env.VERCEL_URL||'').replace(/^https?:\/\//,'');
+      const protectedIds=new Set();
+      deployments.slice(0,keep).forEach(d=>protectedIds.add(d.uid||d.id));
+      deployments.forEach(d=>{if(currentUrl&&String(d.url||'').replace(/^https?:\/\//,'')===currentUrl)protectedIds.add(d.uid||d.id)});
+      const candidates=deployments.filter(d=>!protectedIds.has(d.uid||d.id));
+      const batch=candidates.slice(-20);
+      const results=await Promise.allSettled(batch.map(async d=>{
+        const id=d.uid||d.id;
+        await vercelJson(`/v13/deployments/${encodeURIComponent(id)}?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`,token,{method:'DELETE'});
+        return id;
+      }));
+      const deleted=results.filter(r=>r.status==='fulfilled').length;
+      const failed=results.filter(r=>r.status==='rejected').length;
+      const remainingOld=Math.max(0,candidates.length-deleted);
+      return json(res,200,{ok:true,total:deployments.length,kept:Math.min(keep,deployments.length),deleted,failed,remainingOld,done:remainingOld===0});
+    }catch(err){
+      return json(res,err.status===401?401:500,{ok:false,error:'Falha na limpeza da Vercel.',detail:String(err.message||err)});
+    }
+  }
 
   const tokens=[process.env.BLOG_GITHUB_TOKEN,process.env.GITHUB_TOKEN]
     .filter(Boolean).map(t=>t.trim()).filter((t,i,a)=>a.indexOf(t)===i);
@@ -64,7 +122,6 @@ export default async function handler(req,res){
     }
     if(!headers||!ref) throw new Error('Falha ao autenticar no GitHub.');
 
-    const action=String(req.query?.action||'').toLowerCase();
     if(req.method==='POST'&&action==='article-tracking'){
       async function gh(url,opts={}){
         const r=await fetch(url,{...opts,headers:{...headers,...(opts.headers||{})}});
