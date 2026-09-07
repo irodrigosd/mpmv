@@ -43,7 +43,7 @@ async function vercelJson(path,token,options={}){
   const text=await r.text();
   let data={};
   try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
-  if(!r.ok){const e=new Error((data&&data.error&&data.error.message)||data.message||`Vercel ${r.status}`);e.status=r.status;throw e;}
+  if(!r.ok){const e=new Error((data&&data.error&&data.error.message)||data.message||`Vercel ${r.status}`);e.status=r.status;e.data=data;throw e;}
   return data;
 }
 
@@ -76,22 +76,57 @@ export default async function handler(req,res){
       const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
       const token=String(body.vercelToken||'').trim();
       if(!token)return json(res,400,{ok:false,error:'Token temporário da Vercel não informado.'});
+
+      const skipIds=new Set((Array.isArray(body.skipIds)?body.skipIds:[]).map(v=>String(v||'').trim()).filter(Boolean));
       const deployments=await listVercelDeployments(token);
       const keep=5,currentUrl=String(process.env.VERCEL_URL||'').replace(/^https?:\/\//,'');
       const protectedIds=new Set();
       deployments.slice(0,keep).forEach(d=>protectedIds.add(d.uid||d.id));
       deployments.forEach(d=>{if(currentUrl&&String(d.url||'').replace(/^https?:\/\//,'')===currentUrl)protectedIds.add(d.uid||d.id)});
-      const candidates=deployments.filter(d=>!protectedIds.has(d.uid||d.id));
-      const batch=candidates.slice(-20);
-      const results=await Promise.allSettled(batch.map(async d=>{
+
+      const old=deployments.filter(d=>!protectedIds.has(d.uid||d.id));
+      const actionable=old.filter(d=>!skipIds.has(String(d.uid||d.id)));
+      const batch=actionable.slice(-20);
+      const settled=await Promise.allSettled(batch.map(async d=>{
         const id=d.uid||d.id;
-        await vercelJson(`/v13/deployments/${encodeURIComponent(id)}?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`,token,{method:'DELETE'});
-        return id;
+        try{
+          await vercelJson(`/v13/deployments/${encodeURIComponent(id)}?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`,token,{method:'DELETE'});
+          return {id,url:d.url||'',deleted:true};
+        }catch(err){
+          throw {id,url:d.url||'',reason:String(err&&err.message||err||'Vercel recusou a exclusão').slice(0,240),status:Number(err&&err.status||0)};
+        }
       }));
-      const deleted=results.filter(r=>r.status==='fulfilled').length;
-      const failed=results.filter(r=>r.status==='rejected').length;
-      const remainingOld=Math.max(0,candidates.length-deleted);
-      return json(res,200,{ok:true,total:deployments.length,kept:Math.min(keep,deployments.length),deleted,failed,remainingOld,done:remainingOld===0});
+
+      const failedItems=[];
+      let deleted=0;
+      settled.forEach(r=>{
+        if(r.status==='fulfilled')deleted++;
+        else{
+          const x=r.reason&&typeof r.reason==='object'?r.reason:{};
+          failedItems.push({
+            id:String(x.id||''),
+            url:String(x.url||''),
+            reason:String(x.reason||'Vercel recusou a exclusão').slice(0,240),
+            status:Number(x.status||0)
+          });
+        }
+      });
+
+      const newlySkipped=new Set(failedItems.map(x=>x.id).filter(Boolean));
+      const remainingActionable=Math.max(0,actionable.length-deleted-newlySkipped.size);
+      return json(res,200,{
+        ok:true,
+        total:deployments.length,
+        kept:Math.min(keep,deployments.length),
+        currentProtected:protectedIds.size,
+        deleted,
+        failed:failedItems.length,
+        failedItems,
+        alreadySkipped:skipIds.size,
+        oldTotal:old.length,
+        remainingActionable,
+        done:remainingActionable===0
+      });
     }catch(err){
       return json(res,err.status===401?401:500,{ok:false,error:'Falha na limpeza da Vercel.',detail:String(err.message||err)});
     }
