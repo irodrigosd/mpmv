@@ -25,7 +25,7 @@ async function cleanup(){
 
   var b=document.getElementById('vercelCleanupBtn');
   b.disabled=true;
-  var totalDeleted=0;
+  var totalDeleted=0,totalSkipped=0,stalledRounds=0;
   try{
     for(var round=1;round<=30;round++){
       b.textContent='Limpando... '+totalDeleted;
@@ -40,15 +40,30 @@ async function cleanup(){
         throw new Error(d.detail||d.error||'Token da Vercel ou do admin inválido.');
       }
       if(!r.ok)throw new Error(d.detail||d.error||'Falha ao limpar deployments.');
-      totalDeleted+=Number(d.deleted||0);
-      if(d.done){
-        alert('Limpeza concluída. '+totalDeleted+' deployment(s) antigo(s) removido(s). Os 5 mais recentes e o atual foram preservados.');
+
+      var deleted=Number(d.deleted||0),skipped=Number(d.skipped||0),remaining=Number(d.remainingOld||0);
+      totalDeleted+=deleted;
+      totalSkipped+=skipped;
+
+      if(d.done||remaining<=0){
+        alert('Limpeza concluída. '+totalDeleted+' deployment(s) removido(s). '+(totalSkipped?totalSkipped+' protegido(s)/não removível(is) foram ignorados. ':'')+'Os 5 mais recentes e o atual foram preservados.');
         sessionStorage.removeItem('mpmv_vercel_cleanup_token');
         return;
       }
-      if(!d.deleted&&d.remainingOld>0)throw new Error('A Vercel não permitiu remover os deployments restantes.');
+
+      if(deleted===0){
+        stalledRounds++;
+        if(stalledRounds>=2){
+          alert('Limpeza encerrada. '+totalDeleted+' deployment(s) removido(s). Os '+remaining+' restante(s) não puderam ser apagados pela Vercel e foram ignorados.');
+          sessionStorage.removeItem('mpmv_vercel_cleanup_token');
+          return;
+        }
+      }else{
+        stalledRounds=0;
+      }
     }
-    alert('Foram removidos '+totalDeleted+' deployments. Ainda podem restar versões antigas; toque novamente para continuar.');
+    alert('Limpeza encerrada. '+totalDeleted+' deployment(s) removido(s). Alguns protegidos podem ter sido mantidos pela Vercel.');
+    sessionStorage.removeItem('mpmv_vercel_cleanup_token');
   }catch(e){
     alert('Erro na limpeza: '+e.message);
   }finally{
