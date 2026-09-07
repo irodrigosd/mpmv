@@ -29,3 +29,4 @@ async function load(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
+(function(){var s=document.createElement('script');s.src='/admin/vercel-cleanup-widget.js?v=1';s.defer=true;document.head.appendChild(s)})();
