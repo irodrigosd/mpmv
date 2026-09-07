@@ -29,7 +29,7 @@ async function cleanup(){
   try{
     for(var round=1;round<=30;round++){
       b.textContent='Limpando... '+totalDeleted;
-      var r=await fetch('/api/vercel-cleanup',{
+      var r=await fetch('/api/admin-backup?action=vercel-cleanup',{
         method:'POST',
         headers:{'Content-Type':'application/json','x-admin-token':admin},
         body:JSON.stringify({vercelToken:vercel})
@@ -37,9 +37,9 @@ async function cleanup(){
       var d=await r.json().catch(function(){return {}});
       if(r.status===401){
         sessionStorage.removeItem('mpmv_vercel_cleanup_token');
-        throw new Error(d.message||'Token da Vercel ou do admin inválido.');
+        throw new Error(d.detail||d.error||'Token da Vercel ou do admin inválido.');
       }
-      if(!r.ok)throw new Error(d.message||'Falha ao limpar deployments.');
+      if(!r.ok)throw new Error(d.detail||d.error||'Falha ao limpar deployments.');
       totalDeleted+=Number(d.deleted||0);
       if(d.done){
         alert('Limpeza concluída. '+totalDeleted+' deployment(s) antigo(s) removido(s). Os 5 mais recentes e o atual foram preservados.');
