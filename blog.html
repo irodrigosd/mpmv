@@ -45,11 +45,12 @@ function autoCover(p){const c=coverInfo(p);return `<div class="auto-cover ${c.th
 async function loadPosts(){
  const box=document.getElementById('bloglist');
  try{
-  const [a,b]=await Promise.all([
+  const [a,b,c]=await Promise.all([
    fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[]),
-   fetch('/data/blog-posts-extra.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[])
+   fetch('/data/blog-posts-extra.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[]),
+   fetch('/data/blog-posts-2026-09-08.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():[])
   ]);
-  const seen=new Set(); const posts=[...b,...a].filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true));
+  const seen=new Set(); const posts=[...c,...b,...a].filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true));
   posts.sort((x,y)=>String(y.publishedAt||'').localeCompare(String(x.publishedAt||''))||Number(x.batchOrder||0)-Number(y.batchOrder||0));
   box.innerHTML=posts.map(p=>{const cover=p.cover||p.coverImage||'';const visual=cover?`<img src="${esc(cover)}" alt="Capa do artigo ${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML=decodeURIComponent('${encodeURIComponent(autoCover(p))}')">`:autoCover(p);return `<a class="post" href="${esc(p.url)}"><div class="post-cover">${visual}</div><div class="post-copy"><div class="date">${esc(fmtDate(p.publishedAt))}<br>${esc(p.category||'Conteúdo')}</div><h3>${esc(p.title)}</h3><p>${esc(p.metaDescription||'')}</p></div></a>`}).join('');
  }catch(e){box.innerHTML='<div class="empty">Não foi possível carregar os artigos agora.</div>'}
