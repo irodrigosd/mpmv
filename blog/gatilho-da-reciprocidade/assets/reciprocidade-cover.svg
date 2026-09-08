@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+<title id="t">Gatilho da reciprocidade</title>
+<desc id="d">Ilustração de troca de valor por meio de um guia e uma relação de confiança.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f9fdff"/>
+    <stop offset=".55" stop-color="#dff3ff"/>
+    <stop offset="1" stop-color="#a9ddff"/>
+  </linearGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b304b"/>
+    <stop offset="1" stop-color="#082238"/>
+  </linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0a3c5d" flood-opacity=".18"/>
+  </filter>
+</defs>
+<rect width="1200" height="900" rx="48" fill="url(#bg)"/>
+<circle cx="102" cy="112" r="54" fill="#8fd3ff" opacity=".55"/>
+<circle cx="1078" cy="744" r="110" fill="#fff" opacity=".5"/>
+<circle cx="960" cy="140" r="22" fill="#0874ad" opacity=".16"/>
+
+<g filter="url(#shadow)" transform="translate(350 160)">
+  <rect width="500" height="580" rx="36" fill="url(#card)"/>
+  <rect x="42" y="46" width="92" height="34" rx="17" fill="#9dd9ff"/>
+  <text x="88" y="69" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#072238">MPMV</text>
+  <text x="54" y="148" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#9dd9ff">GATILHO DA</text>
+  <text x="54" y="205" font-family="Arial, sans-serif" font-size="50" font-weight="900" fill="#ffffff">RECIPROCIDADE</text>
+  <text x="54" y="260" font-family="Arial, sans-serif" font-size="23" fill="#d8ebf8">valor → confiança → ação</text>
+  <line x1="54" y1="312" x2="440" y2="312" stroke="#4b7893" stroke-width="2"/>
+  <rect x="54" y="354" width="392" height="116" rx="24" fill="#ffffff" opacity=".08"/>
+  <circle cx="104" cy="412" r="26" fill="#9dd9ff"/>
+  <path d="M94 412h20M104 402v20" stroke="#082238" stroke-width="6" stroke-linecap="round"/>
+  <text x="148" y="404" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff">ENTREGUE PRIMEIRO</text>
+  <text x="148" y="434" font-family="Arial, sans-serif" font-size="16" fill="#c8dce8">Conteúdo, guia, aula ou análise</text>
+  <text x="54" y="532" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#9dd9ff">MAIS PERSUASÃO, MAIS VENDAS</text>
+</g>
+
+<g transform="translate(150 510)">
+  <path d="M0 85c92-76 180-94 270-52 50 24 85 64 106 120-96 17-196 11-300-17C33 124 8 107 0 85z" fill="#fff" opacity=".92"/>
+  <circle cx="225" cy="70" r="35" fill="#8fd3ff"/>
+  <path d="M207 70h36" stroke="#073654" stroke-width="8" stroke-linecap="round"/>
+</g>
+
+<g transform="translate(820 500)">
+  <path d="M230 85c-92-76-180-94-270-52-50 24-85 64-106 120 96 17 196 11 300-17 43-12 68-29 76-51z" fill="#fff" opacity=".92"/>
+  <circle cx="5" cy="70" r="35" fill="#8fd3ff"/>
+  <path d="M-13 70h36" stroke="#073654" stroke-width="8" stroke-linecap="round"/>
+</g>
+
+<path d="M250 265C190 210 190 130 250 90" fill="none" stroke="#0874ad" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+<path d="M950 650c60 55 60 135 0 175" fill="none" stroke="#0874ad" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+</svg>
