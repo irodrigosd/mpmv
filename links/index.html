@@ -20,8 +20,8 @@
     .guide .visual{background:linear-gradient(145deg,#d8f3ff,#74caef)}.guide img{height:92px;width:auto;filter:drop-shadow(0 9px 10px rgba(22,50,75,.23));transform:rotate(-4deg)}
     .course .visual{background:linear-gradient(145deg,#152f4b,#26658f)}.coursebox{width:70px;height:86px;border-radius:8px;background:linear-gradient(150deg,#8dd9f7,#e9faff);box-shadow:10px 8px 0 #0c2236,0 14px 18px rgba(0,0,0,.23);display:flex;flex-direction:column;justify-content:center;padding:8px;color:#12304a;transform:rotate(3deg)}.coursebox b{font-size:14px;line-height:.95}.coursebox span{font-size:7px;font-weight:800;margin-top:7px;text-transform:uppercase}
     .mentor .visual{background:linear-gradient(145deg,#effaff,#c7ecfb)}.mentoricon{width:66px;height:66px;border-radius:22px;background:var(--navy);display:grid;place-items:center;color:white;font-size:32px;font-weight:900;box-shadow:0 12px 22px rgba(23,52,82,.2)}
-    .whats .visual{background:linear-gradient(145deg,#dcf8e9,#aeeaca)}.whatsicon{width:66px;height:66px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:white;font-size:29px;font-weight:900;box-shadow:0 12px 24px rgba(31,173,103,.22)}.whats.disabled{opacity:.72;cursor:not-allowed}.whats.disabled .copy small{color:#778797}.pending{display:inline-block;margin-top:7px;font-size:10px;font-weight:800;color:#6f7e8c;background:#eef3f6;border-radius:999px;padding:5px 8px}
-    footer{text-align:center;color:#7a8b9a;font-size:11px;line-height:1.5;padding-top:24px}footer a{color:#607b8d;text-decoration:none}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);width:min(90vw,430px);background:#10223a;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;text-align:center;opacity:0;pointer-events:none;transition:.2s ease;box-shadow:0 12px 35px rgba(0,0,0,.22)}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .whats .visual{background:linear-gradient(145deg,#dcf8e9,#aeeaca)}.whatsicon{width:66px;height:66px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:white;font-size:29px;font-weight:900;box-shadow:0 12px 24px rgba(31,173,103,.22)}
+    footer{text-align:center;color:#7a8b9a;font-size:11px;line-height:1.5;padding-top:24px}footer a{color:#607b8d;text-decoration:none}
     @media(max-width:480px){.wrap{padding:24px 13px 34px}.card{grid-template-columns:92px 1fr 30px;gap:12px;padding:11px;border-radius:21px;min-height:118px}.visual{height:94px;border-radius:16px}.guide img{height:84px}.copy strong{font-size:18px}.copy p{font-size:12px}.brand{justify-content:flex-start;padding-left:4px}header{text-align:left;padding-left:4px;padding-right:4px}header h1{margin-left:0}header p{margin-left:0}}
   </style>
 </head>
@@ -50,23 +50,19 @@
         <div class="copy"><small>Acompanhamento individual</small><strong>Mentoria MPMV</strong><p>Estratégia de persuasão e vendas aplicada diretamente ao seu negócio.</p></div><span class="arrow">→</span>
       </a>
 
-      <a class="card whats disabled" data-link="whatsapp" href="#" aria-disabled="true">
+      <a class="card whats" data-link="whatsapp" href="https://wa.me/5577999921439?text=Oi%2C%20vim%20pelo%20Instagram%20da%20MPMV%20e%20quero%20saber%20mais." target="_blank" rel="noopener noreferrer">
         <div class="visual"><div class="whatsicon">☎</div></div>
-        <div class="copy"><small>Contato direto</small><strong>Fale comigo no WhatsApp</strong><p>Conversa rápida para dúvidas e próximos passos.</p><span class="pending">AGUARDANDO NÚMERO</span></div><span class="arrow">→</span>
+        <div class="copy"><small>Contato direto</small><strong>Fale comigo no WhatsApp</strong><p>Conversa rápida para dúvidas e próximos passos.</p></div><span class="arrow">→</span>
       </a>
     </section>
 
     <footer>© 2026 MPMV — Mais Persuasão, Mais Vendas<br><a href="/politica-de-privacidade/">Política de Privacidade</a></footer>
   </main>
-  <div class="toast" id="toast">Só falta cadastrar o número do WhatsApp da MPMV.</div>
   <script>
     document.querySelectorAll('[data-link]').forEach(function(el){
-      el.addEventListener('click',function(e){
+      el.addEventListener('click',function(){
         var name=el.getAttribute('data-link');
-        if(name==='whatsapp' && el.getAttribute('aria-disabled')==='true'){
-          e.preventDefault();var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2600);return;
-        }
-        if(typeof window.gtag==='function')window.gtag('event','links_click',{link_name:name,link_location:'instagram_bio_hub'});
+        if(typeof window.gtag==='function')window.gtag('event','links_click',{link_name:name,link_location:'instagram_bio_hub',utm_source:'instagram',utm_medium:'bio',utm_campaign:'links_mpmv'});
       });
     });
   </script>
