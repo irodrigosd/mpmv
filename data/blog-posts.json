@@ -1,5 +1,29 @@
 [
   {
+    "id": "amazon-1-click-vendas-2026-09-08",
+    "title": "Amazon 1-Click: como um único clique mudou a forma de vender pela internet",
+    "seoTitle": "Amazon 1-Click: como um único clique mudou a forma de vender pela internet | MPMV",
+    "metaDescription": "Entenda o caso Amazon 1-Click e veja como reduzir etapas da compra pode aumentar conversão, diminuir fricção e vender mais pela internet.",
+    "focusKeyphrase": "Amazon 1-Click",
+    "secondaryKeyphrases": [
+      "checkout sem fricção",
+      "reduzir etapas da compra",
+      "experiência de compra online",
+      "conversão no checkout",
+      "case Amazon vendas",
+      "fricção na jornada de compra"
+    ],
+    "slug": "amazon-1-click-vendas",
+    "url": "/blog/amazon-1-click-vendas/",
+    "file": "blog/amazon-1-click-vendas/index.html",
+    "status": "published",
+    "category": "Cases + Conversão + Vendas",
+    "publishedAt": "2026-09-08",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1
+  },
+  {
     "id": "gatilho-da-escassez-2026-09-08",
     "title": "Como usar o gatilho da escassez para vender mais sem perder a confiança do cliente",
     "seoTitle": "Gatilho da Escassez: Como Usar em Vendas | MPMV",
