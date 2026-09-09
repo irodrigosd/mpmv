@@ -311,7 +311,10 @@
     "publishedAt": "2026-09-06",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-09",
+    "coverImage": "/assets/images/blog/ganchos-para-reels-capa.png",
+    "cover": "/assets/images/blog/ganchos-para-reels-capa.png"
   },
   {
     "id": "como-criar-conteudo-para-instagram-quando-voce-nao-sabe-o-que-postar-2026-09-06",
