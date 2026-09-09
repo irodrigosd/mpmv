@@ -184,7 +184,11 @@
     "publishedAt": "2026-09-06",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-09",
+    "coverImage": "/assets/images/blog/como-vender-pelo-direct-do-instagram-capa.png",
+    "cover": "/assets/images/blog/como-vender-pelo-direct-do-instagram-capa.png",
+    "coverAlt": "como vender pelo Direct do Instagram"
   },
   {
     "id": "como-viralizar-reels-2026-09-06",
