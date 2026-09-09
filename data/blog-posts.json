@@ -238,7 +238,11 @@
     "publishedAt": "2026-09-06",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-09",
+    "coverImage": "/assets/images/blog/como-fazer-carrossel-no-instagram-capa.png",
+    "cover": "/assets/images/blog/como-fazer-carrossel-no-instagram-capa.png",
+    "coverAlt": "como fazer carrossel no Instagram"
   },
   {
     "id": "como-aumentar-engajamento-no-instagram-2026-09-06",
