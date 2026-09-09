@@ -211,7 +211,11 @@
     "publishedAt": "2026-09-06",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-09",
+    "coverImage": "/assets/images/blog/como-viralizar-reels-capa.png",
+    "cover": "/assets/images/blog/como-viralizar-reels-capa.png",
+    "coverAlt": "como viralizar Reels"
   },
   {
     "id": "como-fazer-carrossel-no-instagram-2026-09-06",
