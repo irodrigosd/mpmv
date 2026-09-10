@@ -1,0 +1,36 @@
+ATUALIZAÇÃO — GERADOR DE PACOTE DE IMAGENS MPMV
+
+Arquivos:
+- admin/blog-image-generator.js
+- api/admin-blog-image-package.js
+- admin/blog.html
+- OPENAI-IMAGE-PACKAGE-SETUP.txt
+
+COMO USAR
+1. Suba o ZIP na raiz do repositório.
+2. Na Vercel, adicione a variável secreta OPENAI_API_KEY.
+3. Faça um novo deploy.
+4. Abra /admin/blog.
+5. Edite um artigo.
+6. Abra a aba "Capa e IA".
+7. Clique em "Gerar pacote".
+8. Confira a prévia.
+9. Clique em "Aplicar e publicar".
+
+O pacote gera:
+- slug-capa.webp — 16:9
+- slug-card.webp — 1:1
+- slug-social.webp — 4:5
+- seo.json com ALT, título e slug
+- README.txt
+
+A capa principal é publicada no artigo e os metadados OG/Twitter/JSON-LD são atualizados.
+O gerador usa uma imagem-mestre e faz os recortes no navegador, evitando três chamadas de geração para cada artigo.
+
+IMPORTANTE
+A chave OPENAI_API_KEY não deve ser colocada no GitHub. Configure-a como variável de ambiente da Vercel.
+
+# Required by /api/admin-blog-image-package.js
+OPENAI_API_KEY=cole_sua_chave_da_OpenAI_aqui
+# Optional: defaults to gpt-image-2
+OPENAI_IMAGE_MODEL=gpt-image-2
