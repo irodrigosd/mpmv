@@ -1686,7 +1686,10 @@
     "publishedAt": "2026-08-30",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-10",
+    "coverImage": "/assets/images/blog/efeito-padrao-escolhas-capa.png",
+    "cover": "/assets/images/blog/efeito-padrao-escolhas-capa.png"
   },
   {
     "id": "custo-afundado-decisoes-2026-08-30",
