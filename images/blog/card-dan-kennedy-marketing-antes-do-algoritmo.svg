@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080808"/><stop offset=".62" stop-color="#171111"/><stop offset="1" stop-color="#3a1115"/></linearGradient>
+ <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f0d07a"/><stop offset="1" stop-color="#b87924"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#d1a447" stop-opacity=".25"/><stop offset="1" stop-color="#d1a447" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="1000" cy="160" r="300" fill="url(#glow)"/>
+<path d="M760 500 C840 430 880 350 940 260 M790 540 C900 480 1000 420 1080 320" fill="none" stroke="#d1a447" stroke-opacity=".3" stroke-width="2"/>
+<rect x="72" y="68" width="265" height="36" rx="18" fill="#d1a447"/>
+<text x="204" y="92" text-anchor="middle" fill="#111" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" letter-spacing="2">GIGANTES DO MARKETING</text>
+<text x="72" y="190" fill="#f5f0e8" font-family="Arial,Helvetica,sans-serif" font-size="60" font-weight="800">Dan Kennedy</text>
+<text x="72" y="257" fill="url(#gold)" font-family="Arial,Helvetica,sans-serif" font-size="53" font-weight="800">antes do algoritmo</text>
+<text x="72" y="320" fill="#d6d0c8" font-family="Arial,Helvetica,sans-serif" font-size="25">Mercado. Mensagem. Mídia. Números.</text>
+<text x="72" y="357" fill="#aaa29a" font-family="Arial,Helvetica,sans-serif" font-size="20">O sistema de resposta que mede atenção pelo que ela provoca.</text>
+<g transform="translate(785 175)">
+ <circle cx="145" cy="145" r="132" fill="none" stroke="#d1a447" stroke-opacity=".25" stroke-width="2"/>
+ <circle cx="145" cy="145" r="94" fill="none" stroke="#d1a447" stroke-opacity=".42" stroke-width="3"/>
+ <circle cx="145" cy="145" r="55" fill="#111" stroke="#f0d07a" stroke-width="3"/>
+ <text x="145" y="139" text-anchor="middle" fill="#f0d07a" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="800" letter-spacing="2">RESPOSTA</text>
+ <text x="145" y="159" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="12">MENSURÁVEL</text>
+ <text x="145" y="36" text-anchor="middle" fill="#d8b45f" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800">MERCADO</text>
+ <text x="274" y="151" text-anchor="middle" fill="#d8b45f" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800">MÍDIA</text>
+ <text x="145" y="276" text-anchor="middle" fill="#d8b45f" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800">NÚMEROS</text>
+ <text x="16" y="151" text-anchor="middle" fill="#d8b45f" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800">MENSAGEM</text>
+</g>
+<line x1="72" y1="565" x2="1128" y2="565" stroke="#5a3d20"/>
+<text x="72" y="608" fill="#d1a447" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" letter-spacing="3">MPMV</text>
+<text x="1128" y="608" text-anchor="end" fill="#8f8780" font-family="Arial,Helvetica,sans-serif" font-size="13">Mais Persuasão, Mais Vendas</text>
+</svg>
