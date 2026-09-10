@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="t d">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080808"/><stop offset=".62" stop-color="#151010"/><stop offset="1" stop-color="#351316"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#d1a447"/><stop offset=".5" stop-color="#f0d27a"/><stop offset="1" stop-color="#d1a447"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="1010" cy="330" r="205" fill="#a51f27" opacity=".16" filter="url(#shadow)"/>
+<circle cx="1010" cy="330" r="148" fill="none" stroke="#d1a447" stroke-opacity=".3" stroke-width="2"/>
+<circle cx="1010" cy="330" r="108" fill="none" stroke="#d1a447" stroke-opacity=".22" stroke-width="2"/>
+<rect x="865" y="177" width="290" height="306" rx="24" fill="#111" stroke="#3b3024"/>
+<text x="910" y="225" fill="#d1a447" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="3">VALOR PERCEBIDO</text>
+<text x="910" y="287" fill="#f4f0e8" font-family="Arial,sans-serif" font-size="46" font-weight="800">R$997</text>
+<line x1="910" y1="307" x2="1110" y2="307" stroke="#3b3024"/>
+<text x="910" y="354" fill="#8f8880" font-family="Arial,sans-serif" font-size="22">R$97</text>
+<text x="910" y="398" fill="#d9d1c8" font-family="Arial,sans-serif" font-size="17">PROMESSA</text>
+<text x="1020" y="398" fill="#d9d1c8" font-family="Arial,sans-serif" font-size="17">PROVA</text>
+<text x="910" y="428" fill="#d9d1c8" font-family="Arial,sans-serif" font-size="17">CONTEXTO</text>
+<text x="1020" y="428" fill="#d9d1c8" font-family="Arial,sans-serif" font-size="17">CONTRASTE</text>
+<text id="t" x="72" y="94" fill="url(#gold)" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4">INFOPRODUTOS + PREÇO</text>
+<text x="72" y="188" fill="#f4f0e8" font-family="Arial,sans-serif" font-size="58" font-weight="800">Valor percebido</text>
+<text x="72" y="252" fill="#f4f0e8" font-family="Arial,sans-serif" font-size="58" font-weight="800">em cursos online</text>
+<text id="d" x="72" y="315" fill="#bcb4aa" font-family="Arial,sans-serif" font-size="25">Por que R$997 pode vender</text>
+<text x="72" y="351" fill="#bcb4aa" font-family="Arial,sans-serif" font-size="25">enquanto R$97 é ignorado?</text>
+<text x="72" y="572" fill="#d1a447" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2">PROMESSA • PROVA • CONTEXTO • CONTRASTE</text>
+<text x="72" y="618" fill="#f4f0e8" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="4">MPMV — MAIS PERSUASÃO, MAIS VENDAS</text>
+</svg>
