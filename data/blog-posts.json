@@ -1733,7 +1733,10 @@
     "publishedAt": "2026-08-30",
     "author": "Rodrigo Castro",
     "deletable": true,
-    "batchOrder": 1
+    "batchOrder": 1,
+    "updatedAt": "2026-09-10",
+    "coverImage": "/assets/images/blog/efeito-dotacao-marketing-capa.png",
+    "cover": "/assets/images/blog/efeito-dotacao-marketing-capa.png"
   },
   {
     "id": "efeito-halo-vendas-2026-08-30",
