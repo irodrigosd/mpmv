@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080808"/><stop offset=".62" stop-color="#17100f"/><stop offset="1" stop-color="#3a1117"/></linearGradient>
+ <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f0d07a"/><stop offset="1" stop-color="#a96d18"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="930" cy="330" r="190" fill="#b51f2a" opacity=".16" filter="url(#glow)"/>
+<circle cx="930" cy="330" r="150" fill="none" stroke="#d1a447" stroke-opacity=".22"/>
+<circle cx="930" cy="330" r="112" fill="none" stroke="#d1a447" stroke-opacity=".35"/>
+<circle cx="930" cy="330" r="72" fill="#12100e" stroke="#e0bd63" stroke-width="2"/>
+<text x="930" y="323" fill="#f0d07a" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle" letter-spacing="2">VALOR</text>
+<text x="930" y="348" fill="#fff" font-family="Arial,sans-serif" font-size="24" font-weight="800" text-anchor="middle">PREÇO</text>
+<g fill="#d7b65f" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1.5">
+ <text x="930" y="176">REFERÊNCIA</text><text x="1078" y="337">COMPARAÇÃO</text><text x="930" y="502">PAGAMENTO</text><text x="780" y="337">RISCO</text>
+</g>
+<text x="78" y="92" fill="#d1a447" font-family="Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="3">PRECIFICAÇÃO + INFOPRODUTOS</text>
+<text x="78" y="190" fill="#fff" font-family="Arial,sans-serif" font-size="62" font-weight="800">Psicologia de</text>
+<text x="78" y="258" fill="#f0d07a" font-family="Arial,sans-serif" font-size="62" font-weight="800">preços</text>
+<text x="78" y="316" fill="#d2cbc3" font-family="Arial,sans-serif" font-size="25">Como montar planos que fazem sentido</text>
+<text x="78" y="367" fill="#8f8880" font-family="Arial,sans-serif" font-size="17">Oferta • comparação • risco • forma de pagamento</text>
+<rect x="78" y="548" width="1044" height="1" fill="#d1a447" opacity=".35"/>
+<text x="78" y="590" fill="#b7afa6" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">MPMV — MAIS PERSUASÃO, MAIS VENDAS</text>
+</svg>
