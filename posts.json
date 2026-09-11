@@ -1,78 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T14:20:00.000Z",
+  "updatedAt": "2026-09-11T14:35:00.000Z",
   "posts": [
-    {
-      "title": "ROAS baixo: como descobrir o que está derrubando seus anúncios",
-      "slug": "roas-baixo",
-      "url": "/blog/roas-baixo/",
-      "date": "2026-09-11",
-      "status": "published",
-      "focusKeyword": "ROAS baixo",
-      "seoScore": 94,
-      "readabilityScore": 91,
-      "readingTime": "9 min",
-      "excerpt": "ROAS baixo? Entenda a métrica, calcule o retorno dos anúncios e descubra se a perda está no anúncio, página, oferta, checkout ou margem."
-    },
-    {
-      "title": "Gatilhos mentais: o que são, 9 exemplos e como usar com ética",
-      "slug": "gatilhos-mentais",
-      "url": "/blog/gatilhos-mentais/",
-      "date": "2026-08-15",
-      "status": "published",
-      "focusKeyword": "Gatilhos mentais",
-      "seoScore": 98,
-      "readabilityScore": 98,
-      "readingTime": "11 min",
-      "excerpt": "Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética."
-    },
-    {
-      "title": "O que é copywriting? Como aplicar no dia a dia e 7 benefícios",
-      "slug": "o-que-e-copywriting",
-      "url": "/blog/o-que-e-copywriting/",
-      "date": "2026-08-15",
-      "status": "published",
-      "focusKeyword": "o que é copywriting",
-      "seoScore": 98,
-      "readabilityScore": 99,
-      "readingTime": "13 min",
-      "excerpt": "Entenda o que é copywriting, como aplicar no dia a dia e 7 benefícios para melhorar mensagens, e-mails, apresentações, conteúdo e vendas."
-    },
-    {
-      "title": "Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico",
-      "slug": "como-criar-posts-que-vendem-com-chatgpt",
-      "url": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
-      "date": "2026-08-15",
-      "status": "published",
-      "focusKeyword": "como criar posts que vendem com ChatGPT",
-      "seoScore": 94,
-      "readabilityScore": 97,
-      "readingTime": "9 min",
-      "excerpt": "Aprenda como criar posts que vendem com ChatGPT usando tema, ângulo, argumento, prova, estrutura e CTA em um processo de 7 passos."
-    },
-    {
-      "title": "Como usar persuasão para vender mais: 7 aplicações práticas",
-      "slug": "como-usar-persuasao-para-vender-mais",
-      "url": "/blog/como-usar-persuasao-para-vender-mais/",
-      "date": "2026-08-15",
-      "status": "published",
-      "focusKeyword": "como usar persuasao para vender mais",
-      "seoScore": 93,
-      "readabilityScore": 87,
-      "readingTime": "9 min",
-      "excerpt": "Um guia para aplicar persuasão em produto, prova, autoridade, oferta, reciprocidade, escassez, contraste e CTA."
-    },
-    {
-      "title": "Persuasão para infoprodutores: como vender mais sem depender de promessa vazia",
-      "slug": "persuasao-para-infoprodutores",
-      "url": "/blog/persuasao-para-infoprodutores/",
-      "date": "2026-08-15",
-      "status": "published",
-      "focusKeyword": "persuasão para infoprodutores",
-      "seoScore": 88,
-      "readabilityScore": 84,
-      "readingTime": "10 min",
-      "excerpt": "Um processo para diagnosticar público, organizar provas, construir oferta e escrever uma comunicação que faça sentido antes do CTA."
-    }
+    {"title":"ChatGPT ou Claude? Quais as vantagens e desvantagens de cada um?","slug":"chatgpt-ou-claude","url":"/blog/chatgpt-ou-claude/","date":"2026-09-11","status":"published","focusKeyword":"ChatGPT ou Claude","seoScore":96,"readabilityScore":95,"readingTime":"10 min","excerpt":"ChatGPT ou Claude? Compare vantagens e desvantagens, escrita, contexto, imagens, pesquisa, código e ferramentas para escolher a IA certa para seu trabalho."},
+    {"title":"ROAS baixo: como descobrir o que está derrubando seus anúncios","slug":"roas-baixo","url":"/blog/roas-baixo/","date":"2026-09-11","status":"published","focusKeyword":"ROAS baixo","seoScore":94,"readabilityScore":91,"readingTime":"9 min","excerpt":"ROAS baixo? Entenda a métrica, calcule o retorno dos anúncios e descubra se a perda está no anúncio, página, oferta, checkout ou margem."},
+    {"title":"Gatilhos mentais: o que são, 9 exemplos e como usar com ética","slug":"gatilhos-mentais","url":"/blog/gatilhos-mentais/","date":"2026-08-15","status":"published","focusKeyword":"Gatilhos mentais","seoScore":98,"readabilityScore":98,"readingTime":"11 min","excerpt":"Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética."},
+    {"title":"O que é copywriting? Como aplicar no dia a dia e 7 benefícios","slug":"o-que-e-copywriting","url":"/blog/o-que-e-copywriting/","date":"2026-08-15","status":"published","focusKeyword":"o que é copywriting","seoScore":98,"readabilityScore":99,"readingTime":"13 min","excerpt":"Entenda o que é copywriting, como aplicar no dia a dia e 7 benefícios para melhorar mensagens, e-mails, apresentações, conteúdo e vendas."},
+    {"title":"Como criar posts que vendem com ChatGPT: 7 passos para sair do conteúdo genérico","slug":"como-criar-posts-que-vendem-com-chatgpt","url":"/blog/como-criar-posts-que-vendem-com-chatgpt/","date":"2026-08-15","status":"published","focusKeyword":"Como criar posts que vendem com ChatGPT","seoScore":94,"readabilityScore":97,"readingTime":"9 min","excerpt":"Aprenda como criar posts que vendem com ChatGPT usando tema, ângulo, argumento, prova, estrutura e CTA em um processo de 7 passos."},
+    {"title":"Como usar persuasão para vender mais: 7 aplicações práticas","slug":"como-usar-persuasao-para-vender-mais","url":"/blog/como-usar-persuasao-para-vender-mais/","date":"2026-08-15","status":"published","focusKeyword":"como usar persuasao para vender mais","seoScore":93,"readabilityScore":87,"readingTime":"9 min","excerpt":"Um guia para aplicar persuasão em produto, prova, autoridade, oferta, reciprocidade, escassez, contraste e CTA."},
+    {"title":"Persuasão para infoprodutores: como vender mais sem depender de promessa vazia","slug":"persuasao-para-infoprodutores","url":"/blog/persuasao-para-infoprodutores/","date":"2026-08-15","status":"published","focusKeyword":"persuasão para infoprodutores","seoScore":88,"readabilityScore":84,"readingTime":"10 min","excerpt":"Um processo para diagnosticar público, organizar provas, construir oferta e escrever uma comunicação que faça sentido antes do CTA."}
   ]
 }

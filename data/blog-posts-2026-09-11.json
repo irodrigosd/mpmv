@@ -1,26 +1,22 @@
 [
   {
-    "id": "roas-baixo-2026-09-11",
-    "title": "ROAS baixo: como descobrir o que está derrubando seus anúncios",
-    "seoTitle": "ROAS baixo: como descobrir o que derruba seus anúncios | MPMV",
-    "metaDescription": "ROAS baixo? Entenda a métrica, calcule o retorno dos anúncios e descubra se a perda está no anúncio, página, oferta, checkout ou margem.",
-    "focusKeyphrase": "ROAS baixo",
-    "secondaryKeyphrases": [
-      "como melhorar o ROAS",
-      "ROAS de equilíbrio",
-      "ROAS baixo no Meta Ads",
-      "ROAS e ROI",
-      "retorno sobre investimento em anúncios"
-    ],
-    "slug": "roas-baixo",
-    "url": "/blog/roas-baixo/",
-    "file": "blog/roas-baixo/index.html",
+    "id": "chatgpt-ou-claude-2026-09-11",
+    "title": "ChatGPT ou Claude? Quais as vantagens e desvantagens de cada um?",
+    "seoTitle": "ChatGPT ou Claude? Vantagens e Desvantagens de Cada IA | MPMV",
+    "metaDescription": "ChatGPT ou Claude? Compare vantagens e desvantagens, escrita, contexto, imagens, pesquisa, código e ferramentas para escolher a IA certa para seu trabalho.",
+    "focusKeyphrase": "ChatGPT ou Claude",
+    "secondaryKeyphrases": ["ChatGPT ou Claude qual é melhor", "vantagens do ChatGPT", "vantagens do Claude", "ChatGPT vs Claude", "Claude ou ChatGPT para copywriting", "IA para marketing"],
+    "slug": "chatgpt-ou-claude",
+    "url": "/blog/chatgpt-ou-claude/",
+    "file": "blog/chatgpt-ou-claude/index.html",
     "status": "published",
-    "category": "Tráfego + Vendas",
+    "category": "IA + Conteúdo + Produtividade",
     "publishedAt": "2026-09-11",
     "author": "Rodrigo Castro",
-    "cover": "/blog/roas-baixo/assets/roas-baixo-card.svg",
     "deletable": true,
-    "batchOrder": -4
+    "batchOrder": 1,
+    "coverImage": "/blog/chatgpt-ou-claude/assets/chatgpt-ou-claude-hero.svg",
+    "cover": "/blog/chatgpt-ou-claude/assets/chatgpt-ou-claude-hero.svg",
+    "coverAlt": "Comparação visual entre ChatGPT e Claude"
   }
 ]
