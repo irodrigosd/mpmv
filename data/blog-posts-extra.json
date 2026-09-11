@@ -197,5 +197,23 @@
     "coverImage": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
     "coverAlt": "Profissional trabalhando em estratégia de conteúdo e copywriting",
     "batchOrder": 6
+  },
+  {
+    "id": "roas-baixo-2026-09-11",
+    "title": "ROAS baixo: como descobrir o que está derrubando seus anúncios",
+    "seoTitle": "ROAS baixo: como descobrir o que derruba seus anúncios | MPMV",
+    "metaDescription": "ROAS baixo? Entenda a métrica, calcule o retorno dos anúncios e descubra se a perda está no anúncio, página, oferta, checkout ou margem.",
+    "focusKeyphrase": "ROAS baixo",
+    "secondaryKeyphrases": ["como melhorar o ROAS","ROAS de equilíbrio","ROAS baixo no Meta Ads","ROAS e ROI","retorno sobre investimento em anúncios"],
+    "slug": "roas-baixo",
+    "url": "/blog/roas-baixo/",
+    "file": "blog/roas-baixo/index.html",
+    "status": "published",
+    "category": "Tráfego + Vendas",
+    "publishedAt": "2026-09-11",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "cover": "/blog/roas-baixo/assets/roas-baixo-card.svg",
+    "batchOrder": 7
   }
 ]
