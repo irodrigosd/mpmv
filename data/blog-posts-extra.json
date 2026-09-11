@@ -177,5 +177,25 @@
     "deletable": true,
     "cover": "/images/blog/carta-wall-street-journal-copywriting.svg",
     "batchOrder": 5
+  },
+  {
+    "id": "erro-chatgpt-conteudo-de-vendas-2026-09-11",
+    "title": "O problema de usar o ChatGPT para escrever suas copies sem uma estratégia",
+    "seoTitle": "ChatGPT para Escrever Copy: o Erro que Custa Vendas | MPMV",
+    "metaDescription": "Usar ChatGPT para escrever copy sem estratégia pode deixar sua comunicação genérica. Veja como usar IA para acelerar a produção sem perder persuasão e conversão.",
+    "focusKeyphrase": "ChatGPT para escrever copy",
+    "secondaryKeyphrases": ["ChatGPT para copywriting","copywriting com IA","IA para escrever copy","copy persuasiva"],
+    "slug": "erro-chatgpt-conteudo-de-vendas",
+    "url": "/blog/erro-chatgpt-conteudo-de-vendas/",
+    "file": "blog/erro-chatgpt-conteudo-de-vendas/index.html",
+    "status": "published",
+    "category": "IA + Copywriting + Conversão",
+    "publishedAt": "2026-09-11",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "cover": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+    "coverImage": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+    "coverAlt": "Profissional trabalhando em estratégia de conteúdo e copywriting",
+    "batchOrder": 6
   }
 ]
