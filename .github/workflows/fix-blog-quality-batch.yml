@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/fix-blog-quality-batch.py'
+      - 'scripts/seo-fix-chatgpt-copy.py'
       - '.github/workflows/fix-blog-quality-batch.yml'
 
 permissions:
@@ -24,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Corrigir artigos
         run: python scripts/fix-blog-quality-batch.py
+      - name: Otimizar artigo ChatGPT para escrever copy
+        run: python scripts/seo-fix-chatgpt-copy.py
       - name: Publicar correções
         run: |
           if git diff --quiet; then
