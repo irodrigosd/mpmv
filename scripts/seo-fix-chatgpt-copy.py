@@ -3,6 +3,10 @@ from pathlib import Path
 path = Path('blog/erro-chatgpt-conteudo-de-vendas/index.html')
 s = path.read_text(encoding='utf-8')
 
+if '<title>ChatGPT para Escrever Copy: Como Evitar Textos Genéricos | MPMV</title>' in s:
+    print('SEO do artigo já está otimizado; nenhuma alteração necessária.')
+    raise SystemExit(0)
+
 replacements = [
     ('<title>ChatGPT para Escrever Copy: o Erro que Custa Vendas | MPMV</title>', '<title>ChatGPT para Escrever Copy: Como Evitar Textos Genéricos | MPMV</title>'),
     ('<meta name="description" content="Usar ChatGPT para escrever copy sem estratégia pode deixar sua comunicação genérica. Veja como usar IA para acelerar a produção sem perder persuasão e conversão.">', '<meta name="description" content="Aprenda como usar ChatGPT para escrever copy com estratégia, contexto e revisão humana, evitando textos genéricos e criando mensagens que ajudam a vender.">'),
