@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROAS baixo: como descobrir o que está derrubando seus anúncios | MPMV</title>
+<meta name="description" content="ROAS baixo? Entenda o que a métrica mostra, calcule o retorno dos anúncios e descubra se o problema está no anúncio, página, oferta, checkout ou margem.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Rodrigo Castro">
+<link rel="canonical" href="https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/">
+<link rel="icon" href="/favicon-mpmv.png?v=3" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon-mpmv.png?v=3">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MPMV — Mais Persuasão, Mais Vendas">
+<meta property="og:title" content="ROAS baixo: como descobrir o que está derrubando seus anúncios">
+<meta property="og:description" content="Um guia para interpretar ROAS baixo e encontrar o ponto da operação que está consumindo o retorno da mídia.">
+<meta property="og:url" content="https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/">
+<meta property="og:image" content="https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/assets/roas-baixo-hero.svg">
+<meta property="og:image:alt" content="ROAS baixo e diagnóstico de mídia paga">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ROAS baixo: como descobrir o que está derrubando seus anúncios">
+<meta name="twitter:description" content="Aprenda a interpretar ROAS baixo antes de aumentar ou cortar a verba.">
+<meta name="twitter:image" content="https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/assets/roas-baixo-hero.svg">
+<style>
+:root{--ink:#171512;--paper:#f4f0e8;--soft:#ebe4d8;--gold:#c99c3d;--gold2:#f0d07a;--muted:#6f675f;--line:#d8cfc2;--grad:linear-gradient(135deg,#f0d07a,#bd8125 58%,#8c5616)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.72}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}.nav{background:#0b0b0b;border-bottom:1px solid #25211d;color:#fff}.navin{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;font-size:14px;font-weight:850}.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--grad);color:#111;font-size:13px;font-weight:950}.navlinks{display:flex;gap:24px}.navlinks a{color:#d7d0c8;text-decoration:none;font-size:13px;font-weight:750}.hero{background:radial-gradient(circle at 12% 18%,rgba(205,154,61,.22),transparent 28%),radial-gradient(circle at 88% 76%,rgba(165,31,39,.2),transparent 28%),linear-gradient(135deg,#080808,#151311 68%,#241012);color:#fff;padding:58px 0 60px}.crumb{font-size:13px;color:#aaa29a;margin-bottom:30px}.crumb a{color:#d7bd7e;text-decoration:none}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}.category{display:inline-flex;align-items:center;gap:10px;color:#e0bc65;font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.category:before{content:"";width:30px;height:2px;background:var(--grad)}h1{font-size:clamp(40px,5.2vw,68px);line-height:1.02;letter-spacing:-.052em;margin:17px 0 20px;max-width:900px}.accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(18px,2vw,22px);line-height:1.55;color:#d3cdc6;max-width:790px;margin:0}.meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;font-size:13px;color:#a9a29a}.hero-art{display:grid;place-items:center}.hero-art img{display:block;width:min(500px,88vw);height:auto;border-radius:24px;box-shadow:0 26px 60px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.1);background:#111}.article{padding:64px 0 84px}.article-grid{display:grid;grid-template-columns:minmax(0,760px) 290px;gap:54px;align-items:start}article p{font-size:18px;margin:0 0 22px}article h2{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.035em;margin:58px 0 20px}article h3{font-size:25px;line-height:1.2;letter-spacing:-.02em;margin:36px 0 14px}article a{color:#825d16;font-weight:820;text-decoration-thickness:1px;text-underline-offset:3px}.intro{font-size:21px}.pull{margin:38px 0;padding:26px 28px;background:#171412;color:#fff;border-left:5px solid var(--gold);border-radius:0 16px 16px 0;font-size:25px;line-height:1.35;font-weight:820}.tip{background:#fff7df;border:1px solid #e5ca83;border-radius:18px;padding:22px 24px;margin:30px 0}.tip strong{display:block;margin-bottom:6px}.tip p{margin:0;font-size:16px;color:#5f5851}.steps{padding-left:22px}.steps li{margin:0 0 13px;font-size:17px}.diagnosis{display:grid;gap:13px;margin:28px 0}.diagnosis .item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}.diagnosis strong{display:block;font-size:18px;margin-bottom:4px}.diagnosis p{font-size:16px;color:#5e5750;margin:0}.figure{margin:36px 0 42px}.figure img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--line);box-shadow:0 14px 36px rgba(36,28,18,.1)}figcaption{font-size:13px;color:#756c62;margin-top:9px;text-align:center}.formula{font-size:22px;font-weight:900;background:#171412;color:#fff;border-radius:16px;padding:22px;margin:24px 0}.faq{display:grid;gap:12px;margin:26px 0}.faq details{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:900}.faq p{font-size:16px;margin:12px 0 0;color:#5f5851}.sources{font-size:15px;color:#665f57}.sources li{margin-bottom:10px}.closing{margin-top:54px;background:#101010;color:#fff;border-radius:24px;padding:34px}.closing-kicker{color:#d1a447;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:900}.closing h2{margin:8px 0 15px;font-size:34px}.closing p{color:#cbc4bc;margin-bottom:18px}.closing a{color:#efc768;font-weight:900}.sidebar{position:sticky;top:24px;display:grid;gap:18px}.sidecard{background:#111;color:#fff;border-radius:20px;padding:24px;border:1px solid #28231f}.sidecard .eyebrow{color:#d1a447;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900}.sidecard h3{font-size:25px;line-height:1.12;margin:10px 0 12px}.sidecard p{font-size:15px;line-height:1.55;color:#bbb3aa;margin:0 0 18px}.btn{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;padding:13px 16px;border-radius:999px;background:var(--grad);color:#090909!important;font-weight:950;font-size:13px}footer{background:#0b0b0b;color:#9e978f;border-top:1px solid #24211e;padding:28px 0;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot a{color:#ddd4c8;text-decoration:none}@media(max-width:920px){.hero-grid,.article-grid{grid-template-columns:1fr}.sidebar{position:static}}@media(max-width:640px){.navlinks a:first-child{display:none}.hero{padding:42px 0}.article{padding-top:42px}.pull{font-size:21px}.closing{padding:26px}article p{font-size:17px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"ROAS baixo: como descobrir o que está derrubando seus anúncios","description":"ROAS baixo? Entenda o que a métrica mostra, calcule o retorno dos anúncios e descubra se o problema está no anúncio, página, oferta, checkout ou margem.","datePublished":"2026-09-11","dateModified":"2026-09-11","author":{"@type":"Person","name":"Rodrigo Castro"},"publisher":{"@type":"Organization","name":"MPMV — Mais Persuasão, Mais Vendas"},"mainEntityOfPage":"https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/","image":"https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/assets/roas-baixo-hero.svg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.maispersuasaomaisvendas.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.maispersuasaomaisvendas.com.br/blog/"},{"@type":"ListItem","position":3,"name":"ROAS baixo","item":"https://www.maispersuasaomaisvendas.com.br/blog/roas-baixo/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O que é ROAS baixo?","acceptedAnswer":{"@type":"Answer","text":"ROAS baixo é uma relação entre receita atribuída aos anúncios e gasto em mídia que ficou abaixo do nível que a operação precisa para atingir seu objetivo. Esse nível depende da margem, custos e estratégia do negócio."}},{"@type":"Question","name":"Como calcular o ROAS?","acceptedAnswer":{"@type":"Answer","text":"Divida a receita atribuída aos anúncios pelo investimento em anúncios. Exemplo: R$7.500 de receita divididos por R$5.000 de mídia resultam em ROAS de 1,5."}},{"@type":"Question","name":"Qual é um bom ROAS?","acceptedAnswer":{"@type":"Answer","text":"Não existe um número universal. O ponto de referência precisa considerar margem de contribuição, custos e objetivo da operação."}},{"@type":"Question","name":"O que analisar quando o ROAS está baixo?","acceptedAnswer":{"@type":"Answer","text":"Comece pela mensuração. Depois compare anúncio, clique, página, oferta, checkout, ticket, CPA, margem e atribuição para localizar a etapa que está puxando o resultado para baixo."}}]}</script>
+<script src="/analytics.js" defer></script>
+</head>
+<body>
+<nav class="nav"><div class="wrap navin"><a class="brand" href="/"><span class="mark">MP</span><span>Mais Persuasão, Mais Vendas</span></a><div class="navlinks"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/">Baixar o guia</a></div></div></nav>
+<header class="hero"><div class="wrap"><div class="crumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › Tráfego + Vendas</div><div class="hero-grid"><div><div class="category">Tráfego + Vendas</div><h1><span class="accent">ROAS baixo:</span> como descobrir o que está derrubando seus anúncios</h1><p class="lead">Antes de mexer na verba, descubra onde a receita está se perdendo. O diagnóstico passa pelo anúncio, clique, página, oferta, checkout, margem e atribuição.</p><div class="meta"><span>11 de setembro de 2026</span><span>Rodrigo Castro</span><span>9 min de leitura</span></div></div><div class="hero-art"><img src="/blog/roas-baixo/assets/roas-baixo-hero.svg" width="1200" height="900" alt="ROAS baixo e diagnóstico de mídia paga" loading="eager" fetchpriority="high"></div></div></div></header>
+<main class="article"><div class="wrap article-grid"><article>
+<p class="intro"><strong>ROAS baixo</strong> costuma aparecer no fim da análise, mas a causa pode estar bem antes da venda. Uma campanha pode ter problema de criativo, público, promessa, página, oferta, checkout, mensuração ou margem. O número mostra o resultado da relação entre receita e mídia. O diagnóstico encontra a origem.</p>
+<p>Imagine uma loja com uma torneira aberta. Você olha o balde e vê pouca água. Dá para aumentar a torneira, claro. Antes, vale descobrir onde o caminho está vazando.</p>
+<p>É assim que eu gosto de olhar para mídia paga: primeiro localizar a perda. Depois decidir o ajuste.</p>
+<div class="pull">ROAS é uma leitura da mídia. A decisão de escala precisa considerar a operação inteira.</div>
+
+<h2>O que significa ter ROAS baixo?</h2>
+<p>ROAS significa <em>Return on Ad Spend</em>, ou retorno sobre o gasto com anúncios. A conta é direta: receita atribuída aos anúncios dividida pelo investimento em mídia. A própria documentação do TikTok usa essa fórmula e mostra um exemplo de R$ 4.000 em vendas para R$ 1.000 em anúncios, resultando em ROAS 4. urlVeja a explicação do TikTok sobre ROAShttps://ads.tiktok.com/business/pt-BR/guides/what-is-roas</p>
+<div class="formula">ROAS = receita atribuída aos anúncios ÷ investimento em anúncios</div>
+<p>Um exemplo simples: você investiu R$ 5.000 e registrou R$ 7.500 em receita atribuída à mídia. O ROAS é 1,5. Isso representa R$ 1,50 de receita para cada R$ 1 investido em anúncios.</p>
+<p>Esse número sozinho ainda não responde se a operação dá lucro. O nível necessário depende da margem de contribuição, dos custos e do objetivo da campanha.</p>
+
+<figure class="figure"><img src="/blog/roas-baixo/assets/roas-baixo-equilibrio.svg" width="1200" height="700" alt="Balança mostrando a relação entre receita, custos e ROAS de equilíbrio" loading="lazy"><figcaption>O ponto de equilíbrio depende da margem de contribuição da operação.</figcaption></figure>
+
+<h2>Por que o ROAS pode cair?</h2>
+<p>O erro mais comum no diagnóstico é procurar uma única causa. A venda percorre etapas. Cada etapa deixa sinais.</p>
+<div class="diagnosis">
+<div class="item"><strong>1. O anúncio atrai a pessoa errada</strong><p>O clique pode existir, mas a intenção de compra pode estar distante. Público, assunto e promessa precisam conversar entre si.</p></div>
+<div class="item"><strong>2. O criativo chama atenção, mas não prepara a venda</strong><p>Uma peça pode gerar curiosidade e trazer visitas que chegam à página sem entender o que está sendo oferecido.</p></div>
+<div class="item"><strong>3. A página perde a continuidade da promessa</strong><p>Quando anúncio e página contam histórias diferentes, parte da intenção criada no clique se perde.</p></div>
+<div class="item"><strong>4. A oferta não sustenta a decisão</strong><p>Preço, promessa, prova, mecanismo e risco percebido participam da decisão. O anúncio sozinho carrega pouca coisa.</p></div>
+<div class="item"><strong>5. O checkout cria atrito</strong><p>Erros, formas de pagamento, campos, confiança e clareza podem afetar a passagem entre intenção e compra.</p></div>
+<div class="item"><strong>6. A atribuição conta uma história incompleta</strong><p>O painel da plataforma depende das regras e sinais usados para atribuir conversões. Cruze o dado com vendas e CRM quando possível.</p></div>
+</div>
+
+<h2>Como diagnosticar um ROAS baixo sem chutar</h2>
+<p>Comece pelo caminho da venda. A ideia é comparar uma etapa com a seguinte, até encontrar a maior perda.</p>
+<ol class="steps">
+<li><strong>Confirme a receita.</strong> Veja quais vendas entraram na conta e qual período está sendo analisado.</li>
+<li><strong>Confirme o gasto.</strong> Separe investimento em mídia de outros custos da operação.</li>
+<li><strong>Olhe campanha, conjunto e anúncio.</strong> Um ROAS médio pode esconder peças com comportamentos muito diferentes.</li>
+<li><strong>Compare clique e venda.</strong> Se existe clique e pouca compra, avance para página, oferta e checkout.</li>
+<li><strong>Calcule CPA e ticket.</strong> O custo por aquisição e o valor médio da venda ajudam a explicar o ROAS.</li>
+<li><strong>Confira a margem.</strong> Receita não paga a conta sozinha. Custos variáveis entram no diagnóstico.</li>
+<li><strong>Revise atribuição.</strong> Compare o painel de anúncios com os dados de venda que você consegue confirmar.</li>
+</ol>
+
+<figure class="figure"><img src="/blog/roas-baixo/assets/roas-baixo-diagnostico.svg" width="1200" height="700" alt="Fluxo de diagnóstico entre anúncio, clique, página e compra" loading="lazy"><figcaption>O diagnóstico fica mais simples quando você compara cada passagem da jornada.</figcaption></figure>
+
+<h2>ROAS baixo ou margem baixa: a diferença muda a decisão</h2>
+<p>Existe uma conta que ajuda a colocar o ROAS no lugar certo. Se a margem de contribuição antes da mídia é 40%, por exemplo, cada R$ 1 de receita deixa R$ 0,40 para cobrir anúncios e demais custos fixos. Nesse cenário, o ponto de equilíbrio da mídia fica em 2,5x, porque 1 ÷ 0,40 = 2,5.</p>
+<p>Esse é um <strong>exemplo de cálculo</strong>. A margem real precisa considerar os custos variáveis da sua operação.</p>
+<p>É por isso que procurar um “ROAS bom” na internet pode levar a uma decisão ruim. Uma operação pode trabalhar com uma margem e um ticket; outra pode ter estrutura completamente diferente.</p>
+<p>Se você vende infoprodutos, vale cruzar essa leitura com preço, planos e valor percebido. Este artigo sobre <a href="/blog/psicologia-de-precos-para-infoprodutos/">psicologia de preços para infoprodutos</a> entra exatamente nessa parte da análise.</p>
+
+<h2>O que fazer quando o ROAS está baixo?</h2>
+<p>Agora entra a parte que mais interessa: o ajuste.</p>
+<h3>Se o clique está caro</h3>
+<p>Olhe primeiro para criativo, promessa e público. O objetivo é entender se a campanha está comprando atenção de pessoas com chance real de avançar.</p>
+<h3>Se existe clique, mas a venda trava</h3>
+<p>Desça para a página. Compare a promessa do anúncio com a primeira dobra, a oferta, as provas e a chamada para ação. Depois confira o checkout.</p>
+<p>Se esse for o cenário, o problema pode estar depois do anúncio. O diagnóstico de <a href="/blog/cliques-sem-vendas-anuncio-nao-converte/">cliques sem vendas</a> ajuda a aprofundar essa leitura.</p>
+<h3>Se o ROAS parece bom, mas o caixa aperta</h3>
+<p>Saia do painel de mídia e vá para a operação. Confira margem, taxas, comissão, impostos, produto, equipe e outros custos que participam da venda.</p>
+<h3>Se os dados parecem inconsistentes</h3>
+<p>Revise eventos, valores de conversão, UTMs, janela de atribuição e integração com as ferramentas de venda. Um número bonito com medição ruim vira uma bússola apontando para o lugar errado.</p>
+
+<div class="tip"><strong>Uma regra para guardar</strong><p>Quando o ROAS cai, procure a primeira etapa em que o comportamento muda. A partir daí, você consegue testar uma hipótese por vez.</p></div>
+
+<h2>Como melhorar o ROAS sem cair no “vamos trocar tudo”</h2>
+<p>Faça mudanças que correspondam ao diagnóstico.</p>
+<ul class="steps">
+<li>Teste novos ângulos de anúncio quando o problema estiver na entrada.</li>
+<li>Melhore a continuidade entre anúncio e página quando houver perda após o clique.</li>
+<li>Reescreva a oferta quando a pessoa chega, entende e ainda não vê motivo para avançar.</li>
+<li>Reduza atritos de checkout quando a intenção existe e a compra trava nessa etapa.</li>
+<li>Recalcule o ponto de equilíbrio quando preço, margem ou custos mudarem.</li>
+<li>Compare períodos com a mesma lógica de mensuração para evitar decisões baseadas em recortes diferentes.</li>
+</ul>
+<p>Se você quiser aprofundar a parte do funil, veja também <a href="/blog/funil-de-vendas-onde-a-venda-trava/">onde o funil de vendas pode estar perdendo vendas</a>.</p>
+
+<h2>Perguntas frequentes sobre ROAS baixo</h2>
+<div class="faq">
+<details><summary>ROAS baixo significa que o anúncio está ruim?</summary><p>Pode significar que o anúncio está com problema, mas também pode apontar para público, página, oferta, checkout, margem ou mensuração. O caminho da venda precisa ser analisado por etapas.</p></details>
+<details><summary>Qual é um ROAS bom?</summary><p>Depende da margem de contribuição, dos custos e do objetivo da operação. Um número universal não serve para todos os negócios.</p></details>
+<details><summary>Devo aumentar a verba quando o ROAS está baixo?</summary><p>Primeiro descubra a causa. Aumentar verba antes de localizar a perda pode aumentar o volume do problema.</p></details>
+<details><summary>ROAS e ROI são a mesma coisa?</summary><p>São métricas diferentes. ROAS relaciona receita atribuída à mídia com gasto em anúncios. ROI olha para o retorno do investimento considerando uma visão mais ampla dos custos.</p></details>
+</div>
+
+<h2>Conclusão</h2>
+<p>ROAS baixo é um sinal para abrir o diagnóstico. O número mostra a relação entre receita atribuída e mídia; a análise explica o que está acontecendo no caminho.</p>
+<p>Comece pela mensuração. Depois siga pelo anúncio, clique, página, oferta, checkout, CPA, ticket, margem e atribuição. Quando você encontra a passagem que perdeu força, a otimização deixa de ser tentativa e passa a ter uma hipótese para testar.</p>
+
+<div class="closing"><div class="closing-kicker">Próximo passo</div><h2>Quer vender com mais persuasão?</h2><p>Eu reuni no Guia Prático Persuasão pra Vender Todo Santo Dia os fundamentos que uso para organizar argumentos, autoridade, prova e comunicação de vendas.</p><a href="/">Baixar o Guia Prático gratuitamente →</a></div>
+
+<h3>Fonte consultada</h3><ul class="sources"><li><a href="https://ads.tiktok.com/business/pt-BR/guides/what-is-roas" rel="noopener noreferrer" target="_blank">TikTok for Business — O que é ROAS e como calcular</a></li></ul>
+</article>
+<aside class="sidebar"><div class="sidecard"><div class="eyebrow">Guia gratuito</div><h3>Persuasão pra Vender Todo Santo Dia</h3><p>Um guia para organizar argumentos, prova, autoridade e comunicação de vendas.</p><a class="btn" href="/">Baixar o guia</a></div><div class="sidecard"><div class="eyebrow">Leitura relacionada</div><h3>Onde o funil está perdendo vendas?</h3><p>Veja como comparar etapas e encontrar o ponto de abandono.</p><a class="btn" href="/blog/funil-de-vendas-onde-a-venda-trava/">Ler artigo</a></div></aside></div></main>
+<footer><div class="wrap foot"><span>MPMV — Mais Persuasão, Mais Vendas</span><a href="/blog/">Voltar ao blog</a></div></footer>
+</body></html>
