@@ -198,5 +198,25 @@
     "author": "Rodrigo Castro",
     "deletable": true,
     "cover": "https://www.maispersuasaomaisvendas.com.br/images/blog/persuasao-para-infoprodutores.svg"
+  },
+  {
+    "id": "chatgpt-ou-claude-2026-09-11",
+    "title": "ChatGPT ou Claude? Quais as vantagens e desvantagens de cada um?",
+    "seoTitle": "ChatGPT ou Claude? Vantagens e Desvantagens de Cada IA | MPMV",
+    "metaDescription": "ChatGPT ou Claude? Compare vantagens e desvantagens, escrita, contexto, imagens, pesquisa, código e ferramentas para escolher a IA certa para seu trabalho.",
+    "focusKeyphrase": "ChatGPT ou Claude",
+    "secondaryKeyphrases": ["ChatGPT ou Claude qual é melhor", "vantagens do ChatGPT", "vantagens do Claude", "ChatGPT vs Claude", "Claude ou ChatGPT para copywriting", "IA para marketing"],
+    "slug": "chatgpt-ou-claude",
+    "url": "/blog/chatgpt-ou-claude/",
+    "file": "blog/chatgpt-ou-claude/index.html",
+    "status": "published",
+    "category": "IA + Conteúdo + Produtividade",
+    "publishedAt": "2026-09-11",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "cover": "/blog/chatgpt-ou-claude/assets/chatgpt-ou-claude-hero.svg",
+    "coverImage": "/blog/chatgpt-ou-claude/assets/chatgpt-ou-claude-hero.svg",
+    "coverAlt": "Comparação visual entre ChatGPT e Claude",
+    "batchOrder": 7
   }
 ]
