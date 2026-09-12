@@ -2,16 +2,11 @@ const { handleClick, handleUnsubscribe } = require('../lib/mpmv-email');
 const { handleCampaigns } = require('../lib/mpmv-email-campaigns-normalized');
 const { handleAutomation, handleAutomationClick, handleAutomationCron } = require('../lib/mpmv-automation-cron-fixed');
 const { handleContactsAdmin } = require('../lib/mpmv-contacts-admin');
-const { handleAula17 } = require('../lib/aula-17-09');
 
 module.exports = async function handler(req, res) {
   const action = String((req.query && req.query.action) || '').trim().toLowerCase();
 
   if (req.method === 'OPTIONS') return res.status(204).end();
-  if (action === 'aula-17-09' || action === 'aula-17-09-cron' || action === 'aula-17-09-unsubscribe') {
-    const result = await handleAula17(req, res);
-    if (result !== null) return result;
-  }
   if (action === 'email-campaigns') return handleCampaigns(req, res);
   if (action === 'email-click') return handleClick(req, res);
   if (action === 'email-unsubscribe') return handleUnsubscribe(req, res);
