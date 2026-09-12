@@ -16,3 +16,9 @@ jobs:
             --retry 2 \
             --max-time 45 \
             'https://www.maispersuasaomaisvendas.com.br/api/guia?action=automation-cron'
+      - name: Processar automação Aula ao Vivo 17/09
+        run: |
+          curl --fail --silent --show-error \
+            --retry 2 \
+            --max-time 45 \
+            'https://www.maispersuasaomaisvendas.com.br/api/aula-17-09?action=cron'
