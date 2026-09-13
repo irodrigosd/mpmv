@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Automação — Aula ao Vivo MPMV</title>
+<style>
+body{margin:0;background:#f4f7f9;font-family:Arial,Helvetica,sans-serif;color:#17202a}.wrap{max-width:1100px;margin:40px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe7ec;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px #00000008}h1{margin:0 0 8px;font-size:26px}h2{font-size:18px;margin:0 0 14px}.muted{color:#687781}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}input{padding:11px 12px;border:1px solid #ccd7dd;border-radius:8px;min-width:280px}button{padding:11px 16px;border:0;border-radius:8px;background:#0d6f9f;color:#fff;font-weight:700;cursor:pointer}button.secondary{background:#e9f0f4;color:#17202a}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #e8eef1;font-size:14px}.ok{color:#147a45;font-weight:700}.err{color:#b42318;font-weight:700}.stage{font-family:monospace}.pill{display:inline-block;padding:4px 8px;background:#edf5f8;border-radius:999px}.loading{opacity:.65}
+</style>
+</head>
+<body><main class="wrap">
+<div class="card"><h1>Automação da Aula ao Vivo MPMV</h1><p class="muted">Inscritos, etapas e disparos da Aula ao Vivo de 17/09. Este painel é separado da automação padrão do Guia.</p>
+<div class="row"><input id="token" type="password" placeholder="Token administrativo"><button onclick="load()">Carregar lista</button><button class="secondary" onclick="runCron()">Executar automação agora</button></div><p id="msg" class="muted"></p></div>
+<div class="card"><h2>Resumo</h2><div id="summary" class="muted">Carregue a lista para consultar.</div></div>
+<div class="card"><h2>Leads da Aula ao Vivo</h2><div id="table" class="muted">Nenhum dado carregado.</div></div>
+<script>
+const API='/api/aula-17-09';
+const token=()=>document.getElementById('token').value.trim();
+function say(t,cls='muted'){const e=document.getElementById('msg');e.className=cls;e.textContent=t}
+async function load(){say('Carregando...');try{const r=await fetch(API+'?action=admin',{headers:{'x-admin-token':token()}});const d=await r.json();if(!r.ok||!d.ok)throw new Error(d.error||'Não foi possível carregar a lista');document.getElementById('summary').innerHTML=`Lista: <b>${d.listName}</b> · ID ${d.listId} · <b>${d.count}</b> inscritos · sincronizados da lista MPMV: ${d.sync?.legacyFound||0}`;document.getElementById('table').innerHTML=`<table><thead><tr><th>Nome</th><th>E-mail</th><th>Status</th><th>Etapa</th><th>Inscrição</th></tr></thead><tbody>${(d.contacts||[]).map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.email)}</td><td>${esc(c.status)}</td><td><span class="pill stage">${esc(c.stage)}</span></td><td>${esc(c.registeredAt)}</td></tr>`).join('')}</tbody></table>`;say('Lista carregada.','ok')}catch(e){say(e.message,'err')}}
+async function runCron(){say('Executando automação...');try{const r=await fetch(API+'?action=cron');const d=await r.json();if(!r.ok||!d.ok)throw new Error(d.error||'Falha na automação');say(`Automação executada. Processados: ${d.processed}. Eventos: ${d.events?.length||0}.`,'ok');load()}catch(e){say(e.message,'err')}}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+</script></main></body></html>
