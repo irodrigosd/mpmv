@@ -1,17 +1,31 @@
 [
   {
+    "id": "cliente-decidiu-nao-comprar-2026-09-13",
+    "title": "O cliente decidiu não comprar antes de chegar ao preço — descubra por quê",
+    "seoTitle": "O Cliente Decidiu Não Comprar Antes do Preço | MPMV",
+    "metaDescription": "Entenda por que o cliente pode decidir não comprar antes de ver o preço e como ajustar promessa, valor, prova, clareza e oferta na sua comunicação.",
+    "focusKeyphrase": "cliente decidiu não comprar",
+    "secondaryKeyphrases": ["objeção de preço", "preço e valor percebido", "cliente acha caro", "como vender sem desconto", "persuasão e preço"],
+    "slug": "cliente-decidiu-nao-comprar",
+    "url": "/blog/cliente-decidiu-nao-comprar/",
+    "file": "blog/cliente-decidiu-nao-comprar/index.html",
+    "status": "published",
+    "category": "Preço + Persuasão",
+    "publishedAt": "2026-09-13",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1,
+    "coverImage": "https://images.unsplash.com/photo-1764231467896-73f0ef4438aa?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    "cover": "https://images.unsplash.com/photo-1764231467896-73f0ef4438aa?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    "coverAlt": "Pessoa usando calculadora no smartphone durante uma decisão financeira"
+  },
+  {
     "id": "confiar-em-uma-marca-2026-09-13",
     "title": "O que faz alguém confiar em uma marca que acabou de conhecer",
     "seoTitle": "O que Faz Alguém Confiar em uma Marca Nova | MPMV",
     "metaDescription": "Descubra os sinais que fazem uma pessoa confiar em uma marca que acabou de conhecer e como aplicar isso na sua comunicação de vendas.",
     "focusKeyphrase": "confiar em uma marca",
-    "secondaryKeyphrases": [
-      "como criar confiança em uma marca",
-      "confiança de marca",
-      "como conquistar confiança do cliente",
-      "marca nova como gerar confiança",
-      "persuasão e confiança"
-    ],
+    "secondaryKeyphrases": ["como criar confiança em uma marca","confiança de marca","como conquistar confiança do cliente","marca nova como gerar confiança","persuasão e confiança"],
     "slug": "confiar-em-uma-marca",
     "url": "/blog/confiar-em-uma-marca/",
     "file": "blog/confiar-em-uma-marca/index.html",
@@ -31,13 +45,7 @@
     "seoTitle": "Guerra pela Atenção: Como Fazer Sua Marca Ser Percebida | MPMV",
     "metaDescription": "Entenda como funciona a disputa pela atenção e veja como ajustar headline, abertura, contraste, contexto e promessa para fazer sua comunicação ser percebida.",
     "focusKeyphrase": "guerra pela atenção",
-    "secondaryKeyphrases": [
-      "atenção no marketing",
-      "como chamar atenção no marketing",
-      "atenção do consumidor",
-      "comunicação persuasiva",
-      "marketing de atenção"
-    ],
+    "secondaryKeyphrases": ["atenção no marketing","como chamar atenção no marketing","atenção do consumidor","comunicação persuasiva","marketing de atenção"],
     "slug": "guerra-pela-atencao",
     "url": "/blog/guerra-pela-atencao/",
     "file": "blog/guerra-pela-atencao/index.html",
@@ -57,13 +65,7 @@
     "seoTitle": "Comportamento Humano: Como Entender Antes de Ouvir uma Palavra | MPMV",
     "metaDescription": "Entenda como observar comportamento humano, expressão, postura e contexto antes da fala para interpretar melhor uma mensagem sem cair em conclusões precipitadas.",
     "focusKeyphrase": "comportamento humano",
-    "secondaryKeyphrases": [
-      "comportamento humano e linguagem corporal",
-      "como entender comportamento humano",
-      "linguagem corporal",
-      "comportamento e persuasão",
-      "compreender pessoas"
-    ],
+    "secondaryKeyphrases": ["comportamento humano e linguagem corporal","como entender comportamento humano","linguagem corporal","comportamento e persuasão","compreender pessoas"],
     "slug": "comportamento-humano-antes-de-ouvir-uma-palavra",
     "url": "/blog/comportamento-humano-antes-de-ouvir-uma-palavra/",
     "file": "blog/comportamento-humano-antes-de-ouvir-uma-palavra/index.html",
