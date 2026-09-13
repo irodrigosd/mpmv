@@ -24,11 +24,11 @@ def get_focus(src, slug):
     return text(m.group(1)).split("|")[0].strip() if m else slug.replace("-", " ")
 
 def meta_replace(src, name, value):
-    pat=re.compile(r'(<meta\b[^>]*name=["\']'+re.escape(name)+r'["\'][^>]*content=["\'])[^"\']*( ["\'][^>]*>)',re.I)
+    pat=re.compile(r'(<meta\b[^>]*name=["\']'+re.escape(name)+r'["\'][^>]*content=["\'])[^"\']*(["\'][^>]*>)',re.I)
     if pat.search(src): return pat.sub(r'\g<1>'+html.escape(value,quote=True)+r'\g<2>',src,count=1)
     return src.replace("</head>",f'<meta name="{name}" content="{html.escape(value,quote=True)}">\n</head>',1)
 
-def ensure_meta(src, focus):
+def ensure_meta(src, slug, focus):
     if not FOCUS_RE.search(src): src=src.replace("</head>",f'<meta name="mpmv:focus-keyphrase" content="{html.escape(focus,quote=True)}">\n</head>',1)
     if not CANON_RE.search(src): src=src.replace("</head>",f'<link rel="canonical" href="https://www.maispersuasaomaisvendas.com.br/blog/{slug}/">\n</head>',1)
     return src
@@ -46,7 +46,7 @@ def score(src, focus):
 PARAS=["Quando uma pessoa chega a uma página, ela não avalia apenas a frase principal. Ela tenta entender o que está sendo oferecido, para quem aquilo faz sentido e o que acontece depois da decisão. Por isso, o contexto importa tanto quanto a técnica.","Na prática, a promessa precisa ser compreensível, a prova precisa combinar com a promessa e o próximo passo precisa parecer coerente. Quando esses elementos conversam entre si, a comunicação exige menos esforço do leitor.","Também é importante separar uma boa técnica de uma promessa exagerada. Persuasão não substitui produto, entrega ou experiência. O papel da comunicação é tornar o valor mais fácil de perceber e ajudar a pessoa a comparar alternativas com informações relevantes.","Uma forma simples de aplicar a ideia é escolher uma página ou conteúdo real e observar onde a decisão trava. Pode ser falta de clareza sobre o resultado, prova distante da objeção, excesso de etapas ou uma chamada para ação genérica. Depois, altere um elemento por vez e acompanhe o comportamento.","Outro ponto é considerar o nível de consciência do público. Quem ainda não percebeu o problema precisa de contexto; quem já conhece o problema pode precisar de um mecanismo; quem compara soluções precisa de uma razão concreta para escolher uma alternativa. A mesma palavra-chave pode aparecer em todos esses momentos, mas o argumento muda conforme a decisão se aproxima."]
 
 def fix(src, slug, focus):
-    src=ensure_meta(src,focus)
+    src=ensure_meta(src,slug,focus)
     dm=DESC_RE.search(src); desc=html.unescape(dm.group(1)) if dm else ""
     if not 115<=len(desc)<=160:
         desc=f"Entenda {focus.lower()} e veja como aplicar essa ideia na prática para melhorar sua comunicação, sua oferta e suas vendas sem aumentar a pressão."
