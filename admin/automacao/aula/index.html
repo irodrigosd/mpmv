@@ -4,13 +4,79 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Automação — Aula ao Vivo MPMV</title>
 <style>
-body{margin:0;background:#f4f7f9;font-family:Arial,Helvetica,sans-serif;color:#17202a}.wrap{max-width:1100px;margin:40px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe7ec;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px #00000008}h1{margin:0 0 8px;font-size:26px}h2{font-size:18px;margin:0 0 14px}.muted{color:#687781}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}input{padding:11px 12px;border:1px solid #ccd7dd;border-radius:8px;min-width:280px}button{padding:11px 16px;border:0;border-radius:8px;background:#0d6f9f;color:#fff;font-weight:700;cursor:pointer}button.secondary{background:#e9f0f4;color:#17202a}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #e8eef1;font-size:14px}.ok{color:#147a45;font-weight:700}.err{color:#b42318;font-weight:700}.stage{font-family:monospace}.pill{display:inline-block;padding:4px 8px;background:#edf5f8;border-radius:999px}.loading{opacity:.65}
+body{margin:0;background:#f4f7f9;font-family:Arial,Helvetica,sans-serif;color:#17202a}.wrap{max-width:1100px;margin:40px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe7ec;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px #00000008}h1{margin:0 0 8px;font-size:26px}h2{font-size:18px;margin:0 0 14px}.muted{color:#687781}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}input{padding:11px 12px;border:1px solid #ccd7dd;border-radius:8px;min-width:280px}button{padding:11px 16px;border:0;border-radius:8px;background:#0d6f9f;color:#fff;font-weight:700;cursor:pointer}button.secondary{background:#e9f0f4;color:#17202a}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #e8eef1;font-size:14px}.ok{color:#147a45;font-weight:700}.err{color:#b42318;font-weight:700}.stage{font-family:monospace}.pill{display:inline-block;padding:4px 8px;background:#edf5f8;border-radius:999px}.mail{border:1px solid #e1e8ec;border-radius:12px;padding:16px;margin:12px 0;background:#fbfcfd}.mail h3{margin:0 0 7px;font-size:16px}.mail .meta{font-size:12px;color:#687781;margin-bottom:10px}.mail .subject{font-weight:700;margin-bottom:9px}.mail pre{font:14px/1.55 Arial,Helvetica,sans-serif;white-space:pre-wrap;margin:0;color:#33434d}.tag{display:inline-block;background:#edf5f8;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700;color:#0d6f9f}.loading{opacity:.65}
 </style>
 </head>
 <body><main class="wrap">
-<div class="card"><h1>Automação da Aula ao Vivo MPMV</h1><p class="muted">Inscritos, etapas e disparos da Aula ao Vivo de 17/09. Este painel é separado da automação padrão do Guia.</p>
+<div class="card"><h1>Automação da Aula ao Vivo MPMV</h1><p class="muted">Inscritos, e-mails, etapas e disparos da Aula ao Vivo de 17/09. Este painel é separado da automação padrão do Guia.</p>
 <div class="row"><input id="token" type="password" placeholder="Token administrativo"><button onclick="load()">Carregar lista</button><button class="secondary" onclick="runCron()">Executar automação agora</button></div><p id="msg" class="muted"></p></div>
 <div class="card"><h2>Resumo</h2><div id="summary" class="muted">Carregue a lista para consultar.</div></div>
+<div class="card"><h2>Sequência de e-mails</h2><p class="muted">Aqui estão os e-mails que a automação envia. A confirmação de inscrição é enviada imediatamente uma única vez; os demais entram pela automação conforme a data/etapa.</p><div id="emails"><div class="mail"><span class="tag">1 · IMEDIATO</span><h3>Inscrição concluída</h3><div class="subject">Inscrição confirmada: Aula ao Vivo MPMV dia 17</div><pre>{{nome}}, sua inscrição foi realizada com sucesso.
+
+Você está confirmado na Aula ao Vivo do MPMV, no dia 17 de setembro, às 19h.
+
+Você não precisa convencer mais. Precisa entender melhor.
+
+A aula é gratuita para quem quer compreender como as pessoas percebem, avaliam e decidem — e transformar isso em uma comunicação que vende.
+
+Na aula, vamos falar sobre:
+
+• Como as pessoas percebem uma mensagem antes de decidir
+• O que influencia a avaliação de uma oferta
+• Como entender o processo de decisão do cliente
+• Como transformar essa compreensão em uma comunicação mais persuasiva
+• Como vender sem depender de pressão ou manipulação
+
+Salve na agenda: 17 de setembro, às 19h. Nos vemos na aula!</pre></div>
+<div class="mail"><span class="tag">13/09</span><h3>E-mail 2</h3><div class="subject">O que realmente faz alguém decidir comprar?</div><pre>{{nome}}, amanhã eu quero continuar uma conversa importante.
+
+Persuasão não começa quando você pede a venda. Começa muito antes: na forma como a pessoa percebe o problema, interpreta a oferta e avalia o risco de decidir.
+
+Na aula do dia 17, vou mostrar como usar isso para construir uma comunicação mais convincente sem transformar sua mensagem em um amontoado de gatilhos.
+
+Quero que você chegue à aula olhando para suas vendas de outro jeito.</pre></div>
+<div class="mail"><span class="tag">14/09</span><h3>E-mail 3</h3><div class="subject">Seu cliente não compra só porque entendeu</div><pre>{{nome}}, entender uma oferta é diferente de querer comprá-la.
+
+Uma pessoa pode entender perfeitamente o que você vende e ainda não sentir segurança suficiente para avançar.
+
+É aí que muita comunicação trava: explica benefício, apresenta mecanismo, mostra prova… mas não trabalha a percepção que antecede a decisão.
+
+Na aula ao vivo, vamos destrinchar essa diferença e colocar isso no contexto de conteúdo, anúncios e páginas.</pre></div>
+<div class="mail"><span class="tag">15/09</span><h3>E-mail 4</h3><div class="subject">O problema pode não estar no seu tráfego</div><pre>{{nome}}, antes de colocar mais dinheiro em tráfego, existe uma pergunta que vale fazer: o que acontece depois que a pessoa chega?
+
+Porque mais cliques não corrigem uma oferta mal percebida. Mais alcance não resolve uma mensagem que não cria clareza. E mais conteúdo não garante decisão.
+
+Persuasão ajuda justamente a enxergar esse caminho.
+
+Dia 17, às 19h, eu vou mostrar como pensar nessa jornada com mais precisão.</pre></div>
+<div class="mail"><span class="tag">16/09</span><h3>E-mail 5</h3><div class="subject">Amanhã você vai poder olhar para sua comunicação com outros olhos</div><pre>{{nome}}, é amanhã.
+
+Na aula, eu não vou te entregar uma lista de frases mágicas para copiar. Quero te mostrar o raciocínio por trás de uma comunicação persuasiva: o que a pessoa percebe, o que ela precisa entender e por que decide avançar.
+
+Separe um papel, abra suas campanhas ou sua página principal e venha com uma pergunta em mente: “onde minha comunicação pode estar perdendo uma venda?”
+
+A gente começa às 19h.</pre></div>
+<div class="mail"><span class="tag">17/09 · 08h</span><h3>E-mail 6</h3><div class="subject">É hoje: Aula ao Vivo MPMV às 19h</div><pre>{{nome}}, hoje é o dia.
+
+Às 19h, começa a Aula ao Vivo MPMV.
+
+A proposta é simples: entender melhor como as pessoas percebem, avaliam e decidem — e transformar isso em comunicação que vende sem depender de pressão ou truques.
+
+Reserve esse horário e deixe o acesso salvo. Nos vemos às 19h.</pre></div>
+<div class="mail"><span class="tag">17/09 · 18h30</span><h3>E-mail 7</h3><div class="subject">Daqui a pouco: estamos começando às 19h</div><pre>{{nome}}, falta pouco.
+
+Em alguns minutos começa a Aula ao Vivo MPMV.
+
+Se você ainda não abriu o acesso, faça isso agora e deixe tudo pronto para acompanhar sem correria.
+
+Nos vemos já já.</pre></div>
+<div class="mail"><span class="tag">17/09 · 19h</span><h3>E-mail 8</h3><div class="subject">Estamos ao vivo agora</div><pre>{{nome}}, começou.
+
+A Aula ao Vivo MPMV está acontecendo agora.
+
+Entre pelo acesso e acompanhe ao vivo.
+
+Te vejo lá.</pre></div></div></div>
 <div class="card"><h2>Leads da Aula ao Vivo</h2><div id="table" class="muted">Nenhum dado carregado.</div></div>
 <script>
 const API='/api/aula-17-09';
