@@ -1,0 +1,46 @@
+name: Register new blog article
+on:
+  push:
+    paths:
+      - '.mpmv-new-blog-article'
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Register article and sitemap entry
+        env:
+          ARTICLE_JSON: '{"id":"como-criar-uma-campanha-de-vendas-sem-falar-do-produto-2026-09-14","title":"Como criar uma campanha de vendas sem falar do produto o tempo todo","seoTitle":"Como Criar uma Campanha de Vendas sem Falar do Produto o Tempo Todo | MPMV","metaDescription":"Aprenda como criar uma campanha de vendas sem repetir o produto em toda peça, usando uma ideia central, contexto, prova e uma sequência que conduz à oferta.","focusKeyphrase":"como criar uma campanha de vendas","secondaryKeyphrases":["como criar uma campanha de vendas","campanha de vendas","campanha para infoproduto","estratégia de vendas para infoprodutos","campanha de conteúdo"],"slug":"como-criar-uma-campanha-de-vendas-sem-falar-do-produto","url":"/blog/como-criar-uma-campanha-de-vendas-sem-falar-do-produto/","file":"blog/como-criar-uma-campanha-de-vendas-sem-falar-do-produto/index.html","status":"published","category":"Estratégia + Copywriting + Vendas","publishedAt":"2026-09-14","author":"Rodrigo Castro","deletable":true,"batchOrder":1,"coverImage":"https://images.unsplash.com/photo-1774813958359-5bf922706448?auto=format&fit=crop&fm=jpg&q=82&w=1600","cover":"https://images.unsplash.com/photo-1774813958359-5bf922706448?auto=format&fit=crop&fm=jpg&q=82&w=1600","coverAlt":"Criador de conteúdo trabalhando com câmera e laptop"}'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          article = json.loads(__import__('os').environ['ARTICLE_JSON'])
+          p = Path('data/blog-posts.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          if not any(x.get('slug') == article['slug'] for x in data):
+              data.append(article)
+              p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          s = Path('sitemap.xml')
+          text = s.read_text(encoding='utf-8')
+          loc = 'https://www.maispersuasaomaisvendas.com.br' + article['url']
+          if loc not in text:
+              entry = f'<url><loc>{loc}</loc><lastmod>2026-09-14</lastmod></url>'
+              text = text.replace('</urlset>', entry + '</urlset>')
+              s.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit index and sitemap
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/blog-posts.json sitemap.xml
+          git diff --cached --quiet || git commit -m 'fix: register campaign article in blog index'
+          git push
+      - name: Cleanup workflow and marker
+        run: |
+          rm -f .mpmv-new-blog-article .github/workflows/register-new-blog-article.yml
+          git add -A
+          git diff --cached --quiet || git commit -m 'chore: cleanup blog registration workflow'
+          git push
