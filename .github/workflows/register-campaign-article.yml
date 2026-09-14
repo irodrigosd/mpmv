@@ -1,0 +1,49 @@
+name: Register campaign article
+on:
+  push:
+    paths:
+      - .mpmv-campaign-register
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Register article
+        run: |
+          python3 - <<'PY'
+          import json
+          p='data/blog-posts.json'
+          with open(p, encoding='utf-8') as f: data=json.load(f)
+          slug='como-criar-uma-campanha-de-vendas-sem-falar-do-produto'
+          if not any(x.get('slug')==slug for x in data):
+              data.append({
+                'id':'como-criar-uma-campanha-de-vendas-sem-falar-do-produto-2026-09-14',
+                'title':'Como criar uma campanha de vendas sem falar do produto o tempo todo',
+                'seoTitle':'Como Criar uma Campanha de Vendas sem Falar do Produto o Tempo Todo | MPMV',
+                'metaDescription':'Aprenda como criar uma campanha de vendas sem repetir o produto em toda peça, usando uma ideia central, contexto, prova e uma sequência que conduz à oferta.',
+                'focusKeyphrase':'como criar uma campanha de vendas',
+                'secondaryKeyphrases':['campanha de vendas','campanha de vendas para infoproduto','estratégia de campanha','campanha de lançamento'],
+                'slug':slug,
+                'url':'/blog/'+slug+'/',
+                'file':'blog/'+slug+'/index.html',
+                'status':'published',
+                'category':'Copywriting + Vendas + Estratégia',
+                'publishedAt':'2026-09-14',
+                'author':'Rodrigo Castro',
+                'deletable':True,
+                'coverImage':'https://images.unsplash.com/photo-1774813958359-5bf922706448?auto=format&fit=crop&fm=jpg&q=82&w=1600',
+                'cover':'https://images.unsplash.com/photo-1774813958359-5bf922706448?auto=format&fit=crop&fm=jpg&q=82&w=1600',
+                'coverAlt':'Criador de conteúdo trabalhando com câmera e laptop'
+              })
+              with open(p,'w',encoding='utf-8') as f: json.dump(data,f,ensure_ascii=False,indent=2); f.write('\n')
+          PY
+          rm -f .mpmv-campaign-register
+          rm -f .github/workflows/register-campaign-article.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/blog-posts.json .mpmv-campaign-register .github/workflows/register-campaign-article.yml
+          git diff --cached --quiet && exit 0 || true
+          git commit -m 'fix: register campaign article in blog index'
+          git push
