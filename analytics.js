@@ -6,6 +6,18 @@
   var CONSENT_KEY='mpmv-cookie-consent-v3';
   var gaLoaded=false,metaLoaded=false,pageContextTracked=false;
 
+  function ensureFavicon(){
+    try{
+      if(document.querySelector('link[rel="icon"],link[rel="shortcut icon"]')) return;
+      var l=document.createElement('link');
+      l.rel='icon';
+      l.type='image/png';
+      l.href='/favicon-mpmv.png?v=3';
+      document.head.appendChild(l);
+    }catch(_){}
+  }
+
+
   window.dataLayer=window.dataLayer||[];
   window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
   window.gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
@@ -74,6 +86,7 @@
     else if(/wa\.me|api\.whatsapp\.com/i.test(href))trackWhatsAppClick(location.pathname);
   }
   function init(){
+    ensureFavicon();
     var current=getConsent();if(current==='accepted')loadTracking();else if(current==='declined')setDenied();else createBanner();
     document.addEventListener('click',function(event){var c=event.target&&event.target.closest?event.target.closest('[data-mpmv-cookie]'):null;if(c)handleChoice(c.getAttribute('data-mpmv-cookie'));handleTrackedLink(event)},true);
   }
