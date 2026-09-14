@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="t">
+<title id="t">Canibalização no Google</title>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4fbff"/><stop offset="1" stop-color="#d7eefc"/></linearGradient><linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8fd3ff"/><stop offset="1" stop-color="#3aa0e0"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#bg)"/><circle cx="1040" cy="120" r="180" fill="#8fd3ff" opacity=".35"/><circle cx="160" cy="560" r="220" fill="#b8e4ff" opacity=".45"/>
+<rect x="72" y="72" width="120" height="10" rx="5" fill="url(#accent)"/>
+<text x="72" y="140" fill="#0a3a5c" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="3">MPMV</text>
+<text x="72" y="300" fill="#10293d" font-family="Inter,Arial,sans-serif" font-size="48" font-weight="850"><tspan x="72" dy="0">Canibalização no Google</tspan></text>
+<rect x="72" y="560" width="220" height="44" rx="22" fill="#0a2b45"/>
+<text x="182" y="588" text-anchor="middle" fill="#eaf6ff" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Blog MPMV</text>
+</svg>
