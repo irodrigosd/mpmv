@@ -1,7 +1,8 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T14:35:00.000Z",
+  "updatedAt": "2026-09-14T13:30:00.000Z",
   "posts": [
+    {"title":"Como dominar o mundo? O poder da atenção e da persuasão","slug":"como-dominar-o-mundo","url":"/blog/como-dominar-o-mundo/","date":"2026-09-14","status":"published","focusKeyword":"como dominar o mundo","seoScore":98,"readabilityScore":96,"readingTime":"8 min","excerpt":"Como dominar o mundo? Entenda por que atenção, percepção, autoridade e incentivos são mais importantes que força quando o assunto é influência."},
     {"title":"ChatGPT ou Claude? Quais as vantagens e desvantagens de cada um?","slug":"chatgpt-ou-claude","url":"/blog/chatgpt-ou-claude/","date":"2026-09-11","status":"published","focusKeyword":"ChatGPT ou Claude","seoScore":96,"readabilityScore":95,"readingTime":"10 min","excerpt":"ChatGPT ou Claude? Compare vantagens e desvantagens, escrita, contexto, imagens, pesquisa, código e ferramentas para escolher a IA certa para seu trabalho."},
     {"title":"ROAS baixo: como descobrir o que está derrubando seus anúncios","slug":"roas-baixo","url":"/blog/roas-baixo/","date":"2026-09-11","status":"published","focusKeyword":"ROAS baixo","seoScore":94,"readabilityScore":91,"readingTime":"9 min","excerpt":"ROAS baixo? Entenda a métrica, calcule o retorno dos anúncios e descubra se a perda está no anúncio, página, oferta, checkout ou margem."},
     {"title":"Gatilhos mentais: o que são, 9 exemplos e como usar com ética","slug":"gatilhos-mentais","url":"/blog/gatilhos-mentais/","date":"2026-08-15","status":"published","focusKeyword":"Gatilhos mentais","seoScore":98,"readabilityScore":98,"readingTime":"11 min","excerpt":"Entenda o que são gatilhos mentais, veja 9 exemplos práticos e aprenda a usar autoridade, escassez, reciprocidade e outros recursos com ética."},
