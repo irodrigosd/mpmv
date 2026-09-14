@@ -215,5 +215,25 @@
     "deletable": true,
     "cover": "/blog/roas-baixo/assets/roas-baixo-card.svg",
     "batchOrder": 7
+  },
+  {
+    "id": "blocos-de-persuasao-no-dia-a-dia-2026-09-14",
+    "title": "Como usar blocos de persuasão no dia a dia: 7 aplicações práticas",
+    "seoTitle": "Blocos de Persuasão no Dia a Dia: 7 Aplicações Práticas | MPMV",
+    "metaDescription": "Aprenda como usar blocos de persuasão no dia a dia em posts, Reels, Stories, e-mails, mensagens e páginas de vendas sem transformar sua comunicação em uma fórmula pronta.",
+    "focusKeyphrase": "blocos de persuasão no dia a dia",
+    "secondaryKeyphrases": ["como usar blocos de persuasão","blocos de persuasão","copywriting no dia a dia","técnicas de persuasão","persuasão em vendas","blocos de copywriting"],
+    "slug": "blocos-de-persuasao-no-dia-a-dia",
+    "url": "/blog/blocos-de-persuasao-no-dia-a-dia/",
+    "file": "blog/blocos-de-persuasao-no-dia-a-dia/index.html",
+    "status": "published",
+    "category": "Copywriting + Persuasão",
+    "publishedAt": "2026-09-14",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "cover": "https://images.unsplash.com/photo-1743796055651-41c743ff2465?auto=format&fit=crop&fm=jpg&q=82&w=1600",
+    "coverImage": "https://images.unsplash.com/photo-1743796055651-41c743ff2465?auto=format&fit=crop&fm=jpg&q=82&w=1600",
+    "coverAlt": "Pessoa trabalhando em notebook e escrevendo em um caderno",
+    "batchOrder": 8
   }
 ]
