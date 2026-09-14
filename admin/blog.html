@@ -24,18 +24,19 @@
         /*
          * O core antigo lê apenas /data/blog-posts.json.
          * O blog público já trabalha com arquivos de lote separados.
-         * Interceptamos essa leitura dentro do iframe e entregamos uma
-         * lista única, preservando upload, edição, exclusão e análise SEO.
+         * Entregamos uma lista única ao core, usando o manifesto principal
+         * como fonte prioritária e ordenando sempre o artigo mais recente primeiro.
          */
         const syncScript=`<script>
           (function(){
             const nativeFetch=window.fetch.bind(window);
             const sources=[
+              '/data/blog-posts.json',
+              '/data/blog-posts-2026-09-14.json',
               '/data/blog-posts-2026-09-12.json',
               '/data/blog-posts-2026-09-09.json',
               '/data/blog-posts-2026-09-08.json',
-              '/data/blog-posts-extra.json',
-              '/data/blog-posts.json'
+              '/data/blog-posts-extra.json'
             ];
             let mergedPromise=null;
             async function mergedPosts(){
@@ -47,7 +48,9 @@
                 }catch{return []}
               })).then(groups=>{
                 const seen=new Set();
-                return groups.flat().filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true));
+                return groups.flat()
+                  .filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true))
+                  .sort((a,b)=>String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')));
               });
               return mergedPromise;
             }
