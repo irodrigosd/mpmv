@@ -31,6 +31,17 @@ function cleanMessages(messages) {
     .map((m) => ({ role: m.role, content: m.content.slice(0, 12000) }));
 }
 
+function extractOpenAIText(data) {
+  if (typeof data?.output_text === 'string' && data.output_text.trim()) return data.output_text;
+  const parts = [];
+  for (const item of data?.output || []) {
+    for (const content of item?.content || []) {
+      if (typeof content?.text === 'string') parts.push(content.text);
+    }
+  }
+  return parts.join('');
+}
+
 async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
@@ -42,13 +53,27 @@ async function handler(req, res) {
     const body = parseBody(req);
     if (!Array.isArray(body.messages)) return json(res, 400, { error: 'Mensagens inválidas.' });
 
-    const openRouterKey = String(process.env.OPENROUTER_API_KEY || '').trim().replace(/^['"]|['"]$/g, '');
-    const openAIKey = String(process.env.OPENAI_API_KEY || '').trim().replace(/^['"]|['"]$/g, '');
+    const openAIKey = String(process.env.OPENAI_API_KEY || '').trim().replace(/^['\"]|['\"]$/g, '');
+    const openRouterKey = String(process.env.OPENROUTER_API_KEY || '').trim().replace(/^['\"]|['\"]$/g, '');
     const messages = cleanMessages(body.messages);
     if (!messages.length) return json(res, 400, { error: 'Envie uma mensagem.' });
 
     let response;
-    if (openRouterKey) {
+
+    if (openAIKey) {
+      response = await fetch('https://api.openai.com/v1/responses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${openAIKey}`
+        },
+        body: JSON.stringify({
+          model: process.env.OPENAI_MODEL || 'gpt-5.6',
+          instructions: MPMV_INSTRUCTIONS,
+          input: messages
+        })
+      });
+    } else if (openRouterKey) {
       response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -63,21 +88,8 @@ async function handler(req, res) {
           temperature: 0.7
         })
       });
-    } else if (openAIKey) {
-      response = await fetch('https://api.openai.com/v1/responses', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${openAIKey}`
-        },
-        body: JSON.stringify({
-          model: process.env.OPENAI_MODEL || 'gpt-5.6',
-          instructions: MPMV_INSTRUCTIONS,
-          input: messages
-        })
-      });
     } else {
-      return json(res, 500, { error: 'A IA não está configurada. Adicione OPENAI_API_KEY ou OPENROUTER_API_KEY na Vercel.' });
+      return json(res, 500, { error: 'A IA não está configurada na Vercel.' });
     }
 
     const data = await response.json();
@@ -88,14 +100,14 @@ async function handler(req, res) {
       });
     }
 
-    const text = openRouterKey
-      ? data?.choices?.[0]?.message?.content
-      : data?.output_text || data?.output?.flatMap((item) => item.content || []).map((item) => item.text || '').join('');
+    const text = openAIKey
+      ? extractOpenAIText(data)
+      : data?.choices?.[0]?.message?.content;
 
     return json(res, 200, { message: text || 'Sem resposta.' });
   } catch (error) {
     console.error('MPMV AI Error:', error);
-    return json(res, 500, { error: error.message || 'Erro interno ao processar a mensagem.' });
+    return json(res, 500, { error: error?.message || 'Erro interno ao processar a mensagem.' });
   }
 }
 
