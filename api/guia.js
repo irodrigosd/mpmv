@@ -4,6 +4,7 @@ const { handleAutomation, handleAutomationClick, handleAutomationCron } = requir
 const { handleContactsAdmin } = require('../lib/mpmv-contacts-admin');
 
 // MPMV AI consolidated here to stay within Vercel Hobby's function limit.
+// Deploy trigger: keep the consolidated AI endpoint on the production branch.
 const MPMV_INSTRUCTIONS = `Você é a MPMV AI, assistente oficial do Mais Persuasão, Mais Vendas.
 
 Responda em português do Brasil natural, direto e humano. Não invente números, resultados, depoimentos, preços, datas, garantias, provas ou condições.
