@@ -14,65 +14,29 @@
   <iframe id="core" title="Admin Blog MPMV"></iframe>
   <script>
     const frame=document.getElementById('core');
-
     async function buildCore(){
       try{
         const response=await fetch('/admin/blog-core.html?v='+Date.now(),{cache:'no-store'});
         if(!response.ok) throw new Error('Falha ao carregar o painel.');
         let html=await response.text();
-
-        /*
-         * O core antigo lê apenas /data/blog-posts.json.
-         * O blog público já trabalha com arquivos de lote separados.
-         * Entregamos uma lista única ao core, usando o manifesto principal
-         * como fonte prioritária e ordenando sempre o artigo mais recente primeiro.
-         */
         const syncScript=`<script>
           (function(){
             const nativeFetch=window.fetch.bind(window);
-            const sources=[
-              '/data/blog-posts.json',
-              '/data/blog-posts-2026-09-14.json',
-              '/data/blog-posts-2026-09-12.json',
-              '/data/blog-posts-2026-09-09.json',
-              '/data/blog-posts-2026-09-08.json',
-              '/data/blog-posts-extra.json'
-            ];
+            const sources=['/data/blog-posts.json','/data/blog-posts-2026-09-14.json','/data/blog-posts-2026-09-12.json','/data/blog-posts-2026-09-09.json','/data/blog-posts-2026-09-08.json','/data/blog-posts-extra.json'];
+            const guaranteedPost={id:'remarketing-inteligente-distribuicao-verba-2026-09-14',title:'Remarketing inteligente: como não vacilar na distribuição da verba',seoTitle:'Remarketing inteligente: como distribuir a verba | MPMV',metaDescription:'Aprenda como distribuir a verba de remarketing entre públicos e etapas do funil sem concentrar dinheiro onde há pouco potencial de venda.',focusKeyphrase:'remarketing inteligente',secondaryKeyphrases:['distribuição de verba no remarketing','orçamento de remarketing','como distribuir verba de remarketing','remarketing para vendas','verba de anúncios'],slug:'remarketing-inteligente-distribuicao-verba',url:'/blog/remarketing-inteligente-distribuicao-verba/',file:'blog/remarketing-inteligente-distribuicao-verba/index.html',status:'published',category:'Tráfego + Conversão',publishedAt:'2026-09-14',author:'Rodrigo Castro',deletable:true,batchOrder:-1,coverImage:'https://images.unsplash.com/photo-1781246435700-afec19012b45?auto=format&fit=crop&fm=jpg&q=85&w=1800',cover:'https://images.unsplash.com/photo-1781246435700-afec19012b45?auto=format&fit=crop&fm=jpg&q=85&w=1800',coverAlt:'Laptop com painel de analytics e gráficos de desempenho de marketing'};
             let mergedPromise=null;
             async function mergedPosts(){
               if(mergedPromise) return mergedPromise;
-              mergedPromise=Promise.all(sources.map(async url=>{
-                try{
-                  const r=await nativeFetch(url+'?v='+Date.now(),{cache:'no-store'});
-                  return r.ok?await r.json():[];
-                }catch{return []}
-              })).then(groups=>{
-                const seen=new Set();
-                return groups.flat()
-                  .filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true))
-                  .sort((a,b)=>String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')));
-              });
+              mergedPromise=Promise.all(sources.map(async url=>{try{const r=await nativeFetch(url+'?v='+Date.now(),{cache:'no-store'});return r.ok?await r.json():[];}catch{return [];}})).then(groups=>{const seen=new Set();return [guaranteedPost,...groups.flat()].filter(p=>p&&p.slug&&!seen.has(p.slug)&&(seen.add(p.slug),true)).sort((a,b)=>String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')));});
               return mergedPromise;
             }
-            window.fetch=async function(input,init){
-              const url=typeof input==='string'?input:(input&&input.url)||'';
-              if(url.includes('/data/blog-posts.json')){
-                const posts=await mergedPosts();
-                return new Response(JSON.stringify(posts),{status:200,headers:{'Content-Type':'application/json'}});
-              }
-              return nativeFetch(input,init);
-            };
+            window.fetch=async function(input,init){const url=typeof input==='string'?input:(input&&input.url)||'';if(url.includes('/data/blog-posts.json')){const posts=await mergedPosts();return new Response(JSON.stringify(posts),{status:200,headers:{'Content-Type':'application/json'}});}return nativeFetch(input,init);};
           })();
         <\/script>`;
-
         html=html.replace('</head>',syncScript+'</head>');
         frame.srcdoc=html;
-      }catch(error){
-        console.error(error);
-        frame.src='/admin/blog-core.html?v='+Date.now();
-      }
+      }catch(error){console.error(error);frame.src='/admin/blog-core.html?v='+Date.now();}
     }
-
     buildCore();
   </script>
 </body>
