@@ -4,7 +4,6 @@ const { handleAutomation, handleAutomationClick, handleAutomationCron } = requir
 const { handleContactsAdmin } = require('../lib/mpmv-contacts-admin');
 
 // MPMV AI consolidated here to stay within Vercel Hobby's function limit.
-// Deploy trigger: keep the consolidated AI endpoint on the production branch.
 const MPMV_INSTRUCTIONS = `Você é a MPMV AI, assistente oficial do Mais Persuasão, Mais Vendas.
 
 Responda em português do Brasil natural, direto e humano. Não invente números, resultados, depoimentos, preços, datas, garantias, provas ou condições.
@@ -66,21 +65,11 @@ async function handleChat(req, res) {
     if (!messages.length) return json(res, 400, { error: 'Envie uma mensagem.' });
 
     let response;
+    let provider = '';
 
-    if (openAIKey) {
-      response = await fetch('https://api.openai.com/v1/responses', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${openAIKey}`
-        },
-        body: JSON.stringify({
-          model: process.env.OPENAI_MODEL || 'gpt-5.6',
-          instructions: MPMV_INSTRUCTIONS,
-          input: messages
-        })
-      });
-    } else if (openRouterKey) {
+    // Prioridade: servidor gratuito OpenRouter. A OpenAI só entra como fallback.
+    if (openRouterKey) {
+      provider = 'openrouter';
       response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -95,6 +84,20 @@ async function handleChat(req, res) {
           temperature: 0.7
         })
       });
+    } else if (openAIKey) {
+      provider = 'openai';
+      response = await fetch('https://api.openai.com/v1/responses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${openAIKey}`
+        },
+        body: JSON.stringify({
+          model: process.env.OPENAI_MODEL || 'gpt-5.6',
+          instructions: MPMV_INSTRUCTIONS,
+          input: messages
+        })
+      });
     } else {
       return json(res, 500, { error: 'A IA não está configurada na Vercel.' });
     }
@@ -107,7 +110,7 @@ async function handleChat(req, res) {
       });
     }
 
-    const text = openAIKey ? extractOpenAIText(data) : data?.choices?.[0]?.message?.content;
+    const text = provider === 'openai' ? extractOpenAIText(data) : data?.choices?.[0]?.message?.content;
     return json(res, 200, { message: text || 'Sem resposta.' });
   } catch (error) {
     console.error('MPMV AI Error:', error);
