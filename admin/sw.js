@@ -1,4 +1,4 @@
-const CACHE='mpmv-os-v11';
+const CACHE='mpmv-os-v12';
 const SHELL=['/admin/','/admin/leads360/','/admin/brevo/','/admin/relatorios/','/admin/search-console/','/admin/manifest.webmanifest','/admin/icon.svg'];
 const SEO_OVERRIDES={
   'conteudo-para-cada-etapa-do-funil-de-vendas':{
@@ -21,6 +21,13 @@ const SEO_OVERRIDES={
     metaDescription:'Aprenda a transformar uma meta de vendas em metas de leads, oportunidades e conversão usando a matemática do funil para planejar aquisição e vendas.',
     focusKeyphrase:'funil de vendas previsível',
     secondaryKeyphrases:['matemática do funil de vendas','meta de vendas e número de leads','previsão de leads para vender','planejamento de aquisição','quantos leads preciso para vender','projeção de vendas pelo funil']
+  },
+  'marketing-para-infoprodutores':{
+    title:'Marketing para Infoprodutores: Guia Completo para Atrair, Converter e Vender',
+    seoTitle:'Marketing para Infoprodutores: Guia Prático | MPMV',
+    metaDescription:'Aprenda marketing para infoprodutores: conecte oferta, conteúdo, tráfego, leads, funil e conversão para vender produtos digitais.',
+    focusKeyphrase:'marketing para infoprodutores',
+    secondaryKeyphrases:['marketing para infoproduto','estratégia de marketing para infoprodutores','marketing digital para infoprodutos','como vender infoproduto','estratégia para infoprodutor','funil de vendas para infoprodutos','geração de leads para infoprodutores']
   }
 };
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
