@@ -11,6 +11,7 @@ const SOURCES = [
 ];
 
 const ADMIN_PATHS = ['/admin'];
+const AUTH_COOKIE = 'mpmv_admin_auth';
 
 function isAdminPath(pathname) {
   return ADMIN_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
@@ -26,9 +27,24 @@ function unauthorized() {
   });
 }
 
-function authorized(request) {
+async function tokenFingerprint(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+async function authorized(request) {
   const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
   if (!expectedPassword) return false;
+
+  // Depois do primeiro login, o navegador usa o cookie para as requisições
+  // internas do painel (inclusive o iframe), sem exigir outro prompt.
+  const cookieHeader = request.headers.get('cookie') || '';
+  const cookieMatch = cookieHeader.match(new RegExp(`${AUTH_COOKIE}=([^;]+)`));
+  if (cookieMatch) {
+    const expectedFingerprint = await tokenFingerprint(expectedPassword);
+    if (cookieMatch[1] === expectedFingerprint) return true;
+  }
 
   const header = request.headers.get('authorization') || '';
   if (!header.startsWith('Basic ')) return false;
@@ -53,13 +69,23 @@ export const config = {
 export default async function middleware(request) {
   const pathname = new URL(request.url).pathname;
 
-  // Admin: autentica e depois deixa o Vercel entregar o HTML/JS normalmente.
   if (isAdminPath(pathname)) {
-    if (!authorized(request)) return unauthorized();
-    return next();
+    const hasBasicAuth = (request.headers.get('authorization') || '').startsWith('Basic ');
+    if (!(await authorized(request))) return unauthorized();
+
+    const response = next();
+    // Só grava a sessão quando a autenticação veio do Basic Auth.
+    // O valor do cookie é um SHA-256 do token, nunca o token em si.
+    if (hasBasicAuth) {
+      const fingerprint = await tokenFingerprint(process.env.ADMIN_BLOG_TOKEN);
+      response.headers.set(
+        'Set-Cookie',
+        `${AUTH_COOKIE}=${fingerprint}; Path=/admin; Max-Age=86400; HttpOnly; Secure; SameSite=Lax`
+      );
+    }
+    return response;
   }
 
-  // Apenas /data/blog-posts.json usa o middleware para consolidar o inventário.
   if (pathname !== '/data/blog-posts.json') {
     return next();
   }
