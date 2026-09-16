@@ -100,3 +100,5 @@ for slug, (anchor, context) in LINKS.items():
 print(f"Onda 1: {len(changed)} artigos atualizados.")
 for slug in changed:
     print(f"- {slug}")
+
+# Mantém este arquivo no gatilho do workflow para executar a onda após a correção.
