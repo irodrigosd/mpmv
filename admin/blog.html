@@ -18,19 +18,41 @@
     const frame=document.getElementById('blogFrame');
     let posts=[];
     let injected=false;
+    const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+    function cardHtml(p){
+      return `<article class="post" data-slug="${esc(p.slug)}"><div class="row"><div><h2>${esc(p.title)}</h2><div class="url">${esc(p.url)}</div><span class="status">${esc(p.status||'published')}</span><div class="score-row"><div class="score-card score-loading" data-seo-score><span class="score-dot"></span><div><strong>SEO...</strong><small>Analisando artigo</small></div></div><div class="score-card score-loading" data-read-score><span class="score-dot"></span><div><strong>Legibilidade...</strong><small>Analisando artigo</small></div></div></div></div><div class="actions"><a class="btn open" href="${esc(p.url)}" target="_blank">Abrir</a><button class="btn edit" data-edit="${esc(p.slug)}" ${p.directOnly?'disabled':''}>Editar</button><button class="btn delete" data-delete="${esc(p.slug)}" ${p.deletable?'':'disabled'}>Excluir artigo</button></div></div><div class="seo"><div class="field"><b>Título SEO</b><span>${esc(p.seoTitle)}</span></div><div class="field"><b>Frase-chave de foco</b><span>${esc(p.focusKeyphrase)}</span></div><div class="field"><b>Meta descrição</b><span>${esc(p.metaDescription)}</span></div><div class="field"><b>Slug</b><span>${esc(p.slug)}</span></div></div></article>`;
+    }
+
+    function bindCard(card,p){
+      const doc=frame.contentDocument;
+      card.querySelector('[data-edit]')?.addEventListener('click',e=>doc.defaultView.openEditor?.(p.slug,e.currentTarget));
+      card.querySelector('[data-delete]')?.addEventListener('click',e=>doc.defaultView.removePost?.(p.slug,e.currentTarget));
+      doc.defaultView.loadScores?.(p,card);
+    }
+
+    function mergeAndAppend(doc){
+      const list=doc?.getElementById('list');
+      if(!list)return;
+      const existing=new Set([...list.querySelectorAll('.post')].map(el=>el.dataset.slug));
+      const missing=posts.filter(p=>p?.slug&&!existing.has(p.slug));
+      if(!missing.length)return;
+      const frag=doc.createDocumentFragment();
+      missing.forEach(p=>{const tpl=doc.createElement('template');tpl.innerHTML=cardHtml(p);frag.appendChild(tpl.content.firstElementChild);});
+      list.appendChild(frag);
+      missing.forEach(p=>{const card=list.querySelector(`.post[data-slug="${CSS.escape(p.slug)}"]`);if(card)bindCard(card,p);});
+    }
 
     function injectSortControls(doc){
       if(injected||!doc||!doc.body)return;
       const list=doc.getElementById('list');
       if(!list||!list.querySelector('.post'))return;
       injected=true;
-
       const bar=doc.createElement('section');
       bar.id='articleSortBar';
       bar.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 18px;padding:14px 16px;border:1px solid #2b2b2b;background:#101010;border-radius:14px;position:sticky;top:10px;z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.28)';
-      bar.innerHTML='<div><strong style="display:block;font-size:14px;color:#f5f1e8">Ordenar artigos</strong><span style="display:block;margin-top:3px;color:#8f887f;font-size:12px">Use a data de publicação para encontrar os conteúdos mais novos ou mais antigos.</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-sort="desc" style="border:0;border-radius:9px;padding:10px 13px;background:#d1a447;color:#15110a;font-weight:800;cursor:pointer">Mais recentes</button><button type="button" data-sort="asc" style="border:1px solid #3a3a3a;border-radius:9px;padding:10px 13px;background:#242424;color:#fff;font-weight:800;cursor:pointer">Mais antigos</button></div>';
+      bar.innerHTML='<div><strong style="display:block;font-size:14px;color:#f5f1e8">Ordenar artigos</strong><span id="articleInventoryCount" style="display:block;margin-top:3px;color:#8f887f;font-size:12px">Carregando inventário...</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-sort="desc" style="border:0;border-radius:9px;padding:10px 13px;background:#d1a447;color:#15110a;font-weight:800;cursor:pointer">Mais recentes</button><button type="button" data-sort="asc" style="border:1px solid #3a3a3a;border-radius:9px;padding:10px 13px;background:#242424;color:#fff;font-weight:800;cursor:pointer">Mais antigos</button></div>';
       list.parentNode.insertBefore(bar,list);
-
       bar.querySelectorAll('[data-sort]').forEach(btn=>btn.addEventListener('click',()=>sortPosts(btn.dataset.sort)));
       sortPosts('desc');
     }
@@ -49,26 +71,32 @@
       });
       cards.forEach(card=>list.appendChild(card));
       const bar=doc.getElementById('articleSortBar');
-      bar?.querySelectorAll('[data-sort]').forEach(btn=>{
-        const active=btn.dataset.sort===direction;
-        btn.style.background=active?'#d1a447':'#242424';
-        btn.style.color=active?'#15110a':'#fff';
-        btn.style.border=active?'0':'1px solid #3a3a3a';
-      });
+      if(bar){bar.querySelector('#articleInventoryCount').textContent=`${posts.length} artigos no inventário • ${cards.length} exibidos`;bar.querySelectorAll('[data-sort]').forEach(btn=>{const active=btn.dataset.sort===direction;btn.style.background=active?'#d1a447':'#242424';btn.style.color=active?'#15110a':'#fff';btn.style.border=active?'0':'1px solid #3a3a3a';});}
     }
 
     async function loadDates(){
       try{
-        const r=await fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'});
-        if(r.ok)posts=await r.json();
+        const [primaryRes,extraRes]=await Promise.all([
+          fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'}),
+          fetch('/data/blog-posts-extra.json?v='+Date.now(),{cache:'no-store'})
+        ]);
+        const primary=primaryRes.ok?await primaryRes.json():[];
+        const extra=extraRes.ok?await extraRes.json():[];
+        const merged=new Map();
+        [...primary,...extra].forEach(p=>{if(p?.slug)merged.set(p.slug,p);});
+        posts=[...merged.values()];
       }catch{}
-      if(frame.contentDocument)waitForList(frame.contentDocument);
+      const doc=frame.contentDocument;
+      if(doc){waitForList(doc);mergeAndAppend(doc);sortPosts('desc');}
     }
 
     function waitForList(doc){
-      if(injected)return;
-      if(doc.getElementById('list')?.querySelector('.post')){
+      if(!doc)return;
+      const list=doc.getElementById('list');
+      if(list?.querySelector('.post')){
+        mergeAndAppend(doc);
         injectSortControls(doc);
+        if(posts.length)sortPosts('desc');
         return;
       }
       setTimeout(()=>waitForList(doc),250);
