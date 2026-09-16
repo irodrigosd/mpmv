@@ -8,13 +8,12 @@ function send(res, status, body) {
 }
 
 module.exports = async (req, res) => {
-  const accessId = process.env.MOZ_ACCESS_ID;
-  const secretKey = process.env.MOZ_SECRET_KEY;
+  const token = process.env.MOZ_API_TOKEN;
 
-  if (!accessId || !secretKey) {
+  if (!token) {
     return send(res, 503, {
       configured: false,
-      error: 'Moz não configurado. Adicione MOZ_ACCESS_ID e MOZ_SECRET_KEY na Vercel.'
+      error: 'Moz não configurado. Adicione MOZ_API_TOKEN na Vercel.'
     });
   }
 
@@ -38,11 +37,10 @@ module.exports = async (req, res) => {
   if (!targets.length) return send(res, 400, { configured: true, error: 'Informe pelo menos uma URL.' });
 
   try {
-    const auth = Buffer.from(`${accessId}:${secretKey}`).toString('base64');
     const response = await fetch(MOZ_URL, {
       method: 'POST',
       headers: {
-        Authorization: `Basic ${auth}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         'User-Agent': 'MPMV-SEO-Authority/1.0'
       },
