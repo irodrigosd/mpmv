@@ -3370,9 +3370,10 @@
     "author": "Rodrigo Castro",
     "deletable": true,
     "batchOrder": 1,
-    "cover": "/favicon.png",
-    "coverImage": "/favicon.png",
-    "coverAlt": "Marketing para infoprodutores"
+    "cover": "/assets/images/blog/marketing-para-infoprodutores-capa.svg",
+    "coverImage": "/assets/images/blog/marketing-para-infoprodutores-capa.svg",
+    "coverAlt": "Marketing para infoprodutores: estratégia para atrair, converter e vender",
+    "updatedAt": "2026-09-16"
   },
   {
     "id": "desfile-7-de-setembro-razao-persuasiva-2026-09-07",
