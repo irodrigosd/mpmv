@@ -1,12 +1,12 @@
 import primary from './data/blog-posts.json';
 
 const SOURCES = [
-  '/data/blog-posts-2026-09-08.json',
-  '/data/blog-posts-2026-09-09.json',
-  '/data/blog-posts-2026-09-11.json',
   '/data/blog-posts-2026-09-12.json',
-  '/data/blog-posts-2026-09-14.json',
-  '/data/blog-posts-extra.json'
+  '/data/blog-posts-2026-09-09.json',
+  '/data/blog-posts-2026-09-08.json',
+  '/data/blog-posts-extra.json',
+  '/data/blog-posts-2026-09-11.json',
+  '/data/blog-posts-2026-09-14.json'
 ];
 
 export const config = {
@@ -31,13 +31,13 @@ export default async function middleware(request) {
     );
 
     const merged = new Map();
-    for (const post of Array.isArray(primary) ? primary : []) {
-      if (post && post.slug) merged.set(post.slug, post);
-    }
     for (const group of groups) {
       for (const post of group) {
         if (post && post.slug) merged.set(post.slug, post);
       }
+    }
+    for (const post of Array.isArray(primary) ? primary : []) {
+      if (post && post.slug) merged.set(post.slug, post);
     }
 
     return new Response(JSON.stringify([...merged.values()]), {
