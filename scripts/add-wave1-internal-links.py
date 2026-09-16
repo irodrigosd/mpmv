@@ -42,6 +42,8 @@ def insert_link(source: str, slug: str, anchor: str, context: str) -> str:
     if reading_start == -1:
         reading_start = source.find('<article')
     if reading_start == -1:
+        reading_start = source.find('<main')
+    if reading_start == -1:
         raise RuntimeError(f"Não encontrei área de conteúdo em {slug}")
 
     preferred_terms = {
