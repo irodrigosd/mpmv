@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import primary from './data/blog-posts.json';
 
 const SOURCES = [
@@ -53,12 +54,14 @@ export const config = {
 export default async function middleware(request) {
   const pathname = new URL(request.url).pathname;
 
-  // Proteção server-side: a página administrativa não é entregue
-  // antes da autenticação. Isso impede acesso direto ao /admin/*.
-  if (isAdminPath(pathname) && !authorized(request)) {
-    return unauthorized();
+  // Admin: depois da autenticação, deixa o pedido seguir normalmente para a página.
+  // O middleware não deve substituir o HTML do painel pelo inventário do blog.
+  if (isAdminPath(pathname)) {
+    if (!authorized(request)) return unauthorized();
+    return NextResponse.next();
   }
 
+  // Mantém o comportamento existente de consolidar o inventário público do blog.
   try {
     const origin = new URL(request.url).origin;
     const responses = await Promise.all(
