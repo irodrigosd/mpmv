@@ -21,8 +21,8 @@
     "author": "Rodrigo Castro",
     "deletable": true,
     "batchOrder": 1,
-    "cover": "/favicon.png",
-    "coverImage": "/favicon.png",
-    "coverAlt": "Marketing para infoprodutores"
+    "cover": "/assets/images/blog/marketing-para-infoprodutores-capa.svg",
+    "coverImage": "/assets/images/blog/marketing-para-infoprodutores-capa.svg",
+    "coverAlt": "Marketing para infoprodutores: estratégia para atrair, converter e vender"
   }
 ]
