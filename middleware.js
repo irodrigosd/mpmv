@@ -9,11 +9,56 @@ const SOURCES = [
   '/data/blog-posts-2026-09-14.json'
 ];
 
+const ADMIN_PATHS = ['/admin'];
+
+function isAdminPath(pathname) {
+  return ADMIN_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
+}
+
+function unauthorized() {
+  return new Response('Acesso restrito.', {
+    status: 401,
+    headers: {
+      'WWW-Authenticate': 'Basic realm="MPMV Admin", charset="UTF-8"',
+      'Cache-Control': 'no-store'
+    }
+  });
+}
+
+function authorized(request) {
+  const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
+  if (!expectedPassword) return false;
+
+  const header = request.headers.get('authorization') || '';
+  if (!header.startsWith('Basic ')) return false;
+
+  try {
+    const decoded = atob(header.slice(6));
+    const separator = decoded.indexOf(':');
+    if (separator < 0) return false;
+
+    const username = decoded.slice(0, separator);
+    const password = decoded.slice(separator + 1);
+
+    return username === 'admin' && password === expectedPassword;
+  } catch {
+    return false;
+  }
+}
+
 export const config = {
-  matcher: ['/data/blog-posts.json']
+  matcher: ['/admin/:path*', '/data/blog-posts.json']
 };
 
 export default async function middleware(request) {
+  const pathname = new URL(request.url).pathname;
+
+  // Proteção server-side: a página administrativa não é entregue
+  // antes da autenticação. Isso impede acesso direto ao /admin/*.
+  if (isAdminPath(pathname) && !authorized(request)) {
+    return unauthorized();
+  }
+
   try {
     const origin = new URL(request.url).origin;
     const responses = await Promise.all(
