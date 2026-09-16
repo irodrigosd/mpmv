@@ -13,6 +13,71 @@
 </head>
 <body>
   <a class="seo-link" href="/admin/seo-autoridade.html">SEO / Autoridade</a>
-  <iframe src="/admin/blog-core.html?v=20260916" title="Admin Blog MPMV"></iframe>
+  <iframe id="blogFrame" src="/admin/blog-core.html?v=20260916" title="Admin Blog MPMV"></iframe>
+  <script>
+    const frame=document.getElementById('blogFrame');
+    let posts=[];
+    let injected=false;
+
+    function injectSortControls(doc){
+      if(injected||!doc||!doc.body)return;
+      const list=doc.getElementById('list');
+      if(!list||!list.querySelector('.post'))return;
+      injected=true;
+
+      const bar=doc.createElement('section');
+      bar.id='articleSortBar';
+      bar.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 18px;padding:14px 16px;border:1px solid #2b2b2b;background:#101010;border-radius:14px;position:sticky;top:10px;z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.28)';
+      bar.innerHTML='<div><strong style="display:block;font-size:14px;color:#f5f1e8">Ordenar artigos</strong><span style="display:block;margin-top:3px;color:#8f887f;font-size:12px">Use a data de publicação para encontrar os conteúdos mais novos ou mais antigos.</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-sort="desc" style="border:0;border-radius:9px;padding:10px 13px;background:#d1a447;color:#15110a;font-weight:800;cursor:pointer">Mais recentes</button><button type="button" data-sort="asc" style="border:1px solid #3a3a3a;border-radius:9px;padding:10px 13px;background:#242424;color:#fff;font-weight:800;cursor:pointer">Mais antigos</button></div>';
+      list.parentNode.insertBefore(bar,list);
+
+      bar.querySelectorAll('[data-sort]').forEach(btn=>btn.addEventListener('click',()=>sortPosts(btn.dataset.sort)));
+      sortPosts('desc');
+    }
+
+    function sortPosts(direction){
+      const doc=frame.contentDocument;
+      const list=doc?.getElementById('list');
+      if(!list)return;
+      const dateMap=new Map(posts.map(p=>[p.slug,p.publishedAt||'']));
+      const cards=[...list.querySelectorAll('.post')];
+      cards.sort((a,b)=>{
+        const da=Date.parse(dateMap.get(a.dataset.slug)||'')||0;
+        const db=Date.parse(dateMap.get(b.dataset.slug)||'')||0;
+        if(da!==db)return direction==='asc'?da-db:db-da;
+        return (a.querySelector('h2')?.textContent||'').localeCompare(b.querySelector('h2')?.textContent||'','pt-BR');
+      });
+      cards.forEach(card=>list.appendChild(card));
+      const bar=doc.getElementById('articleSortBar');
+      bar?.querySelectorAll('[data-sort]').forEach(btn=>{
+        const active=btn.dataset.sort===direction;
+        btn.style.background=active?'#d1a447':'#242424';
+        btn.style.color=active?'#15110a':'#fff';
+        btn.style.border=active?'0':'1px solid #3a3a3a';
+      });
+    }
+
+    async function loadDates(){
+      try{
+        const r=await fetch('/data/blog-posts.json?v='+Date.now(),{cache:'no-store'});
+        if(r.ok)posts=await r.json();
+      }catch{}
+      if(frame.contentDocument)waitForList(frame.contentDocument);
+    }
+
+    function waitForList(doc){
+      if(injected)return;
+      if(doc.getElementById('list')?.querySelector('.post')){
+        injectSortControls(doc);
+        return;
+      }
+      setTimeout(()=>waitForList(doc),250);
+    }
+
+    frame.addEventListener('load',()=>{
+      loadDates();
+      waitForList(frame.contentDocument);
+    });
+  </script>
 </body>
 </html>
