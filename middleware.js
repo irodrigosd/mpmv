@@ -11,10 +11,15 @@ const SOURCES = [
 ];
 
 const ADMIN_PATHS = ['/admin'];
+const ADMIN_API_PATHS = ['/api/admin-'];
 const AUTH_COOKIE = 'mpmv_admin_auth';
 
 function isAdminPath(pathname) {
   return ADMIN_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
+}
+
+function isAdminApiPath(pathname) {
+  return ADMIN_API_PATHS.some(path => pathname.startsWith(path));
 }
 
 function unauthorized() {
@@ -37,8 +42,6 @@ async function authorized(request) {
   const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
   if (!expectedPassword) return false;
 
-  // Depois do primeiro login, o navegador usa o cookie para as requisições
-  // internas do painel (inclusive o iframe), sem exigir outro prompt.
   const cookieHeader = request.headers.get('cookie') || '';
   const cookieMatch = cookieHeader.match(new RegExp(`${AUTH_COOKIE}=([^;]+)`));
   if (cookieMatch) {
@@ -63,7 +66,7 @@ async function authorized(request) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/data/blog-posts.json']
+  matcher: ['/admin/:path*', '/api/admin-:path*', '/data/blog-posts.json']
 };
 
 export default async function middleware(request) {
@@ -74,8 +77,6 @@ export default async function middleware(request) {
     if (!(await authorized(request))) return unauthorized();
 
     const response = next();
-    // Só grava a sessão quando a autenticação veio do Basic Auth.
-    // O valor do cookie é um SHA-256 do token, nunca o token em si.
     if (hasBasicAuth) {
       const fingerprint = await tokenFingerprint(process.env.ADMIN_BLOG_TOKEN);
       response.headers.set(
@@ -84,6 +85,18 @@ export default async function middleware(request) {
       );
     }
     return response;
+  }
+
+  // O painel usa APIs protegidas pelo mesmo ADMIN_BLOG_TOKEN.
+  // Depois que o usuário entra no /admin, o middleware valida a sessão
+  // e injeta o token apenas na requisição interna; ele nunca volta ao navegador.
+  if (isAdminApiPath(pathname)) {
+    const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
+    if (!expectedPassword || !(await authorized(request))) return unauthorized();
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-admin-token', expectedPassword);
+    return next({ request: { headers: requestHeaders } });
   }
 
   if (pathname !== '/data/blog-posts.json') {
