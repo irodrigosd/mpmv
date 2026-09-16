@@ -1,0 +1,35 @@
+name: Add Wave 3 Internal Links
+
+on:
+  push:
+    paths:
+      - 'scripts/add-wave3-internal-links.py'
+      - '.github/workflows/add-wave3-internal-links.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add Wave 3 links
+        run: python3 scripts/add-wave3-internal-links.py
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog scripts/add-wave3-internal-links.py
+          git commit -m "seo: adicionar links internos da onda 3"
+          git push
