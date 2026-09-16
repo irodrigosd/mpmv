@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import primary from './data/blog-posts.json';
 
 const SOURCES = [
@@ -40,7 +39,6 @@ function authorized(request) {
 
     const username = decoded.slice(0, separator);
     const password = decoded.slice(separator + 1);
-
     return username === 'admin' && password === expectedPassword;
   } catch {
     return false;
@@ -54,14 +52,17 @@ export const config = {
 export default async function middleware(request) {
   const pathname = new URL(request.url).pathname;
 
-  // Admin: depois da autenticação, deixa o pedido seguir normalmente para a página.
-  // O middleware não deve substituir o HTML do painel pelo inventário do blog.
+  // Admin: autentica e depois deixa o Vercel entregar o HTML/JS normalmente.
   if (isAdminPath(pathname)) {
     if (!authorized(request)) return unauthorized();
-    return NextResponse.next();
+    return new Response(null, { status: 200 });
   }
 
-  // Mantém o comportamento existente de consolidar o inventário público do blog.
+  // Apenas /data/blog-posts.json usa o middleware para consolidar o inventário.
+  if (pathname !== '/data/blog-posts.json') {
+    return new Response(null, { status: 200 });
+  }
+
   try {
     const origin = new URL(request.url).origin;
     const responses = await Promise.all(
