@@ -1,3 +1,5 @@
+import primary from './data/blog-posts.json';
+
 const SOURCES = [
   '/data/blog-posts-2026-09-08.json',
   '/data/blog-posts-2026-09-09.json',
@@ -29,14 +31,16 @@ export default async function middleware(request) {
     );
 
     const merged = new Map();
+    for (const post of Array.isArray(primary) ? primary : []) {
+      if (post && post.slug) merged.set(post.slug, post);
+    }
     for (const group of groups) {
       for (const post of group) {
         if (post && post.slug) merged.set(post.slug, post);
       }
     }
 
-    const body = JSON.stringify([...merged.values()]);
-    return new Response(body, {
+    return new Response(JSON.stringify([...merged.values()]), {
       status: 200,
       headers: {
         'content-type': 'application/json; charset=utf-8',
