@@ -24,6 +24,16 @@ def link(path, text):
 
 def main():
     html = HUB.read_text(encoding="utf-8")
+
+    # Corrige uma frase introduzida pela primeira execução sem tocar nos links já aplicados.
+    bad = "<p>Por isso, uma boa oferta organiza pelo menos. Antes de detalhar a entrega, vale aprofundar"
+    good = "<p>Por isso, uma boa oferta organiza pelo menos estes pontos. Antes de detalhar a entrega, vale aprofundar"
+    if bad in html:
+        html = html.replace(bad, good, 1)
+        HUB.write_text(html, encoding="utf-8")
+        print("Correção textual aplicada ao hub.")
+        return
+
     if MARKER in html:
         print("Hub já possui os links de saída da auditoria.")
         return
