@@ -1,3 +1,4 @@
+import { next } from '@vercel/functions';
 import primary from './data/blog-posts.json';
 
 const SOURCES = [
@@ -55,12 +56,12 @@ export default async function middleware(request) {
   // Admin: autentica e depois deixa o Vercel entregar o HTML/JS normalmente.
   if (isAdminPath(pathname)) {
     if (!authorized(request)) return unauthorized();
-    return new Response(null, { status: 200 });
+    return next();
   }
 
   // Apenas /data/blog-posts.json usa o middleware para consolidar o inventário.
   if (pathname !== '/data/blog-posts.json') {
-    return new Response(null, { status: 200 });
+    return next();
   }
 
   try {
