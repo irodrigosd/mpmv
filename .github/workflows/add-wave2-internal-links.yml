@@ -1,0 +1,38 @@
+name: Adicionar links internos da onda 2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/add-wave2-internal-links.py'
+      - '.github/workflows/add-wave2-internal-links.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-wave2-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Inserir links internos da onda 2
+        run: python scripts/add-wave2-internal-links.py
+
+      - name: Publicar alterações
+        run: |
+          if git diff --quiet -- blog; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog/
+          git commit -m "seo: adicionar links internos da onda 2"
+          git push
