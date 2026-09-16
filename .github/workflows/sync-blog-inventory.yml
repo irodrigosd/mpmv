@@ -36,8 +36,17 @@ jobs:
               if not isinstance(raw, list):
                   continue
               for p in raw:
-                  if isinstance(p, dict) and p.get('slug') and p.get('slug') not in merged:
-                      merged[p['slug']] = p
+                  if not isinstance(p, dict) or not p.get('slug'):
+                      continue
+                  slug = p['slug']
+                  if slug not in merged:
+                      merged[slug] = p
+                      continue
+                  current = merged[slug]
+                  incoming_updated = p.get('updatedAt')
+                  current_updated = current.get('updatedAt')
+                  if incoming_updated and (not current_updated or incoming_updated >= current_updated):
+                      merged[slug] = {**current, **p}
           result = list(merged.values())
           canonical.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           print(f'Canonical inventory: {len(result)} articles')
