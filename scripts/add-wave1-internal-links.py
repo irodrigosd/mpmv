@@ -29,7 +29,7 @@ def build_link(anchor: str, context: str) -> str:
         f'<p {MARKER}="1">'
         f'{context.capitalize()}. Veja também <a href="{HUB}" '
         f'style="color:#2f6fff;font-weight:800;text-decoration:underline;text-underline-offset:3px">'
-        f'{anchor}</a> para conectar este tema ao quadro mais amplo de marketing para infoprodutores.'</p>'
+        f'{anchor}</a> para conectar este tema ao quadro mais amplo de marketing para infoprodutores.</p>'
     )
 
 
@@ -44,7 +44,6 @@ def insert_link(source: str, slug: str, anchor: str, context: str) -> str:
     if reading_start == -1:
         raise RuntimeError(f"Não encontrei área de conteúdo em {slug}")
 
-    # Prefer a paragraph that already discusses the article's core subject.
     preferred_terms = {
         "persuasao-para-infoprodutores": ["Persuasão para infoprodutores", "persuasão"],
         "bullet-points-de-vendas-infoprodutos": ["bullet", "benefício", "venda"],
