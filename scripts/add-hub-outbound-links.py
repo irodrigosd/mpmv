@@ -35,7 +35,7 @@ def main():
         ),
         (
             '<p>Por isso, uma boa oferta organiza pelo menos:</p>',
-            '<p>Por isso, uma boa oferta organiza pelo menos. Antes de detalhar a entrega, vale aprofundar <span data-mpmv-hub-outbound="1">'+link('/blog/como-criar-promessa-de-vendas/', 'a promessa de vendas')+'</span> e <span data-mpmv-hub-outbound="1">'+link('/blog/valor-percebido-cursos-online/', 'a percepção de valor em infoprodutos')+'</span>.</p>'
+            '<p>Por isso, uma boa oferta organiza pelo menos estes pontos. Antes de detalhar a entrega, vale aprofundar <span data-mpmv-hub-outbound="1">'+link('/blog/como-criar-promessa-de-vendas/', 'a promessa de vendas')+'</span> e <span data-mpmv-hub-outbound="1">'+link('/blog/valor-percebido-cursos-online/', 'a percepção de valor em infoprodutos')+'</span>.</p>'
         ),
         (
             '<p>Por isso, quando o <a class="internal" href="/blog/roas-baixo/">ROAS está baixo</a>, a pergunta não deveria ser apenas “como melhorar o anúncio?”. O diagnóstico precisa percorrer o caminho inteiro.</p>',
@@ -55,7 +55,7 @@ def main():
         ),
         (
             '<p>Também vale separar problemas de volume de problemas de conversão. Se quase ninguém chega, talvez a prioridade esteja na aquisição. Se muita gente chega e ninguém avança, talvez o gargalo esteja depois do clique.</p>',
-            '<p>Também vale separar problemas de volume de problemas de conversão. Se quase ninguém chega, talvez a prioridade esteja na aquisição. Se muita gente chega e ninguém avança, talvez o gargalo esteja depois do clique. Quando parte da audiência já demonstrou interesse, o <span data-mpmv-hub-outbound="1">'+link('/blog/remarketing-inteligente-distribuicao-verba/', 'remarketing e a distribuição de verba')+'</span> entram como uma etapa específica da estratégia.</p>'
+            '<p>Também vale separar problemas de volume de problemas de conversão. Se quase ninguém chega, talvez a prioridade esteja na aquisição. Se muita gente chega e ninguém avança, talvez o gargalo esteja depois do clique. Quando parte da audiência já demonstrou interesse, o <span data-mpmv-hub-outbound="1">'+link('/blog/remarketing-inteligente-distribuicao-verba/', 'remarketing e a distribuição de verba')+'</span> entra como uma etapa específica da estratégia.</p>'
         ),
     ]
 
