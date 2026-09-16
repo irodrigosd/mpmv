@@ -11,7 +11,12 @@ const SOURCES = [
 ];
 
 const ADMIN_PATHS = ['/admin'];
-const ADMIN_API_PATHS = ['/api/admin-'];
+const ADMIN_API_PATHS = [
+  '/api/admin-',
+  '/api/leads',
+  '/api/rastreamento',
+  '/api/brevo-activity'
+];
 const AUTH_COOKIE = 'mpmv_admin_auth';
 
 function isAdminPath(pathname) {
@@ -19,7 +24,7 @@ function isAdminPath(pathname) {
 }
 
 function isAdminApiPath(pathname) {
-  return ADMIN_API_PATHS.some(path => pathname.startsWith(path));
+  return ADMIN_API_PATHS.some(path => pathname === path || pathname.startsWith(path + '/') || pathname.startsWith(path + '?'));
 }
 
 function unauthorized() {
@@ -65,8 +70,31 @@ async function authorized(request) {
   }
 }
 
+async function authorizedApi(request) {
+  const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
+  if (!expectedPassword) return false;
+
+  // O próprio painel legado envia o token neste header. Validamos o token
+  // aqui e o mantemos apenas no tráfego interno entre middleware e API.
+  const clientToken = request.headers.get('x-admin-token') || '';
+  if (clientToken && clientToken === expectedPassword) return true;
+
+  // Também aceita a sessão Basic Auth/cookie quando disponível.
+  return authorized(request);
+}
+
 export const config = {
-  matcher: ['/admin/:path*', '/api/admin-:path*', '/data/blog-posts.json']
+  matcher: [
+    '/admin/:path*',
+    '/api/admin-:path*',
+    '/api/leads',
+    '/api/leads/:path*',
+    '/api/rastreamento',
+    '/api/rastreamento/:path*',
+    '/api/brevo-activity',
+    '/api/brevo-activity/:path*',
+    '/data/blog-posts.json'
+  ]
 };
 
 export default async function middleware(request) {
@@ -81,18 +109,18 @@ export default async function middleware(request) {
       const fingerprint = await tokenFingerprint(process.env.ADMIN_BLOG_TOKEN);
       response.headers.set(
         'Set-Cookie',
-        `${AUTH_COOKIE}=${fingerprint}; Path=/admin; Max-Age=86400; HttpOnly; Secure; SameSite=Lax`
+        `${AUTH_COOKIE}=${fingerprint}; Path=/; Max-Age=86400; HttpOnly; Secure; SameSite=Lax`
       );
     }
     return response;
   }
 
   // O painel usa APIs protegidas pelo mesmo ADMIN_BLOG_TOKEN.
-  // Depois que o usuário entra no /admin, o middleware valida a sessão
-  // e injeta o token apenas na requisição interna; ele nunca volta ao navegador.
+  // O token que o painel já envia é validado no middleware e nunca é
+  // devolvido ao navegador. Para as APIs legadas, normalizamos o header.
   if (isAdminApiPath(pathname)) {
     const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
-    if (!expectedPassword || !(await authorized(request))) return unauthorized();
+    if (!expectedPassword || !(await authorizedApi(request))) return unauthorized();
 
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-admin-token', expectedPassword);
