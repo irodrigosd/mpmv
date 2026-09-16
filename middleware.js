@@ -1,5 +1,4 @@
 const SOURCES = [
-  '/data/blog-posts.json',
   '/data/blog-posts-2026-09-08.json',
   '/data/blog-posts-2026-09-09.json',
   '/data/blog-posts-2026-09-11.json',
