@@ -22,6 +22,22 @@
     {
       "source": "/mentoria/",
       "destination": "/mentoria.html"
+    },
+    {
+      "source": "/curso",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/curso/",
+      "destination": "/curso.html"
+    },
+    {
+      "source": "/admin/blog",
+      "destination": "/admin/blog.html"
+    },
+    {
+      "source": "/admin/blog/",
+      "destination": "/admin/blog.html"
     }
   ],
   "redirects": [
