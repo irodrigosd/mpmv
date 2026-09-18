@@ -46,5 +46,25 @@
       "destination": "https://meet.google.com/bkz-xkiu-bxw",
       "permanent": false
     }
+  ],
+  "headers": [
+    {
+      "source": "/curso",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/curso/",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    }
   ]
 }
