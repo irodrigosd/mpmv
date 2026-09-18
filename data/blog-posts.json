@@ -1,51 +1,5 @@
 [
   {
-    "id": "persuasao-no-marketing-digital-2026-09-18",
-    "title": "Persuasão no marketing digital: como aplicar sem manipular",
-    "seoTitle": "Persuasão no Marketing Digital: Ética, Gatilhos e Estratégias que Convertem",
-    "metaDescription": "Domine a persuasão no marketing digital sem cruzar a linha da manipulação. Entenda gatilhos éticos, evite dark patterns e construa autoridade real. Guia completo.",
-    "focusKeyphrase": "persuasão no marketing digital",
-    "secondaryKeyphrases": [
-      "gatilhos mentais éticos",
-      "marketing sem manipulação",
-      "dark patterns o que são",
-      "autoridade no marketing",
-      "copywriting ético"
-    ],
-    "slug": "persuasao-no-marketing-digital",
-    "url": "/blog/persuasao-no-marketing-digital/",
-    "file": "blog/persuasao-no-marketing-digital/index.html",
-    "status": "published",
-    "category": "Marketing + Vendas",
-    "publishedAt": "2026-09-18",
-    "author": "Rodrigo Castro",
-    "deletable": true,
-    "coverImage": "https://mpmv.com.br/assets/images/covers/persuasao-marketing-digital-eticamente.jpg",
-    "cover": "https://mpmv.com.br/assets/images/covers/persuasao-marketing-digital-eticamente.jpg",
-    "coverAlt": "Ilustração conceitual de uma balança equilibrando 'Persuasão' e 'Ética' com ícones de marketing digital ao fundo"
-  },
-  {
-    "id": "autoridade-visual-persuasao-2026-09-18",
-    "title": "Autoridade visual em persuasão: como cores, hierarquia e identidade influenciam decisões",
-    "seoTitle": "Autoridade visual em persuasão: guia prático",
-    "metaDescription": "Aprenda como cores, hierarquia, ritmo e identidade visual constroem autoridade visual em persuasão e orientam decisões com mais clareza.",
-    "focusKeyphrase": "autoridade visual em persuasão",
-    "secondaryKeyphrases": [
-      "cores e persuasão visual",
-      "hierarquia visual e confiança",
-      "ritmo visual e decisão",
-      "identidade visual e credibilidade"
-    ],
-    "slug": "autoridade-visual-persuasao",
-    "url": "/blog/autoridade-visual-persuasao/",
-    "file": "blog/autoridade-visual-persuasao/index.html",
-    "status": "published",
-    "category": "Marketing + Vendas",
-    "publishedAt": "2026-09-18",
-    "author": "Rodrigo Castro",
-    "deletable": true
-  },
-  {
     "id": "como-vender-pelo-direct-do-instagram-2026-09-06",
     "title": "Como vender pelo Direct do Instagram sem transformar a conversa em pressão",
     "seoTitle": "Como Vender pelo Direct do Instagram: Guia Prático | MPMV",
