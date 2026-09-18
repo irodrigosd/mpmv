@@ -1,6 +1,29 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "functions": {
+    "api/guia.js": {
+      "maxDuration": 300
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/mentoria",
+      "destination": "/mentoria.html"
+    },
+    {
+      "source": "/mentoria/",
+      "destination": "/mentoria.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/aula",
