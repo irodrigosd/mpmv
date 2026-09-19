@@ -4,6 +4,9 @@
   "functions": {
     "api/guia.js": {
       "maxDuration": 300
+    },
+    "api/backup-restore.js": {
+      "maxDuration": 300
     }
   },
   "rewrites": [
@@ -38,6 +41,14 @@
     {
       "source": "/admin/blog/",
       "destination": "/admin/blog.html"
+    },
+    {
+      "source": "/backup",
+      "destination": "/backup.html"
+    },
+    {
+      "source": "/backup/",
+      "destination": "/backup.html"
     }
   ],
   "redirects": [
