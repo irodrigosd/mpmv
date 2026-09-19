@@ -63,6 +63,13 @@ export default async function handler(req,res){
   const {owner,repo,branch}=config();
 
   try{
+    if(action==='prepare'){
+      const ref=await gh('/repos/'+owner+'/'+repo+'/git/ref/heads/'+encodeURIComponent(branch));
+      const parentSha=String(ref.object?.sha||'');
+      if(!/^[0-9a-f]{40}$/i.test(parentSha)) throw new Error('Não foi possível obter o commit atual do GitHub.');
+      return json(res,200,{ok:true,parentSha});
+    }
+
     if(action==='blob'){
       const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
       const path=safePath(body.path);
