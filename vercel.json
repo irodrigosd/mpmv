@@ -4,9 +4,6 @@
   "functions": {
     "api/guia.js": {
       "maxDuration": 300
-    },
-    "api/backup-restore.js": {
-      "maxDuration": 300
     }
   },
   "rewrites": [
