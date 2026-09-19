@@ -157,6 +157,57 @@ export default async function handler(req,res){
     }
     if(!headers||!ref) throw new Error('Falha ao autenticar no GitHub.');
 
+    if(req.method==='POST'&&action==='restore-prepare'){
+      return json(res,200,{ok:true,parentSha:ref.object.sha});
+    }
+
+    if(req.method==='POST'&&action==='restore-blob'){
+      async function gh(url,opts={}){
+        const r=await fetch(url,{...opts,headers:{...headers,...(opts.headers||{})}});
+        const text=await r.text();
+        let data={};
+        try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
+        if(!r.ok) throw new Error((data&&data.message)||('GitHub '+r.status));
+        return data;
+      }
+      const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
+      let path=String(body.path||'').replace(/\\/g,'/').replace(/^\/+/, '');
+      if(!path||path.includes('\0')||path.split('/').some(x=>x==='..')||/^\.git(?:\/|$)/i.test(path)||/^\.env(?:\.|$)/i.test(path)||/^\.vercel(?:\/|$)/i.test(path)) return json(res,400,{ok:false,error:'Caminho inválido ou protegido.'});
+      const content=String(body.content||'');
+      if(!content) return json(res,400,{ok:false,error:'Conteúdo vazio.'});
+      if(content.length>4000000) return json(res,413,{ok:false,error:'Arquivo individual grande demais. O limite seguro é 3 MB por arquivo.'});
+      const created=await gh(API+'/repos/'+owner+'/'+repo+'/git/blobs',{method:'POST',body:JSON.stringify({content,encoding:'base64'})});
+      return json(res,200,{ok:true,path,sha:created.sha});
+    }
+
+    if(req.method==='POST'&&action==='restore-commit'){
+      async function gh(url,opts={}){
+        const r=await fetch(url,{...opts,headers:{...headers,...(opts.headers||{})}});
+        const text=await r.text();
+        let data={};
+        try{data=text?JSON.parse(text):{};}catch{data={raw:text};}
+        if(!r.ok) throw new Error((data&&data.message)||('GitHub '+r.status));
+        return data;
+      }
+      const body=typeof req.body==='string'?JSON.parse(req.body||'{}'):(req.body||{});
+      const parentSha=String(body.parentSha||'').trim();
+      const entries=Array.isArray(body.entries)?body.entries:[];
+      if(!/^[0-9a-f]{40}$/i.test(parentSha)||!entries.length||entries.length>5000) return json(res,400,{ok:false,error:'Dados de restauração inválidos.'});
+      const current=await gh(API+'/repos/'+owner+'/'+repo+'/git/ref/heads/'+encodeURIComponent(branch));
+      if(String(current.object?.sha||'')!==parentSha) return json(res,409,{ok:false,error:'O repositório mudou enquanto o backup era preparado. Nada foi restaurado.'});
+      const safetyBranch='backup-pre-restore-'+new Date().toISOString().replace(/[-:TZ.]/g,'').slice(0,14);
+      await gh(API+'/repos/'+owner+'/'+repo+'/git/refs',{method:'POST',body:JSON.stringify({ref:'refs/heads/'+safetyBranch,sha:parentSha})});
+      const tree=entries.map(e=>{
+        let p=String(e.path||'').replace(/\\/g,'/').replace(/^\/+/, '');
+        if(!p||p.split('/').some(x=>x==='..')||/^\.git(?:\/|$)/i.test(p)||/^\.env(?:\.|$)/i.test(p)||/^\.vercel(?:\/|$)/i.test(p)) return null;
+        return {path:p,mode:e.mode==='100755'?'100755':'100644',type:'blob',sha:String(e.sha||'')};
+      }).filter(Boolean);
+      if(tree.length!==entries.length||tree.some(e=>!/^[0-9a-f]{40}$/i.test(e.sha))) return json(res,400,{ok:false,error:'Há arquivos inválidos no pacote. Nenhuma alteração foi feita.'});
+      const newTree=await gh(API+'/repos/'+owner+'/'+repo+'/git/trees',{method:'POST',body:JSON.stringify({tree})});
+      const newCommit=await gh(API+'/repos/'+owner+'/'+repo+'/git/commits',{method:'POST',body:JSON.stringify({message:'backup: restaurar pacote enviado pelo /backup',tree:newTree.sha,parents:[parentSha]})});
+      await gh(API+'/repos/'+owner+'/'+repo+'/git/refs/heads/'+encodeURIComponent(branch),{method:'PATCH',body:JSON.stringify({sha:newCommit.sha,force:false})});
+      return json(res,200,{ok:true,files:tree.length,commit:newCommit.sha,safetyBranch,message:'Restauração concluída.'});
+    }
     if(req.method==='POST'&&action==='article-tracking'){
       async function gh(url,opts={}){
         const r=await fetch(url,{...opts,headers:{...headers,...(opts.headers||{})}});
