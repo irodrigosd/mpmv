@@ -13,6 +13,16 @@
 </style>
 </head>
 <body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#07101a;color:#edf5fb;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif">
+  <div style="width:min(420px,100%);background:#0d1824;border:1px solid #203246;border-radius:18px;padding:24px;box-shadow:0 18px 45px rgba(0,0,0,.35)">
+    <div style="font-weight:950;font-size:22px;margin-bottom:8px"><span style="color:#78c8f4">MPMV</span> BACKUP</div>
+    <p style="color:#8fa4b8;line-height:1.5;margin:0 0 18px">Área protegida. Digite o token do admin para continuar.</p>
+    <input id="gateToken" type="password" autocomplete="current-password" placeholder="Token do admin" style="width:100%;height:48px;padding:0 13px;border-radius:12px;border:1px solid #203246;background:#0a1520;color:#edf5fb;font-size:15px;box-sizing:border-box">
+    <button id="gateBtn" style="width:100%;height:48px;margin-top:10px;border:0;border-radius:12px;background:#78c8f4;color:#062033;font-weight:900;font-size:15px;cursor:pointer">Entrar</button>
+    <div id="gateStatus" style="margin-top:12px;color:#e46e77;font-size:13px;min-height:18px"></div>
+  </div>
+</div>
+<div id="app" style="display:none">
 <div class="wrap">
   <a class="back" href="/admin/">← Voltar para o MPMV OS</a>
   <div class="top"><div class="brand"><b>MPMV</b> BACKUP</div><a href="/admin/">Admin</a></div>
@@ -28,8 +38,13 @@
     <div id="status" class="status">Nenhum backup selecionado.</div>
   </section>
 </div>
+</div>
 <script>
 const $=s=>document.querySelector(s);
+const gateTokenEl=$("#gateToken"),gateBtn=$("#gateBtn"),gateStatus=$("#gateStatus"),gate=$("#gate"),app=$("#app");
+async function unlock(){const t=(gateTokenEl.value||"").trim();if(!t){gateStatus.textContent="Digite o token.";return}gateBtn.disabled=true;gateStatus.textContent="Validando...";try{const r=await fetch("/api/admin-backup?action=restore-prepare",{method:"POST",headers:{"x-admin-token":t,"Content-Type":"application/json"},body:"{}"});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Token inválido.");sessionStorage.setItem("mpmv_admin_token",t);gate.style.display="none";app.style.display="block";}catch(e){sessionStorage.removeItem("mpmv_admin_token");gateStatus.textContent=e.message||"Token inválido."}finally{gateBtn.disabled=false}}
+gateBtn.onclick=unlock;gateTokenEl.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+(async()=>{const t=sessionStorage.getItem("mpmv_admin_token")||"";if(!t)return;try{const r=await fetch("/api/admin-backup?action=restore-prepare",{method:"POST",headers:{"x-admin-token":t,"Content-Type":"application/json"},body:"{}"});if(!r.ok)throw new Error();gate.style.display="none";app.style.display="block"}catch{sessionStorage.removeItem("mpmv_admin_token")}})();
 function token(){let t=sessionStorage.getItem('mpmv_admin_token')||'';if(!t){t=prompt('Digite o token do admin MPMV:','')||'';if(t)sessionStorage.setItem('mpmv_admin_token',t)}return t}
 function fmt(n){return n<1024?(n+' B'):n<1048576?((n/1024).toFixed(1)+' KB'):((n/1048576).toFixed(1)+' MB')}
 let selected=null,files=[];
