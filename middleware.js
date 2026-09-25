@@ -118,6 +118,12 @@ export default async function middleware(request) {
   // O painel usa APIs protegidas pelo mesmo ADMIN_BLOG_TOKEN.
   // O token que o painel já envia é validado no middleware e nunca é
   // devolvido ao navegador. Para as APIs legadas, normalizamos o header.
+  // O rastreamento público envia POSTs do navegador sem credencial administrativa.
+  // Apenas o GET do painel continua protegido pelo token.
+  if (pathname === '/api/rastreamento' && (request.method === 'POST' || request.method === 'OPTIONS')) {
+    return next();
+  }
+
   if (isAdminApiPath(pathname)) {
     const expectedPassword = process.env.ADMIN_BLOG_TOKEN;
     if (!expectedPassword || !(await authorizedApi(request))) return unauthorized();
