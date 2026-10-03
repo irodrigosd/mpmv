@@ -66,8 +66,8 @@ const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 let loadPromise=null;
 async function load(){if(loadPromise)return loadPromise;loadPromise=(async()=>{const r=await fetch(SOURCE+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Não foi possível carregar o inventário.');const data=await r.json();if(!Array.isArray(data))throw Error('O inventário do blog não retornou uma lista de artigos.');posts=data;features=posts.map(makeFeatures);document.getElementById('analyze').textContent='Analisar '+posts.length+' artigos';})();return loadPromise}
 function detectDelimiter(text){
-const lines=String(text||'').replace(/^\\uFEFF/,'').split(/\\r?\\n/).filter(x=>x.trim()).slice(0,40);
-const candidates=[',',';','\\t'];
+const lines=String(text||'').replace(/^\uFEFF/,'').split(/\r?\n/).filter(x=>x.trim()).slice(0,40);
+const candidates=[',',';','\t'];
 let best=',',bestScore=-1;
 for(const d of candidates){
 let score=0;
@@ -77,13 +77,13 @@ if(score>bestScore){bestScore=score;best=d}
 return best
 }
 function parseCSV(text,delimiter){
-text=String(text||'').replace(/^\\uFEFF/,'').replace(/^\\u0000+/, '');
+text=String(text||'').replace(/^\uFEFF/,'').replace(/^\u0000+/, '');
 const rows=[];let row=[],cell='',q=false;
 for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];
 if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}
 if(c=='"'){q=!q;continue}
 if(c===delimiter&&!q){row.push(cell);cell='';continue}
-if((c==='\\n'||c==='\\r')&&!q){if(c==='\\r'&&n==='\\n')i++;row.push(cell);cell='';if(row.some(x=>x.trim()))rows.push(row);row=[];continue}
+if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell);cell='';if(row.some(x=>x.trim()))rows.push(row);row=[];continue}
 cell+=c
 }
 if(cell||row.length){row.push(cell);rows.push(row)}
@@ -100,8 +100,8 @@ if(hasUrl&&hasClicks&&hasImp)return i
 return -1
 }
 function parseNumber(v){
-let s=String(v??'').trim().replace(/[%\\s]/g,'');if(!s)return 0;
-if(s.includes(',')&&s.includes('.'))s=s.lastIndexOf(',')>s.lastIndexOf('.')?s.replace(/\\./g,'').replace(',','.'):s.replace(/,/g,'');
+let s=String(v??'').trim().replace(/[%\s]/g,'');if(!s)return 0;
+if(s.includes(',')&&s.includes('.'))s=s.lastIndexOf(',')>s.lastIndexOf('.')?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'');
 else if(s.includes(','))s=s.replace(',','.');
 const n=Number(s);return Number.isFinite(n)?n:0
 }
@@ -117,7 +117,7 @@ const hi=findGSCHeader(rows);if(hi<0)throw Error('Não encontrei o cabeçalho do
 const h=rows[hi].map(normalizeHeader),ix=names=>h.findIndex(x=>names.includes(x));
 const urlI=ix(['pagina','paginas','paginasprincipais','page','pages','url','toppages']),clicksI=ix(['cliques','clicks']),impI=ix(['impressoes','impressions']),ctrI=ix(['ctr']),posI=ix(['posicao','position']);
 if(urlI<0||clicksI<0||impI<0||ctrI<0||posI<0)throw Error('O cabeçalho foi encontrado, mas faltam métricas. Preciso de Página, Cliques, Impressões, CTR e Posição.');
-gscRows=rows.slice(hi+1).map(r=>({url:String(r[urlI]||'').trim().replace(/^"|"$/g,''),clicks:parseNumber(r[clicksI]),impressions:parseNumber(r[impI]),ctr:parseNumber(r[ctrI]),position:parseNumber(r[posI])})).filter(x=>/^https?:\\/\\//i.test(x.url));
+gscRows=rows.slice(hi+1).map(r=>({url:String(r[urlI]||'').trim().replace(/^"|"$/g,''),clicks:parseNumber(r[clicksI]),impressions:parseNumber(r[impI]),ctr:parseNumber(r[ctrI]),position:parseNumber(r[posI])})).filter(x=>x.url&&(/https?:\/\//i.test(x.url)||/\/blog\//i.test(x.url)));
 if(!gscRows.length)throw Error('O CSV foi lido, mas não encontrei URLs. Verifique se você selecionou o arquivo da tabela Páginas do Search Console.');
 localStorage.setItem('mpmvGscRows',JSON.stringify(gscRows));
 const matched=posts.filter(p=>gscFor(p).length).length;
