@@ -1,5 +1,30 @@
 [
   {
+    "id": "copywriting-para-pagina-de-vendas-2026-10-03",
+    "title": "Copywriting para página de vendas: como escrever uma página que conduz à compra",
+    "seoTitle": "Copywriting para Página de Vendas: Como Escrever uma Página que Conduz à Compra | MPMV",
+    "metaDescription": "Aprenda copywriting para página de vendas: estrutura, headline, promessa, benefícios, prova, objeções e CTA para conduzir o visitante à compra.",
+    "focusKeyphrase": "copywriting para página de vendas",
+    "secondaryKeyphrases": [
+      "copy de página de vendas",
+      "texto para página de vendas",
+      "página de vendas",
+      "copy para página de vendas"
+    ],
+    "slug": "copywriting-para-pagina-de-vendas",
+    "url": "/blog/copywriting-para-pagina-de-vendas/",
+    "file": "blog/copywriting-para-pagina-de-vendas/index.html",
+    "status": "published",
+    "category": "Copywriting + Conversão",
+    "publishedAt": "2026-10-03",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 2,
+    "cover": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85",
+    "coverImage": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85",
+    "coverAlt": "Equipe trabalhando em estratégia e planejamento de vendas"
+  },
+  {
     "id": "copywriting-para-anuncios-2026-10-03",
     "title": "Copywriting para anúncios: como escrever textos que transformam atenção em cliques",
     "seoTitle": "Copywriting para Anúncios: Como Escrever Textos que Geram Cliques | MPMV",
