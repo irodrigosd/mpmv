@@ -46,6 +46,246 @@
     {
       "source": "/backup/",
       "destination": "/backup.html"
+    },
+    {
+      "source": "/blog/clientes-compram-produtos-piores",
+      "destination": "/clientes-compram-produtos-piores.html"
+    },
+    {
+      "source": "/blog/clientes-compram-produtos-piores/",
+      "destination": "/clientes-compram-produtos-piores.html"
+    },
+    {
+      "source": "/blog/concorrente-mais-confiavel",
+      "destination": "/concorrente-mais-confiavel.html"
+    },
+    {
+      "source": "/blog/concorrente-mais-confiavel/",
+      "destination": "/concorrente-mais-confiavel.html"
+    },
+    {
+      "source": "/blog/cliente-nao-quer-seu-produto",
+      "destination": "/cliente-nao-quer-seu-produto.html"
+    },
+    {
+      "source": "/blog/cliente-nao-quer-seu-produto/",
+      "destination": "/cliente-nao-quer-seu-produto.html"
+    },
+    {
+      "source": "/blog/caracteristicas-em-beneficio-percebido",
+      "destination": "/caracteristicas-em-beneficio-percebido.html"
+    },
+    {
+      "source": "/blog/caracteristicas-em-beneficio-percebido/",
+      "destination": "/caracteristicas-em-beneficio-percebido.html"
+    },
+    {
+      "source": "/blog/erro-de-copy-oferta-parecer-golpe",
+      "destination": "/erro-de-copy-oferta-parecer-golpe.html"
+    },
+    {
+      "source": "/blog/erro-de-copy-oferta-parecer-golpe/",
+      "destination": "/erro-de-copy-oferta-parecer-golpe.html"
+    },
+    {
+      "source": "/blog/criar-curiosidade-sem-clickbait",
+      "destination": "/criar-curiosidade-sem-clickbait.html"
+    },
+    {
+      "source": "/blog/criar-curiosidade-sem-clickbait/",
+      "destination": "/criar-curiosidade-sem-clickbait.html"
+    },
+    {
+      "source": "/blog/depoimentos-ruins-diminuem-vendas",
+      "destination": "/depoimentos-ruins-diminuem-vendas.html"
+    },
+    {
+      "source": "/blog/depoimentos-ruins-diminuem-vendas/",
+      "destination": "/depoimentos-ruins-diminuem-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-manada-marketing",
+      "destination": "/efeito-manada-marketing.html"
+    },
+    {
+      "source": "/blog/efeito-manada-marketing/",
+      "destination": "/efeito-manada-marketing.html"
+    },
+    {
+      "source": "/blog/aversao-a-perda-marketing",
+      "destination": "/aversao-a-perda-marketing.html"
+    },
+    {
+      "source": "/blog/aversao-a-perda-marketing/",
+      "destination": "/aversao-a-perda-marketing.html"
+    },
+    {
+      "source": "/blog/efeito-contraste-marketing",
+      "destination": "/efeito-contraste-marketing.html"
+    },
+    {
+      "source": "/blog/efeito-contraste-marketing/",
+      "destination": "/efeito-contraste-marketing.html"
+    },
+    {
+      "source": "/blog/como-cliente-decide-preco-caro",
+      "destination": "/como-cliente-decide-preco-caro.html"
+    },
+    {
+      "source": "/blog/como-cliente-decide-preco-caro/",
+      "destination": "/como-cliente-decide-preco-caro.html"
+    },
+    {
+      "source": "/blog/convencer-demais-vender-menos",
+      "destination": "/convencer-demais-vender-menos.html"
+    },
+    {
+      "source": "/blog/convencer-demais-vender-menos/",
+      "destination": "/convencer-demais-vender-menos.html"
+    },
+    {
+      "source": "/blog/cliente-percebe-persuasao",
+      "destination": "/cliente-percebe-persuasao.html"
+    },
+    {
+      "source": "/blog/cliente-percebe-persuasao/",
+      "destination": "/cliente-percebe-persuasao.html"
+    },
+    {
+      "source": "/blog/anunciando-para-pessoas-que-nao-compram",
+      "destination": "/anunciando-para-pessoas-que-nao-compram.html"
+    },
+    {
+      "source": "/blog/anunciando-para-pessoas-que-nao-compram/",
+      "destination": "/anunciando-para-pessoas-que-nao-compram.html"
+    },
+    {
+      "source": "/blog/conteudo-treinando-pessoas-a-ignorar",
+      "destination": "/conteudo-treinando-pessoas-a-ignorar.html"
+    },
+    {
+      "source": "/blog/conteudo-treinando-pessoas-a-ignorar/",
+      "destination": "/conteudo-treinando-pessoas-a-ignorar.html"
+    },
+    {
+      "source": "/blog/erro-silencioso-cliente-desconfiar-oferta",
+      "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
+    },
+    {
+      "source": "/blog/erro-silencioso-cliente-desconfiar-oferta/",
+      "destination": "/erro-silencioso-cliente-desconfiar-oferta.html"
+    },
+    {
+      "source": "/blog/cliente-foge-da-oferta",
+      "destination": "/cliente-foge-da-oferta.html"
+    },
+    {
+      "source": "/blog/cliente-foge-da-oferta/",
+      "destination": "/cliente-foge-da-oferta.html"
+    },
+    {
+      "source": "/blog/seo-para-inteligencia-artificial",
+      "destination": "/seo-para-inteligencia-artificial.html"
+    },
+    {
+      "source": "/blog/seo-para-inteligencia-artificial/",
+      "destination": "/seo-para-inteligencia-artificial.html"
+    },
+    {
+      "source": "/blog/conteudo-gerado-por-ia-seo",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
+      "source": "/blog/conteudo-gerado-por-ia-seo/",
+      "destination": "/conteudo-gerado-por-ia-seo.html"
+    },
+    {
+      "source": "/blog/dark-patterns-marketing-digital",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
+      "source": "/blog/dark-patterns-marketing-digital/",
+      "destination": "/dark-patterns-marketing-digital.html"
+    },
+    {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-ancoragem-precos-vendas/",
+      "destination": "/efeito-de-ancoragem-precos-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-escolha-vendas",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
+      "source": "/blog/paradoxo-da-escolha-vendas/",
+      "destination": "/paradoxo-da-escolha-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-ikea-marketing-vendas",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-ikea-marketing-vendas/",
+      "destination": "/efeito-ikea-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-enquadramento-marketing-vendas",
+      "destination": "/efeito-de-enquadramento-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/efeito-de-enquadramento-marketing-vendas/",
+      "destination": "/efeito-de-enquadramento-marketing-vendas.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
+      "source": "/blog/transformar-caracteristicas-em-beneficios/",
+      "destination": "/transformar-caracteristicas-em-beneficios.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/cliques-sem-vendas-anuncio-nao-converte/",
+      "destination": "/cliques-sem-vendas-anuncio-nao-converte.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/persuasao-para-vender-curso-online/",
+      "destination": "/persuasao-para-vender-curso-online.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/como-escrever-uma-oferta-que-vende/",
+      "destination": "/como-escrever-uma-oferta-que-vende.html"
+    },
+    {
+      "source": "/blog/por-que-seu-conteudo-nao-vende",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/por-que-seu-conteudo-nao-vende/",
+      "destination": "/por-que-seu-conteudo-nao-vende.html"
+    },
+    {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
+    },
+    {
+      "source": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "destination": "/confianca-do-cliente-erros-destroem-vendas.html"
     }
   ],
   "redirects": [
