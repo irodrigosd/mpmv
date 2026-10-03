@@ -8,7 +8,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}.wrap{width:min(1240px,calc(100% - 28px));margin:26px auto 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.brand{font-size:23px;font-weight:900}.brand b{color:var(--blue)}a{color:#287bbd}.back{color:var(--muted);text-decoration:none}
 .hero{background:linear-gradient(135deg,#fff,#edf7ff);border:1px solid #d8eaf8;border-radius:20px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}.hero h1{margin:0 0 7px;font-size:27px}.hero p{margin:0;color:var(--muted);line-height:1.55}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.5;cursor:not-allowed}.file{display:none}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)}.metric{font-size:27px;font-weight:900}.label{font-size:12px;color:var(--muted);margin-top:3px}.sub{font-size:11px;color:var(--muted);margin-top:7px}
-.section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}.section h2{font-size:18px;margin:0 0 5px}.section>p{color:var(--muted);font-size:13px;margin:0 0 14px;line-height:1.5}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf1f5;vertical-align:top}.table th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#7b8999}.badge{display:inline-block;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900}.high{background:#ffe9e9;color:var(--red)}.medium{background:#fff5d9;color:var(--yellow)}.low{background:#e9f7ef;color:var(--green)}.muted{color:var(--muted)}.small{font-size:12px}.url{font-size:11px;color:#6b8299;word-break:break-all}.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.notice{background:#f4f9ff;border-left:4px solid var(--blue);padding:11px 13px;border-radius:0 10px 10px 0;font-size:12px;line-height:1.5;color:#52677d}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.queue{display:grid;gap:10px}.item{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fbfdff}.item strong{display:block;margin-bottom:4px}.item .why{font-size:12px;color:var(--muted);line-height:1.45}.pill{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-right:6px}.source{font-size:11px;color:var(--muted);margin-top:10px}
+.section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}.section h2{font-size:18px;margin:0 0 5px}.section>p{color:var(--muted);font-size:13px;margin:0 0 14px;line-height:1.5}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf1f5;vertical-align:top}.table th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#7b8999}.badge{display:inline-block;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900}.high{background:#ffe9e9;color:var(--red)}.medium{background:#fff5d9;color:var(--yellow)}.low{background:#e9f7ef;color:var(--green)}.muted{color:var(--muted)}.small{font-size:12px}.url{font-size:11px;color:#6b8299;word-break:break-all}.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.notice{background:#f4f9ff;border-left:4px solid var(--blue);padding:11px 13px;border-radius:0 10px 10px 0;font-size:12px;line-height:1.5;color:#52677d}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.queue{display:grid;gap:10px}.item{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fbfdff}.item strong{display:block;margin-bottom:4px}.item .why{font-size:12px;color:var(--muted);line-height:1.45}.pill{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-right:6px}.intent{display:inline-block;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:900;margin-left:5px}.intent-high{background:#e9f7ef;color:#208a5a}.intent-medium{background:#fff5d9;color:#b27a00}.intent-low{background:#eef2f6;color:#68778b}.priority{font-weight:900}.source{font-size:11px;color:var(--muted);margin-top:10px}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:500px){.grid{grid-template-columns:1fr 1fr}.metric{font-size:23px}}
 </style>
 </head>
@@ -35,10 +35,10 @@
 <div class="card"><div class="metric">—</div><div class="label">Gaps de conteúdo</div></div>
 </div>
 
-<section class="section"><h2>Fila de decisão</h2><p>Esta é a área principal. As ações são ordenadas por oportunidade, não por quantidade de artigos.</p><div id="queue" class="queue"><div class="empty">Clique em “Analisar artigos”.</div></div></section>
+<section class="section"><h2>Fila de decisão</h2><p>Esta é a área principal. A prioridade combina potencial de tráfego <strong>e potencial de negócio</strong>. Uma página com muitas impressões, mas baixa relação com o público do MPMV, não sobe automaticamente para o topo.</p><div class="notice"><strong>Como ler:</strong> 🔥 Alta intenção = busca diretamente ligada ao problema que o MPMV resolve. 🟡 Média = pode atrair o público certo, mas a intenção comercial é indireta. ⚪ Baixa = curiosidade, case, entretenimento ou busca pouco relacionada à oferta.</div><div id="queue" class="queue"><div class="empty">Clique em “Analisar artigos”.</div></div></section>
 
 <div class="two">
-<section class="section"><h2>Oportunidades do Search Console</h2><p>Quando o CSV do Search Console é importado, as páginas são classificadas por potencial: posições 4–20, muitas impressões com CTR baixo e páginas que já recebem cliques.</p><div id="gsc" class="table-wrap"><div class="empty">Importe o CSV de desempenho do Search Console.</div></div></section>
+<section class="section"><h2>Oportunidades do Search Console</h2><p>O GSC mostra <strong>potencial de tráfego</strong>. O painel cruza esse potencial com a <strong>intenção comercial estimada</strong> do tema para evitar tratar curiosidade como oportunidade de negócio.</p><div id="gsc" class="table-wrap"><div class="empty">Importe o CSV de desempenho do Search Console.</div></div></section>
 <section class="section"><h2>Canibalização provável</h2><p>Alerta editorial. Não afirma que o Google está canibalizando as páginas; cruza intenção, títulos e palavras-chave.</p><div id="cannibal" class="table-wrap"><div class="empty">Aguardando análise.</div></div></section>
 </div>
 
@@ -133,6 +133,37 @@ function canonicalArticleUrl(p){
   }
   return ''
 }
+function commercialIntent(f){
+  const text=norm([f.p.title,f.p.focusKeyphrase,f.p.category].join(' '));
+  const high=[
+    'vender','vendas','oferta','conversao','conversoes','lead','leads','funil',
+    'copy','copywriting','pagina de vendas','landing page','anuncio','anuncios',
+    'remarketing','cta','call to action','follow up','follow-up','preco','precos',
+    'infoproduto','infoprodutos','webinar','qualificacao','crm','direct','whatsapp',
+    'email','emails','roi','roas','checkout','pagina de captura','proposta comercial'
+  ];
+  const medium=[
+    'persuasao','persuasivo','psicologia','gatilho','gatilhos','comportamento',
+    'instagram','reels','stories','carrossel','conteudo','headline','curiosidade',
+    'marca','branding','seo','chatgpt','ia','anuncios'
+  ];
+  const low=[
+    'tijolo','supreme','msn','orkut','historia','histórico','antes de existir',
+    'como dominar o mundo','case','caso','diamantes'
+  ];
+  let h=0,m=0,l=0;
+  high.forEach(k=>text.includes(k)&&(h++));
+  medium.forEach(k=>text.includes(k)&&(m++));
+  low.forEach(k=>text.includes(k)&&(l++));
+  if(h>=1 && h>=m) return {label:'Alta',cls:'intent-high',weight:1.35,reason:'Busca ligada diretamente a vendas, conversão, oferta, aquisição ou operação comercial.'};
+  if(l>=1 && h===0) return {label:'Baixa',cls:'intent-low',weight:.55,reason:'Tema tende a atrair curiosidade ou público fora do comprador do MPMV.'};
+  if(m>=1) return {label:'Média',cls:'intent-medium',weight:.95,reason:'Tema relacionado ao universo do MPMV, mas com intenção comercial indireta.'};
+  return {label:'Baixa',cls:'intent-low',weight:.55,reason:'Relação comercial pouco evidente pelo título e metadados disponíveis.'};
+}
+function intentBadge(f){
+  const i=commercialIntent(f);
+  return '<span class="intent '+i.cls+'">'+i.label+'</span>';
+}
 function gscFor(p){
   const target=canonicalArticleUrl(p);
   if(!target)return [];
@@ -156,12 +187,43 @@ const examples=posts.filter(p=>gscFor(p).length).slice(0,3).map(p=>p.slug).join(
 document.getElementById('status').textContent='GSC OK: '+gscRows.length+' páginas importadas · '+matched+' artigos cruzados'+(matched?' · '+examples:' · Nenhum cruzamento encontrado');
 return matched
 }
-function analyzeGSC(){if(!gscRows.length){document.getElementById('gsc').innerHTML='<div class="empty">Nenhum dado GSC carregado.</div>';return []}const data=posts.map(p=>{const rs=gscFor(p);const imp=rs.reduce((a,x)=>a+x.impressions,0),clk=rs.reduce((a,x)=>a+x.clicks,0),pos=rs.filter(x=>x.position>0).reduce((a,x)=>a+x.position*x.impressions,0)/(rs.filter(x=>x.position>0).reduce((a,x)=>a+x.impressions,0)||1),ctr=imp?clk/imp*100:0;return{p,imp,clk,pos,ctr,rows:rs}}).filter(x=>x.imp>0||x.clk>0).sort((a,b)=>((b.imp*Math.max(0,Math.min(1,(20-b.pos)/16)))+(b.clk*20)) - ((a.imp*Math.max(0,Math.min(1,(20-a.pos)/16)))+(a.clk*20)));document.getElementById('gsc').innerHTML='<table class="table"><thead><tr><th>Ação</th><th>Página</th><th>Impressões</th><th>Cliques</th><th>CTR</th><th>Pos.</th></tr></thead><tbody>'+data.slice(0,35).map(x=>{let action=x.pos>=4&&x.pos<=20?'SUBIR POSIÇÃO':x.imp>200&&x.ctr<2?'MELHORAR CTR':x.clk>0?'FORTALECER':'OBSERVAR';let cls=action==='SUBIR POSIÇÃO'?'high':action==='MELHORAR CTR'?'medium':'low';return '<tr><td><span class="badge '+cls+'">'+action+'</span></td><td><strong>'+esc(x.p.title)+'</strong><div class="url">/blog/'+esc(x.p.slug)+'/</div></td><td>'+Math.round(x.imp).toLocaleString('pt-BR')+'</td><td>'+Math.round(x.clk).toLocaleString('pt-BR')+'</td><td>'+x.ctr.toFixed(1)+'%</td><td>'+x.pos.toFixed(1)+'</td></tr>'}).join('')+'</tbody></table>';return data}
+function analyzeGSC(){
+  if(!gscRows.length){document.getElementById('gsc').innerHTML='<div class="empty">Nenhum dado GSC carregado.</div>';return []}
+  const data=posts.map(p=>{
+    const rs=gscFor(p);
+    const imp=rs.reduce((a,x)=>a+x.impressions,0);
+    const clk=rs.reduce((a,x)=>a+x.clicks,0);
+    const valid=rs.filter(x=>x.position>0);
+    const pos=valid.reduce((a,x)=>a+x.position*x.impressions,0)/(valid.reduce((a,x)=>a+x.impressions,0)||1);
+    const ctr=imp?clk/imp*100:0;
+    const f=features.find(z=>z.p===p)||makeFeatures(p);
+    const intent=commercialIntent(f);
+    const rankPotential=Math.max(0,Math.min(1,(20-pos)/16));
+    const trafficScore=(Math.log10(imp+1)*12)+(clk*8);
+    const businessScore=trafficScore*intent.weight*(pos>=4&&pos<=20?1.25:1);
+    return{p,imp,clk,pos,ctr,rows:rs,intent,trafficScore,businessScore};
+  }).filter(x=>x.imp>0||x.clk>0).sort((a,b)=>b.businessScore-a.businessScore);
+  document.getElementById('gsc').innerHTML='<table class="table"><thead><tr><th>Prioridade</th><th>Página</th><th>Intenção</th><th>Impressões</th><th>Cliques</th><th>CTR</th><th>Pos.</th></tr></thead><tbody>'+
+  data.slice(0,35).map(x=>{
+    let action=x.pos>=4&&x.pos<=20?'SUBIR POSIÇÃO':x.imp>200&&x.ctr<2?'MELHORAR CTR':x.clk>0?'FORTALECER':'OBSERVAR';
+    if(x.intent.label==='Baixa' && x.imp<100 && x.clk===0) action='OBSERVAR';
+    const cls=x.intent.label==='Alta'&&action!=='OBSERVAR'?'high':action==='OBSERVAR'?'low':'medium';
+    const priority=x.intent.label==='Alta'?'FOCO NEGÓCIO':x.intent.label==='Média'?'FOCO TRÁFEGO + NEGÓCIO':'TRÁFEGO / BAIXA INTENÇÃO';
+    return '<tr><td><span class="badge '+cls+'">'+priority+'</span><div class="small muted">'+action+'</div></td><td><strong>'+esc(x.p.title)+'</strong><div class="url">/blog/'+esc(x.p.slug)+'/</div></td><td>'+intentBadge(features.find(z=>z.p===x.p)||makeFeatures(x.p))+'</td><td>'+Math.round(x.imp).toLocaleString('pt-BR')+'</td><td>'+Math.round(x.clk).toLocaleString('pt-BR')+'</td><td>'+x.ctr.toFixed(1)+'%</td><td>'+x.pos.toFixed(1)+'</td></tr>';
+  }).join('')+'</tbody></table>';
+  return data;
+}
 function build(){const pairs=[],internal=[];for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){const a=features[i],b=features[j],ts=jac(new Set(a.title),new Set(b.title)),ks=jac(new Set(a.key),new Set(b.key)),ov=overlap(a.all,b.all);let shared=0;a.rare.forEach(x=>b.rare.has(x)&&(shared++));const risk=Math.max(ts*.45+ks*.4+ov*.15,(a.focus&&b.focus&&a.focus===b.focus)?.92:0);if(risk>=.48)pairs.push({a:a.p,b:b.p,risk,shared});const link=ks*.55+ov*.25+Math.min(shared,5)/5*.2;if(link>=.34)internal.push({a:a.p,b:b.p,score:link,shared})}
 pairs.sort((a,b)=>b.risk-a.risk);internal.sort((a,b)=>b.score-a.score);const used=new Map(),links=[];for(const x of internal){const a=used.get(x.a.slug)||0,b=used.get(x.b.slug)||0;if(a>=2||b>=2)continue;used.set(x.a.slug,a+1);used.set(x.b.slug,b+1);links.push(x);if(links.length>=40)break}
 const cmap=new Map();features.forEach(f=>{const k=cluster(f);if(!cmap.has(k))cmap.set(k,[]);cmap.get(k).push(f.p)});const clusters=[...cmap.entries()].filter(x=>x[1].length>1).sort((a,b)=>b[1].length-a[1].length);
 const gsc=analyzeGSC();const queue=[];
-if(gsc.length)gsc.slice(0,12).forEach(x=>{if(x.pos>=4&&x.pos<=20)queue.push({type:'SEO',title:x.p.title,why:x.pos.toFixed(1)+' de posição média com '+Math.round(x.imp).toLocaleString('pt-BR')+' impressões. Atualizar e fortalecer com links internos.'});else if(x.imp>200&&x.ctr<2)queue.push({type:'CTR',title:x.p.title,why:Math.round(x.imp).toLocaleString('pt-BR')+' impressões e CTR de '+x.ctr.toFixed(1)+'%. Revisar título e descrição.'})});
+if(gsc.length)gsc.slice(0,18).forEach(x=>{
+  if(x.intent.label==='Alta' && x.pos>=4&&x.pos<=20) queue.push({type:'NEGÓCIO',title:x.p.title,why:'🔥 Alta intenção comercial · '+x.pos.toFixed(1)+' de posição média · '+Math.round(x.imp).toLocaleString('pt-BR')+' impressões. Priorizar atualização e links internos porque o tema está diretamente ligado ao mercado do MPMV.'});
+  else if(x.intent.label==='Média' && x.pos>=4&&x.pos<=20) queue.push({type:'TRÁFEGO + NEGÓCIO',title:x.p.title,why:'🟡 Média intenção comercial · '+x.pos.toFixed(1)+' de posição média · '+Math.round(x.imp).toLocaleString('pt-BR')+' impressões. Fortalecer sem tratar o volume como demanda comercial direta.'});
+  else if(x.intent.label==='Alta' && x.imp>20) queue.push({type:'NEGÓCIO',title:x.p.title,why:'🔥 Alta intenção comercial, mas ainda fora da faixa ideal de posição ('+x.pos.toFixed(1)+'). Avaliar conteúdo, links e intenção antes de produzir outro artigo.'});
+  else if(x.intent.label==='Baixa' && x.imp>=100) queue.push({type:'TRÁFEGO',title:x.p.title,why:'⚪ Baixa intenção comercial · '+Math.round(x.imp).toLocaleString('pt-BR')+' impressões. Pode ser útil para alcance, mas não deve receber prioridade só pelo volume.'});
+});
+
 pairs.slice(0,8).forEach(x=>queue.push({type:'REVISAR',title:x.a.title+' ↔ '+x.b.title,why:'Sobreposição editorial provável. Comparar intenção de busca antes de alterar ou criar conteúdo.'}));
 links.slice(0,8).forEach(x=>queue.push({type:'LINK',title:x.a.title+' → '+x.b.title,why:'Os dois conteúdos têm relação temática forte. Inserir link contextual se a leitura do artigo justificar.'}));
 const gaps=[];const missing=TOPICS.filter(t=>!features.filter(f=>f.all.has(t)).length);missing.forEach(t=>gaps.push([t,'Não há artigo identificado pelo cluster atual. Avaliar demanda no Search Console antes de criar.']));const thin=clusters.filter(x=>x[1].length>=6).slice(0,8);thin.forEach(x=>gaps.push([x[0],x[1].length+' artigos no mesmo cluster. Antes de criar outro, fortalecer a estrutura existente.']));
@@ -170,7 +232,7 @@ document.getElementById('cannibal').innerHTML=pairs.length?'<table class="table"
 document.getElementById('internal').innerHTML=links.length?'<table class="table"><thead><tr><th>De</th><th>Para</th><th>Relação</th></tr></thead><tbody>'+links.map(x=>'<tr><td>'+esc(x.a.title)+'</td><td>'+esc(x.b.title)+'</td><td>'+x.shared+' termos centrais em comum</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma oportunidade encontrada.</div>';
 document.getElementById('clusters').innerHTML='<table class="table"><thead><tr><th>Cluster</th><th>Artigos</th><th>Exemplos</th></tr></thead><tbody>'+clusters.slice(0,20).map(x=>'<tr><td><strong>'+esc(x[0])+'</strong></td><td>'+x[1].length+'</td><td>'+x[1].slice(0,5).map(p=>esc(p.title)).join(' · ')+'</td></tr>').join('')+'</tbody></table>';
 document.getElementById('gaps').innerHTML=gaps.length?'<table class="table"><thead><tr><th>Tema</th><th>Decisão</th></tr></thead><tbody>'+gaps.map(x=>'<tr><td><strong>'+esc(x[0])+'</strong></td><td>'+esc(x[1])+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma lacuna estrutural detectada.</div>';
-document.getElementById('metrics').innerHTML='<div class="card"><div class="metric">'+posts.length+'</div><div class="label">Artigos</div></div><div class="card"><div class="metric">'+queue.length+'</div><div class="label">Prioridades</div><div class="sub">'+(gsc.length?'com GSC':'sem GSC')+'</div></div><div class="card"><div class="metric">'+pairs.length+'</div><div class="label">Canibalização provável</div></div><div class="card"><div class="metric">'+links.length+'</div><div class="label">Links internos</div></div><div class="card"><div class="metric">'+gaps.length+'</div><div class="label">Gaps de conteúdo</div></div>';
+const highIntent=gsc.filter(x=>x.intent.label==='Alta').length;document.getElementById('metrics').innerHTML='<div class="card"><div class="metric">'+posts.length+'</div><div class="label">Artigos</div></div><div class="card"><div class="metric">'+gsc.length+'</div><div class="label">Oportunidades GSC</div><div class="sub">'+(gsc.length?'dados importados':'sem GSC')+'</div></div><div class="card"><div class="metric">'+highIntent+'</div><div class="label">Alta intenção comercial</div><div class="sub">páginas com potencial de negócio</div></div><div class="card"><div class="metric">'+pairs.length+'</div><div class="label">Canibalização provável</div></div><div class="card"><div class="metric">'+links.length+'</div><div class="label">Links internos</div></div><div class="card"><div class="metric">'+gaps.length+'</div><div class="label">Gaps de conteúdo</div></div>';
 }
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 function exportReport(){
@@ -187,7 +249,7 @@ function exportReport(){
       else if(clk>0){action='FORTALECER';why='Página já recebe cliques; avaliar reforço de conteúdo e links.'}
       else action='OBSERVAR';
     }
-    rows.push(['GSC',action,p.title,'/blog/'+p.slug+'/',Math.round(imp),Math.round(clk),ctr.toFixed(1)+'%',pos?pos.toFixed(1):'',why]);
+    const intent=commercialIntent(makeFeatures(p)); rows.push(['GSC',action,p.title,'/blog/'+p.slug+'/',Math.round(imp),Math.round(clk),ctr.toFixed(1)+'%',pos?pos.toFixed(1):'',intent.label+' intenção comercial · '+why]);
   });
   const pairs=[];
   for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
