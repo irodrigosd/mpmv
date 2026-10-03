@@ -20,7 +20,7 @@
 <p>Transforma o inventário do blog e os dados do Search Console em uma fila de decisões: atualizar, fortalecer com links, revisar sobreposição ou criar conteúdo novo.</p>
 <div class="actions">
 <button id="analyze" class="btn primary">Analisar artigos</button>
-<label class="btn">Importar Search Console <input id="gscFile" class="file" type="file" accept=".csv,text/csv"></label>
+<label class="btn">Importar Páginas GSC <input id="gscFile" class="file" type="file" accept=".csv,text/csv"></label><label class="btn">Importar Consultas GSC <input id="gscQueryFile" class="file" type="file" accept=".csv,text/csv"></label>
 <button id="clearGsc" class="btn">Limpar dados GSC</button>
 <button id="exportReport" class="btn">Exportar relatório</button>
 </div>
@@ -56,7 +56,7 @@ const SOURCE='/data/blog-posts.json';
 const STOP=new Set('a o os as um uma uns umas de do da das dos e em no na nos nas ao aos à às para por com sem como que seu sua seus suas meu minha meus minhas nosso nossa nossos nossas este esta estes estas isso isto aquele aquela aqueles aquelas ele ela eles elas eu você vocês mais menos muito muita muitos muitas pouco pouca poucos poucas mesmo mesma quando onde quem qual quais porque por que contra depois antes até desde também apenas ainda assim aqui ali muito venda vendas vender conteúdo conteúdos copy copywriting marketing tráfego trafego conversão conversoes artigo artigos guia página paginas pagina produto produtos cliente clientes pessoa pessoas público publico mercado marca marcas negócio negocios estratégia estrategia aplicação aplicações exemplo exemplos prática praticas'.split(' '));
 const GENERIC=new Set('como usar vender venda vendas marketing persuasao persuasão copy copywriting conteudo conteúdo estrategia estratégia cliente clientes instagram vendas digital online'.split(' '));
 const TOPICS=['instagram','copywriting','persuasao','vendas','conversao','psicologia','comportamento','funil','trafego','anuncios','chatgpt','ia','oferta','gatilhos','email','remarketing','conteudo','landing','seo','leads','marca','branding','webinar','cases','preco','produto'];
-let posts=[],features=[],gscRows=[];
+let posts=[],features=[],gscRows=[],queryGscRows=[];
 const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s-]/g,' ').replace(/-/g,' ').replace(/\s+/g,' ').trim();
 const tokens=s=>norm(s).split(' ').filter(w=>w.length>3&&!STOP.has(w));
 const makeFeatures=p=>{const title=tokens(p.title),key=tokens([p.focusKeyphrase,...(p.secondaryKeyphrases||[])].join(' ')),desc=tokens(p.metaDescription),seo=tokens(p.seoTitle),all=new Set([...title,...key,...desc,...seo]),rare=new Set([...title,...key].filter(w=>!GENERIC.has(w)));return{p,title,key,all,rare,focus:norm(p.focusKeyphrase)}};
@@ -99,6 +99,24 @@ const hasUrl=h.some(x=>wanted.includes(x)),hasClicks=h.some(x=>['cliques','click
 if(hasUrl&&hasClicks&&hasImp)return i
 }
 return -1
+}
+function importGSCQueries(text){
+const rows=parseCSV(text,detectDelimiter(text));if(rows.length<2)throw Error('CSV vazio ou ilegível.');
+let hi=-1;
+for(let i=0;i<Math.min(rows.length,50);i++){
+  const h=rows[i].map(normalizeHeader);
+  const hasQuery=h.some(x=>['consulta','consultas','query','queries','topqueries'].includes(x));
+  const hasClicks=h.some(x=>['cliques','clicks'].includes(x)),hasImp=h.some(x=>['impressoes','impressions'].includes(x));
+  if(hasQuery&&hasClicks&&hasImp){hi=i;break}
+}
+if(hi<0)throw Error('Não encontrei o cabeçalho de Consultas do Search Console. Use o CSV da tabela Consultas, com Consulta, Cliques, Impressões, CTR e Posição.');
+const h=rows[hi].map(normalizeHeader),ix=names=>h.findIndex(x=>names.includes(x));
+const queryI=ix(['consulta','consultas','query','queries','topqueries']),clicksI=ix(['cliques','clicks']),impI=ix(['impressoes','impressions']),ctrI=ix(['ctr']),posI=ix(['posicao','position']);
+if(queryI<0||clicksI<0||impI<0)throw Error('O cabeçalho foi encontrado, mas faltam métricas. Preciso de Consulta, Cliques e Impressões.');
+queryGscRows=rows.slice(hi+1).map(r=>({query:String(r[queryI]||'').trim(),clicks:parseNumber(r[clicksI]),impressions:parseNumber(r[impI]),ctr:ctrI>=0?parseNumber(r[ctrI]):0,position:posI>=0?parseNumber(r[posI]):0})).filter(x=>x.query&&(x.impressions>0||x.clicks>0));
+localStorage.setItem('mpmvGscQueries',JSON.stringify(queryGscRows));
+document.getElementById('status').textContent='Consultas GSC OK: '+queryGscRows.length+' consultas importadas.';
+return queryGscRows.length
 }
 function parseNumber(v){
 let s=String(v??'').trim().replace(/[%\s]/g,'');if(!s)return 0;
@@ -226,7 +244,35 @@ if(gsc.length)gsc.slice(0,18).forEach(x=>{
 
 pairs.slice(0,8).forEach(x=>queue.push({type:'REVISAR',title:x.a.title+' ↔ '+x.b.title,why:'Sobreposição editorial provável. Comparar intenção de busca antes de alterar ou criar conteúdo.'}));
 links.slice(0,8).forEach(x=>queue.push({type:'LINK',title:x.a.title+' → '+x.b.title,why:'Os dois conteúdos têm relação temática forte. Inserir link contextual se a leitura do artigo justificar.'}));
-const gaps=[];const missing=TOPICS.filter(t=>!features.filter(f=>f.all.has(t)).length);missing.forEach(t=>gaps.push([t,'Não há artigo identificado pelo cluster atual. Avaliar demanda no Search Console antes de criar.']));const thin=clusters.filter(x=>x[1].length>=6).slice(0,8);thin.forEach(x=>gaps.push([x[0],x[1].length+' artigos no mesmo cluster. Antes de criar outro, fortalecer a estrutura existente.']));
+const gaps=[];
+if(queryGscRows.length){
+  const candidates=queryGscRows.map(q=>{
+    const qt=new Set(tokens(q.query).filter(x=>!GENERIC.has(x)));
+    if(qt.size<1)return null;
+    let best=0,bestPost=null;
+    for(const f of features){
+      const ft=new Set([...f.all].filter(x=>!GENERIC.has(x)));
+      const score=qt.size?overlap(qt,ft)/Math.max(1,Math.sqrt(qt.size*ft.size)):0;
+      if(score>best){best=score;bestPost=f.p}
+    }
+    return {...q,best,bestPost};
+  }).filter(Boolean).filter(q=>q.impressions>=3&&q.best<0.42)
+   .sort((a,b)=>b.impressions-a.impressions);
+  const seen=new Set();
+  candidates.forEach(q=>{
+    const key=norm(q.query);
+    if(seen.has(key))return;
+    seen.add(key);
+    gaps.push([q.query,'Consulta do GSC sem artigo claramente correspondente · '+Math.round(q.impressions).toLocaleString('pt-BR')+' impressões · avaliar intenção antes de criar.']);
+  });
+  const coveredTopics=new Set(features.flatMap(f=>TOPICS.filter(t=>f.all.has(t))));
+  TOPICS.filter(t=>!coveredTopics.has(t)).slice(0,8).forEach(t=>gaps.push([t,'Tema sem cobertura clara no inventário. Sem consulta GSC correspondente, não tratar como prioridade de criação.']));
+}else{
+  const missing=TOPICS.filter(t=>!features.filter(f=>f.all.has(t)).length);
+  missing.forEach(t=>gaps.push([t,'Sugestão estrutural do inventário. Importe o CSV de Consultas do GSC para confirmar demanda antes de criar.']));
+}
+const thin=clusters.filter(x=>x[1].length>=6).slice(0,8);
+thin.forEach(x=>gaps.push([x[0],x[1].length+' artigos no mesmo cluster. Antes de criar outro, fortalecer a estrutura existente.']));
 document.getElementById('queue').innerHTML=queue.length?queue.slice(0,20).map(x=>'<div class="item"><strong><span class="pill">'+esc(x.type)+'</span>'+esc(x.title)+'</strong><div class="why">'+esc(x.why)+'</div></div>').join(''):'<div class="empty">Sem fila ainda. Importe o Search Console para decisões baseadas em desempenho real.</div>';
 document.getElementById('cannibal').innerHTML=pairs.length?'<table class="table"><thead><tr><th>Risco</th><th>Artigo A</th><th>Artigo B</th></tr></thead><tbody>'+pairs.slice(0,25).map(x=>'<tr><td><span class="badge '+(x.risk>=.7?'high':'medium')+'">'+Math.round(x.risk*100)+'%</span></td><td>'+esc(x.a.title)+'</td><td>'+esc(x.b.title)+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma sobreposição acima do limiar editorial.</div>';
 document.getElementById('internal').innerHTML=links.length?'<table class="table"><thead><tr><th>De</th><th>Para</th><th>Relação</th></tr></thead><tbody>'+links.map(x=>'<tr><td>'+esc(x.a.title)+'</td><td>'+esc(x.b.title)+'</td><td>'+x.shared+' termos centrais em comum</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma oportunidade encontrada.</div>';
@@ -279,15 +325,20 @@ function exportReport(){
 function loadStoredGSC(){
   try{
     const raw=localStorage.getItem('mpmvGscRows');
-    if(!raw){gscRows=[];return}
-    const parsed=JSON.parse(raw);
-    gscRows=Array.isArray(parsed)?parsed:[];
+    gscRows=raw?JSON.parse(raw):[];
+    if(!Array.isArray(gscRows))gscRows=[];
   }catch(e){gscRows=[];localStorage.removeItem('mpmvGscRows')}
+  try{
+    const raw=localStorage.getItem('mpmvGscQueries');
+    queryGscRows=raw?JSON.parse(raw):[];
+    if(!Array.isArray(queryGscRows))queryGscRows=[];
+  }catch(e){queryGscRows=[];localStorage.removeItem('mpmvGscQueries')}
 }
 
 async function run(){const b=document.getElementById('analyze');b.disabled=true;try{await load();build();document.getElementById('status').textContent='Inventário atualizado: '+posts.length+' artigos · '+(gscRows.length?'GSC: '+gscRows.length+' linhas importadas.':'GSC: ainda não importado.')}catch(e){document.getElementById('queue').innerHTML='<div class="empty">'+esc(e.message)+'</div>'}finally{b.disabled=false}}
-document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{const matched=importGSC(decodeCSVBytes(rd.result));const importedStatus=document.getElementById('status').textContent;build();document.getElementById('status').textContent=importedStatus+' · análise atualizada';}catch(err){document.getElementById('status').textContent='ERRO NO CSV: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
-document.getElementById('clearGsc').onclick=()=>{localStorage.removeItem('mpmvGscRows');gscRows=[];run()};
+document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{const matched=importGSC(decodeCSVBytes(rd.result));build();document.getElementById('status').textContent='Páginas GSC OK: '+gscRows.length+' linhas · '+matched+' artigos cruzados · análise atualizada';}catch(err){document.getElementById('status').textContent='ERRO NO CSV: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
+document.getElementById('gscQueryFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{const n=importGSCQueries(decodeCSVBytes(rd.result));build();document.getElementById('status').textContent='Consultas GSC OK: '+n+' consultas · lacunas recalculadas com demanda real.';}catch(err){document.getElementById('status').textContent='ERRO NO CSV DE CONSULTAS: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
+document.getElementById('clearGsc').onclick=()=>{localStorage.removeItem('mpmvGscRows');localStorage.removeItem('mpmvGscQueries');gscRows=[];queryGscRows=[];run()};
 document.getElementById('analyze').onclick=run;
 document.getElementById('exportReport').onclick=exportReport;
 loadStoredGSC();run();
