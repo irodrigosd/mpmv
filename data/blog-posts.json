@@ -3696,11 +3696,20 @@
     "slug": "copywriting-para-whatsapp-business",
     "url": "/blog/copywriting-para-whatsapp-business/",
     "file": "blog/copywriting-para-whatsapp-business/index.html",
-    "date": "2026-10-03",
     "category": "Copywriting + WhatsApp",
     "status": "published",
     "cover": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
     "coverImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-    "batchOrder": 3
+    "batchOrder": 3,
+    "secondaryKeyphrases": [
+      "copywriting no WhatsApp Business",
+      "copy para WhatsApp Business",
+      "mensagens de venda no WhatsApp",
+      "roteiro de vendas no WhatsApp"
+    ],
+    "publishedAt": "2026-10-03",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "coverAlt": "Pessoa trabalhando em uma conversa comercial pelo computador"
   }
 ]
