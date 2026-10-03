@@ -111,6 +111,36 @@ if(bytes[0]===0xFF&&bytes[1]===0xFE)return new TextDecoder('utf-16le').decode(by
 if(bytes[0]===0xFE&&bytes[1]===0xFF)return new TextDecoder('utf-16be').decode(bytes);
 return new TextDecoder('utf-8').decode(bytes)
 }
+function cleanUrl(u){
+  try{
+    const x=new URL(String(u||''),location.origin);
+    let p=decodeURIComponent(x.pathname||'/').replace(/\/+$/,'').toLowerCase();
+    return p||'/'
+  }catch{
+    return String(u||'').split(/[?#]/)[0].replace(/\/+$/,'').toLowerCase()||'/'
+  }
+}
+function canonicalArticleUrl(p){
+  const candidates=[
+    p.url,
+    '/blog/'+String(p.slug||'')+'/',
+    '/blog/'+norm(p.slug).replace(/ /g,'-')+'/'
+  ];
+  for(const u of candidates){
+    const c=cleanUrl(u);
+    if(c&&c!='/')return c
+  }
+  return ''
+}
+function gscFor(p){
+  const target=canonicalArticleUrl(p);
+  if(!target)return [];
+  const legacy=target.replace(/\/+$/,'');
+  return gscRows.filter(x=>{
+    const u=cleanUrl(x.url);
+    return u===target||u===legacy||u===legacy+'/'||u.startsWith(legacy+'/')
+  })
+}
 function importGSC(text){
 const rows=parseCSV(text,detectDelimiter(text));if(rows.length<2)throw Error('CSV vazio ou ilegível.');
 const hi=findGSCHeader(rows);if(hi<0)throw Error('Não encontrei o cabeçalho do Search Console. O arquivo precisa ter Página/Páginas principais, Cliques, Impressões, CTR e Posição.');
