@@ -2,7 +2,7 @@
 'use strict';
 if(!/^\/blog\//.test(location.pathname)||location.pathname==='/blog/')return;
 var heroStyle=document.createElement('style');
-heroStyle.textContent='.article-photo img{display:block;width:100%;aspect-ratio:16/9!important;height:auto!important;max-height:none!important;object-fit:cover!important;object-position:center!important;}';
+heroStyle.textContent='.article-photo img,.article-cover img,.hero-art img,.hero-image img,.hero-cover img,.hero-media img,figure.hero img{display:block;width:100%!important;aspect-ratio:16/9!important;height:auto!important;max-height:none!important;object-fit:cover!important;object-position:center!important}.hero-art,.hero-image,.hero-cover,.hero-media{min-height:0!important;height:auto!important}.portrait{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important}.portrait img{display:block!important;width:100%!important;height:100%!important;aspect-ratio:16/9!important;object-fit:cover!important;object-position:center!important}.portrait:after{inset:0!important}';
 document.head.appendChild(heroStyle);
 var API='/api/rastreamento';
 var KEY='mpmv_article_track_v1';
