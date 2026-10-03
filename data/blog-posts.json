@@ -1,5 +1,31 @@
 [
   {
+    "id": "copywriting-para-email-2026-10-03",
+    "title": "Copywriting para e-mail: como escrever mensagens que geram ação",
+    "seoTitle": "Copywriting para E-mail: Como Escrever Mensagens que Geram Ação | MPMV",
+    "metaDescription": "Aprenda copywriting para e-mail: como construir assunto, abertura, argumento, prova e CTA para escrever mensagens que geram atenção, confiança e ação.",
+    "focusKeyphrase": "copywriting para e-mail",
+    "secondaryKeyphrases": [
+      "copy para e-mail",
+      "copywriting para email marketing",
+      "texto para e-mail",
+      "e-mail persuasivo",
+      "copy de e-mail"
+    ],
+    "slug": "copywriting-para-email",
+    "url": "/blog/copywriting-para-email/",
+    "file": "blog/copywriting-para-email/index.html",
+    "status": "published",
+    "category": "Copywriting + E-mail",
+    "publishedAt": "2026-10-03",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1,
+    "cover": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85",
+    "coverImage": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85",
+    "coverAlt": "Pessoa trabalhando com planejamento e comunicação em um laptop"
+  },
+  {
     "id": "copywriting-para-pagina-de-vendas-2026-10-03",
     "title": "Copywriting para página de vendas: como escrever uma página que conduz à compra",
     "seoTitle": "Copywriting para Página de Vendas: Como Escrever uma Página que Conduz à Compra | MPMV",
