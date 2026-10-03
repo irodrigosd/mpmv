@@ -141,8 +141,17 @@ document.getElementById('clusters').innerHTML='<table class="table"><thead><tr><
 document.getElementById('gaps').innerHTML=gaps.length?'<table class="table"><thead><tr><th>Tema</th><th>Decisão</th></tr></thead><tbody>'+gaps.map(x=>'<tr><td><strong>'+esc(x[0])+'</strong></td><td>'+esc(x[1])+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma lacuna estrutural detectada.</div>';
 document.getElementById('metrics').innerHTML='<div class="card"><div class="metric">'+posts.length+'</div><div class="label">Artigos</div></div><div class="card"><div class="metric">'+queue.length+'</div><div class="label">Prioridades</div><div class="sub">'+(gsc.length?'com GSC':'sem GSC')+'</div></div><div class="card"><div class="metric">'+pairs.length+'</div><div class="label">Canibalização provável</div></div><div class="card"><div class="metric">'+links.length+'</div><div class="label">Links internos</div></div><div class="card"><div class="metric">'+gaps.length+'</div><div class="label">Gaps de conteúdo</div></div>';
 }
+function loadStoredGSC(){
+  try{
+    const raw=localStorage.getItem('mpmvGscRows');
+    if(!raw){gscRows=[];return}
+    const parsed=JSON.parse(raw);
+    gscRows=Array.isArray(parsed)?parsed:[];
+  }catch(e){gscRows=[];localStorage.removeItem('mpmvGscRows')}
+}
+
 async function run(){const b=document.getElementById('analyze');b.disabled=true;try{await load();build();document.getElementById('status').textContent='Inventário atualizado: '+posts.length+' artigos · '+(gscRows.length?'GSC: '+gscRows.length+' linhas importadas.':'GSC: ainda não importado.')}catch(e){document.getElementById('queue').innerHTML='<div class="empty">'+esc(e.message)+'</div>'}finally{b.disabled=false}}
-document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{importGSC(decodeCSVBytes(rd.result));build();document.getElementById('status').textContent=document.getElementById('status').textContent+' · análise atualizada'}catch(err){document.getElementById('status').textContent='ERRO NO CSV: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
+document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{const matched=importGSC(decodeCSVBytes(rd.result));const importedStatus=document.getElementById('status').textContent;build();document.getElementById('status').textContent=importedStatus+' · análise atualizada';}catch(err){document.getElementById('status').textContent='ERRO NO CSV: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
 document.getElementById('clearGsc').onclick=()=>{localStorage.removeItem('mpmvGscRows');gscRows=[];run()};
 document.getElementById('analyze').onclick=run;
 loadStoredGSC();run();
