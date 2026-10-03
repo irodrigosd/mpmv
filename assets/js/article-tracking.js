@@ -1,6 +1,9 @@
 (function(){
 'use strict';
 if(!/^\/blog\//.test(location.pathname)||location.pathname==='/blog/')return;
+var heroStyle=document.createElement('style');
+heroStyle.textContent='.article-photo img{display:block;width:100%;aspect-ratio:16/9!important;height:auto!important;max-height:none!important;object-fit:cover!important;object-position:center!important;}';
+document.head.appendChild(heroStyle);
 var API='/api/rastreamento';
 var KEY='mpmv_article_track_v1';
 var nowIso=function(){return new Date().toISOString()};
