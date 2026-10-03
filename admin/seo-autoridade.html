@@ -19,7 +19,7 @@
 <h1>O que fazer agora no SEO</h1>
 <p>Transforma o inventário do blog e os dados do Search Console em uma fila de decisões: atualizar, fortalecer com links, revisar sobreposição ou criar conteúdo novo.</p>
 <div class="actions">
-<button id="analyze" class="btn primary">Analisar 155 artigos</button>
+<button id="analyze" class="btn primary">Analisar artigos</button>
 <label class="btn">Importar Search Console <input id="gscFile" class="file" type="file" accept=".csv,text/csv"></label>
 <button id="clearGsc" class="btn">Limpar dados GSC</button>
 </div>
@@ -63,14 +63,54 @@ const jac=(a,b)=>{if(!a.size||!b.size)return 0;let n=0;a.forEach(x=>b.has(x)&&(n
 const overlap=(a,b)=>{if(!a.size||!b.size)return 0;let n=0;a.forEach(x=>b.has(x)&&(n++));return n/Math.sqrt(a.size*b.size)};
 const cluster=f=>{for(const k of TOPICS)if(f.all.has(k))return k;return tokens(f.p.category).find(x=>!GENERIC.has(x))||'outros'};
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-async function load(){const r=await fetch(SOURCE+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Não foi possível carregar o inventário.');posts=await r.json();features=posts.map(makeFeatures)}
-function detectDelimiter(text){const first=text.replace(/^\\uFEFF/,'').split(/\\r?\\n/).find(x=>x.trim())||'';const counts={',':(first.match(/,/g)||[]).length,';':(first.match(/;/g)||[]).length,'\\t':(first.match(/\\t/g)||[]).length};return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0]}
-function parseCSV(text,delimiter){text=String(text||'').replace(/^\\uFEFF/,'');const rows=[];let row=[],cell='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===delimiter&&!q){row.push(cell);cell='';continue}if((c=='\\n'||c=='\\r')&&!q){if(c=='\\r'&&n=='\\n')i++;row.push(cell);cell='';if(row.some(x=>x.trim()))rows.push(row);row=[];continue}cell+=c}if(cell||row.length){row.push(cell);rows.push(row)}return rows}
+let loadPromise=null;
+async function load(){if(loadPromise)return loadPromise;loadPromise=(async()=>{const r=await fetch(SOURCE+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Não foi possível carregar o inventário.');const data=await r.json();if(!Array.isArray(data))throw Error('O inventário do blog não retornou uma lista de artigos.');posts=data;features=posts.map(makeFeatures);document.getElementById('analyze').textContent='Analisar '+posts.length+' artigos';})();return loadPromise}
+function detectDelimiter(text){
+const sample=String(text||'').replace(/^\\uFEFF/,'').split(/\\r?\\n/).slice(0,30).find(x=>/Páginas principais|Top pages|Cliques|Clicks|Impressões|Impressions/i.test(x))||String(text||'').split(/\\r?\\n/).find(x=>x.trim())||'';
+const counts={',':(sample.match(/,/g)||[]).length,';':(sample.match(/;/g)||[]).length,'\\t':(sample.match(/\\t/g)||[]).length};
+return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0]
+}
+function parseCSV(text,delimiter){
+text=String(text||'').replace(/^\\uFEFF/,'');const rows=[];let row=[],cell='',q=false;
+for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===delimiter&&!q){row.push(cell);cell='';continue}if((c=='\\n'||c=='\\r')&&!q){if(c=='\\r'&&n=='\\n')i++;row.push(cell);cell='';if(row.some(x=>x.trim()))rows.push(row);row=[];continue}cell+=c}if(cell||row.length){row.push(cell);rows.push(row)}return rows
+}
 function normalizeHeader(s){return norm(s).replace(/ /g,'')}
-function importGSC(text){const rows=parseCSV(text,detectDelimiter(text));if(rows.length<2)throw Error('CSV vazio.');const h=rows[0].map(normalizeHeader);const ix=(names)=>h.findIndex(x=>names.includes(x));const urlI=ix(['pagina','paginas','paginasprincipais','page','pages','url','toppages']);const queryI=ix(['consulta','query','topqueries']);const clicksI=ix(['cliques','clicks']);const impI=ix(['impressoes','impressions']);const ctrI=ix(['ctr']);const posI=ix(['posicao','position']);if(urlI<0)throw Error('Não encontrei a coluna de páginas do Search Console. Use o arquivo exportado na aba Páginas/Pages do relatório de desempenho.');if(clicksI<0||impI<0||ctrI<0||posI<0)throw Error('O CSV não contém todas as métricas esperadas: Cliques, Impressões, CTR e Posição.');gscRows=rows.slice(1).map(r=>({url:r[urlI]||'',query:queryI>=0?r[queryI]||'':'',clicks:parseFloat(String(r[clicksI]||'').replace(/[%\\s]/g,'').replace(',','.'))||0,impressions:parseFloat(String(r[impI]||'').replace(/[%\\s]/g,'').replace(',','.'))||0,ctr:parseFloat(String(r[ctrI]||'').replace(/[%\\s]/g,'').replace(',','.'))||0,position:parseFloat(String(r[posI]||'').replace(/[%\\s]/g,'').replace(',','.'))||0})).filter(x=>x.url&&/^https?:\\/\\//i.test(x.url));localStorage.setItem('mpmvGscRows',JSON.stringify(gscRows));const matched=posts.length?posts.filter(p=>gscFor(p).length).length:null;document.getElementById('status').textContent='Search Console importado: '+gscRows.length+' páginas'+(matched!==null?' · '+matched+' artigos encontrados':'')+'. Clique em Analisar artigos para recalcular as decisões.'}
+function findGSCHeader(rows){
+const wanted=['pagina','paginas','paginasprincipais','page','pages','url','toppages'];
+for(let i=0;i<Math.min(rows.length,30);i++){const h=rows[i].map(normalizeHeader);if(h.some(x=>wanted.includes(x))&&h.some(x=>['cliques','clicks'].includes(x))&&h.some(x=>['impressoes','impressions'].includes(x)))return i}
+return -1
+}
+function parseNumber(v){
+let s=String(v??'').trim().replace(/[%\\s]/g,'');if(!s)return 0;
+if(s.includes(',')&&s.includes('.')){s=s.lastIndexOf(',')>s.lastIndexOf('.')?s.replace(/\\./g,'').replace(',','.'):s.replace(/,/g,'')}
+else if(s.includes(','))s=s.replace(',','.');
+const n=Number(s);return Number.isFinite(n)?n:0
+}
+function importGSC(text){
+const rows=parseCSV(text,detectDelimiter(text));if(rows.length<2)throw Error('CSV vazio.');
+const hi=findGSCHeader(rows);if(hi<0)throw Error('Não encontrei a linha de cabeçalho do Search Console. Use o CSV da tabela Páginas/Pages, com Página, Cliques, Impressões, CTR e Posição.');
+const h=rows[hi].map(normalizeHeader);const ix=(names)=>h.findIndex(x=>names.includes(x));
+const urlI=ix(['pagina','paginas','paginasprincipais','page','pages','url','toppages']),queryI=ix(['consulta','query','topqueries']),clicksI=ix(['cliques','clicks']),impI=ix(['impressoes','impressions']),ctrI=ix(['ctr']),posI=ix(['posicao','position']);
+if(urlI<0||clicksI<0||impI<0||ctrI<0||posI<0)throw Error('O CSV não contém todas as métricas esperadas: Página, Cliques, Impressões, CTR e Posição.');
+gscRows=rows.slice(hi+1).map(r=>({url:String(r[urlI]||'').trim(),query:queryI>=0?String(r[queryI]||'').trim():'',clicks:parseNumber(r[clicksI]),impressions:parseNumber(r[impI]),ctr:parseNumber(r[ctrI]),position:parseNumber(r[posI])})).filter(x=>x.url&&/^https?:\\/\\//i.test(x.url));
+if(!gscRows.length)throw Error('O CSV foi lido, mas nenhuma linha com URL https:// foi encontrada.');
+localStorage.setItem('mpmvGscRows',JSON.stringify(gscRows));
+const matched=posts.filter(p=>gscFor(p).length).length;
+const sample=gscRows.slice(0,3).map(x=>cleanUrl(x.url)).join(' · ');
+document.getElementById('status').textContent='Search Console importado: '+gscRows.length+' páginas · '+matched+' artigos encontrados'+(matched?'':' · Exemplo: '+sample);
+}
 function loadStoredGSC(){try{gscRows=JSON.parse(localStorage.getItem('mpmvGscRows')||'[]')}catch{gscRows=[]}}
-function cleanUrl(u){try{const x=new URL(String(u||''),location.origin);return x.pathname.replace(/\\/+$/,'').toLowerCase()}catch{return String(u||'').split('?')[0].replace(/\\/+$/,'').toLowerCase()}}
-function gscFor(p){const slug=norm(p.slug).replace(/ /g,'-');const target=cleanUrl('/blog/'+slug);const targetNoBlog=cleanUrl('/'+slug);return gscRows.filter(x=>{const u=cleanUrl(x.url);return u===target||u===targetNoBlog||u.startsWith(target+'/')||u.endsWith('/blog/'+slug)||u.includes('/blog/'+slug+'/')})}
+function cleanUrl(u){
+try{const x=new URL(String(u||''),location.origin);let p=decodeURIComponent(x.pathname||'/').replace(/\\/+$/,'').toLowerCase();p=p.replace(/^https?:\\/\\/[^/]+/,'');return p||'/'}catch{return String(u||'').split(/[?#]/)[0].replace(/\\/+$/,'').toLowerCase()||'/'}
+}
+function canonicalArticleUrl(p){
+const candidates=[p.url,'/blog/'+String(p.slug||'')+'/','/blog/'+norm(p.slug).replace(/ /g,'-')+'/'];
+for(const u of candidates){const c=cleanUrl(u);if(c&&c!='/')return c}return ''
+}
+function gscFor(p){
+const target=canonicalArticleUrl(p),slug=norm(p.slug).replace(/ /g,'-'),legacy='/blog/'+slug;
+return gscRows.filter(x=>{const u=cleanUrl(x.url);return u===target||u===legacy||u===legacy+'/'||u.startsWith(legacy+'/')})
+}
 function analyzeGSC(){if(!gscRows.length){document.getElementById('gsc').innerHTML='<div class="empty">Nenhum dado GSC carregado.</div>';return []}const data=posts.map(p=>{const rs=gscFor(p);const imp=rs.reduce((a,x)=>a+x.impressions,0),clk=rs.reduce((a,x)=>a+x.clicks,0),pos=rs.filter(x=>x.position>0).reduce((a,x)=>a+x.position*x.impressions,0)/(rs.filter(x=>x.position>0).reduce((a,x)=>a+x.impressions,0)||1),ctr=imp?clk/imp*100:0;return{p,imp,clk,pos,ctr,rows:rs}}).filter(x=>x.imp>0||x.clk>0).sort((a,b)=>((b.imp*Math.max(0,Math.min(1,(20-b.pos)/16)))+(b.clk*20)) - ((a.imp*Math.max(0,Math.min(1,(20-a.pos)/16)))+(a.clk*20)));document.getElementById('gsc').innerHTML='<table class="table"><thead><tr><th>Ação</th><th>Página</th><th>Impressões</th><th>Cliques</th><th>CTR</th><th>Pos.</th></tr></thead><tbody>'+data.slice(0,35).map(x=>{let action=x.pos>=4&&x.pos<=20?'SUBIR POSIÇÃO':x.imp>200&&x.ctr<2?'MELHORAR CTR':x.clk>0?'FORTALECER':'OBSERVAR';let cls=action==='SUBIR POSIÇÃO'?'high':action==='MELHORAR CTR'?'medium':'low';return '<tr><td><span class="badge '+cls+'">'+action+'</span></td><td><strong>'+esc(x.p.title)+'</strong><div class="url">/blog/'+esc(x.p.slug)+'/</div></td><td>'+Math.round(x.imp).toLocaleString('pt-BR')+'</td><td>'+Math.round(x.clk).toLocaleString('pt-BR')+'</td><td>'+x.ctr.toFixed(1)+'%</td><td>'+x.pos.toFixed(1)+'</td></tr>'}).join('')+'</tbody></table>';return data}
 function build(){const pairs=[],internal=[];for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){const a=features[i],b=features[j],ts=jac(new Set(a.title),new Set(b.title)),ks=jac(new Set(a.key),new Set(b.key)),ov=overlap(a.all,b.all);let shared=0;a.rare.forEach(x=>b.rare.has(x)&&(shared++));const risk=Math.max(ts*.45+ks*.4+ov*.15,(a.focus&&b.focus&&a.focus===b.focus)?.92:0);if(risk>=.48)pairs.push({a:a.p,b:b.p,risk,shared});const link=ks*.55+ov*.25+Math.min(shared,5)/5*.2;if(link>=.34)internal.push({a:a.p,b:b.p,score:link,shared})}
 pairs.sort((a,b)=>b.risk-a.risk);internal.sort((a,b)=>b.score-a.score);const used=new Map(),links=[];for(const x of internal){const a=used.get(x.a.slug)||0,b=used.get(x.b.slug)||0;if(a>=2||b>=2)continue;used.set(x.a.slug,a+1);used.set(x.b.slug,b+1);links.push(x);if(links.length>=40)break}
@@ -88,7 +128,7 @@ document.getElementById('gaps').innerHTML=gaps.length?'<table class="table"><the
 document.getElementById('metrics').innerHTML='<div class="card"><div class="metric">'+posts.length+'</div><div class="label">Artigos</div></div><div class="card"><div class="metric">'+queue.length+'</div><div class="label">Prioridades</div><div class="sub">'+(gsc.length?'com GSC':'sem GSC')+'</div></div><div class="card"><div class="metric">'+pairs.length+'</div><div class="label">Canibalização provável</div></div><div class="card"><div class="metric">'+links.length+'</div><div class="label">Links internos</div></div><div class="card"><div class="metric">'+gaps.length+'</div><div class="label">Gaps de conteúdo</div></div>';
 }
 async function run(){const b=document.getElementById('analyze');b.disabled=true;try{await load();build();document.getElementById('status').textContent='Inventário atualizado: '+posts.length+' artigos · '+(gscRows.length?'GSC: '+gscRows.length+' linhas importadas.':'GSC: ainda não importado.')}catch(e){document.getElementById('queue').innerHTML='<div class="empty">'+esc(e.message)+'</div>'}finally{b.disabled=false}}
-document.getElementById('gscFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{importGSC(rd.result);run()}catch(err){document.getElementById('status').textContent=err.message}};rd.readAsText(f,'utf-8')};
+document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{importGSC(rd.result);run()}catch(err){document.getElementById('status').textContent=err.message}};rd.onerror=()=>{document.getElementById('status').textContent='Não foi possível ler o arquivo CSV.'};rd.readAsText(f,'utf-8')}catch(err){document.getElementById('status').textContent=err.message}};
 document.getElementById('clearGsc').onclick=()=>{localStorage.removeItem('mpmvGscRows');gscRows=[];run()};
 document.getElementById('analyze').onclick=run;
 loadStoredGSC();run();
