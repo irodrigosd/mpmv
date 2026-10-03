@@ -4,6 +4,19 @@ if(!/^\/blog\//.test(location.pathname)||location.pathname==='/blog/')return;
 var heroStyle=document.createElement('style');
 heroStyle.textContent='.article-photo img,.article-cover img,.hero-art img,.hero-image img,.hero-cover img,.hero-media img,figure.hero img{display:block;width:100%!important;aspect-ratio:16/9!important;height:auto!important;max-height:none!important;object-fit:cover!important;object-position:center!important}.hero-art,.hero-image,.hero-cover,.hero-media{min-height:0!important;height:auto!important}.portrait{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important}.portrait img{display:block!important;width:100%!important;height:100%!important;aspect-ratio:16/9!important;object-fit:cover!important;object-position:center!important}.portrait:after{inset:0!important}';
 document.head.appendChild(heroStyle);
+function normalizeHeroImages(){
+  document.querySelectorAll('.article-photo img,.article-cover img,.hero-art img,.hero-image img,.hero-cover img,.hero-media img,figure.hero img').forEach(function(img){
+    if(img.closest('.mpmv-hero-frame'))return;
+    var frame=document.createElement('div');
+    frame.className='mpmv-hero-frame';
+    img.parentNode.insertBefore(frame,img);
+    frame.appendChild(img);
+  });
+}
+var frameStyle=document.createElement('style');
+frameStyle.textContent='.mpmv-hero-frame{position:relative!important;width:100%!important;aspect-ratio:16/9!important;height:auto!important;overflow:hidden!important;border-radius:inherit!important}.mpmv-hero-frame img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center!important}';
+document.head.appendChild(frameStyle);
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalizeHeroImages);else normalizeHeroImages();
 var API='/api/rastreamento';
 var KEY='mpmv_article_track_v1';
 var nowIso=function(){return new Date().toISOString()};
