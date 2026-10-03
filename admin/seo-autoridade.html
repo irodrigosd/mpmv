@@ -22,6 +22,7 @@
 <button id="analyze" class="btn primary">Analisar artigos</button>
 <label class="btn">Importar Search Console <input id="gscFile" class="file" type="file" accept=".csv,text/csv"></label>
 <button id="clearGsc" class="btn">Limpar dados GSC</button>
+<button id="exportReport" class="btn">Exportar relatório</button>
 </div>
 <div id="status" class="source">SEO Autoridade v2026-10-03. Inventário: data/blog-posts.json · Search Console: ainda não importado.</div>
 </section>
@@ -171,6 +172,48 @@ document.getElementById('clusters').innerHTML='<table class="table"><thead><tr><
 document.getElementById('gaps').innerHTML=gaps.length?'<table class="table"><thead><tr><th>Tema</th><th>Decisão</th></tr></thead><tbody>'+gaps.map(x=>'<tr><td><strong>'+esc(x[0])+'</strong></td><td>'+esc(x[1])+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">Nenhuma lacuna estrutural detectada.</div>';
 document.getElementById('metrics').innerHTML='<div class="card"><div class="metric">'+posts.length+'</div><div class="label">Artigos</div></div><div class="card"><div class="metric">'+queue.length+'</div><div class="label">Prioridades</div><div class="sub">'+(gsc.length?'com GSC':'sem GSC')+'</div></div><div class="card"><div class="metric">'+pairs.length+'</div><div class="label">Canibalização provável</div></div><div class="card"><div class="metric">'+links.length+'</div><div class="label">Links internos</div></div><div class="card"><div class="metric">'+gaps.length+'</div><div class="label">Gaps de conteúdo</div></div>';
 }
+function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+function exportReport(){
+  if(!posts.length){document.getElementById('status').textContent='Analise os artigos antes de exportar.';return}
+  const rows=[['Tipo','Ação','Artigo','URL','Impressões','Cliques','CTR','Posição','Observação']];
+  posts.forEach(p=>{
+    const rs=gscFor(p),imp=rs.reduce((a,x)=>a+x.impressions,0),clk=rs.reduce((a,x)=>a+x.clicks,0);
+    const valid=rs.filter(x=>x.position>0),pos=valid.reduce((a,x)=>a+x.position*x.impressions,0)/(valid.reduce((a,x)=>a+x.impressions,0)||1);
+    const ctr=imp?clk/imp*100:0;
+    let action='SEM GSC',why='Sem dados do Search Console para esta URL.';
+    if(imp||clk){
+      if(pos>=4&&pos<=20){action='SUBIR POSIÇÃO';why='Página entre posições 4 e 20.'}
+      else if(imp>200&&ctr<2){action='MELHORAR CTR';why='Muitas impressões com CTR abaixo de 2%.'}
+      else if(clk>0){action='FORTALECER';why='Página já recebe cliques; avaliar reforço de conteúdo e links.'}
+      else action='OBSERVAR';
+    }
+    rows.push(['GSC',action,p.title,'/blog/'+p.slug+'/',Math.round(imp),Math.round(clk),ctr.toFixed(1)+'%',pos?pos.toFixed(1):'',why]);
+  });
+  const pairs=[];
+  for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
+    const a=features[i],b=features[j],ts=jac(new Set(a.title),new Set(b.title)),ks=jac(new Set(a.key),new Set(b.key)),ov=overlap(a.all,b.all);
+    const risk=Math.max(ts*.45+ks*.4+ov*.15,(a.focus&&b.focus&&a.focus===b.focus)?.92:0);
+    if(risk>=.48)pairs.push({a:a.p,b:b.p,risk});
+  }
+  pairs.sort((a,b)=>b.risk-a.risk).slice(0,50).forEach(x=>rows.push(['CANIBALIZAÇÃO','REVISAR',x.a.title+' ↔ '+x.b.title,'','','','',Math.round(x.risk*100)+'%','Sobreposição editorial provável; comparar intenção antes de alterar.']));
+  const used=new Map(),links=[];
+  for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
+    const a=features[i],b=features[j],ks=jac(new Set(a.key),new Set(b.key)),ov=overlap(a.all,b.all);let shared=0;a.rare.forEach(x=>b.rare.has(x)&&(shared++));
+    const score=ks*.55+ov*.25+Math.min(shared,5)/5*.2;
+    if(score>=.34)links.push({a:a.p,b:b.p,score,shared});
+  }
+  links.sort((a,b)=>b.score-a.score);
+  let linkCount=0;
+  for(const x of links){
+    const ac=used.get(x.a.slug)||0,bc=used.get(x.b.slug)||0;if(ac>=2||bc>=2)continue;
+    used.set(x.a.slug,ac+1);used.set(x.b.slug,bc+1);
+    rows.push(['LINK INTERNO','FORTALECER',x.a.title,x.a.url||('/blog/'+x.a.slug+'/'),'','','','','Link contextual para: '+x.b.title]);
+    if(++linkCount>=40)break;
+  }
+  const blob=new Blob(['\uFEFF'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='seo-autoridade-mpmv-'+new Date().toISOString().slice(0,10)+'.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  document.getElementById('status').textContent='Relatório exportado: '+(rows.length-1)+' registros.';
+}
 function loadStoredGSC(){
   try{
     const raw=localStorage.getItem('mpmvGscRows');
@@ -184,6 +227,7 @@ async function run(){const b=document.getElementById('analyze');b.disabled=true;
 document.getElementById('gscFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await load();const rd=new FileReader();rd.onload=()=>{try{const matched=importGSC(decodeCSVBytes(rd.result));const importedStatus=document.getElementById('status').textContent;build();document.getElementById('status').textContent=importedStatus+' · análise atualizada';}catch(err){document.getElementById('status').textContent='ERRO NO CSV: '+err.message}};rd.onerror=()=>{document.getElementById('status').textContent='ERRO: não foi possível ler o arquivo CSV.'};rd.readAsArrayBuffer(f)}catch(err){document.getElementById('status').textContent='ERRO: '+err.message}};
 document.getElementById('clearGsc').onclick=()=>{localStorage.removeItem('mpmvGscRows');gscRows=[];run()};
 document.getElementById('analyze').onclick=run;
+document.getElementById('exportReport').onclick=exportReport;
 loadStoredGSC();run();
 document.getElementById('mozRefresh').onclick=async()=>{const s=document.getElementById('mozStatus');s.textContent='Consultando Moz...';try{const res=await fetch('/api/moz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({targets:[location.origin+'/',...posts.slice(0,49).map(p=>location.origin+'/blog/'+p.slug+'/')]})});const d=await res.json();if(!res.ok)throw Error(d.error||'Moz não configurado.');const r=d.results||[];const dom=r[0]||{};document.getElementById('mozMetrics').innerHTML='<div class="grid"><div class="card"><div class="metric">'+(dom.domain_authority??'—')+'</div><div class="label">Domain Authority</div></div><div class="card"><div class="metric">'+(dom.page_authority??'—')+'</div><div class="label">Page Authority</div></div></div>';s.textContent='Consulta concluída: '+r.length+' URLs.'}catch(e){s.textContent=e.message}};
 </script>
