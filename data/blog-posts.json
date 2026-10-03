@@ -1,5 +1,31 @@
 [
   {
+    "id": "copywriting-para-anuncios-2026-10-03",
+    "title": "Copywriting para anúncios: como escrever textos que transformam atenção em cliques",
+    "seoTitle": "Copywriting para Anúncios: Como Escrever Textos que Geram Cliques | MPMV",
+    "metaDescription": "Aprenda copywriting para anúncios: como criar headline, promessa, argumento e CTA para transformar atenção em cliques sem depender de frases genéricas.",
+    "focusKeyphrase": "copywriting para anúncios",
+    "secondaryKeyphrases": [
+      "copy para anúncios",
+      "texto para anúncio",
+      "copywriting para tráfego pago",
+      "anúncio que converte",
+      "copy de anúncio"
+    ],
+    "slug": "copywriting-para-anuncios",
+    "url": "/blog/copywriting-para-anuncios/",
+    "file": "blog/copywriting-para-anuncios/index.html",
+    "status": "published",
+    "category": "Copywriting + Tráfego",
+    "publishedAt": "2026-10-03",
+    "author": "Rodrigo Castro",
+    "deletable": true,
+    "batchOrder": 1,
+    "cover": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=85",
+    "coverImage": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=85",
+    "coverAlt": "Pessoa trabalhando em um laptop durante a criação de uma campanha de anúncios"
+  },
+  {
     "id": "modelos-de-headline-frameworks-2026-10-02",
     "title": "25 modelos de headline para criar títulos mais claros e persuasivos",
     "seoTitle": "Modelos de Headline: 25 Frameworks para Títulos que Vendem",
