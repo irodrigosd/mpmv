@@ -1,0 +1,49 @@
+TÍTULO SEO
+Dove: Como o Posicionamento Transformou um Sabonete | MPMV
+
+SLUG
+posicionamento-de-marca-dove
+
+PALAVRA-CHAVE PRINCIPAL
+posicionamento de marca
+
+PALAVRAS-CHAVE SECUNDÁRIAS
+história da Dove
+posicionamento de produto
+valor percebido
+como diferenciar um produto
+copywriting para vendas
+proposta de valor
+características e benefícios
+
+META DESCRIPTION
+Entenda a estratégia de posicionamento da Dove e aprenda a transformar diferenciais técnicos em valor percebido, argumentos de venda e copy persuasiva.
+
+H1
+O que a história da Dove ensina sobre posicionamento de marca
+
+CANONICAL
+https://www.maispersuasaomaisvendas.com.br/blog/posicionamento-de-marca-dove/
+
+INTENÇÃO DE BUSCA
+Informacional com aplicação comercial. O leitor busca compreender o posicionamento da Dove e aprender a traduzir diferenciais em benefícios percebidos e argumentos de venda.
+
+FONTES PRINCIPAIS
+https://www.unilever.com/news/news-search/2023/behind-the-brand-doves-products-purpose-and-commitment-to-care/
+https://www.dove.com/br/sabonetes-dove.html
+
+LINKS INTERNOS
+/blog/transformar-caracteristicas-em-beneficios/
+/blog/posicionamento-unico-de-vendas/
+/blog/como-criar-uma-campanha-de-vendas-sem-falar-do-produto/
+
+CHECKLIST SEO/LEGIBILIDADE
+- palavra-chave no title, H1 e introdução
+- meta description objetiva, com intenção clara
+- canonical absoluto e consistente
+- headings hierárquicos, parágrafos curtos e listas úteis
+- imagens com texto alternativo e dimensões declaradas
+- links internos contextuais
+- BlogPosting, BreadcrumbList e FAQPage schema
+- fontes primárias para os fatos históricos
+- CTA contextual para mentoria
