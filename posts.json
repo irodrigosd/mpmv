@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-15T12:51:02.701Z",
+  "updatedAt": "2026-10-21T16:00:00.000Z",
   "posts": [
+    {
+      "title": "Como transformar um produto comum em premium: lições de posicionamento",
+      "slug": "como-transformar-cachaca-em-produto-premium",
+      "url": "/blog/como-transformar-cachaca-em-produto-premium/",
+      "date": "2026-10-21",
+      "status": "published",
+      "focusKeyword": "como transformar um produto em premium",
+      "seoScore": 94,
+      "readabilityScore": 93,
+      "readingTime": "8 min",
+      "excerpt": "Uma história sobre cachaça mostra como posicionamento, contexto e percepção de valor podem mudar a forma como o mercado enxerga um produto."
+    },
     {
       "title": "O que a história da Dove ensina sobre posicionamento de marca",
       "slug": "posicionamento-de-marca-dove",
