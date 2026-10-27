@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leads da Mentoria | MPMV</title>
+<style>
+:root{color-scheme:light;--navy:#173b52;--blue:#238fb4;--pale:#f2f8fa;--line:#d6e5e9;--muted:#647d88}
+*{box-sizing:border-box}body{margin:0;background:var(--pale);font:16px/1.5 system-ui,-apple-system,sans-serif;color:var(--navy)}
+header{padding:22px max(18px,calc((100% - 1120px)/2));background:white;border-bottom:1px solid var(--line)}
+main{max-width:1120px;margin:28px auto;padding:0 16px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}h1{font-size:clamp(26px,4vw,36px);margin:0}h2{font-size:20px;margin:0 0 12px}p{color:var(--muted);margin:8px 0 0}
+.panel,.application{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:18px}
+button,input{font:inherit;border-radius:10px;padding:11px 14px;border:1px solid #bfd3da}button{background:var(--blue);color:white;border:0;font-weight:700;cursor:pointer}button.secondary{background:white;color:var(--navy);border:1px solid var(--line)}
+input{width:100%;max-width:460px;background:white}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.status{margin-top:14px;color:var(--muted)}.error{color:#a12727}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}.application{margin:0;cursor:pointer;transition:border-color .15s}.application:hover{border-color:var(--blue)}.name{font-size:18px;font-weight:800}.meta{color:var(--muted);font-size:13px}.details{display:none;margin-top:18px}.details.open{display:block}.answers{display:grid;gap:12px}.answer{padding:12px;background:#f5fafb;border-radius:10px;overflow-wrap:anywhere}.answer b{display:block;margin-bottom:4px}.empty{padding:24px;text-align:center;color:var(--muted)}a{color:var(--blue)}.count{font-weight:800}
+@media(max-width:600px){header{padding:18px}main{margin:18px auto}.panel,.application{padding:15px}}
+</style></head>
+<body>
+<header><div class="top"><div><strong>MPMV — Mais Persuasão, Mais Vendas</strong><p>Painel administrativo · Candidaturas da mentoria individual</p></div><a href="/admin/">← Central administrativa</a></div></header>
+<main>
+<div class="top"><div><h1>Leads da mentoria</h1><p>Consulte os dados de contato e as respostas enviadas no formulário.</p></div><button id="reload">Atualizar candidaturas</button></div>
+<section class="panel"><div class="toolbar"><input id="search" placeholder="Buscar por nome ou e-mail"><button class="secondary" id="export">Exportar CSV</button></div><div id="status" class="status">Preparando consulta segura…</div><div id="list" class="cards"></div></section>
+<section id="detail" class="panel details"><div class="top"><h2 id="detailTitle">Respostas da candidatura</h2><button class="secondary" id="close">Fechar</button></div><div id="answers" class="answers"></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s);let applications=[];
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function token(){let t=sessionStorage.getItem('mpmv_admin_token')||'';if(!t){t=prompt('Digite o token administrativo do MPMV:','')||'';if(t)sessionStorage.setItem('mpmv_admin_token',t)}return t}
+function date(v){if(!v)return'—';const d=new Date(v);return isNaN(d)?'—':d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+function render(){const q=$('#search').value.trim().toLowerCase();const filtered=applications.filter(a=>[a.name,a.email,a.phone].some(v=>String(v||'').toLowerCase().includes(q)));$('#list').innerHTML=filtered.length?filtered.map((a,i)=>'<article class="application" data-id="'+esc(a.id)+'"><div class="name">'+esc(a.name||'Sem nome')+'</div><div>'+esc(a.email||'Sem e-mail')+'</div><div class="meta">'+esc(a.phone||'Sem telefone')+' · '+esc(date(a.createdAt||a.submittedAt))+'</div><p>'+((a.hasFullApplication)?'Questionário completo':'Contato localizado; respostas completas não encontradas nas notas')+'</p></article>').join(''):'<div class="empty">Nenhuma candidatura encontrada.</div>';document.querySelectorAll('.application').forEach(el=>el.onclick=()=>show(el.dataset.id));$('#status').textContent=applications.length+' candidatura(s) carregada(s).';}
+function show(id){const a=applications.find(x=>String(x.id)===String(id));if(!a)return;$('#detailTitle').textContent='Candidatura: '+(a.name||a.email||'Lead');const fields=[['Nome',a.name],['E-mail',a.email],['Telefone',a.phone],['Produto/serviço',a.product],['Função e estrutura atual',a.role],['Principal desafio',a.attention],['Por que quer a mentoria',a.whyYou],['Faturamento atual',a.revenue],['Por que escolheu Rodrigo',a.whyRodrigo],['Está de acordo com o compromisso de resultados?',a.resultsAgreement],['Está de acordo com o investimento?',a.priceAgreement],['Data de envio',date(a.createdAt||a.submittedAt)],['Origem',a.source],['Campanha',a.campaign],['Página de entrada',a.landingPage]];$('#answers').innerHTML=fields.map(([k,v])=>'<div class="answer"><b>'+esc(k)+'</b>'+esc(v||'—')+'</div>').join('');$('#detail').classList.add('open');$('#detail').scrollIntoView({behavior:'smooth',block:'start'});}
+async function load(){const t=token();if(!t){$('#status').textContent='Token necessário para consultar as candidaturas.';return}$('#reload').disabled=true;$('#status').textContent='Consultando candidaturas…';try{const r=await fetch('/api/mentoria?limit=500',{headers:{'x-admin-token':t},cache:'no-store'});const d=await r.json();if(r.status===401){sessionStorage.removeItem('mpmv_admin_token');throw Error('Token inválido. Atualize a página e tente novamente.')}if(!r.ok)throw Error(d.message||d.error||'Não foi possível consultar a API');applications=Array.isArray(d.applications)?d.applications:[];render()}catch(e){$('#status').className='status error';$('#status').textContent='Erro ao carregar: '+e.message;$('#list').innerHTML=''}finally{$('#reload').disabled=false}}
+function csv(){const keys=['name','email','phone','createdAt','product','role','attention','whyYou','revenue','whyRodrigo','resultsAgreement','priceAgreement','source','campaign','landingPage'];const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';const rows=[keys.join(';'),...applications.map(a=>keys.map(k=>q(a[k])).join(';'))];const blob=new Blob(['\ufeff'+rows.join('\r\n')],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='leads-mentoria-mpmv.csv';link.click();URL.revokeObjectURL(url)}
+$('#reload').onclick=load;$('#search').oninput=render;$('#export').onclick=csv;$('#close').onclick=()=>$('#detail').classList.remove('open');load();
+</script></body></html>
