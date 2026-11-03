@@ -293,6 +293,206 @@
       "source": "/aula",
       "destination": "https://meet.google.com/bkz-xkiu-bxw",
       "permanent": false
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/guia-mais-persuasao-mais-vendas/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/falar-demais-do-produto",
+      "destination": "/blog/como-criar-uma-campanha-de-vendas-sem-falar-do-produto/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/falar-demais-do-produto/",
+      "destination": "/blog/como-criar-uma-campanha-de-vendas-sem-falar-do-produto/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visitam-pagina-mas-nao-compram",
+      "destination": "/blog/como-aumentar-a-conversao-da-landing-page-sem-gastar-mais-com-anuncios/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/visitam-pagina-mas-nao-compram/",
+      "destination": "/blog/como-aumentar-a-conversao-da-landing-page-sem-gastar-mais-com-anuncios/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lado-sombrio-gatilhos-mentais",
+      "destination": "/blog/dark-patterns-marketing-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lado-sombrio-gatilhos-mentais/",
+      "destination": "/blog/dark-patterns-marketing-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/paradoxo-da-confianca",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/paradoxo-da-confianca/",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/preco-97-barato-ou-caro",
+      "destination": "/blog/como-cliente-decide-preco-caro/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/preco-97-barato-ou-caro/",
+      "destination": "/blog/como-cliente-decide-preco-caro/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tres-opcoes-vendem-mais",
+      "destination": "/blog/efeito-isca-marketing-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tres-opcoes-vendem-mais/",
+      "destination": "/blog/efeito-isca-marketing-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gatilhos-mentais-ainda-funcionam",
+      "destination": "/blog/gatilhos-mentais/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gatilhos-mentais-ainda-funcionam/",
+      "destination": "/blog/gatilhos-mentais/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/muitas-visualizacoes-zero-vendas",
+      "destination": "/blog/como-vender-mais-na-internet/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/muitas-visualizacoes-zero-vendas/",
+      "destination": "/blog/como-vender-mais-na-internet/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sinais-comunicacao-matando-vendas",
+      "destination": "/blog/conteudo-treinando-pessoas-a-ignorar/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sinais-comunicacao-matando-vendas/",
+      "destination": "/blog/conteudo-treinando-pessoas-a-ignorar/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/headline-matando-conteudo",
+      "destination": "/blog/headline-como-criar-titulos-que-prendem-atencao/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/headline-matando-conteudo/",
+      "destination": "/blog/headline-como-criar-titulos-que-prendem-atencao/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/erros-de-persuasao-destroem-vendas",
+      "destination": "/blog/convencer-demais-vender-menos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/erros-de-persuasao-destroem-vendas/",
+      "destination": "/blog/convencer-demais-vender-menos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/oferta-barata-parecer-cara",
+      "destination": "/blog/psicologia-de-precos-para-infoprodutos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/oferta-barata-parecer-cara/",
+      "destination": "/blog/psicologia-de-precos-para-infoprodutos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/usar-inteligencia-artificial-sem-cara-de-ia",
+      "destination": "/blog/como-usar-ia-para-escrever-anuncios-que-vendem-sem-parecer-texto-de-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/usar-inteligencia-artificial-sem-cara-de-ia/",
+      "destination": "/blog/como-usar-ia-para-escrever-anuncios-que-vendem-sem-parecer-texto-de-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marca-afastando-clientes-sinais",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marca-afastando-clientes-sinais/",
+      "destination": "/blog/confianca-do-cliente-erros-destroem-vendas/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/produto-bom-nao-vende",
+      "destination": "/blog/clientes-compram-produtos-piores/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/produto-bom-nao-vende/",
+      "destination": "/blog/clientes-compram-produtos-piores/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/engenheiro-de-prompts-persuasivo",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/engenheiro-de-prompts-persuasivo/",
+      "destination": "/blog/como-criar-posts-que-vendem-com-chatgpt/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/copywriting-para-redes-sociais",
+      "destination": "/blog/copy-para-instagram/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/copywriting-para-redes-sociais/",
+      "destination": "/blog/copy-para-instagram/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prova-social-na-internet",
+      "destination": "/blog/prova-social-no-marketing/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prova-social-na-internet/",
+      "destination": "/blog/prova-social-no-marketing/",
+      "permanent": true
+    },
+    {
+      "source": "/favicon-mpmv.ico",
+      "destination": "/favicon-mpmv.png?v=3",
+      "permanent": true
+    },
+    {
+      "source": "/favicon-mpmv.ico/",
+      "destination": "/favicon-mpmv.png?v=3",
+      "permanent": true
     }
   ],
   "headers": [
